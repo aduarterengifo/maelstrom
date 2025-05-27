@@ -1,0 +1,45 @@
+type init_request_body = {
+  node_id: string;
+  node_ids: string list;
+  msg_id: int;
+}
+
+type echo_request_body = {
+  msg_id: int;
+  echo: string
+}
+
+type request_body <json open="type"> = 
+  | Init <json name="init"> of {
+    node_id: string;
+    node_ids: string list;
+    msg_id: int;
+  }
+  | Echo <json name="echo"> of {
+  msg_id: int;
+  echo: string
+}
+
+type request = { 
+  src: string; 
+  dest: string; 
+  body: request_body
+}
+
+type init_reply_body = {
+  type_ <json name="type"> : string;
+  msg_id: int;
+  in_reply_to: int;
+}
+
+type init_request = {
+  dest: string;
+  src: string;
+  body: init_request_body; 
+}
+
+type init_reply = {
+  dest: string;
+  src: string;
+  body: init_reply_body;
+}
