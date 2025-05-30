@@ -1,6 +1,8 @@
 (executable
  (public_name server)
  (name main)
- (libraries yojson ppx_yojson_conv server)
+ (libraries yojson ppx_yojson_conv eio eio_main server)
  (preprocess
-  (pps ppx_yojson_conv)))
+  (pps ppx_yojson_conv))
+ (flags
+  (:standard -w -26-27-32-37-34-33)))

@@ -1,0 +1,7 @@
+[INFO] Entering main loop
+[RECEIVED] {"id":1,"src":"c0","dest":"n5","body":{"type":"init","node_id":"n5","node_ids":["n1","n2","n3","n4","n5"],"msg_id":1}}
+DEBUG: request_body_of_yojson got: {"type":"init","node_id":"n5","node_ids":["n1","n2","n3","n4","n5"],"msg_id":1}
+Initialized node n5
+[RECEIVED] {"id":17,"src":"c13","dest":"n5","body":{"echo":"Please echo 18","type":"echo","msg_id":1}}
+DEBUG: request_body_of_yojson got: {"echo":"Please echo 18","type":"echo","msg_id":1}
+Echoing {"id":17,"src":"c13","dest":"n5","body":{"echo":"Please echo 18","type":"echo","msg_id":1}}

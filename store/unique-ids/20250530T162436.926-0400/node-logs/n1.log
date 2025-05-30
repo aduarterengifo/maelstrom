@@ -1,0 +1,8 @@
+[INFO] Entering main loop
+[RECEIVED] {"id":2,"src":"c2","dest":"n1","body":{"type":"init","node_id":"n1","node_ids":["n1","n2","n3","n4","n5"],"msg_id":1}}
+[MATCH] InitBody
+Initialized node n1
+Init send {"src":"n1","dest":"c2","body":{"type":"init_ok","in_reply_to":1,"msg_id":0}}
+[RECEIVED] {"id":10,"src":"c10","dest":"n1","body":{"type":"generate","msg_id":1}}
+[MATCH] GenerateBody
+Generating {"src":"n1","dest":"c10","body":{"type":"generate_ok","in_reply_to":1,"msg_id":1,"id":"n11"}}

@@ -1,0 +1,20 @@
+0	:invoke	:echo	"Please echo 15"
+3	:invoke	:echo	"Please echo 39"
+3	:ok	:echo	{:type "echo_ok", :echo "Please echo 39", :msg_id 1, :in_reply_to 1}
+0	:ok	:echo	{:type "echo_ok", :echo "Please echo 15", :msg_id 1, :in_reply_to 1}
+1	:invoke	:echo	"Please echo 4"
+3	:invoke	:echo	"Please echo 73"
+1	:ok	:echo	{:type "echo_ok", :echo "Please echo 4", :msg_id 1, :in_reply_to 1}
+4	:invoke	:echo	"Please echo 18"
+4	:ok	:echo	{:type "echo_ok", :echo "Please echo 18", :msg_id 1, :in_reply_to 1}
+0	:invoke	:echo	"Please echo 83"
+4	:invoke	:echo	"Please echo 31"
+1	:invoke	:echo	"Please echo 112"
+2	:invoke	:echo	"Please echo 52"
+2	:ok	:echo	{:type "echo_ok", :echo "Please echo 52", :msg_id 1, :in_reply_to 1}
+2	:invoke	:echo	"Please echo 3"
+3	:info	:echo	"Please echo 73"	:net-timeout
+0	:info	:echo	"Please echo 83"	:net-timeout
+4	:info	:echo	"Please echo 31"	:net-timeout
+1	:info	:echo	"Please echo 112"	:net-timeout
+2	:info	:echo	"Please echo 3"	:net-timeout

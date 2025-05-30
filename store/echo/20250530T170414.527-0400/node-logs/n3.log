@@ -1,0 +1,5 @@
+[INFO] Entering main loop
+[RECEIVED] {"id":4,"src":"c4","dest":"n3","body":{"type":"init","node_id":"n3","node_ids":["n1","n2","n3","n4","n5"],"msg_id":1}}
+[MATCH] InitBody
+Initialized node n3
+Init send {"src":"n3","dest":"c4","body":{"type":"init_ok","in_reply_to":1,"msg_id":0}}

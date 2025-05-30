@@ -1,0 +1,20 @@
+{:index 0, :time 17650375, :type :invoke, :process 0, :f :echo, :value "Please echo 15"}
+{:index 1, :time 21050208, :type :invoke, :process 3, :f :echo, :value "Please echo 39"}
+{:index 2, :time 23369583, :type :ok, :process 3, :f :echo, :value {:type "echo_ok", :echo "Please echo 39", :msg_id 1, :in_reply_to 1}}
+{:index 3, :time 23439833, :type :ok, :process 0, :f :echo, :value {:type "echo_ok", :echo "Please echo 15", :msg_id 1, :in_reply_to 1}}
+{:index 4, :time 274540958, :type :invoke, :process 1, :f :echo, :value "Please echo 4"}
+{:index 5, :time 275941666, :type :invoke, :process 3, :f :echo, :value "Please echo 73"}
+{:index 6, :time 277595375, :type :ok, :process 1, :f :echo, :value {:type "echo_ok", :echo "Please echo 4", :msg_id 1, :in_reply_to 1}}
+{:index 7, :time 294434583, :type :invoke, :process 4, :f :echo, :value "Please echo 18"}
+{:index 8, :time 297844208, :type :ok, :process 4, :f :echo, :value {:type "echo_ok", :echo "Please echo 18", :msg_id 1, :in_reply_to 1}}
+{:index 9, :time 466158416, :type :invoke, :process 0, :f :echo, :value "Please echo 83"}
+{:index 10, :time 475341208, :type :invoke, :process 4, :f :echo, :value "Please echo 31"}
+{:index 11, :time 771125041, :type :invoke, :process 1, :f :echo, :value "Please echo 112"}
+{:index 12, :time 825272708, :type :invoke, :process 2, :f :echo, :value "Please echo 52"}
+{:index 13, :time 828581708, :type :ok, :process 2, :f :echo, :value {:type "echo_ok", :echo "Please echo 52", :msg_id 1, :in_reply_to 1}}
+{:index 14, :time 1186071500, :type :invoke, :process 2, :f :echo, :value "Please echo 3"}
+{:index 15, :time 5282714125, :type :info, :process 3, :f :echo, :value "Please echo 73", :error :net-timeout}
+{:index 16, :time 5472226750, :type :info, :process 0, :f :echo, :value "Please echo 83", :error :net-timeout}
+{:index 17, :time 5478920166, :type :info, :process 4, :f :echo, :value "Please echo 31", :error :net-timeout}
+{:index 18, :time 5775826458, :type :info, :process 1, :f :echo, :value "Please echo 112", :error :net-timeout}
+{:index 19, :time 6189914791, :type :info, :process 2, :f :echo, :value "Please echo 3", :error :net-timeout}

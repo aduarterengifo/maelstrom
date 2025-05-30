@@ -1,0 +1,20 @@
+[INFO] Entering main loop
+[RECEIVED] {"id":3,"src":"c3","dest":"n3","body":{"type":"init","node_id":"n3","node_ids":["n1","n2","n3","n4","n5"],"msg_id":1}}
+[MATCH] InitBody
+Initialized node n3
+Init send {"src":"n3","dest":"c3","body":{"type":"init_ok","in_reply_to":1,"msg_id":0}}
+[RECEIVED] {"id":20,"src":"c13","dest":"n3","body":{"echo":"Please echo 19","type":"echo","msg_id":1}}
+[MATCH] EchoBody
+Echoing {"src":"n3","dest":"c13","body":{"type":"echo_ok","echo":"Please echo 19","msg_id":1,"in_reply_to":1}}
+[RECEIVED] {"id":40,"src":"c13","dest":"n3","body":{"echo":"Please echo 12","type":"echo","msg_id":2}}
+[MATCH] EchoBody
+Echoing {"src":"n3","dest":"c13","body":{"type":"echo_ok","echo":"Please echo 12","msg_id":2,"in_reply_to":2}}
+[RECEIVED] {"id":52,"src":"c13","dest":"n3","body":{"echo":"Please echo 118","type":"echo","msg_id":3}}
+[MATCH] EchoBody
+Echoing {"src":"n3","dest":"c13","body":{"type":"echo_ok","echo":"Please echo 118","msg_id":3,"in_reply_to":3}}
+[RECEIVED] {"id":56,"src":"c13","dest":"n3","body":{"echo":"Please echo 98","type":"echo","msg_id":4}}
+[MATCH] EchoBody
+Echoing {"src":"n3","dest":"c13","body":{"type":"echo_ok","echo":"Please echo 98","msg_id":4,"in_reply_to":4}}
+[RECEIVED] {"id":64,"src":"c13","dest":"n3","body":{"echo":"Please echo 102","type":"echo","msg_id":5}}
+[MATCH] EchoBody
+Echoing {"src":"n3","dest":"c13","body":{"type":"echo_ok","echo":"Please echo 102","msg_id":5,"in_reply_to":5}}

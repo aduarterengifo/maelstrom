@@ -1,0 +1,23 @@
+[INFO] Entering main loop
+[RECEIVED] {"id":1,"src":"c1","dest":"n2","body":{"type":"init","node_id":"n2","node_ids":["n1","n2","n3","n4","n5"],"msg_id":1}}
+DEBUG: request_body_of_yojson got: {"type":"init","node_id":"n2","node_ids":["n1","n2","n3","n4","n5"],"msg_id":1}
+Initialized node n2
+Init send {"src":"n2","dest":"c1","body":{"type":"init_ok","in_reply_to":1,"msg_id":0}}
+[RECEIVED] {"id":14,"src":"c12","dest":"n2","body":{"echo":"Please echo 68","type":"echo","msg_id":1}}
+DEBUG: request_body_of_yojson got: {"echo":"Please echo 68","type":"echo","msg_id":1}
+Echoing {"src":"n2","dest":"c12","body":{"type":"echo_ok","echo":"Please echo 68","msg_id":1,"in_reply_to":1}}
+[RECEIVED] {"id":32,"src":"c12","dest":"n2","body":{"echo":"Please echo 48","type":"echo","msg_id":2}}
+DEBUG: request_body_of_yojson got: {"echo":"Please echo 48","type":"echo","msg_id":2}
+Echoing {"src":"n2","dest":"c12","body":{"type":"echo_ok","echo":"Please echo 48","msg_id":2,"in_reply_to":2}}
+[RECEIVED] {"id":38,"src":"c12","dest":"n2","body":{"echo":"Please echo 78","type":"echo","msg_id":3}}
+DEBUG: request_body_of_yojson got: {"echo":"Please echo 78","type":"echo","msg_id":3}
+Echoing {"src":"n2","dest":"c12","body":{"type":"echo_ok","echo":"Please echo 78","msg_id":3,"in_reply_to":3}}
+[RECEIVED] {"id":46,"src":"c12","dest":"n2","body":{"echo":"Please echo 89","type":"echo","msg_id":4}}
+DEBUG: request_body_of_yojson got: {"echo":"Please echo 89","type":"echo","msg_id":4}
+Echoing {"src":"n2","dest":"c12","body":{"type":"echo_ok","echo":"Please echo 89","msg_id":4,"in_reply_to":4}}
+[RECEIVED] {"id":48,"src":"c12","dest":"n2","body":{"echo":"Please echo 30","type":"echo","msg_id":5}}
+DEBUG: request_body_of_yojson got: {"echo":"Please echo 30","type":"echo","msg_id":5}
+Echoing {"src":"n2","dest":"c12","body":{"type":"echo_ok","echo":"Please echo 30","msg_id":5,"in_reply_to":5}}
+[RECEIVED] {"id":54,"src":"c12","dest":"n2","body":{"echo":"Please echo 16","type":"echo","msg_id":6}}
+DEBUG: request_body_of_yojson got: {"echo":"Please echo 16","type":"echo","msg_id":6}
+Echoing {"src":"n2","dest":"c12","body":{"type":"echo_ok","echo":"Please echo 16","msg_id":6,"in_reply_to":6}}

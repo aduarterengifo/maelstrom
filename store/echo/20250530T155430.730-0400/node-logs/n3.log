@@ -1,0 +1,20 @@
+[INFO] Entering main loop
+[RECEIVED] {"id":0,"src":"c0","dest":"n3","body":{"type":"init","node_id":"n3","node_ids":["n1","n2","n3","n4","n5"],"msg_id":1}}
+DEBUG: request_body_of_yojson got: {"type":"init","node_id":"n3","node_ids":["n1","n2","n3","n4","n5"],"msg_id":1}
+Initialized node n3
+Init send {"src":"n3","dest":"c0","body":{"type":"init_ok","in_reply_to":1,"msg_id":0}}
+[RECEIVED] {"id":12,"src":"c11","dest":"n3","body":{"echo":"Please echo 5","type":"echo","msg_id":1}}
+DEBUG: request_body_of_yojson got: {"echo":"Please echo 5","type":"echo","msg_id":1}
+Echoing {"src":"n3","dest":"c11","body":{"type":"echo_ok","echo":"Please echo 5","msg_id":1,"in_reply_to":1}}
+[RECEIVED] {"id":16,"src":"c11","dest":"n3","body":{"echo":"Please echo 24","type":"echo","msg_id":2}}
+DEBUG: request_body_of_yojson got: {"echo":"Please echo 24","type":"echo","msg_id":2}
+Echoing {"src":"n3","dest":"c11","body":{"type":"echo_ok","echo":"Please echo 24","msg_id":2,"in_reply_to":2}}
+[RECEIVED] {"id":26,"src":"c11","dest":"n3","body":{"echo":"Please echo 19","type":"echo","msg_id":3}}
+DEBUG: request_body_of_yojson got: {"echo":"Please echo 19","type":"echo","msg_id":3}
+Echoing {"src":"n3","dest":"c11","body":{"type":"echo_ok","echo":"Please echo 19","msg_id":3,"in_reply_to":3}}
+[RECEIVED] {"id":34,"src":"c11","dest":"n3","body":{"echo":"Please echo 111","type":"echo","msg_id":4}}
+DEBUG: request_body_of_yojson got: {"echo":"Please echo 111","type":"echo","msg_id":4}
+Echoing {"src":"n3","dest":"c11","body":{"type":"echo_ok","echo":"Please echo 111","msg_id":4,"in_reply_to":4}}
+[RECEIVED] {"id":44,"src":"c11","dest":"n3","body":{"echo":"Please echo 101","type":"echo","msg_id":5}}
+DEBUG: request_body_of_yojson got: {"echo":"Please echo 101","type":"echo","msg_id":5}
+Echoing {"src":"n3","dest":"c11","body":{"type":"echo_ok","echo":"Please echo 101","msg_id":5,"in_reply_to":5}}

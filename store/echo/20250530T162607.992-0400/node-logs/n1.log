@@ -1,0 +1,26 @@
+[INFO] Entering main loop
+[RECEIVED] {"id":1,"src":"c0","dest":"n1","body":{"type":"init","node_id":"n1","node_ids":["n1","n2","n3","n4","n5"],"msg_id":1}}
+[MATCH] InitBody
+Initialized node n1
+Init send {"src":"n1","dest":"c0","body":{"type":"init_ok","in_reply_to":1,"msg_id":0}}
+[RECEIVED] {"id":16,"src":"c11","dest":"n1","body":{"echo":"Please echo 52","type":"echo","msg_id":1}}
+[MATCH] EchoBody
+Echoing {"src":"n1","dest":"c11","body":{"type":"echo_ok","echo":"Please echo 52","msg_id":1,"in_reply_to":1}}
+[RECEIVED] {"id":24,"src":"c11","dest":"n1","body":{"echo":"Please echo 102","type":"echo","msg_id":2}}
+[MATCH] EchoBody
+Echoing {"src":"n1","dest":"c11","body":{"type":"echo_ok","echo":"Please echo 102","msg_id":2,"in_reply_to":2}}
+[RECEIVED] {"id":34,"src":"c11","dest":"n1","body":{"echo":"Please echo 74","type":"echo","msg_id":3}}
+[MATCH] EchoBody
+Echoing {"src":"n1","dest":"c11","body":{"type":"echo_ok","echo":"Please echo 74","msg_id":3,"in_reply_to":3}}
+[RECEIVED] {"id":44,"src":"c11","dest":"n1","body":{"echo":"Please echo 33","type":"echo","msg_id":4}}
+[MATCH] EchoBody
+Echoing {"src":"n1","dest":"c11","body":{"type":"echo_ok","echo":"Please echo 33","msg_id":4,"in_reply_to":4}}
+[RECEIVED] {"id":46,"src":"c11","dest":"n1","body":{"echo":"Please echo 51","type":"echo","msg_id":5}}
+[MATCH] EchoBody
+Echoing {"src":"n1","dest":"c11","body":{"type":"echo_ok","echo":"Please echo 51","msg_id":5,"in_reply_to":5}}
+[RECEIVED] {"id":48,"src":"c11","dest":"n1","body":{"echo":"Please echo 55","type":"echo","msg_id":6}}
+[MATCH] EchoBody
+Echoing {"src":"n1","dest":"c11","body":{"type":"echo_ok","echo":"Please echo 55","msg_id":6,"in_reply_to":6}}
+[RECEIVED] {"id":60,"src":"c11","dest":"n1","body":{"echo":"Please echo 92","type":"echo","msg_id":7}}
+[MATCH] EchoBody
+Echoing {"src":"n1","dest":"c11","body":{"type":"echo_ok","echo":"Please echo 92","msg_id":7,"in_reply_to":7}}
