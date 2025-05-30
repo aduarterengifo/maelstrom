@@ -303,11 +303,16 @@ type broadcast_response = {
   body: broadcast_response_body
 } [@@deriving yojson]
 
+type read_response = {
+  src: string;
+  dest: string;
+  body: read_response_body
+} [@@deriving yojson]
 
 let main ~stdin ~stdout ~stderr =
   let buf = Eio.Buf_read.of_flow stdin ~max_size:4096 in
   Eio.Flow.copy_string "[INFO] Entering main loop\n" stderr;
-  let rec loop node_id msg_id =
+  let rec loop node_id msg_id messages neighbors =
     match Eio.Buf_read.line buf with
     | line -> 
         Eio.Flow.copy_string (Printf.sprintf "[RECEIVED] %s\n" line) stderr;
@@ -334,7 +339,7 @@ let main ~stdin ~stdout ~stderr =
             (* msg init response *) 
             Eio.Flow.copy_string (response_str ^ "\n") stdout;
             (* handle init, update node_id *)
-            loop b.node_id (msg_id + 1)
+            loop b.node_id (msg_id + 1) [] neighbors
         | EchoBody b ->
             Eio.Flow.copy_string "[MATCH] EchoBody\n" stderr;
             (* construct echo response *) 
@@ -354,7 +359,7 @@ let main ~stdin ~stdout ~stderr =
             Eio.Flow.copy_string (Printf.sprintf "Echoing %s\n" response_str) stderr;
             (* msg echo response *)
             Eio.Flow.copy_string (response_str ^ "\n") stdout;
-            loop node_id (msg_id + 1)
+            loop node_id (msg_id + 1) [] neighbors
         | GenerateBody b ->             
             Eio.Flow.copy_string "[MATCH] GenerateBody\n" stderr;
             let response_str = {
@@ -373,7 +378,7 @@ let main ~stdin ~stdout ~stderr =
             Eio.Flow.copy_string (Printf.sprintf "[GENERATE RESPONSE] %s\n" response_str) stderr;
             (* msg echo response *)
             Eio.Flow.copy_string (response_str ^ "\n") stdout;
-            loop node_id (msg_id + 1)
+            loop node_id (msg_id + 1) messages neighbors
         | TopologyBody b ->            
             Eio.Flow.copy_string "[MATCH] TopologyBody\n" stderr;
             let response_str = {
@@ -391,7 +396,8 @@ let main ~stdin ~stdout ~stderr =
             Eio.Flow.copy_string (Printf.sprintf "[TOPOLOGY RESPONSE] %s\n" response_str) stderr;
             (* msg echo response *)
             Eio.Flow.copy_string (response_str ^ "\n") stdout;
-            loop node_id (msg_id + 1)
+            loop node_id (msg_id + 1) messages (Hashtbl.find b.topology node_id)
+            (* TODO: handle not found *)
         | BroadcastBody b ->             
             Eio.Flow.copy_string "[MATCH] BroadcastBody\n" stderr;
             let response_str = {
@@ -409,8 +415,28 @@ let main ~stdin ~stdout ~stderr =
             Eio.Flow.copy_string (Printf.sprintf "[BROADCAST RESPONSE] %s\n" response_str) stderr;
             (* msg echo response *)
             Eio.Flow.copy_string (response_str ^ "\n") stdout;
-            loop node_id (msg_id + 1)
-          | ReadBody b ->             
+
+            
+
+            (* BROADCAST TO NEIGHBORS *)
+            if not (List.mem b.message messages) then (
+              let request: request = {
+                id = None;
+                src = node_id;
+                dest = req.src;
+                body = BroadcastBody { message = b.message; msg_id }
+              } in
+              let request_str = yojson_of_request request |> Yojson.Safe.to_string in
+
+              (* log to stderr *)
+              Eio.Flow.copy_string (Printf.sprintf "[BROADCAST REQUEST] %s\n" request_str) stderr;
+              (* msg echo response *)
+              Eio.Flow.copy_string (request_str ^ "\n") stdout;
+            );
+            (* BROADCAST TO NEIGHBORS *)
+
+            loop node_id (msg_id + 1) (b.message :: messages) neighbors
+        | ReadBody b ->             
             Eio.Flow.copy_string "[MATCH] ReadBody\n" stderr;
             let response_str = {
               src = node_id;
@@ -419,22 +445,23 @@ let main ~stdin ~stdout ~stderr =
                 type_ = "read_ok";
                 msg_id = Some msg_id;
                 in_reply_to = b.msg_id;
+                messages
               }
             } 
-              |> yojson_of_broadcast_response 
+              |> yojson_of_read_response 
               |> Yojson.Safe.to_string in
             (* log to stderr *)
             Eio.Flow.copy_string (Printf.sprintf "[READ RESPONSE] %s\n" response_str) stderr;
             (* msg echo response *)
             Eio.Flow.copy_string (response_str ^ "\n") stdout;
-            loop node_id (msg_id + 1)
+            loop node_id (msg_id + 1) messages neighbors
         | UnknownBody b -> 
             Eio.Flow.copy_string "[MATCH] UnknownBody\n" stderr;
             (* maybe at some point implement the errors *)
-        loop node_id (msg_id + 1)
+        loop node_id (msg_id + 1) messages neighbors
     | exception End_of_file -> ()
   in
-  loop "NOTSET" 0
+  loop "NOTSET" 0 [] []
 
 
 let () =

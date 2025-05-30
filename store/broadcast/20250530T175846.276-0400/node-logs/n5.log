@@ -1,0 +1,27 @@
+[INFO] Entering main loop
+[RECEIVED] {"id":4,"src":"c4","dest":"n5","body":{"type":"init","node_id":"n5","node_ids":["n1","n2","n3","n4","n5"],"msg_id":1}}
+[MATCH] InitBody
+Initialized node n5
+Init send {"src":"n5","dest":"c4","body":{"type":"init_ok","in_reply_to":1,"msg_id":0}}
+[RECEIVED] {"id":13,"src":"c9","dest":"n5","body":{"type":"topology","topology":{"n1":["n4","n2"],"n2":["n5","n3","n1"],"n3":["n2"],"n4":["n1","n5"],"n5":["n2","n4"]},"msg_id":1}}
+[MATCH] TopologyBody
+[TOPOLOGY RESPONSE] {"src":"n5","dest":"c9","body":{"type":"topology_ok","in_reply_to":1,"msg_id":1}}
+[RECEIVED] {"id":24,"src":"c14","dest":"n5","body":{"type":"broadcast","message":4,"msg_id":1}}
+Fatal error: exception Yojson__Safe.Util.Type_error("Expected string, got int", _)
+Raised at Yojson__Safe.Util.typerr in file "lib/read.ml", line 3392, characters 20-60
+Called from Dune__exe__Main.request_body_of_yojson in file "bin/main.ml", line 97, characters 20-57
+Called from Dune__exe__Main.request_of_yojson.(fun).iter in file "bin/main.ml", line 272, characters 2-6
+Called from Dune__exe__Main.request_of_yojson.(fun) in file "bin/main.ml", lines 268-273, characters 0-21
+Called from Dune__exe__Main.main.loop in file "bin/main.ml", line 315, characters 18-44
+Called from Eio_posix__Sched.with_op in file "lib_eio_posix/sched.ml", line 318, characters 8-12
+Re-raised at Eio_posix__Sched.with_op in file "lib_eio_posix/sched.ml", line 324, characters 4-12
+Called from Eio_posix__Sched.run.(fun) in file "lib_eio_posix/sched.ml", line 386, characters 29-47
+Called from Eio_unix__Thread_pool.run in file "lib_eio/unix/thread_pool.ml", line 108, characters 8-13
+Re-raised at Eio_unix__Thread_pool.run in file "lib_eio/unix/thread_pool.ml", line 113, characters 4-39
+Re-raised at Eio_posix__Sched.run.fork.(fun) in file "lib_eio_posix/sched.ml", line 342, characters 12-76
+Called from Stdlib__Fun.protect in file "fun.ml", line 34, characters 8-15
+Re-raised at Stdlib__Fun.protect in file "fun.ml", line 39, characters 6-52
+Called from Eio_posix__Sched.run in file "lib_eio_posix/sched.ml", lines 381-388, characters 4-9
+Called from Eio_posix__Sched.with_sched in file "lib_eio_posix/sched.ml", line 258, characters 8-12
+Re-raised at Eio_posix__Sched.with_sched in file "lib_eio_posix/sched.ml", line 263, characters 4-39
+Called from Dune__exe__Main in file "bin/main.ml", lines 441-445, characters 2-37
