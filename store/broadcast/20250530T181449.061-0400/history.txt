@@ -1,0 +1,30 @@
+0	:invoke	:read	nil
+0	:ok	:read	[]
+1	:invoke	:broadcast	0
+2	:invoke	:broadcast	1
+3	:invoke	:read	nil
+3	:ok	:read	[]
+4	:invoke	:read	nil
+4	:ok	:read	[]
+0	:invoke	:broadcast	2
+3	:invoke	:read	nil
+3	:ok	:read	[]
+3	:invoke	:broadcast	3
+4	:invoke	:read	nil
+4	:ok	:read	[]
+4	:invoke	:broadcast	4
+2	:info	:broadcast	1	:net-timeout
+1	:info	:broadcast	0	:net-timeout
+0	:info	:broadcast	2	:net-timeout
+3	:info	:broadcast	3	:net-timeout
+4	:info	:broadcast	4	:net-timeout
+9	:invoke	:read	nil
+5	:invoke	:read	nil
+6	:invoke	:read	nil
+7	:invoke	:read	nil
+8	:invoke	:read	nil
+8	:fail	:read	nil	:net-timeout
+6	:fail	:read	nil	:net-timeout
+5	:fail	:read	nil	:net-timeout
+9	:fail	:read	nil	:net-timeout
+7	:fail	:read	nil	:net-timeout

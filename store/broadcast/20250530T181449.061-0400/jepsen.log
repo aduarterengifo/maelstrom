@@ -169,3 +169,109 @@ lein run test -w broadcast --bin self/server/_build/default/bin/main.exe --time-
 2025-05-30 18:14:59,021{GMT}	INFO	[jepsen worker 0] jepsen.util: 0	:ok	:read	[]
 2025-05-30 18:14:59,044{GMT}	INFO	[jepsen worker 1] jepsen.util: 1	:invoke	:broadcast	0
 2025-05-30 18:14:59,045{GMT}	INFO	[jepsen worker 2] jepsen.util: 2	:invoke	:broadcast	1
+2025-05-30 18:14:59,342{GMT}	INFO	[jepsen worker 3] jepsen.util: 3	:invoke	:read	nil
+2025-05-30 18:14:59,344{GMT}	INFO	[jepsen worker 3] jepsen.util: 3	:ok	:read	[]
+2025-05-30 18:14:59,499{GMT}	INFO	[jepsen worker 4] jepsen.util: 4	:invoke	:read	nil
+2025-05-30 18:14:59,501{GMT}	INFO	[jepsen worker 4] jepsen.util: 4	:ok	:read	[]
+2025-05-30 18:14:59,843{GMT}	INFO	[jepsen worker 0] jepsen.util: 0	:invoke	:broadcast	2
+2025-05-30 18:14:59,849{GMT}	INFO	[jepsen worker 3] jepsen.util: 3	:invoke	:read	nil
+2025-05-30 18:14:59,850{GMT}	INFO	[jepsen worker 3] jepsen.util: 3	:ok	:read	[]
+2025-05-30 18:15:00,230{GMT}	INFO	[jepsen worker 3] jepsen.util: 3	:invoke	:broadcast	3
+2025-05-30 18:15:00,293{GMT}	INFO	[jepsen worker 4] jepsen.util: 4	:invoke	:read	nil
+2025-05-30 18:15:00,295{GMT}	INFO	[jepsen worker 4] jepsen.util: 4	:ok	:read	[]
+2025-05-30 18:15:00,372{GMT}	INFO	[jepsen worker 4] jepsen.util: 4	:invoke	:broadcast	4
+2025-05-30 18:15:04,059{GMT}	INFO	[jepsen worker 2] jepsen.util: 2	:info	:broadcast	1	:net-timeout
+2025-05-30 18:15:04,059{GMT}	INFO	[jepsen worker 1] jepsen.util: 1	:info	:broadcast	0	:net-timeout
+2025-05-30 18:15:04,844{GMT}	INFO	[jepsen worker 0] jepsen.util: 0	:info	:broadcast	2	:net-timeout
+2025-05-30 18:15:05,235{GMT}	INFO	[jepsen worker 3] jepsen.util: 3	:info	:broadcast	3	:net-timeout
+2025-05-30 18:15:05,377{GMT}	INFO	[jepsen worker 4] jepsen.util: 4	:info	:broadcast	4	:net-timeout
+2025-05-30 18:15:05,378{GMT}	INFO	[jepsen worker 4] jepsen.generator.interpreter: Waiting for recovery...
+2025-05-30 18:15:15,386{GMT}	INFO	[jepsen worker 4] jepsen.util: 9	:invoke	:read	nil
+2025-05-30 18:15:15,387{GMT}	INFO	[jepsen worker 0] jepsen.util: 5	:invoke	:read	nil
+2025-05-30 18:15:15,387{GMT}	INFO	[jepsen worker 1] jepsen.util: 6	:invoke	:read	nil
+2025-05-30 18:15:15,387{GMT}	INFO	[jepsen worker 3] jepsen.util: 8	:invoke	:read	nil
+2025-05-30 18:15:15,387{GMT}	INFO	[jepsen worker 2] jepsen.util: 7	:invoke	:read	nil
+2025-05-30 18:15:20,389{GMT}	INFO	[jepsen worker 1] jepsen.util: 6	:fail	:read	nil	:net-timeout
+2025-05-30 18:15:20,389{GMT}	INFO	[jepsen worker 3] jepsen.util: 8	:fail	:read	nil	:net-timeout
+2025-05-30 18:15:20,390{GMT}	INFO	[jepsen worker 0] jepsen.util: 5	:fail	:read	nil	:net-timeout
+2025-05-30 18:15:20,391{GMT}	INFO	[jepsen worker 4] jepsen.util: 9	:fail	:read	nil	:net-timeout
+2025-05-30 18:15:20,392{GMT}	INFO	[jepsen worker 2] jepsen.util: 7	:fail	:read	nil	:net-timeout
+2025-05-30 18:15:20,410{GMT}	INFO	[jepsen test runner] jepsen.core: Run complete, writing
+2025-05-30 18:15:20,475{GMT}	INFO	[jepsen node n4] maelstrom.db: Tearing down n4
+2025-05-30 18:15:20,476{GMT}	INFO	[jepsen node n2] maelstrom.db: Tearing down n2
+2025-05-30 18:15:20,476{GMT}	INFO	[jepsen node n3] maelstrom.db: Tearing down n3
+2025-05-30 18:15:20,475{GMT}	INFO	[jepsen node n1] maelstrom.db: Tearing down n1
+2025-05-30 18:15:20,476{GMT}	INFO	[jepsen node n5] maelstrom.db: Tearing down n5
+2025-05-30 18:15:21,410{GMT}	INFO	[jepsen node n1] maelstrom.net: Shutting down Maelstrom network
+2025-05-30 18:15:21,415{GMT}	WARN	[jepsen test runner] jepsen.core: Test crashed!
+clojure.lang.ExceptionInfo: Node n1 crashed with exit status 2. Before crashing, it wrote to STDOUT:
+
+{"src":"n1","dest":"c0","body":{"type":"init_ok","in_reply_to":1,"msg_id":0}}
+{"src":"n1","dest":"c6","body":{"type":"topology_ok","in_reply_to":1,"msg_id":1}}
+{"src":"n1","dest":"c10","body":{"type":"read_ok","messages":[],"in_reply_to":1,"msg_id":2}}
+
+And to STDERR:
+
+[INFO] Entering main loop
+[RECEIVED] {"id":0,"src":"c0","dest":"n1","body":{"type":"init","node_id":"n1","node_ids":["n1","n2","n3","n4","n5"],"msg_id":1}}
+[MATCH] InitBody
+Initialized node n1
+Init send {"src":"n1","dest":"c0","body":{"type":"init_ok","in_reply_to":1,"msg_id":0}}
+[RECEIVED] {"id":13,"src":"c6","dest":"n1","body":{"type":"topology","topology":{"n1":["n4","n2"],"n2":["n5","n3","n1"],"n3":["n2"],"n4":["n1","n5"],"n5":["n2","n4"]},"msg_id":1}}
+[MATCH] TopologyBody
+[TOPOLOGY RESPONSE] {"src":"n1","dest":"c6","body":{"type":"topology_ok","in_reply_to":1,"msg_id":1}}
+[RECEIVED] {"id":20,"src":"c10","dest":"n1","body":{"type":"read","msg_id":1}}
+[MATCH] ReadBody
+[READ RESPONSE] {"src":"n1","dest":"c10","body":{"type":"read_ok","messages":[],"in_reply_to":1,"msg_id":2}}
+[RECEIVED] {"id":28,"src":"c10","dest":"n1","body":{"type":"broadcast","message":2,"msg_id":2}}
+Fatal error: exception Yojson__Safe.Util.Type_error("Expected string, got int", _)
+Raised at Yojson__Safe.Util.typerr in file "lib/read.ml", line 3392, characters 20-60
+Called from Dune__exe__Main.request_body_of_yojson in file "bin/main.ml", line 97, characters 20-57
+Called from Dune__exe__Main.request_of_yojson.(fun).iter in file "bin/main.ml", line 272, characters 2-6
+Called from Dune__exe__Main.request_of_yojson.(fun) in file "bin/main.ml", lines 268-273, characters 0-21
+Called from Dune__exe__Main.main.loop in file "bin/main.ml", line 320, characters 18-44
+Called from Eio_posix__Sched.with_op in file "lib_eio_posix/sched.ml", line 318, characters 8-12
+Re-raised at Eio_posix__Sched.with_op in file "lib_eio_posix/sched.ml", line 324, characters 4-12
+Called from Eio_posix__Sched.run.(fun) in file "lib_eio_posix/sched.ml", line 386, characters 29-47
+Called from Eio_unix__Thread_pool.run in file "lib_eio/unix/thread_pool.ml", line 108, characters 8-13
+Re-raised at Eio_unix__Thread_pool.run in file "lib_eio/unix/thread_pool.ml", line 113, characters 4-39
+Re-raised at Eio_posix__Sched.run.fork.(fun) in file "lib_eio_posix/sched.ml", line 342, characters 12-76
+Called from Stdlib__Fun.protect in file "fun.ml", line 34, characters 8-15
+Re-raised at Stdlib__Fun.protect in file "fun.ml", line 39, characters 6-52
+Called from Eio_posix__Sched.run in file "lib_eio_posix/sched.ml", lines 381-388, characters 4-9
+Called from Eio_posix__Sched.with_sched in file "lib_eio_posix/sched.ml", line 258, characters 8-12
+Re-raised at Eio_posix__Sched.with_sched in file "lib_eio_posix/sched.ml", line 263, characters 4-39
+Called from Dune__exe__Main in file "bin/main.ml", lines 468-472, characters 2-37
+
+Full STDERR logs are available in /Users/adr/code/maelstrom/store/broadcast/20250530T181449.061-0400/node-logs/n1.log
+	at slingshot.support$stack_trace.invoke(support.clj:201)
+	at maelstrom.process$stop_node_BANG_.invokeStatic(process.clj:239)
+	at maelstrom.process$stop_node_BANG_.invoke(process.clj:217)
+	at maelstrom.db$db$reify__16612.teardown_BANG_(db.clj:75)
+	at jepsen.db$fn__11629$G__11610__11633.invoke(db.clj:12)
+	at jepsen.db$fn__11629$G__11609__11638.invoke(db.clj:12)
+	at clojure.core$partial$fn__5927.invoke(core.clj:2642)
+	at jepsen.control$on_nodes$fn__9552.invoke(control.clj:319)
+	at clojure.lang.AFn.applyToHelper(AFn.java:154)
+	at clojure.lang.AFn.applyTo(AFn.java:144)
+	at clojure.core$apply.invokeStatic(core.clj:667)
+	at clojure.core$with_bindings_STAR_.invokeStatic(core.clj:1990)
+	at clojure.core$with_bindings_STAR_.doInvoke(core.clj:1990)
+	at clojure.lang.RestFn.applyTo(RestFn.java:145)
+	at clojure.core$apply.invokeStatic(core.clj:671)
+	at clojure.core$bound_fn_STAR_$fn__5837.doInvoke(core.clj:2020)
+	at clojure.lang.RestFn.invoke(RestFn.java:411)
+	at dom_top.core$real_pmap_helper$build_thread__730$fn__731.invoke(core.clj:163)
+	at clojure.lang.AFn.applyToHelper(AFn.java:152)
+	at clojure.lang.AFn.applyTo(AFn.java:144)
+	at clojure.core$apply.invokeStatic(core.clj:667)
+	at clojure.core$with_bindings_STAR_.invokeStatic(core.clj:1990)
+	at clojure.core$with_bindings_STAR_.doInvoke(core.clj:1990)
+	at clojure.lang.RestFn.invoke(RestFn.java:428)
+	at clojure.lang.AFn.applyToHelper(AFn.java:156)
+	at clojure.lang.RestFn.applyTo(RestFn.java:135)
+	at clojure.core$apply.invokeStatic(core.clj:671)
+	at clojure.core$bound_fn_STAR_$fn__5837.doInvoke(core.clj:2020)
+	at clojure.lang.RestFn.invoke(RestFn.java:400)
+	at clojure.lang.AFn.run(AFn.java:22)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
