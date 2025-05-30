@@ -1,0 +1,31 @@
+[RECEIVED] {"id":2,"src":"c2","dest":"n1","body":{"type":"init","node_id":"n1","node_ids":["n1","n2","n3","n4","n5"],"msg_id":1}}
+[MATCH] InitBody
+Initialized node n1
+Init send {"src":"n1","dest":"c2","body":{"type":"init_ok","in_reply_to":1,"msg_id":0}}
+[RECEIVED] {"id":10,"src":"c10","dest":"n1","body":{"type":"generate","msg_id":1}}
+[MATCH] GenerateBody
+[GENERATE RESPONSE] {"src":"n1","dest":"c10","body":{"type":"generate_ok","in_reply_to":1,"msg_id":1,"id":"n11"}}
+[RECEIVED] {"id":20,"src":"c10","dest":"n1","body":{"type":"generate","msg_id":2}}
+[MATCH] GenerateBody
+[GENERATE RESPONSE] {"src":"n1","dest":"c10","body":{"type":"generate_ok","in_reply_to":2,"msg_id":2,"id":"n12"}}
+[RECEIVED] {"id":22,"src":"c10","dest":"n1","body":{"type":"generate","msg_id":3}}
+[MATCH] GenerateBody
+[GENERATE RESPONSE] {"src":"n1","dest":"c10","body":{"type":"generate_ok","in_reply_to":3,"msg_id":3,"id":"n13"}}
+[RECEIVED] {"id":32,"src":"c10","dest":"n1","body":{"type":"generate","msg_id":4}}
+[MATCH] GenerateBody
+[GENERATE RESPONSE] {"src":"n1","dest":"c10","body":{"type":"generate_ok","in_reply_to":4,"msg_id":4,"id":"n14"}}
+[RECEIVED] {"id":34,"src":"c10","dest":"n1","body":{"type":"generate","msg_id":5}}
+[MATCH] GenerateBody
+[GENERATE RESPONSE] {"src":"n1","dest":"c10","body":{"type":"generate_ok","in_reply_to":5,"msg_id":5,"id":"n15"}}
+[RECEIVED] {"id":44,"src":"c10","dest":"n1","body":{"type":"generate","msg_id":6}}
+[MATCH] GenerateBody
+[GENERATE RESPONSE] {"src":"n1","dest":"c10","body":{"type":"generate_ok","in_reply_to":6,"msg_id":6,"id":"n16"}}
+[RECEIVED] {"id":46,"src":"c10","dest":"n1","body":{"type":"generate","msg_id":7}}
+[MATCH] GenerateBody
+[GENERATE RESPONSE] {"src":"n1","dest":"c10","body":{"type":"generate_ok","in_reply_to":7,"msg_id":7,"id":"n17"}}
+[RECEIVED] {"id":56,"src":"c10","dest":"n1","body":{"type":"generate","msg_id":8}}
+[MATCH] GenerateBody
+[GENERATE RESPONSE] {"src":"n1","dest":"c10","body":{"type":"generate_ok","in_reply_to":8,"msg_id":8,"id":"n18"}}
+[RECEIVED] {"id":58,"src":"c10","dest":"n1","body":{"type":"generate","msg_id":9}}
+[MATCH] GenerateBody
+[GENERATE RESPONSE] {"src":"n1","dest":"c10","body":{"type":"generate_ok","in_reply_to":9,"msg_id":9,"id":"n19"}}

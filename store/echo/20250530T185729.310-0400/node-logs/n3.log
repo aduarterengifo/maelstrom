@@ -1,0 +1,14 @@
+[INFO] Entering main loop
+[RECEIVED] {"id":2,"src":"c2","dest":"n3","body":{"type":"init","node_id":"n3","node_ids":["n1","n2","n3","n4","n5"],"msg_id":1}}
+[MATCH] InitBody
+Initialized node n3
+Init send {"src":"n3","dest":"c2","body":{"type":"init_ok","in_reply_to":1,"msg_id":0}}
+[RECEIVED] {"id":24,"src":"c13","dest":"n3","body":{"echo":"Please echo 11","type":"echo","msg_id":1}}
+[MATCH] EchoBody
+Echoing {"src":"n3","dest":"c13","body":{"type":"echo_ok","echo":"Please echo 11","msg_id":1,"in_reply_to":1}}
+[RECEIVED] {"id":34,"src":"c13","dest":"n3","body":{"echo":"Please echo 94","type":"echo","msg_id":2}}
+[MATCH] EchoBody
+Echoing {"src":"n3","dest":"c13","body":{"type":"echo_ok","echo":"Please echo 94","msg_id":2,"in_reply_to":2}}
+[RECEIVED] {"id":44,"src":"c13","dest":"n3","body":{"echo":"Please echo 48","type":"echo","msg_id":3}}
+[MATCH] EchoBody
+Echoing {"src":"n3","dest":"c13","body":{"type":"echo_ok","echo":"Please echo 48","msg_id":3,"in_reply_to":3}}

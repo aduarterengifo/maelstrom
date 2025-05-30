@@ -1,0 +1,33 @@
+[RECEIVED] {"id":2,"src":"c2","dest":"n3","body":{"type":"init","node_id":"n3","node_ids":["n1","n2","n3","n4","n5"],"msg_id":1}}
+[MATCH] InitBody
+Initialized node n3
+Init send {"src":"n3","dest":"c2","body":{"type":"init_ok","in_reply_to":1,"msg_id":0}}
+[RECEIVED] {"id":13,"src":"c6","dest":"n3","body":{"type":"topology","topology":{"n1":["n4","n2"],"n2":["n5","n3","n1"],"n3":["n2"],"n4":["n1","n5"],"n5":["n2","n4"]},"msg_id":1}}
+[MATCH] TopologyBody
+[TOPOLOGY RESPONSE] {"src":"n3","dest":"c6","body":{"type":"topology_ok","in_reply_to":1,"msg_id":1}}
+[RECEIVED] {"id":24,"src":"c12","dest":"n3","body":{"type":"read","msg_id":1}}
+[MATCH] ReadBody
+[READ RESPONSE] {"src":"n3","dest":"c12","body":{"type":"read_ok","messages":[],"in_reply_to":1,"msg_id":2}}
+[RECEIVED] {"id":35,"src":"c12","dest":"n3","body":{"type":"read","msg_id":2}}
+[MATCH] ReadBody
+[READ RESPONSE] {"src":"n3","dest":"c12","body":{"type":"read_ok","messages":[],"in_reply_to":2,"msg_id":3}}
+[RECEIVED] {"id":40,"src":"c12","dest":"n3","body":{"type":"read","msg_id":3}}
+[MATCH] ReadBody
+[READ RESPONSE] {"src":"n3","dest":"c12","body":{"type":"read_ok","messages":[],"in_reply_to":3,"msg_id":4}}
+[RECEIVED] {"id":42,"src":"c12","dest":"n3","body":{"type":"read","msg_id":4}}
+[MATCH] ReadBody
+[READ RESPONSE] {"src":"n3","dest":"c12","body":{"type":"read_ok","messages":[],"in_reply_to":4,"msg_id":5}}
+[RECEIVED] {"id":44,"src":"c12","dest":"n3","body":{"type":"read","msg_id":5}}
+[MATCH] ReadBody
+[READ RESPONSE] {"src":"n3","dest":"c12","body":{"type":"read_ok","messages":[],"in_reply_to":5,"msg_id":6}}
+[RECEIVED] {"id":46,"src":"c12","dest":"n3","body":{"type":"broadcast","message":5,"msg_id":6}}
+[MATCH] BroadcastBody
+[BROADCAST RESPONSE] {"src":"n3","dest":"c12","body":{"type":"broadcast_ok","in_reply_to":6,"msg_id":7}}
+[INSIDE BROADCAST LOOP]
+[BROADCAST REQUEST] {"id":null,"src":"n3","dest":"n2","body":{"type":"broadcast","message":"5","msg_id":7}}
+[RECEIVED] {"id":48,"src":"c12","dest":"n3","body":{"type":"read","msg_id":7}}
+[MATCH] ReadBody
+[READ RESPONSE] {"src":"n3","dest":"c12","body":{"type":"read_ok","messages":["5"],"in_reply_to":7,"msg_id":8}}
+[RECEIVED] {"id":50,"src":"c12","dest":"n3","body":{"type":"read","msg_id":8}}
+[MATCH] ReadBody
+[READ RESPONSE] {"src":"n3","dest":"c12","body":{"type":"read_ok","messages":["5"],"in_reply_to":8,"msg_id":9}}
