@@ -154,46 +154,39 @@ let yojson_of_request_body = function
   | UnknownBody j -> j
 
 type echo_response_body = {
-  type_: string [@yojson.key "type"];
   echo: string;
   msg_id: int option; 
   in_reply_to: int;
 } [@@deriving yojson]
 
 type init_response_body = {
-  type_: string [@yojson.key "type"];
   in_reply_to: int;
   msg_id: int;
 } [@@deriving yojson]
 
 type generate_response_body = {
-  type_: string [@yojson.key "type"];
   in_reply_to: int;
   msg_id: int option;
   id: string;
 } [@@deriving yojson]
 
 type topology_response_body = {
-  type_: string [@yojson.key "type"];
   in_reply_to: int;
   msg_id: int option;
 } [@@deriving yojson]
 
 type broadcast_response_body = {
-  type_: string [@yojson.key "type"];
   in_reply_to: int;
   msg_id: int option;
 } [@@deriving yojson]
 
 type read_response_body = {
-  type_: string [@yojson.key "type"];
   messages: string list;
   in_reply_to: int;
   msg_id: int option;
 } [@@deriving yojson]
 
 type response_error_body = {
-  type_: string [@yojson.key "type"];
   in_reply_to: int;
   code: int;
   text: string;
@@ -339,6 +332,25 @@ type response = {
   body: response_body [@yojson.of_yojson response_body_of_yojson] [@yojson.to_yojson yojson_of_response_body];
 } [@@deriving yojson]
 
+let response_body_id = function
+  | Init _      -> "init"
+  | Echo _      -> "echo"
+  | Generate _  -> "generate"
+  | Topology _  -> "topology"
+  | Broadcast _ -> "broadcast"
+  | Read _      -> "read"
+  | Error _     -> "error"
+
+let request_body_id = function
+  | InitBody _      -> "init"
+  | EchoBody _      -> "echo"
+  | GenerateBody _  -> "generate"
+  | TopologyBody _  -> "topology"
+  | BroadcastBody _ -> "broadcast"
+  | ReadBody _      -> "read"
+  | UnknownBody _   -> "unknown"
+
+
 type state = {
   mutable node_id : string;
   mutable messages : StringSet.t;
@@ -355,85 +367,73 @@ let add_common_fields ~msg_id ~in_reply_to body =
 
 let send_response_and_log ~stdout_mutex ~stdout ~stderr_mutex ~stderr response =
   let response_str = yojson_of_response response |> Yojson.Safe.to_string in
-  write_line_sync ~mutex:stderr_mutex ~flow:stderr ("[SEND RESPONSE] " ^ response_str);
+  let tag = response_body_id response.body in
+  write_line_sync ~mutex:stderr_mutex ~flow:stderr ("[" ^ String.uppercase_ascii tag ^ "] " ^ response_str);
   write_line_sync ~mutex:stdout_mutex ~flow:stdout response_str
+
+let msg_id_of_request_body = function
+  | InitBody b -> Some b.msg_id
+  | EchoBody b -> Some b.msg_id
+  | GenerateBody b -> Some b.msg_id
+  | TopologyBody b -> b.msg_id
+  | BroadcastBody b -> b.msg_id
+  | ReadBody b -> b.msg_id
+  | UnknownBody _ -> None
+
+let make_response (req: request) state body = {
+ src = state.node_id; dest = req.src; body
+}
 
 
 let handle_message ~line ~msg_id ~state ~state_mutex ~stdout ~stderr ~stdout_mutex ~stderr_mutex = 
   Eio.Flow.copy_string (Printf.sprintf "[RECEIVED] %s\n" line) stderr;
         let json_str = Yojson.Safe.from_string line in
         let req = request_of_yojson json_str in 
-        match req.body with
+        write_line_sync ~mutex:stderr_mutex ~flow:stderr ("[MATCH " ^ String.uppercase_ascii (request_body_id req.body) ^ "]");
+        let body = match req.body with
         | InitBody b -> 
-            let response = Init {
-              src = b.node_id;
-              dest = req.src;
-              body = {
-                msg_id = msg_id;
-                in_reply_to = b.msg_id;
-              }
-            } in
-            send_response_and_log ~stdout_mutex ~stdout ~stderr_mutex ~stderr response;
-
             Eio.Mutex.use_rw ~protect:true state_mutex (fun () ->
               state.node_id <- b.node_id;
             );
+            let body = Init {
+                msg_id = msg_id;
+                in_reply_to = b.msg_id;
+              } in 
+            Eio.Mutex.use_rw ~protect:true state_mutex (fun () ->
+              state.node_id <- b.node_id;
+            );
+            Some body
         | EchoBody b ->
-            write_line_sync ~mutex:stderr_mutex ~flow:stderr ("[MATCH ECHO]");
-            let response = Echo {
-              src = req.dest;
-              dest = req.src;
-              body = {
-                type_ = "echo_ok";
+            let body = Echo {
                 msg_id = Some msg_id;
                 in_reply_to = b.msg_id;
                 echo = b.echo;
-              }
-            } in
-            send_response_and_log ~stdout_mutex ~stdout ~stderr_mutex ~stderr response;
+              } in
+            Some body;
         | GenerateBody b ->             
-            write_line_sync ~mutex:stderr_mutex ~flow:stderr ("[MATCH GENERATE]");
-            let response = Generate {
-              src = state.node_id; (* no mutex b/c node_id only changes once *)
-              dest = req.src;
-              body = {
-                type_ = "generate_ok";
+            let body = Generate {
                 msg_id = Some msg_id;
                 in_reply_to = b.msg_id;
                 id = state.node_id ^ string_of_int msg_id;
-              }
-            } in 
-            send_response_and_log ~stdout_mutex ~stdout ~stderr_mutex ~stderr response;
+              } in 
+            Some body;
         | TopologyBody b ->            
-            write_line_sync ~mutex:stderr_mutex ~flow:stderr ("[MATCH TOPOLOGY]");
-            let response = Topology {
-              src = state.node_id;
-              dest = req.src;
-              body = {
-                type_ = "topology_ok";
+            let body = Topology {
                 msg_id = Some msg_id;
                 in_reply_to = (match b.msg_id with Some id -> id | None -> 0);
-              }
-            } in
-            
-            send_response_and_log ~stdout_mutex ~stdout ~stderr_mutex ~stderr response;
+              }in
 
             Eio.Mutex.use_rw ~protect:true state_mutex (fun () ->
               state.neighbors <- (Hashtbl.find b.topology state.node_id);
             );
+
+            Some body
             (* TODO: handle not found *)
         | BroadcastBody b ->             
-            write_line_sync ~mutex:stderr_mutex ~flow:stderr ("[MATCH BROADCAST]");
-            let response = Broadcast {
-              src = state.node_id;
-              dest = req.src;
-              body = {
-                type_ = "broadcast_ok";
-                msg_id = Some msg_id;
-                in_reply_to = (match b.msg_id with Some id -> id | None -> 0);
-              }
-            } in
-
+            (* locks the state *)
+            (* if message is not in messages *)
+            (* add it to the set *)
+            (* for each neighbor: send broadcast *)
             Eio.Mutex.use_rw ~protect:true state_mutex (fun () ->
                 if not (StringSet.mem b.message state.messages) then (
                   state.messages <- StringSet.add b.message state.messages;
@@ -445,34 +445,37 @@ let handle_message ~line ~msg_id ~state ~state_mutex ~stdout ~stderr ~stdout_mut
                       body = BroadcastBody { message = b.message; msg_id = None }
                     } in
                     let request_str = yojson_of_request request |> Yojson.Safe.to_string in
-                    (* log to stderr *)
                     write_line_sync ~mutex:stderr_mutex ~flow:stderr ("[BROADCAST REQUEST: " ^ state.node_id ^ " -> " ^ neighbor ^ "] " ^ request_str);
-                    (* msg echo response *)
                     write_line_sync ~mutex:stdout_mutex ~flow:stdout request_str;
                     ) state.neighbors;
                 ) 
             );
 
             (match b.msg_id with
-              | Some _ -> send_response_and_log ~stdout_mutex ~stdout ~stderr_mutex ~stderr response;
-              |  None -> ();
+              | Some _ ->  
+                  let body = Broadcast {
+                      msg_id = Some msg_id;
+                      in_reply_to = (match b.msg_id with Some id -> id | None -> 0);
+                    } in
+                  Some body;
+              |  None -> None;
             );
         | ReadBody b ->             
-            write_line_sync ~mutex:stderr_mutex ~flow:stderr ("[MATCH READ]");
-            let response = Read {
-              src = state.node_id;
-              dest = req.src;
-              body = {
-                type_ = "read_ok";
+            let body = Read {
                 msg_id = Some msg_id;
                 in_reply_to = (match b.msg_id with Some id -> id | None -> 0);
                 messages = Eio.Mutex.use_ro state_mutex (fun () -> StringSet.elements state.messages)
-              }
-            } in 
-            send_response_and_log ~stdout_mutex ~stdout ~stderr_mutex ~stderr response;
+              } in 
+            Some body
         | UnknownBody b -> 
-            write_line_sync ~mutex:stderr_mutex ~flow:stderr ("[MATCH UNKNOWN]");
+            None
+        in 
+        match body with
+        | Some body -> send_response_and_log ~stdout_mutex ~stdout ~stderr_mutex ~stderr (make_response req state body)
+        | None -> ();
         ()
+
+        
 
 let main ~stdin ~stdout ~stderr =
   let buf = Eio.Buf_read.of_flow stdin ~max_size:4096 in

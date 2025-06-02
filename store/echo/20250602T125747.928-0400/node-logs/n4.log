@@ -1,0 +1,20 @@
+[RECEIVED] {"id":2,"src":"c2","dest":"n4","body":{"type":"init","node_id":"n4","node_ids":["n1","n2","n3","n4","n5"],"msg_id":1}}
+[SEND RESPONSE] {"src":"n4","dest":"c2","body":{"type":"init_ok","in_reply_to":1,"msg_id":0}}
+[RECEIVED] {"id":28,"src":"c14","dest":"n4","body":{"echo":"Please echo 110","type":"echo","msg_id":1}}
+[MATCH ECHO]
+[SEND RESPONSE] {"src":"n4","dest":"c14","body":{"type":"echo_ok","echo":"Please echo 110","msg_id":1,"in_reply_to":1}}
+[RECEIVED] {"id":42,"src":"c14","dest":"n4","body":{"echo":"Please echo 114","type":"echo","msg_id":2}}
+[MATCH ECHO]
+[SEND RESPONSE] {"src":"n4","dest":"c14","body":{"type":"echo_ok","echo":"Please echo 114","msg_id":2,"in_reply_to":2}}
+[RECEIVED] {"id":62,"src":"c14","dest":"n4","body":{"echo":"Please echo 24","type":"echo","msg_id":3}}
+[MATCH ECHO]
+[SEND RESPONSE] {"src":"n4","dest":"c14","body":{"type":"echo_ok","echo":"Please echo 24","msg_id":3,"in_reply_to":3}}
+[RECEIVED] {"id":66,"src":"c14","dest":"n4","body":{"echo":"Please echo 101","type":"echo","msg_id":4}}
+[MATCH ECHO]
+[SEND RESPONSE] {"src":"n4","dest":"c14","body":{"type":"echo_ok","echo":"Please echo 101","msg_id":4,"in_reply_to":4}}
+[RECEIVED] {"id":92,"src":"c14","dest":"n4","body":{"echo":"Please echo 12","type":"echo","msg_id":5}}
+[MATCH ECHO]
+[SEND RESPONSE] {"src":"n4","dest":"c14","body":{"type":"echo_ok","echo":"Please echo 12","msg_id":5,"in_reply_to":5}}
+[RECEIVED] {"id":106,"src":"c14","dest":"n4","body":{"echo":"Please echo 23","type":"echo","msg_id":6}}
+[MATCH ECHO]
+[SEND RESPONSE] {"src":"n4","dest":"c14","body":{"type":"echo_ok","echo":"Please echo 23","msg_id":6,"in_reply_to":6}}

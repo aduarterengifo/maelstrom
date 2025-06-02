@@ -1,0 +1,24 @@
+[RECEIVED] {"id":4,"src":"c4","dest":"n2","body":{"type":"init","node_id":"n2","node_ids":["n1","n2","n3","n4","n5"],"msg_id":1}}
+[MATCH INIT]
+[INIT] {"src":"n2","dest":"c4","body":{"type":"init_ok","in_reply_to":1,"msg_id":0}}
+[RECEIVED] {"id":10,"src":"c10","dest":"n2","body":{"echo":"Please echo 64","type":"echo","msg_id":1}}
+[MATCH ECHO]
+[ECHO] {"src":"n2","dest":"c10","body":{"type":"echo_ok","echo":"Please echo 64","msg_id":1,"in_reply_to":1}}
+[RECEIVED] {"id":12,"src":"c10","dest":"n2","body":{"echo":"Please echo 40","type":"echo","msg_id":2}}
+[MATCH ECHO]
+[ECHO] {"src":"n2","dest":"c10","body":{"type":"echo_ok","echo":"Please echo 40","msg_id":2,"in_reply_to":2}}
+[RECEIVED] {"id":26,"src":"c10","dest":"n2","body":{"echo":"Please echo 83","type":"echo","msg_id":3}}
+[MATCH ECHO]
+[ECHO] {"src":"n2","dest":"c10","body":{"type":"echo_ok","echo":"Please echo 83","msg_id":3,"in_reply_to":3}}
+[RECEIVED] {"id":42,"src":"c10","dest":"n2","body":{"echo":"Please echo 33","type":"echo","msg_id":4}}
+[MATCH ECHO]
+[ECHO] {"src":"n2","dest":"c10","body":{"type":"echo_ok","echo":"Please echo 33","msg_id":4,"in_reply_to":4}}
+[RECEIVED] {"id":50,"src":"c10","dest":"n2","body":{"echo":"Please echo 115","type":"echo","msg_id":5}}
+[MATCH ECHO]
+[ECHO] {"src":"n2","dest":"c10","body":{"type":"echo_ok","echo":"Please echo 115","msg_id":5,"in_reply_to":5}}
+[RECEIVED] {"id":76,"src":"c10","dest":"n2","body":{"echo":"Please echo 40","type":"echo","msg_id":6}}
+[MATCH ECHO]
+[ECHO] {"src":"n2","dest":"c10","body":{"type":"echo_ok","echo":"Please echo 40","msg_id":6,"in_reply_to":6}}
+[RECEIVED] {"id":82,"src":"c10","dest":"n2","body":{"echo":"Please echo 106","type":"echo","msg_id":7}}
+[MATCH ECHO]
+[ECHO] {"src":"n2","dest":"c10","body":{"type":"echo_ok","echo":"Please echo 106","msg_id":7,"in_reply_to":7}}

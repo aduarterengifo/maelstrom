@@ -1,0 +1,26 @@
+[RECEIVED] {"id":0,"src":"c0","dest":"n2","body":{"type":"init","node_id":"n2","node_ids":["n1","n2","n3","n4","n5"],"msg_id":1}}
+[INIT] {"src":"n2","dest":"c0","body":{"type":"init_ok","in_reply_to":1,"msg_id":0}}
+[RECEIVED] {"id":10,"src":"c10","dest":"n2","body":{"echo":"Please echo 60","type":"echo","msg_id":1}}
+[MATCH ECHO]
+[ECHO] {"src":"n2","dest":"c10","body":{"type":"echo_ok","echo":"Please echo 60","msg_id":1,"in_reply_to":1}}
+[RECEIVED] {"id":28,"src":"c10","dest":"n2","body":{"echo":"Please echo 25","type":"echo","msg_id":2}}
+[MATCH ECHO]
+[ECHO] {"src":"n2","dest":"c10","body":{"type":"echo_ok","echo":"Please echo 25","msg_id":2,"in_reply_to":2}}
+[RECEIVED] {"id":42,"src":"c10","dest":"n2","body":{"echo":"Please echo 85","type":"echo","msg_id":3}}
+[MATCH ECHO]
+[ECHO] {"src":"n2","dest":"c10","body":{"type":"echo_ok","echo":"Please echo 85","msg_id":3,"in_reply_to":3}}
+[RECEIVED] {"id":48,"src":"c10","dest":"n2","body":{"echo":"Please echo 97","type":"echo","msg_id":4}}
+[MATCH ECHO]
+[ECHO] {"src":"n2","dest":"c10","body":{"type":"echo_ok","echo":"Please echo 97","msg_id":4,"in_reply_to":4}}
+[RECEIVED] {"id":52,"src":"c10","dest":"n2","body":{"echo":"Please echo 69","type":"echo","msg_id":5}}
+[MATCH ECHO]
+[ECHO] {"src":"n2","dest":"c10","body":{"type":"echo_ok","echo":"Please echo 69","msg_id":5,"in_reply_to":5}}
+[RECEIVED] {"id":60,"src":"c10","dest":"n2","body":{"echo":"Please echo 24","type":"echo","msg_id":6}}
+[MATCH ECHO]
+[ECHO] {"src":"n2","dest":"c10","body":{"type":"echo_ok","echo":"Please echo 24","msg_id":6,"in_reply_to":6}}
+[RECEIVED] {"id":68,"src":"c10","dest":"n2","body":{"echo":"Please echo 56","type":"echo","msg_id":7}}
+[MATCH ECHO]
+[ECHO] {"src":"n2","dest":"c10","body":{"type":"echo_ok","echo":"Please echo 56","msg_id":7,"in_reply_to":7}}
+[RECEIVED] {"id":82,"src":"c10","dest":"n2","body":{"echo":"Please echo 109","type":"echo","msg_id":8}}
+[MATCH ECHO]
+[ECHO] {"src":"n2","dest":"c10","body":{"type":"echo_ok","echo":"Please echo 109","msg_id":8,"in_reply_to":8}}

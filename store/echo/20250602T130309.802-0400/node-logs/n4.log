@@ -1,0 +1,29 @@
+[RECEIVED] {"id":4,"src":"c4","dest":"n4","body":{"type":"init","node_id":"n4","node_ids":["n1","n2","n3","n4","n5"],"msg_id":1}}
+[INIT] {"src":"n4","dest":"c4","body":{"type":"init_ok","in_reply_to":1,"msg_id":0}}
+[RECEIVED] {"id":14,"src":"c12","dest":"n4","body":{"echo":"Please echo 9","type":"echo","msg_id":1}}
+[MATCH ECHO]
+[ECHO] {"src":"n4","dest":"c12","body":{"type":"echo_ok","echo":"Please echo 9","msg_id":1,"in_reply_to":1}}
+[RECEIVED] {"id":16,"src":"c12","dest":"n4","body":{"echo":"Please echo 1","type":"echo","msg_id":2}}
+[MATCH ECHO]
+[ECHO] {"src":"n4","dest":"c12","body":{"type":"echo_ok","echo":"Please echo 1","msg_id":2,"in_reply_to":2}}
+[RECEIVED] {"id":22,"src":"c12","dest":"n4","body":{"echo":"Please echo 7","type":"echo","msg_id":3}}
+[MATCH ECHO]
+[ECHO] {"src":"n4","dest":"c12","body":{"type":"echo_ok","echo":"Please echo 7","msg_id":3,"in_reply_to":3}}
+[RECEIVED] {"id":26,"src":"c12","dest":"n4","body":{"echo":"Please echo 83","type":"echo","msg_id":4}}
+[MATCH ECHO]
+[ECHO] {"src":"n4","dest":"c12","body":{"type":"echo_ok","echo":"Please echo 83","msg_id":4,"in_reply_to":4}}
+[RECEIVED] {"id":30,"src":"c12","dest":"n4","body":{"echo":"Please echo 24","type":"echo","msg_id":5}}
+[MATCH ECHO]
+[ECHO] {"src":"n4","dest":"c12","body":{"type":"echo_ok","echo":"Please echo 24","msg_id":5,"in_reply_to":5}}
+[RECEIVED] {"id":38,"src":"c12","dest":"n4","body":{"echo":"Please echo 60","type":"echo","msg_id":6}}
+[MATCH ECHO]
+[ECHO] {"src":"n4","dest":"c12","body":{"type":"echo_ok","echo":"Please echo 60","msg_id":6,"in_reply_to":6}}
+[RECEIVED] {"id":56,"src":"c12","dest":"n4","body":{"echo":"Please echo 7","type":"echo","msg_id":7}}
+[MATCH ECHO]
+[ECHO] {"src":"n4","dest":"c12","body":{"type":"echo_ok","echo":"Please echo 7","msg_id":7,"in_reply_to":7}}
+[RECEIVED] {"id":92,"src":"c12","dest":"n4","body":{"echo":"Please echo 92","type":"echo","msg_id":8}}
+[MATCH ECHO]
+[ECHO] {"src":"n4","dest":"c12","body":{"type":"echo_ok","echo":"Please echo 92","msg_id":8,"in_reply_to":8}}
+[RECEIVED] {"id":94,"src":"c12","dest":"n4","body":{"echo":"Please echo 116","type":"echo","msg_id":9}}
+[MATCH ECHO]
+[ECHO] {"src":"n4","dest":"c12","body":{"type":"echo_ok","echo":"Please echo 116","msg_id":9,"in_reply_to":9}}
