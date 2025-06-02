@@ -1,0 +1,111 @@
+[RECEIVED] {"id":4,"src":"c4","dest":"n3","body":{"type":"init","node_id":"n3","node_ids":["n1","n2","n3","n4","n5"],"msg_id":1}}
+[MATCH INIT]
+[INIT] {"src":"n3","dest":"c4","body":{"type":"init_ok","in_reply_to":1,"msg_id":0}}
+[RECEIVED] {"id":12,"src":"c5","dest":"n3","body":{"type":"topology","topology":{"n1":["n4","n2"],"n2":["n5","n3","n1"],"n3":["n2"],"n4":["n1","n5"],"n5":["n2","n4"]},"msg_id":1}}
+[MATCH TOPOLOGY]
+[TOPOLOGY] {"src":"n3","dest":"c5","body":{"type":"topology_ok","in_reply_to":1,"msg_id":1}}
+[RECEIVED] {"id":24,"src":"n2","dest":"n3","body":{"type":"broadcast","message":"0","msg_id":null}}
+[MATCH BROADCAST]
+[BROADCAST REQUEST: n3 -> n2] {"id":0,"src":"n3","dest":"n2","body":{"type":"broadcast","message":"0","msg_id":null}}
+[RECEIVED] {"id":34,"src":"c12","dest":"n3","body":{"type":"read","msg_id":1}}
+[MATCH READ]
+[READ] {"src":"n3","dest":"c12","body":{"type":"read_ok","messages":["0"],"in_reply_to":1,"msg_id":3}}
+[RECEIVED] {"id":45,"src":"n2","dest":"n3","body":{"type":"broadcast","message":"1","msg_id":null}}
+[MATCH BROADCAST]
+[BROADCAST REQUEST: n3 -> n2] {"id":0,"src":"n3","dest":"n2","body":{"type":"broadcast","message":"1","msg_id":null}}
+[RECEIVED] {"id":53,"src":"n2","dest":"n3","body":{"type":"broadcast","message":"2","msg_id":null}}
+[MATCH BROADCAST]
+[BROADCAST REQUEST: n3 -> n2] {"id":0,"src":"n3","dest":"n2","body":{"type":"broadcast","message":"2","msg_id":null}}
+[RECEIVED] {"id":67,"src":"n2","dest":"n3","body":{"type":"broadcast","message":"3","msg_id":null}}
+[MATCH BROADCAST]
+[BROADCAST REQUEST: n3 -> n2] {"id":0,"src":"n3","dest":"n2","body":{"type":"broadcast","message":"3","msg_id":null}}
+[RECEIVED] {"id":79,"src":"n2","dest":"n3","body":{"type":"broadcast","message":"4","msg_id":null}}
+[MATCH BROADCAST]
+[BROADCAST REQUEST: n3 -> n2] {"id":0,"src":"n3","dest":"n2","body":{"type":"broadcast","message":"4","msg_id":null}}
+[RECEIVED] {"id":86,"src":"c12","dest":"n3","body":{"type":"read","msg_id":2}}
+[MATCH READ]
+[READ] {"src":"n3","dest":"c12","body":{"type":"read_ok","messages":["0","1","2","3","4"],"in_reply_to":2,"msg_id":8}}
+[RECEIVED] {"id":99,"src":"n2","dest":"n3","body":{"type":"broadcast","message":"5","msg_id":null}}
+[MATCH BROADCAST]
+[BROADCAST REQUEST: n3 -> n2] {"id":0,"src":"n3","dest":"n2","body":{"type":"broadcast","message":"5","msg_id":null}}
+[RECEIVED] {"id":109,"src":"n2","dest":"n3","body":{"type":"broadcast","message":"6","msg_id":null}}
+[MATCH BROADCAST]
+[BROADCAST REQUEST: n3 -> n2] {"id":0,"src":"n3","dest":"n2","body":{"type":"broadcast","message":"6","msg_id":null}}
+[RECEIVED] {"id":118,"src":"n2","dest":"n3","body":{"type":"broadcast","message":"7","msg_id":null}}
+[MATCH BROADCAST]
+[BROADCAST REQUEST: n3 -> n2] {"id":0,"src":"n3","dest":"n2","body":{"type":"broadcast","message":"7","msg_id":null}}
+[RECEIVED] {"id":128,"src":"c12","dest":"n3","body":{"type":"broadcast","message":8,"msg_id":3}}
+[MATCH BROADCAST]
+[BROADCAST REQUEST: n3 -> n2] {"id":0,"src":"n3","dest":"n2","body":{"type":"broadcast","message":"8","msg_id":null}}
+[BROADCAST] {"src":"n3","dest":"c12","body":{"type":"broadcast_ok","in_reply_to":3,"msg_id":12}}
+[RECEIVED] {"id":132,"src":"n2","dest":"n3","body":{"type":"broadcast","message":"8","msg_id":null}}
+[MATCH BROADCAST]
+[RECEIVED] {"id":151,"src":"n2","dest":"n3","body":{"type":"broadcast","message":"9","msg_id":null}}
+[MATCH BROADCAST]
+[BROADCAST REQUEST: n3 -> n2] {"id":0,"src":"n3","dest":"n2","body":{"type":"broadcast","message":"9","msg_id":null}}
+[RECEIVED] {"id":160,"src":"c12","dest":"n3","body":{"type":"read","msg_id":4}}
+[MATCH READ]
+[READ] {"src":"n3","dest":"c12","body":{"type":"read_ok","messages":["0","1","2","3","4","5","6","7","8","9"],"in_reply_to":4,"msg_id":15}}
+[RECEIVED] {"id":170,"src":"n2","dest":"n3","body":{"type":"broadcast","message":"10","msg_id":null}}
+[MATCH BROADCAST]
+[BROADCAST REQUEST: n3 -> n2] {"id":0,"src":"n3","dest":"n2","body":{"type":"broadcast","message":"10","msg_id":null}}
+[RECEIVED] {"id":185,"src":"n2","dest":"n3","body":{"type":"broadcast","message":"11","msg_id":null}}
+[MATCH BROADCAST]
+[BROADCAST REQUEST: n3 -> n2] {"id":0,"src":"n3","dest":"n2","body":{"type":"broadcast","message":"11","msg_id":null}}
+[RECEIVED] {"id":192,"src":"n2","dest":"n3","body":{"type":"broadcast","message":"12","msg_id":null}}
+[MATCH BROADCAST]
+[BROADCAST REQUEST: n3 -> n2] {"id":0,"src":"n3","dest":"n2","body":{"type":"broadcast","message":"12","msg_id":null}}
+[RECEIVED] {"id":202,"src":"c12","dest":"n3","body":{"type":"read","msg_id":5}}
+[MATCH READ]
+[READ] {"src":"n3","dest":"c12","body":{"type":"read_ok","messages":["0","1","10","11","12","2","3","4","5","6","7","8","9"],"in_reply_to":5,"msg_id":19}}
+[RECEIVED] {"id":213,"src":"n2","dest":"n3","body":{"type":"broadcast","message":"13","msg_id":null}}
+[MATCH BROADCAST]
+[BROADCAST REQUEST: n3 -> n2] {"id":0,"src":"n3","dest":"n2","body":{"type":"broadcast","message":"13","msg_id":null}}
+[RECEIVED] {"id":223,"src":"n2","dest":"n3","body":{"type":"broadcast","message":"14","msg_id":null}}
+[MATCH BROADCAST]
+[BROADCAST REQUEST: n3 -> n2] {"id":0,"src":"n3","dest":"n2","body":{"type":"broadcast","message":"14","msg_id":null}}
+[RECEIVED] {"id":235,"src":"n2","dest":"n3","body":{"type":"broadcast","message":"15","msg_id":null}}
+[MATCH BROADCAST]
+[BROADCAST REQUEST: n3 -> n2] {"id":0,"src":"n3","dest":"n2","body":{"type":"broadcast","message":"15","msg_id":null}}
+[RECEIVED] {"id":244,"src":"c12","dest":"n3","body":{"type":"read","msg_id":6}}
+[MATCH READ]
+[READ] {"src":"n3","dest":"c12","body":{"type":"read_ok","messages":["0","1","10","11","12","13","14","15","2","3","4","5","6","7","8","9"],"in_reply_to":6,"msg_id":23}}
+[RECEIVED] {"id":255,"src":"n2","dest":"n3","body":{"type":"broadcast","message":"16","msg_id":null}}
+[MATCH BROADCAST]
+[BROADCAST REQUEST: n3 -> n2] {"id":0,"src":"n3","dest":"n2","body":{"type":"broadcast","message":"16","msg_id":null}}
+[RECEIVED] {"id":269,"src":"n2","dest":"n3","body":{"type":"broadcast","message":"17","msg_id":null}}
+[MATCH BROADCAST]
+[BROADCAST REQUEST: n3 -> n2] {"id":0,"src":"n3","dest":"n2","body":{"type":"broadcast","message":"17","msg_id":null}}
+[RECEIVED] {"id":276,"src":"c12","dest":"n3","body":{"type":"read","msg_id":7}}
+[MATCH READ]
+[READ] {"src":"n3","dest":"c12","body":{"type":"read_ok","messages":["0","1","10","11","12","13","14","15","16","17","2","3","4","5","6","7","8","9"],"in_reply_to":7,"msg_id":26}}
+[RECEIVED] {"id":287,"src":"n2","dest":"n3","body":{"type":"broadcast","message":"18","msg_id":null}}
+[MATCH BROADCAST]
+[BROADCAST REQUEST: n3 -> n2] {"id":0,"src":"n3","dest":"n2","body":{"type":"broadcast","message":"18","msg_id":null}}
+[RECEIVED] {"id":298,"src":"n2","dest":"n3","body":{"type":"broadcast","message":"19","msg_id":null}}
+[MATCH BROADCAST]
+[BROADCAST REQUEST: n3 -> n2] {"id":0,"src":"n3","dest":"n2","body":{"type":"broadcast","message":"19","msg_id":null}}
+[RECEIVED] {"id":308,"src":"c12","dest":"n3","body":{"type":"broadcast","message":20,"msg_id":8}}
+[MATCH BROADCAST]
+[BROADCAST REQUEST: n3 -> n2] {"id":0,"src":"n3","dest":"n2","body":{"type":"broadcast","message":"20","msg_id":null}}
+[BROADCAST] {"src":"n3","dest":"c12","body":{"type":"broadcast_ok","in_reply_to":8,"msg_id":29}}
+[RECEIVED] {"id":312,"src":"n2","dest":"n3","body":{"type":"broadcast","message":"20","msg_id":null}}
+[MATCH BROADCAST]
+[RECEIVED] {"id":329,"src":"n2","dest":"n3","body":{"type":"broadcast","message":"21","msg_id":null}}
+[MATCH BROADCAST]
+[BROADCAST REQUEST: n3 -> n2] {"id":0,"src":"n3","dest":"n2","body":{"type":"broadcast","message":"21","msg_id":null}}
+[RECEIVED] {"id":337,"src":"n2","dest":"n3","body":{"type":"broadcast","message":"22","msg_id":null}}
+[MATCH BROADCAST]
+[BROADCAST REQUEST: n3 -> n2] {"id":0,"src":"n3","dest":"n2","body":{"type":"broadcast","message":"22","msg_id":null}}
+[RECEIVED] {"id":351,"src":"n2","dest":"n3","body":{"type":"broadcast","message":"23","msg_id":null}}
+[MATCH BROADCAST]
+[BROADCAST REQUEST: n3 -> n2] {"id":0,"src":"n3","dest":"n2","body":{"type":"broadcast","message":"23","msg_id":null}}
+[RECEIVED] {"id":362,"src":"n2","dest":"n3","body":{"type":"broadcast","message":"24","msg_id":null}}
+[MATCH BROADCAST]
+[BROADCAST REQUEST: n3 -> n2] {"id":0,"src":"n3","dest":"n2","body":{"type":"broadcast","message":"24","msg_id":null}}
+[RECEIVED] {"id":370,"src":"c12","dest":"n3","body":{"type":"read","msg_id":9}}
+[MATCH READ]
+[READ] {"src":"n3","dest":"c12","body":{"type":"read_ok","messages":["0","1","10","11","12","13","14","15","16","17","18","19","2","20","21","22","23","24","3","4","5","6","7","8","9"],"in_reply_to":9,"msg_id":35}}
+[RECEIVED] {"id":376,"src":"c12","dest":"n3","body":{"type":"read","msg_id":10}}
+[MATCH READ]
+[READ] {"src":"n3","dest":"c12","body":{"type":"read_ok","messages":["0","1","10","11","12","13","14","15","16","17","18","19","2","20","21","22","23","24","3","4","5","6","7","8","9"],"in_reply_to":10,"msg_id":36}}

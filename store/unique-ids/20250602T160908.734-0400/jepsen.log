@@ -1,0 +1,305 @@
+2025-06-02 16:09:08,771{GMT}	INFO	[jepsen test runner] jepsen.core: Test version b1870b0424f455f8940cc6fee1dc21df80da1060 (plus uncommitted changes)
+2025-06-02 16:09:08,772{GMT}	INFO	[jepsen test runner] jepsen.core: Command line:
+lein run test -w unique-ids --bin self/server/_build/default/bin/main.exe --time-limit 20 --rate 10
+2025-06-02 16:09:08,812{GMT}	INFO	[jepsen test runner] jepsen.core: Running test:
+{:args []
+ :remote
+ #jepsen.control.retry.Remote{:remote #jepsen.control.scp.Remote{:cmd-remote #jepsen.control.sshj.SSHJRemote{:concurrency-limit 6,
+                                                                                                             :conn-spec nil,
+                                                                                                             :client nil,
+                                                                                                             :semaphore nil},
+                                                                 :conn-spec nil},
+                              :conn nil}
+ :log-net-send false
+ :node-count nil
+ :availability nil
+ :max-txn-length 4
+ :concurrency 5
+ :db
+ #object[maelstrom.db$db$reify__16612
+         "0xecd3a9b"
+         "maelstrom.db$db$reify__16612@ecd3a9b"]
+ :max-writes-per-key 16
+ :leave-db-running? false
+ :name "unique-ids"
+ :logging-json? false
+ :start-time
+ #object[org.joda.time.DateTime "0x354d5692" "2025-06-02T16:09:08.734-04:00"]
+ :nemesis-interval 10
+ :net
+ #object[maelstrom.net$jepsen_net$reify__15721
+         "0x5c4f07c1"
+         "maelstrom.net$jepsen_net$reify__15721@5c4f07c1"]
+ :client
+ #object[maelstrom.workload.unique_ids$client$reify__21401
+         "0x15a8b228"
+         "maelstrom.workload.unique_ids$client$reify__21401@15a8b228"]
+ :barrier
+ #object[java.util.concurrent.CyclicBarrier
+         "0x5a69f1ef"
+         "java.util.concurrent.CyclicBarrier@5a69f1ef"]
+ :log-stderr false
+ :pure-generators true
+ :ssh {:dummy? true}
+ :rate 10.0
+ :checker
+ #object[jepsen.checker$compose$reify__11089
+         "0x54fd5f6"
+         "jepsen.checker$compose$reify__11089@54fd5f6"]
+ :argv
+ ("test"
+  "-w"
+  "unique-ids"
+  "--bin"
+  "self/server/_build/default/bin/main.exe"
+  "--time-limit"
+  "20"
+  "--rate"
+  "10")
+ :nemesis
+ (jepsen.nemesis.ReflCompose
+  {:fm {:start-partition 0,
+        :stop-partition 0,
+        :kill 1,
+        :start 1,
+        :pause 1,
+        :resume 1},
+   :nemeses [#unprintable "jepsen.nemesis.combined$partition_nemesis$reify__16905@219aab91"
+             #unprintable "jepsen.nemesis.combined$db_nemesis$reify__16886@71737478"]})
+ :nodes ["n1" "n2" "n3" "n4" "n5"]
+ :test-count 1
+ :latency {:mean 0, :dist :constant}
+ :bin "self/server/_build/default/bin/main.exe"
+ :generator
+ #object[jepsen.util.Forgettable
+         "0x1f299fc3"
+         (jepsen.generator.TimeLimit
+          {:limit 20000000000,
+           :cutoff nil,
+           :gen (jepsen.generator.Any
+                 {:gens [(jepsen.generator.OnThreads
+                          {:f #{:nemesis},
+                           :context-filter #object[jepsen.generator.context$make_thread_filter$lazy_filter__12077
+                                                   "0x4c18b432"
+                                                   "jepsen.generator.context$make_thread_filter$lazy_filter__12077@4c18b432"],
+                           :gen nil})
+                         (jepsen.generator.OnThreads
+                          {:f #jepsen.generator.context.AllBut{:element :nemesis},
+                           :context-filter #object[jepsen.generator.context$make_thread_filter$lazy_filter__12077
+                                                   "0x4b954cbb"
+                                                   "jepsen.generator.context$make_thread_filter$lazy_filter__12077@4b954cbb"],
+                           :gen (jepsen.generator.Stagger
+                                 {:dt 200000000,
+                                  :next-time nil,
+                                  :gen (jepsen.generator.Repeat
+                                        {:remaining -1, :gen {:f :generate}})})})]})})]
+ :log-net-recv false
+ :os
+ #object[maelstrom.net$jepsen_os$reify__15724
+         "0xbec2d81"
+         "maelstrom.net$jepsen_os$reify__15724@bec2d81"]
+ :time-limit 20
+ :workload :unique-ids
+ :consistency-models [:strict-serializable]
+ :topology :grid}
+
+2025-06-02 16:09:09,993{GMT}	INFO	[jepsen node n1] maelstrom.net: Starting Maelstrom network
+2025-06-02 16:09:09,994{GMT}	INFO	[jepsen test runner] jepsen.db: Tearing down DB
+2025-06-02 16:09:09,995{GMT}	INFO	[jepsen test runner] jepsen.db: Setting up DB
+2025-06-02 16:09:09,996{GMT}	INFO	[jepsen node n3] maelstrom.db: Setting up n3
+2025-06-02 16:09:09,996{GMT}	INFO	[jepsen node n2] maelstrom.db: Setting up n2
+2025-06-02 16:09:09,996{GMT}	INFO	[jepsen node n4] maelstrom.db: Setting up n4
+2025-06-02 16:09:09,996{GMT}	INFO	[jepsen node n5] maelstrom.db: Setting up n5
+2025-06-02 16:09:09,996{GMT}	INFO	[jepsen node n4] maelstrom.process: launching self/server/_build/default/bin/main.exe []
+2025-06-02 16:09:09,996{GMT}	INFO	[jepsen node n2] maelstrom.process: launching self/server/_build/default/bin/main.exe []
+2025-06-02 16:09:09,996{GMT}	INFO	[jepsen node n5] maelstrom.process: launching self/server/_build/default/bin/main.exe []
+2025-06-02 16:09:09,996{GMT}	INFO	[jepsen node n3] maelstrom.process: launching self/server/_build/default/bin/main.exe []
+2025-06-02 16:09:09,997{GMT}	INFO	[jepsen node n1] maelstrom.service: Starting services: (lin-kv lin-tso lww-kv seq-kv)
+2025-06-02 16:09:09,998{GMT}	INFO	[jepsen node n1] maelstrom.db: Setting up n1
+2025-06-02 16:09:09,998{GMT}	INFO	[jepsen node n1] maelstrom.process: launching self/server/_build/default/bin/main.exe []
+2025-06-02 16:09:19,551{GMT}	INFO	[jepsen test runner] jepsen.core: Relative time begins now
+2025-06-02 16:09:19,602{GMT}	INFO	[jepsen worker 0] jepsen.util: 0	:invoke	:generate	nil
+2025-06-02 16:09:19,608{GMT}	INFO	[jepsen worker 0] jepsen.util: 0	:ok	:generate	"n10"
+2025-06-02 16:09:19,679{GMT}	INFO	[jepsen worker 1] jepsen.util: 1	:invoke	:generate	nil
+2025-06-02 16:09:19,680{GMT}	INFO	[jepsen worker 2] jepsen.util: 2	:invoke	:generate	nil
+2025-06-02 16:09:19,681{GMT}	INFO	[jepsen worker 1] jepsen.util: 1	:ok	:generate	"n20"
+2025-06-02 16:09:19,681{GMT}	INFO	[jepsen worker 2] jepsen.util: 2	:ok	:generate	"n30"
+2025-06-02 16:09:19,762{GMT}	INFO	[jepsen worker 3] jepsen.util: 3	:invoke	:generate	nil
+2025-06-02 16:09:19,763{GMT}	INFO	[jepsen worker 3] jepsen.util: 3	:ok	:generate	"n40"
+2025-06-02 16:09:19,889{GMT}	INFO	[jepsen worker 4] jepsen.util: 4	:invoke	:generate	nil
+2025-06-02 16:09:19,898{GMT}	INFO	[jepsen worker 4] jepsen.util: 4	:ok	:generate	"n50"
+2025-06-02 16:09:19,938{GMT}	INFO	[jepsen worker 0] jepsen.util: 0	:invoke	:generate	nil
+2025-06-02 16:09:19,939{GMT}	INFO	[jepsen worker 0] jepsen.util: 0	:ok	:generate	"n10"
+2025-06-02 16:09:20,054{GMT}	INFO	[jepsen worker 0] jepsen.util: 0	:invoke	:generate	nil
+2025-06-02 16:09:20,055{GMT}	INFO	[jepsen worker 0] jepsen.util: 0	:ok	:generate	"n10"
+2025-06-02 16:09:20,114{GMT}	INFO	[jepsen worker 1] jepsen.util: 1	:invoke	:generate	nil
+2025-06-02 16:09:20,116{GMT}	INFO	[jepsen worker 1] jepsen.util: 1	:ok	:generate	"n20"
+2025-06-02 16:09:20,140{GMT}	INFO	[jepsen worker 2] jepsen.util: 2	:invoke	:generate	nil
+2025-06-02 16:09:20,143{GMT}	INFO	[jepsen worker 2] jepsen.util: 2	:ok	:generate	"n30"
+2025-06-02 16:09:20,288{GMT}	INFO	[jepsen worker 3] jepsen.util: 3	:invoke	:generate	nil
+2025-06-02 16:09:20,290{GMT}	INFO	[jepsen worker 3] jepsen.util: 3	:ok	:generate	"n40"
+2025-06-02 16:09:20,489{GMT}	INFO	[jepsen worker 4] jepsen.util: 4	:invoke	:generate	nil
+2025-06-02 16:09:20,491{GMT}	INFO	[jepsen worker 4] jepsen.util: 4	:ok	:generate	"n50"
+2025-06-02 16:09:20,685{GMT}	INFO	[jepsen worker 0] jepsen.util: 0	:invoke	:generate	nil
+2025-06-02 16:09:20,687{GMT}	INFO	[jepsen worker 0] jepsen.util: 0	:ok	:generate	"n10"
+2025-06-02 16:09:20,847{GMT}	INFO	[jepsen worker 0] jepsen.util: 0	:invoke	:generate	nil
+2025-06-02 16:09:20,851{GMT}	INFO	[jepsen worker 0] jepsen.util: 0	:ok	:generate	"n10"
+2025-06-02 16:09:20,862{GMT}	INFO	[jepsen worker 1] jepsen.util: 1	:invoke	:generate	nil
+2025-06-02 16:09:20,866{GMT}	INFO	[jepsen worker 1] jepsen.util: 1	:ok	:generate	"n20"
+2025-06-02 16:09:20,878{GMT}	INFO	[jepsen worker 2] jepsen.util: 2	:invoke	:generate	nil
+2025-06-02 16:09:20,882{GMT}	INFO	[jepsen worker 2] jepsen.util: 2	:ok	:generate	"n30"
+2025-06-02 16:09:20,960{GMT}	INFO	[jepsen worker 3] jepsen.util: 3	:invoke	:generate	nil
+2025-06-02 16:09:20,963{GMT}	INFO	[jepsen worker 3] jepsen.util: 3	:ok	:generate	"n40"
+2025-06-02 16:09:20,992{GMT}	INFO	[jepsen worker 4] jepsen.util: 4	:invoke	:generate	nil
+2025-06-02 16:09:20,996{GMT}	INFO	[jepsen worker 4] jepsen.util: 4	:ok	:generate	"n50"
+2025-06-02 16:09:21,049{GMT}	INFO	[jepsen worker 0] jepsen.util: 0	:invoke	:generate	nil
+2025-06-02 16:09:21,053{GMT}	INFO	[jepsen worker 0] jepsen.util: 0	:ok	:generate	"n10"
+2025-06-02 16:09:21,209{GMT}	INFO	[jepsen worker 0] jepsen.util: 0	:invoke	:generate	nil
+2025-06-02 16:09:21,211{GMT}	INFO	[jepsen worker 0] jepsen.util: 0	:ok	:generate	"n10"
+2025-06-02 16:09:21,254{GMT}	INFO	[jepsen worker 1] jepsen.util: 1	:invoke	:generate	nil
+2025-06-02 16:09:21,258{GMT}	INFO	[jepsen worker 1] jepsen.util: 1	:ok	:generate	"n20"
+2025-06-02 16:09:21,365{GMT}	INFO	[jepsen worker 2] jepsen.util: 2	:invoke	:generate	nil
+2025-06-02 16:09:21,368{GMT}	INFO	[jepsen worker 2] jepsen.util: 2	:ok	:generate	"n30"
+2025-06-02 16:09:21,535{GMT}	INFO	[jepsen worker 3] jepsen.util: 3	:invoke	:generate	nil
+2025-06-02 16:09:21,536{GMT}	INFO	[jepsen worker 3] jepsen.util: 3	:ok	:generate	"n40"
+2025-06-02 16:09:21,575{GMT}	INFO	[jepsen worker 4] jepsen.util: 4	:invoke	:generate	nil
+2025-06-02 16:09:21,576{GMT}	INFO	[jepsen worker 4] jepsen.util: 4	:ok	:generate	"n50"
+2025-06-02 16:09:21,593{GMT}	INFO	[jepsen worker 0] jepsen.util: 0	:invoke	:generate	nil
+2025-06-02 16:09:21,594{GMT}	INFO	[jepsen worker 0] jepsen.util: 0	:ok	:generate	"n10"
+2025-06-02 16:09:21,656{GMT}	INFO	[jepsen worker 0] jepsen.util: 0	:invoke	:generate	nil
+2025-06-02 16:09:21,657{GMT}	INFO	[jepsen worker 0] jepsen.util: 0	:ok	:generate	"n10"
+2025-06-02 16:09:21,774{GMT}	INFO	[jepsen worker 1] jepsen.util: 1	:invoke	:generate	nil
+2025-06-02 16:09:21,777{GMT}	INFO	[jepsen worker 1] jepsen.util: 1	:ok	:generate	"n20"
+2025-06-02 16:09:21,790{GMT}	INFO	[jepsen worker 2] jepsen.util: 2	:invoke	:generate	nil
+2025-06-02 16:09:21,792{GMT}	INFO	[jepsen worker 2] jepsen.util: 2	:ok	:generate	"n30"
+2025-06-02 16:09:21,839{GMT}	INFO	[jepsen worker 3] jepsen.util: 3	:invoke	:generate	nil
+2025-06-02 16:09:21,840{GMT}	INFO	[jepsen worker 3] jepsen.util: 3	:ok	:generate	"n40"
+2025-06-02 16:09:22,035{GMT}	INFO	[jepsen worker 4] jepsen.util: 4	:invoke	:generate	nil
+2025-06-02 16:09:22,039{GMT}	INFO	[jepsen worker 4] jepsen.util: 4	:ok	:generate	"n50"
+2025-06-02 16:09:22,189{GMT}	INFO	[jepsen worker 0] jepsen.util: 0	:invoke	:generate	nil
+2025-06-02 16:09:22,192{GMT}	INFO	[jepsen worker 0] jepsen.util: 0	:ok	:generate	"n10"
+2025-06-02 16:09:22,262{GMT}	INFO	[jepsen worker 0] jepsen.util: 0	:invoke	:generate	nil
+2025-06-02 16:09:22,266{GMT}	INFO	[jepsen worker 0] jepsen.util: 0	:ok	:generate	"n10"
+2025-06-02 16:09:22,399{GMT}	INFO	[jepsen worker 1] jepsen.util: 1	:invoke	:generate	nil
+2025-06-02 16:09:22,402{GMT}	INFO	[jepsen worker 1] jepsen.util: 1	:ok	:generate	"n20"
+2025-06-02 16:09:22,515{GMT}	INFO	[jepsen worker 2] jepsen.util: 2	:invoke	:generate	nil
+2025-06-02 16:09:22,516{GMT}	INFO	[jepsen worker 2] jepsen.util: 2	:ok	:generate	"n30"
+2025-06-02 16:09:22,529{GMT}	INFO	[jepsen worker 3] jepsen.util: 3	:invoke	:generate	nil
+2025-06-02 16:09:22,531{GMT}	INFO	[jepsen worker 3] jepsen.util: 3	:ok	:generate	"n40"
+2025-06-02 16:09:22,600{GMT}	INFO	[jepsen worker 4] jepsen.util: 4	:invoke	:generate	nil
+2025-06-02 16:09:22,601{GMT}	INFO	[jepsen worker 4] jepsen.util: 4	:ok	:generate	"n50"
+2025-06-02 16:09:22,700{GMT}	INFO	[jepsen worker 0] jepsen.util: 0	:invoke	:generate	nil
+2025-06-02 16:09:22,702{GMT}	INFO	[jepsen worker 0] jepsen.util: 0	:ok	:generate	"n10"
+2025-06-02 16:09:22,785{GMT}	INFO	[jepsen worker 0] jepsen.util: 0	:invoke	:generate	nil
+2025-06-02 16:09:22,786{GMT}	INFO	[jepsen worker 0] jepsen.util: 0	:ok	:generate	"n10"
+2025-06-02 16:09:22,816{GMT}	INFO	[jepsen worker 1] jepsen.util: 1	:invoke	:generate	nil
+2025-06-02 16:09:22,817{GMT}	INFO	[jepsen worker 1] jepsen.util: 1	:ok	:generate	"n20"
+2025-06-02 16:09:22,939{GMT}	INFO	[jepsen worker 2] jepsen.util: 2	:invoke	:generate	nil
+2025-06-02 16:09:22,940{GMT}	INFO	[jepsen worker 2] jepsen.util: 2	:ok	:generate	"n30"
+2025-06-02 16:09:23,081{GMT}	INFO	[jepsen worker 3] jepsen.util: 3	:invoke	:generate	nil
+2025-06-02 16:09:23,082{GMT}	INFO	[jepsen worker 3] jepsen.util: 3	:ok	:generate	"n40"
+2025-06-02 16:09:23,251{GMT}	INFO	[jepsen worker 4] jepsen.util: 4	:invoke	:generate	nil
+2025-06-02 16:09:23,252{GMT}	INFO	[jepsen worker 4] jepsen.util: 4	:ok	:generate	"n50"
+2025-06-02 16:09:23,299{GMT}	INFO	[jepsen worker 0] jepsen.util: 0	:invoke	:generate	nil
+2025-06-02 16:09:23,301{GMT}	INFO	[jepsen worker 0] jepsen.util: 0	:ok	:generate	"n10"
+2025-06-02 16:09:23,414{GMT}	INFO	[jepsen worker 0] jepsen.util: 0	:invoke	:generate	nil
+2025-06-02 16:09:23,415{GMT}	INFO	[jepsen worker 0] jepsen.util: 0	:ok	:generate	"n10"
+2025-06-02 16:09:23,455{GMT}	INFO	[jepsen worker 1] jepsen.util: 1	:invoke	:generate	nil
+2025-06-02 16:09:23,456{GMT}	INFO	[jepsen worker 1] jepsen.util: 1	:ok	:generate	"n20"
+2025-06-02 16:09:23,643{GMT}	INFO	[jepsen worker 2] jepsen.util: 2	:invoke	:generate	nil
+2025-06-02 16:09:23,646{GMT}	INFO	[jepsen worker 2] jepsen.util: 2	:ok	:generate	"n30"
+2025-06-02 16:09:23,789{GMT}	INFO	[jepsen worker 3] jepsen.util: 3	:invoke	:generate	nil
+2025-06-02 16:09:23,792{GMT}	INFO	[jepsen worker 3] jepsen.util: 3	:ok	:generate	"n40"
+2025-06-02 16:09:23,940{GMT}	INFO	[jepsen worker 4] jepsen.util: 4	:invoke	:generate	nil
+2025-06-02 16:09:23,942{GMT}	INFO	[jepsen worker 4] jepsen.util: 4	:ok	:generate	"n50"
+2025-06-02 16:09:24,102{GMT}	INFO	[jepsen worker 0] jepsen.util: 0	:invoke	:generate	nil
+2025-06-02 16:09:24,104{GMT}	INFO	[jepsen worker 0] jepsen.util: 0	:ok	:generate	"n10"
+2025-06-02 16:09:24,303{GMT}	INFO	[jepsen worker 0] jepsen.util: 0	:invoke	:generate	nil
+2025-06-02 16:09:24,308{GMT}	INFO	[jepsen worker 0] jepsen.util: 0	:ok	:generate	"n10"
+2025-06-02 16:09:24,446{GMT}	INFO	[jepsen worker 1] jepsen.util: 1	:invoke	:generate	nil
+2025-06-02 16:09:24,447{GMT}	INFO	[jepsen worker 1] jepsen.util: 1	:ok	:generate	"n20"
+2025-06-02 16:09:24,503{GMT}	INFO	[jepsen worker 2] jepsen.util: 2	:invoke	:generate	nil
+2025-06-02 16:09:24,504{GMT}	INFO	[jepsen worker 2] jepsen.util: 2	:ok	:generate	"n30"
+2025-06-02 16:09:24,613{GMT}	INFO	[jepsen worker 3] jepsen.util: 3	:invoke	:generate	nil
+2025-06-02 16:09:24,614{GMT}	INFO	[jepsen worker 3] jepsen.util: 3	:ok	:generate	"n40"
+2025-06-02 16:09:24,680{GMT}	INFO	[jepsen worker 4] jepsen.util: 4	:invoke	:generate	nil
+2025-06-02 16:09:24,682{GMT}	INFO	[jepsen worker 4] jepsen.util: 4	:ok	:generate	"n50"
+2025-06-02 16:09:24,797{GMT}	INFO	[jepsen worker 0] jepsen.util: 0	:invoke	:generate	nil
+2025-06-02 16:09:24,799{GMT}	INFO	[jepsen worker 0] jepsen.util: 0	:ok	:generate	"n10"
+2025-06-02 16:09:24,937{GMT}	INFO	[jepsen worker 0] jepsen.util: 0	:invoke	:generate	nil
+2025-06-02 16:09:24,939{GMT}	INFO	[jepsen worker 0] jepsen.util: 0	:ok	:generate	"n10"
+2025-06-02 16:09:25,009{GMT}	INFO	[jepsen worker 1] jepsen.util: 1	:invoke	:generate	nil
+2025-06-02 16:09:25,010{GMT}	INFO	[jepsen worker 1] jepsen.util: 1	:ok	:generate	"n20"
+2025-06-02 16:09:25,050{GMT}	INFO	[jepsen worker 2] jepsen.util: 2	:invoke	:generate	nil
+2025-06-02 16:09:25,051{GMT}	INFO	[jepsen worker 2] jepsen.util: 2	:ok	:generate	"n30"
+2025-06-02 16:09:25,254{GMT}	INFO	[jepsen worker 3] jepsen.util: 3	:invoke	:generate	nil
+2025-06-02 16:09:25,255{GMT}	INFO	[jepsen worker 3] jepsen.util: 3	:ok	:generate	"n40"
+2025-06-02 16:09:25,416{GMT}	INFO	[jepsen worker 4] jepsen.util: 4	:invoke	:generate	nil
+2025-06-02 16:09:25,418{GMT}	INFO	[jepsen worker 4] jepsen.util: 4	:ok	:generate	"n50"
+2025-06-02 16:09:25,595{GMT}	INFO	[jepsen worker 0] jepsen.util: 0	:invoke	:generate	nil
+2025-06-02 16:09:25,597{GMT}	INFO	[jepsen worker 0] jepsen.util: 0	:ok	:generate	"n10"
+2025-06-02 16:09:25,646{GMT}	INFO	[jepsen worker 0] jepsen.util: 0	:invoke	:generate	nil
+2025-06-02 16:09:25,647{GMT}	INFO	[jepsen worker 0] jepsen.util: 0	:ok	:generate	"n10"
+2025-06-02 16:09:25,776{GMT}	INFO	[jepsen worker 1] jepsen.util: 1	:invoke	:generate	nil
+2025-06-02 16:09:25,778{GMT}	INFO	[jepsen worker 1] jepsen.util: 1	:ok	:generate	"n20"
+2025-06-02 16:09:25,802{GMT}	INFO	[jepsen worker 2] jepsen.util: 2	:invoke	:generate	nil
+2025-06-02 16:09:25,803{GMT}	INFO	[jepsen worker 2] jepsen.util: 2	:ok	:generate	"n30"
+2025-06-02 16:09:26,004{GMT}	INFO	[jepsen worker 3] jepsen.util: 3	:invoke	:generate	nil
+2025-06-02 16:09:26,007{GMT}	INFO	[jepsen worker 3] jepsen.util: 3	:ok	:generate	"n40"
+2025-06-02 16:09:26,081{GMT}	INFO	[jepsen worker 4] jepsen.util: 4	:invoke	:generate	nil
+2025-06-02 16:09:26,084{GMT}	INFO	[jepsen worker 4] jepsen.util: 4	:ok	:generate	"n50"
+2025-06-02 16:09:26,224{GMT}	INFO	[jepsen worker 0] jepsen.util: 0	:invoke	:generate	nil
+2025-06-02 16:09:26,227{GMT}	INFO	[jepsen worker 0] jepsen.util: 0	:ok	:generate	"n10"
+2025-06-02 16:09:26,279{GMT}	INFO	[jepsen worker 0] jepsen.util: 0	:invoke	:generate	nil
+2025-06-02 16:09:26,281{GMT}	INFO	[jepsen worker 0] jepsen.util: 0	:ok	:generate	"n10"
+2025-06-02 16:09:26,460{GMT}	INFO	[jepsen worker 1] jepsen.util: 1	:invoke	:generate	nil
+2025-06-02 16:09:26,461{GMT}	INFO	[jepsen worker 1] jepsen.util: 1	:ok	:generate	"n20"
+2025-06-02 16:09:26,590{GMT}	INFO	[jepsen worker 2] jepsen.util: 2	:invoke	:generate	nil
+2025-06-02 16:09:26,593{GMT}	INFO	[jepsen worker 2] jepsen.util: 2	:ok	:generate	"n30"
+2025-06-02 16:09:26,606{GMT}	INFO	[jepsen worker 3] jepsen.util: 3	:invoke	:generate	nil
+2025-06-02 16:09:26,607{GMT}	INFO	[jepsen worker 3] jepsen.util: 3	:ok	:generate	"n40"
+2025-06-02 16:09:26,714{GMT}	INFO	[jepsen worker 4] jepsen.util: 4	:invoke	:generate	nil
+2025-06-02 16:09:26,717{GMT}	INFO	[jepsen worker 4] jepsen.util: 4	:ok	:generate	"n50"
+2025-06-02 16:09:26,838{GMT}	INFO	[jepsen worker 0] jepsen.util: 0	:invoke	:generate	nil
+2025-06-02 16:09:26,841{GMT}	INFO	[jepsen worker 0] jepsen.util: 0	:ok	:generate	"n10"
+2025-06-02 16:09:26,993{GMT}	INFO	[jepsen worker 0] jepsen.util: 0	:invoke	:generate	nil
+2025-06-02 16:09:26,996{GMT}	INFO	[jepsen worker 0] jepsen.util: 0	:ok	:generate	"n10"
+2025-06-02 16:09:27,189{GMT}	INFO	[jepsen worker 1] jepsen.util: 1	:invoke	:generate	nil
+2025-06-02 16:09:27,190{GMT}	INFO	[jepsen worker 1] jepsen.util: 1	:ok	:generate	"n20"
+2025-06-02 16:09:27,359{GMT}	INFO	[jepsen worker 2] jepsen.util: 2	:invoke	:generate	nil
+2025-06-02 16:09:27,361{GMT}	INFO	[jepsen worker 2] jepsen.util: 2	:ok	:generate	"n30"
+2025-06-02 16:09:27,450{GMT}	INFO	[jepsen worker 3] jepsen.util: 3	:invoke	:generate	nil
+2025-06-02 16:09:27,451{GMT}	INFO	[jepsen worker 3] jepsen.util: 3	:ok	:generate	"n40"
+2025-06-02 16:09:27,632{GMT}	INFO	[jepsen worker 4] jepsen.util: 4	:invoke	:generate	nil
+2025-06-02 16:09:27,633{GMT}	INFO	[jepsen worker 4] jepsen.util: 4	:ok	:generate	"n50"
+2025-06-02 16:09:27,800{GMT}	INFO	[jepsen worker 0] jepsen.util: 0	:invoke	:generate	nil
+2025-06-02 16:09:27,801{GMT}	INFO	[jepsen worker 0] jepsen.util: 0	:ok	:generate	"n10"
+2025-06-02 16:09:27,927{GMT}	INFO	[jepsen worker 0] jepsen.util: 0	:invoke	:generate	nil
+2025-06-02 16:09:27,929{GMT}	INFO	[jepsen worker 0] jepsen.util: 0	:ok	:generate	"n10"
+2025-06-02 16:09:28,056{GMT}	INFO	[jepsen worker 1] jepsen.util: 1	:invoke	:generate	nil
+2025-06-02 16:09:28,057{GMT}	INFO	[jepsen worker 1] jepsen.util: 1	:ok	:generate	"n20"
+2025-06-02 16:09:28,102{GMT}	INFO	[jepsen worker 2] jepsen.util: 2	:invoke	:generate	nil
+2025-06-02 16:09:28,104{GMT}	INFO	[jepsen worker 2] jepsen.util: 2	:ok	:generate	"n30"
+2025-06-02 16:09:28,133{GMT}	INFO	[jepsen worker 3] jepsen.util: 3	:invoke	:generate	nil
+2025-06-02 16:09:28,135{GMT}	INFO	[jepsen worker 3] jepsen.util: 3	:ok	:generate	"n40"
+2025-06-02 16:09:28,264{GMT}	INFO	[jepsen worker 4] jepsen.util: 4	:invoke	:generate	nil
+2025-06-02 16:09:28,265{GMT}	INFO	[jepsen worker 4] jepsen.util: 4	:ok	:generate	"n50"
+2025-06-02 16:09:28,443{GMT}	INFO	[jepsen worker 0] jepsen.util: 0	:invoke	:generate	nil
+2025-06-02 16:09:28,446{GMT}	INFO	[jepsen worker 0] jepsen.util: 0	:ok	:generate	"n10"
+2025-06-02 16:09:28,632{GMT}	INFO	[jepsen worker 0] jepsen.util: 0	:invoke	:generate	nil
+2025-06-02 16:09:28,637{GMT}	INFO	[jepsen worker 0] jepsen.util: 0	:ok	:generate	"n10"
+2025-06-02 16:09:28,837{GMT}	INFO	[jepsen worker 1] jepsen.util: 1	:invoke	:generate	nil
+2025-06-02 16:09:28,838{GMT}	INFO	[jepsen worker 1] jepsen.util: 1	:ok	:generate	"n20"
+2025-06-02 16:09:28,898{GMT}	INFO	[jepsen worker 2] jepsen.util: 2	:invoke	:generate	nil
+2025-06-02 16:09:28,899{GMT}	INFO	[jepsen worker 2] jepsen.util: 2	:ok	:generate	"n30"
+2025-06-02 16:09:29,091{GMT}	INFO	[jepsen worker 3] jepsen.util: 3	:invoke	:generate	nil
+2025-06-02 16:09:29,095{GMT}	INFO	[jepsen worker 3] jepsen.util: 3	:ok	:generate	"n40"
+2025-06-02 16:09:29,231{GMT}	INFO	[jepsen worker 4] jepsen.util: 4	:invoke	:generate	nil
+2025-06-02 16:09:29,234{GMT}	INFO	[jepsen worker 4] jepsen.util: 4	:ok	:generate	"n50"
+2025-06-02 16:09:29,264{GMT}	INFO	[jepsen worker 0] jepsen.util: 0	:invoke	:generate	nil
+2025-06-02 16:09:29,267{GMT}	INFO	[jepsen worker 0] jepsen.util: 0	:ok	:generate	"n10"
+2025-06-02 16:09:29,275{GMT}	INFO	[jepsen worker 0] jepsen.util: 0	:invoke	:generate	nil
+2025-06-02 16:09:29,278{GMT}	INFO	[jepsen worker 0] jepsen.util: 0	:ok	:generate	"n10"
+2025-06-02 16:09:29,434{GMT}	INFO	[jepsen worker 1] jepsen.util: 1	:invoke	:generate	nil
+2025-06-02 16:09:29,436{GMT}	INFO	[jepsen worker 1] jepsen.util: 1	:ok	:generate	"n20"
+2025-06-02 16:09:29,570{GMT}	INFO	[Jepsen shutdown hook] jepsen.core: Downloading DB logs before JVM shutdown...
