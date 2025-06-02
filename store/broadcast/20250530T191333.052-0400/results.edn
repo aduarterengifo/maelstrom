@@ -1,0 +1,71 @@
+{:perf {:latency-graph {:valid? true},
+        :rate-graph {:valid? true},
+        :valid? true},
+ :timeline {:valid? true},
+ :exceptions {:valid? true},
+ :stats {:valid? true,
+         :count 52,
+         :ok-count 52,
+         :fail-count 0,
+         :info-count 0,
+         :by-f {:broadcast {:valid? true,
+                            :count 27,
+                            :ok-count 27,
+                            :fail-count 0,
+                            :info-count 0},
+                :read {:valid? true,
+                       :count 25,
+                       :ok-count 25,
+                       :fail-count 0,
+                       :info-count 0}}},
+ :availability {:valid? true, :ok-fraction 1.0},
+ :net {:all {:send-count 784,
+             :recv-count 784,
+             :msg-count 784,
+             :msgs-per-op 15.076923},
+       :clients {:send-count 124, :recv-count 124, :msg-count 124},
+       :servers {:send-count 660,
+                 :recv-count 660,
+                 :msg-count 660,
+                 :msgs-per-op 12.692307},
+       :valid? true},
+ :workload {:worst-stale (),
+            :duplicated-count 0,
+            :valid? false,
+            :lost-count 27,
+            :lost (0
+                   1
+                   2
+                   3
+                   4
+                   5
+                   6
+                   7
+                   8
+                   9
+                   10
+                   11
+                   12
+                   13
+                   14
+                   15
+                   16
+                   17
+                   18
+                   19
+                   20
+                   21
+                   22
+                   23
+                   24
+                   25
+                   26),
+            :stable-count 0,
+            :stale-count 0,
+            :stale (),
+            :never-read-count 0,
+            :attempt-count 27,
+            :lost-latencies {0 0, 0.5 0, 0.95 0, 0.99 0, 1 0},
+            :never-read (),
+            :duplicated {}},
+ :valid? false}

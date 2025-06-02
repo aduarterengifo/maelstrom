@@ -1,0 +1,481 @@
+<html><head><style>.ops        { position: absolute; }
+.op         { position: absolute; padding: 2px; border-radius: 2px; box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24); transition: all 0.3s cubic-bezier(.25,.8,.25,1); overflow: hidden; }
+.op.invoke  { background: #eeeeee; }
+.op.ok      { background: #6DB6FE; }
+.op.info    { background: #FFAA26; }
+.op.fail    { background: #FEB5DA; }
+.op:target  { box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22); }
+</style></head><body><div><a href="/">jepsen</a> / <a href="/files/broadcast">broadcast</a> / <a href="/files/broadcast/20250530T191333.0520400">20250530T191333.0520400</a> / <a href="/files/broadcast/20250530T191333.0520400/">independent</a> / <a href="/files/broadcast/20250530T191333.0520400/independent/"></a></div><h1>broadcast key </h1><div class="ops"><a href="#i1"><div class="op ok" id="i1" style="width:100;left:0;top:0;height:16" title="Dur: 14 ms
+Err: nil
+Wall-clock Time: 2025-05-30T23:13:33.090Z
+
+Op:
+{:process 0
+ :type :ok
+ :f :read
+ :index 1
+ :value []}">0 read <br />[]</div></a><a href="#i3"><div class="op ok" id="i3" style="width:100;left:106;top:32;height:16" title="Dur: 2 ms
+Err: nil
+Wall-clock Time: 2025-05-30T23:13:33.117Z
+
+Op:
+{:process 1
+ :type :ok
+ :f :broadcast
+ :index 3
+ :value 0}">1 broadcast 0</div></a><a href="#i5"><div class="op ok" id="i5" style="width:100;left:212;top:64;height:16" title="Dur: 4 ms
+Err: nil
+Wall-clock Time: 2025-05-30T23:13:33.288Z
+
+Op:
+{:process 2
+ :type :ok
+ :f :read
+ :index 5
+ :value [&quot;0&quot;]}">2 read <br />["0"]</div></a><a href="#i7"><div class="op ok" id="i7" style="width:100;left:318;top:96;height:16" title="Dur: 7 ms
+Err: nil
+Wall-clock Time: 2025-05-30T23:13:33.314Z
+
+Op:
+{:process 3
+ :type :ok
+ :f :read
+ :index 7
+ :value [&quot;0&quot; &quot;0&quot;]}">3 read <br />["0" "0"]</div></a><a href="#i9"><div class="op ok" id="i9" style="width:100;left:424;top:128;height:16" title="Dur: 4 ms
+Err: nil
+Wall-clock Time: 2025-05-30T23:13:33.428Z
+
+Op:
+{:process 4
+ :type :ok
+ :f :broadcast
+ :index 9
+ :value 1}">4 broadcast 1</div></a><a href="#i11"><div class="op ok" id="i11" style="width:100;left:0;top:160;height:16" title="Dur: 3 ms
+Err: nil
+Wall-clock Time: 2025-05-30T23:13:33.476Z
+
+Op:
+{:process 0
+ :type :ok
+ :f :read
+ :index 11
+ :value [&quot;1&quot; &quot;1&quot; &quot;0&quot; &quot;0&quot; &quot;0&quot;]}">0 read <br />["1" "1" "0" "0" "0"]</div></a><a href="#i13"><div class="op ok" id="i13" style="width:100;left:0;top:192;height:16" title="Dur: 2 ms
+Err: nil
+Wall-clock Time: 2025-05-30T23:13:33.506Z
+
+Op:
+{:process 0
+ :type :ok
+ :f :broadcast
+ :index 13
+ :value 2}">0 broadcast 2</div></a><a href="#i15"><div class="op ok" id="i15" style="width:100;left:106;top:224;height:16" title="Dur: 3 ms
+Err: nil
+Wall-clock Time: 2025-05-30T23:13:33.643Z
+
+Op:
+{:process 1
+ :type :ok
+ :f :read
+ :index 15
+ :value [&quot;2&quot; &quot;2&quot; &quot;2&quot; &quot;2&quot; &quot;1&quot; &quot;1&quot; &quot;1&quot; &quot;1&quot; &quot;0&quot; &quot;0&quot; &quot;0&quot; &quot;0&quot;]}">1 read <br />["2" "2" "2" "2" "1" "1" "1" "1" "0" "0" "0" "0"]</div></a><a href="#i17"><div class="op ok" id="i17" style="width:100;left:212;top:256;height:16" title="Dur: 3 ms
+Err: nil
+Wall-clock Time: 2025-05-30T23:13:33.828Z
+
+Op:
+{:process 2
+ :type :ok
+ :f :broadcast
+ :index 17
+ :value 3}">2 broadcast 3</div></a><a href="#i19"><div class="op ok" id="i19" style="width:100;left:318;top:288;height:16" title="Dur: 4 ms
+Err: nil
+Wall-clock Time: 2025-05-30T23:13:33.994Z
+
+Op:
+{:process 3
+ :type :ok
+ :f :read
+ :index 19
+ :value [&quot;3&quot; &quot;3&quot; &quot;2&quot; &quot;2&quot; &quot;2&quot; &quot;1&quot; &quot;1&quot; &quot;1&quot; &quot;0&quot; &quot;0&quot;]}">3 read <br />["3" "3" "2" "2" "2" "1" "1" "1" "0" "0"]</div></a><a href="#i21"><div class="op ok" id="i21" style="width:100;left:424;top:320;height:16" title="Dur: 1 ms
+Err: nil
+Wall-clock Time: 2025-05-30T23:13:34.164Z
+
+Op:
+{:process 4
+ :type :ok
+ :f :broadcast
+ :index 21
+ :value 4}">4 broadcast 4</div></a><a href="#i23"><div class="op ok" id="i23" style="width:100;left:0;top:352;height:16" title="Dur: 3 ms
+Err: nil
+Wall-clock Time: 2025-05-30T23:13:34.371Z
+
+Op:
+{:process 0
+ :type :ok
+ :f :broadcast
+ :index 23
+ :value 5}">0 broadcast 5</div></a><a href="#i25"><div class="op ok" id="i25" style="width:100;left:0;top:384;height:16" title="Dur: 2 ms
+Err: nil
+Wall-clock Time: 2025-05-30T23:13:34.523Z
+
+Op:
+{:process 0
+ :type :ok
+ :f :read
+ :index 25
+ :value [&quot;5&quot; &quot;5&quot; &quot;5&quot; &quot;4&quot; &quot;4&quot; &quot;3&quot; &quot;3&quot; &quot;2&quot; &quot;2&quot; &quot;2&quot; &quot;1&quot; &quot;1&quot; &quot;0&quot; &quot;0&quot; &quot;0&quot;]}">0 read <br />["5" "5" "5" "4" "4" "3" "3" "2" "2" "2" "1" "1" "0" "0" "0"]</div></a><a href="#i27"><div class="op ok" id="i27" style="width:100;left:106;top:416;height:16" title="Dur: 2 ms
+Err: nil
+Wall-clock Time: 2025-05-30T23:13:34.568Z
+
+Op:
+{:process 1
+ :type :ok
+ :f :broadcast
+ :index 27
+ :value 6}">1 broadcast 6</div></a><a href="#i29"><div class="op ok" id="i29" style="width:100;left:212;top:448;height:16" title="Dur: 1 ms
+Err: nil
+Wall-clock Time: 2025-05-30T23:13:34.631Z
+
+Op:
+{:process 2
+ :type :ok
+ :f :broadcast
+ :index 29
+ :value 7}">2 broadcast 7</div></a><a href="#i31"><div class="op ok" id="i31" style="width:100;left:318;top:480;height:16" title="Dur: 1 ms
+Err: nil
+Wall-clock Time: 2025-05-30T23:13:34.771Z
+
+Op:
+{:process 3
+ :type :ok
+ :f :read
+ :index 31
+ :value [&quot;7&quot; &quot;7&quot; &quot;6&quot; &quot;6&quot; &quot;5&quot; &quot;5&quot; &quot;5&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;3&quot; &quot;3&quot; &quot;2&quot; &quot;2&quot; &quot;2&quot; &quot;1&quot; &quot;1&quot; &quot;1&quot; &quot;0&quot; &quot;0&quot;]}">3 read <br />["7" "7" "6" "6" "5" "5" "5" "4" "4" "4" "3" "3" "2" "2" "2" "1" "1" "1" "0" "0"]</div></a><a href="#i33"><div class="op ok" id="i33" style="width:100;left:424;top:512;height:16" title="Dur: 2 ms
+Err: nil
+Wall-clock Time: 2025-05-30T23:13:34.890Z
+
+Op:
+{:process 4
+ :type :ok
+ :f :broadcast
+ :index 33
+ :value 8}">4 broadcast 8</div></a><a href="#i35"><div class="op ok" id="i35" style="width:100;left:0;top:544;height:16" title="Dur: 1 ms
+Err: nil
+Wall-clock Time: 2025-05-30T23:13:34.921Z
+
+Op:
+{:process 0
+ :type :ok
+ :f :broadcast
+ :index 35
+ :value 9}">0 broadcast 9</div></a><a href="#i37"><div class="op ok" id="i37" style="width:100;left:0;top:576;height:16" title="Dur: 1 ms
+Err: nil
+Wall-clock Time: 2025-05-30T23:13:35.057Z
+
+Op:
+{:process 0
+ :type :ok
+ :f :broadcast
+ :index 37
+ :value 10}">0 broadcast 10</div></a><a href="#i39"><div class="op ok" id="i39" style="width:100;left:106;top:608;height:16" title="Dur: 1 ms
+Err: nil
+Wall-clock Time: 2025-05-30T23:13:35.154Z
+
+Op:
+{:process 1
+ :type :ok
+ :f :broadcast
+ :index 39
+ :value 11}">1 broadcast 11</div></a><a href="#i41"><div class="op ok" id="i41" style="width:100;left:212;top:640;height:16" title="Dur: 0 ms
+Err: nil
+Wall-clock Time: 2025-05-30T23:13:35.223Z
+
+Op:
+{:process 2
+ :type :ok
+ :f :broadcast
+ :index 41
+ :value 12}">2 broadcast 12</div></a><a href="#i43"><div class="op ok" id="i43" style="width:100;left:318;top:672;height:16" title="Dur: 2 ms
+Err: nil
+Wall-clock Time: 2025-05-30T23:13:35.272Z
+
+Op:
+{:process 3
+ :type :ok
+ :f :broadcast
+ :index 43
+ :value 13}">3 broadcast 13</div></a><a href="#i45"><div class="op ok" id="i45" style="width:100;left:424;top:704;height:16" title="Dur: 2 ms
+Err: nil
+Wall-clock Time: 2025-05-30T23:13:35.357Z
+
+Op:
+{:process 4
+ :type :ok
+ :f :read
+ :index 45
+ :value [&quot;13&quot; &quot;13&quot; &quot;13&quot; &quot;12&quot; &quot;12&quot; &quot;12&quot; &quot;11&quot; &quot;11&quot; &quot;11&quot; &quot;10&quot; &quot;10&quot; &quot;9&quot; &quot;9&quot; &quot;8&quot; &quot;8&quot; &quot;8&quot; &quot;7&quot; &quot;7&quot; &quot;7&quot; &quot;6&quot; &quot;6&quot; &quot;6&quot; &quot;5&quot; &quot;5&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;3&quot; &quot;3&quot; &quot;2&quot; &quot;2&quot; &quot;1&quot; &quot;1&quot; &quot;1&quot; &quot;0&quot; &quot;0&quot; &quot;0&quot;]}">4 read <br />["13" "13" "13" "12" "12" "12" "11" "11" "11" "10" "10" "9" "9" "8" "8" "8" "7" "7" "7" "6" "6" "6" "5" "5" "4" "4" "4" "3" "3" "2" "2" "1" "1" "1" "0" "0" "0"]</div></a><a href="#i47"><div class="op ok" id="i47" style="width:100;left:0;top:736;height:16" title="Dur: 1 ms
+Err: nil
+Wall-clock Time: 2025-05-30T23:13:35.420Z
+
+Op:
+{:process 0
+ :type :ok
+ :f :broadcast
+ :index 47
+ :value 14}">0 broadcast 14</div></a><a href="#i49"><div class="op ok" id="i49" style="width:100;left:0;top:768;height:16" title="Dur: 1 ms
+Err: nil
+Wall-clock Time: 2025-05-30T23:13:35.611Z
+
+Op:
+{:process 0
+ :type :ok
+ :f :read
+ :index 49
+ :value [&quot;14&quot; &quot;14&quot; &quot;14&quot; &quot;13&quot; &quot;13&quot; &quot;13&quot; &quot;12&quot; &quot;12&quot; &quot;12&quot; &quot;11&quot; &quot;11&quot; &quot;11&quot; &quot;10&quot; &quot;10&quot; &quot;10&quot; &quot;9&quot; &quot;9&quot; &quot;9&quot; &quot;8&quot; &quot;8&quot; &quot;7&quot; &quot;7&quot; &quot;7&quot; &quot;6&quot; &quot;6&quot; &quot;6&quot; &quot;5&quot; &quot;5&quot; &quot;5&quot; &quot;4&quot; &quot;4&quot; &quot;3&quot; &quot;3&quot; &quot;2&quot; &quot;2&quot; &quot;2&quot; &quot;1&quot; &quot;1&quot; &quot;0&quot; &quot;0&quot; &quot;0&quot;]}">0 read <br />["14" "14" "14" "13" "13" "13" "12" "12" "12" "11" "11" "11" "10" "10" "10" "9" "9" "9" "8" "8" "7" "7" "7" "6" "6" "6" "5" "5" "5" "4" "4" "3" "3" "2" "2" "2" "1" "1" "0" "0" "0"]</div></a><a href="#i51"><div class="op ok" id="i51" style="width:100;left:106;top:800;height:16" title="Dur: 2 ms
+Err: nil
+Wall-clock Time: 2025-05-30T23:13:35.698Z
+
+Op:
+{:process 1
+ :type :ok
+ :f :read
+ :index 51
+ :value [&quot;14&quot; &quot;14&quot; &quot;14&quot; &quot;14&quot; &quot;13&quot; &quot;13&quot; &quot;13&quot; &quot;13&quot; &quot;12&quot; &quot;12&quot; &quot;12&quot; &quot;11&quot; &quot;11&quot; &quot;11&quot; &quot;11&quot; &quot;10&quot; &quot;10&quot; &quot;10&quot; &quot;10&quot; &quot;9&quot; &quot;9&quot; &quot;9&quot; &quot;9&quot; &quot;8&quot; &quot;8&quot; &quot;8&quot; &quot;8&quot; &quot;7&quot; &quot;7&quot; &quot;7&quot; &quot;6&quot; &quot;6&quot; &quot;6&quot; &quot;6&quot; &quot;5&quot; &quot;5&quot; &quot;5&quot; &quot;5&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;3&quot; &quot;3&quot; &quot;3&quot; &quot;2&quot; &quot;2&quot; &quot;2&quot; &quot;2&quot; &quot;1&quot; &quot;1&quot; &quot;1&quot; &quot;1&quot; &quot;0&quot; &quot;0&quot; &quot;0&quot; &quot;0&quot;]}">1 read <br />["14" "14" "14" "14" "13" "13" "13" "13" "12" "12" "12" "11" "11" "11" "11" "10" "10" "10" "10" "9" "9" "9" "9" "8" "8" "8" "8" "7" "7" "7" "6" "6" "6" "6" "5" "5" "5" "5" "4" "4" "4" "4" "3" "3" "3" "2" "2" "2" "2" "1" "1" "1" "1" "0" "0" "0" "0"]</div></a><a href="#i53"><div class="op ok" id="i53" style="width:100;left:212;top:832;height:16" title="Dur: 1 ms
+Err: nil
+Wall-clock Time: 2025-05-30T23:13:35.755Z
+
+Op:
+{:process 2
+ :type :ok
+ :f :read
+ :index 53
+ :value [&quot;14&quot; &quot;13&quot; &quot;13&quot; &quot;12&quot; &quot;12&quot; &quot;11&quot; &quot;10&quot; &quot;9&quot; &quot;8&quot; &quot;7&quot; &quot;7&quot; &quot;6&quot; &quot;5&quot; &quot;4&quot; &quot;3&quot; &quot;3&quot; &quot;2&quot; &quot;1&quot; &quot;0&quot;]}">2 read <br />["14" "13" "13" "12" "12" "11" "10" "9" "8" "7" "7" "6" "5" "4" "3" "3" "2" "1" "0"]</div></a><a href="#i55"><div class="op ok" id="i55" style="width:100;left:318;top:864;height:16" title="Dur: 0 ms
+Err: nil
+Wall-clock Time: 2025-05-30T23:13:35.817Z
+
+Op:
+{:process 3
+ :type :ok
+ :f :broadcast
+ :index 55
+ :value 15}">3 broadcast 15</div></a><a href="#i57"><div class="op ok" id="i57" style="width:100;left:424;top:896;height:16" title="Dur: 1 ms
+Err: nil
+Wall-clock Time: 2025-05-30T23:13:35.904Z
+
+Op:
+{:process 4
+ :type :ok
+ :f :broadcast
+ :index 57
+ :value 16}">4 broadcast 16</div></a><a href="#i59"><div class="op ok" id="i59" style="width:100;left:0;top:928;height:16" title="Dur: 2 ms
+Err: nil
+Wall-clock Time: 2025-05-30T23:13:36.013Z
+
+Op:
+{:process 0
+ :type :ok
+ :f :read
+ :index 59
+ :value [&quot;16&quot; &quot;16&quot; &quot;15&quot; &quot;15&quot; &quot;15&quot; &quot;14&quot; &quot;14&quot; &quot;14&quot; &quot;13&quot; &quot;13&quot; &quot;13&quot; &quot;12&quot; &quot;12&quot; &quot;12&quot; &quot;11&quot; &quot;11&quot; &quot;11&quot; &quot;10&quot; &quot;10&quot; &quot;10&quot; &quot;9&quot; &quot;9&quot; &quot;9&quot; &quot;8&quot; &quot;8&quot; &quot;7&quot; &quot;7&quot; &quot;7&quot; &quot;6&quot; &quot;6&quot; &quot;6&quot; &quot;5&quot; &quot;5&quot; &quot;5&quot; &quot;4&quot; &quot;4&quot; &quot;3&quot; &quot;3&quot; &quot;2&quot; &quot;2&quot; &quot;2&quot; &quot;1&quot; &quot;1&quot; &quot;0&quot; &quot;0&quot; &quot;0&quot;]}">0 read <br />["16" "16" "15" "15" "15" "14" "14" "14" "13" "13" "13" "12" "12" "12" "11" "11" "11" "10" "10" "10" "9" "9" "9" "8" "8" "7" "7" "7" "6" "6" "6" "5" "5" "5" "4" "4" "3" "3" "2" "2" "2" "1" "1" "0" "0" "0"]</div></a><a href="#i61"><div class="op ok" id="i61" style="width:100;left:0;top:960;height:16" title="Dur: 1 ms
+Err: nil
+Wall-clock Time: 2025-05-30T23:13:36.018Z
+
+Op:
+{:process 0
+ :type :ok
+ :f :broadcast
+ :index 61
+ :value 17}">0 broadcast 17</div></a><a href="#i63"><div class="op ok" id="i63" style="width:100;left:106;top:992;height:16" title="Dur: 2 ms
+Err: nil
+Wall-clock Time: 2025-05-30T23:13:36.100Z
+
+Op:
+{:process 1
+ :type :ok
+ :f :read
+ :index 63
+ :value [&quot;17&quot; &quot;17&quot; &quot;17&quot; &quot;17&quot; &quot;16&quot; &quot;16&quot; &quot;16&quot; &quot;16&quot; &quot;15&quot; &quot;15&quot; &quot;15&quot; &quot;15&quot; &quot;14&quot; &quot;14&quot; &quot;14&quot; &quot;14&quot; &quot;13&quot; &quot;13&quot; &quot;13&quot; &quot;13&quot; &quot;12&quot; &quot;12&quot; &quot;12&quot; &quot;11&quot; &quot;11&quot; &quot;11&quot; &quot;11&quot; &quot;10&quot; &quot;10&quot; &quot;10&quot; &quot;10&quot; &quot;9&quot; &quot;9&quot; &quot;9&quot; &quot;9&quot; &quot;8&quot; &quot;8&quot; &quot;8&quot; &quot;8&quot; &quot;7&quot; &quot;7&quot; &quot;7&quot; &quot;6&quot; &quot;6&quot; &quot;6&quot; &quot;6&quot; &quot;5&quot; &quot;5&quot; &quot;5&quot; &quot;5&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;3&quot; &quot;3&quot; &quot;3&quot; &quot;2&quot; &quot;2&quot; &quot;2&quot; &quot;2&quot; &quot;1&quot; &quot;1&quot; &quot;1&quot; &quot;1&quot; &quot;0&quot; &quot;0&quot; &quot;0&quot; &quot;0&quot;]}">1 read <br />["17" "17" "17" "17" "16" "16" "16" "16" "15" "15" "15" "15" "14" "14" "14" "14" "13" "13" "13" "13" "12" "12" "12" "11" "11" "11" "11" "10" "10" "10" "10" "9" "9" "9" "9" "8" "8" "8" "8" "7" "7" "7" "6" "6" "6" "6" "5" "5" "5" "5" "4" "4" "4" "4" "3" "3" "3" "2" "2" "2" "2" "1" "1" "1" "1" "0" "0" "0" "0"]</div></a><a href="#i65"><div class="op ok" id="i65" style="width:100;left:212;top:1024;height:16" title="Dur: 2 ms
+Err: nil
+Wall-clock Time: 2025-05-30T23:13:36.195Z
+
+Op:
+{:process 2
+ :type :ok
+ :f :broadcast
+ :index 65
+ :value 18}">2 broadcast 18</div></a><a href="#i67"><div class="op ok" id="i67" style="width:100;left:318;top:1056;height:16" title="Dur: 2 ms
+Err: nil
+Wall-clock Time: 2025-05-30T23:13:36.346Z
+
+Op:
+{:process 3
+ :type :ok
+ :f :broadcast
+ :index 67
+ :value 19}">3 broadcast 19</div></a><a href="#i69"><div class="op ok" id="i69" style="width:100;left:424;top:1088;height:16" title="Dur: 3 ms
+Err: nil
+Wall-clock Time: 2025-05-30T23:13:36.552Z
+
+Op:
+{:process 4
+ :type :ok
+ :f :read
+ :index 69
+ :value [&quot;19&quot; &quot;19&quot; &quot;19&quot; &quot;18&quot; &quot;18&quot; &quot;18&quot; &quot;17&quot; &quot;17&quot; &quot;16&quot; &quot;16&quot; &quot;16&quot; &quot;15&quot; &quot;15&quot; &quot;15&quot; &quot;14&quot; &quot;14&quot; &quot;13&quot; &quot;13&quot; &quot;13&quot; &quot;12&quot; &quot;12&quot; &quot;12&quot; &quot;11&quot; &quot;11&quot; &quot;11&quot; &quot;10&quot; &quot;10&quot; &quot;9&quot; &quot;9&quot; &quot;8&quot; &quot;8&quot; &quot;8&quot; &quot;7&quot; &quot;7&quot; &quot;7&quot; &quot;6&quot; &quot;6&quot; &quot;6&quot; &quot;5&quot; &quot;5&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;3&quot; &quot;3&quot; &quot;2&quot; &quot;2&quot; &quot;1&quot; &quot;1&quot; &quot;1&quot; &quot;0&quot; &quot;0&quot; &quot;0&quot;]}">4 read <br />["19" "19" "19" "18" "18" "18" "17" "17" "16" "16" "16" "15" "15" "15" "14" "14" "13" "13" "13" "12" "12" "12" "11" "11" "11" "10" "10" "9" "9" "8" "8" "8" "7" "7" "7" "6" "6" "6" "5" "5" "4" "4" "4" "3" "3" "2" "2" "1" "1" "1" "0" "0" "0"]</div></a><a href="#i71"><div class="op ok" id="i71" style="width:100;left:0;top:1120;height:16" title="Dur: 1 ms
+Err: nil
+Wall-clock Time: 2025-05-30T23:13:36.583Z
+
+Op:
+{:process 0
+ :type :ok
+ :f :broadcast
+ :index 71
+ :value 20}">0 broadcast 20</div></a><a href="#i73"><div class="op ok" id="i73" style="width:100;left:0;top:1152;height:16" title="Dur: 1 ms
+Err: nil
+Wall-clock Time: 2025-05-30T23:13:36.708Z
+
+Op:
+{:process 0
+ :type :ok
+ :f :broadcast
+ :index 73
+ :value 21}">0 broadcast 21</div></a><a href="#i75"><div class="op ok" id="i75" style="width:100;left:106;top:1184;height:16" title="Dur: 3 ms
+Err: nil
+Wall-clock Time: 2025-05-30T23:13:36.804Z
+
+Op:
+{:process 1
+ :type :ok
+ :f :broadcast
+ :index 75
+ :value 22}">1 broadcast 22</div></a><a href="#i77"><div class="op ok" id="i77" style="width:100;left:212;top:1216;height:16" title="Dur: 3 ms
+Err: nil
+Wall-clock Time: 2025-05-30T23:13:36.891Z
+
+Op:
+{:process 2
+ :type :ok
+ :f :read
+ :index 77
+ :value [&quot;22&quot; &quot;21&quot; &quot;20&quot; &quot;19&quot; &quot;19&quot; &quot;18&quot; &quot;18&quot; &quot;17&quot; &quot;16&quot; &quot;15&quot; &quot;15&quot; &quot;14&quot; &quot;13&quot; &quot;13&quot; &quot;12&quot; &quot;12&quot; &quot;11&quot; &quot;10&quot; &quot;9&quot; &quot;8&quot; &quot;7&quot; &quot;7&quot; &quot;6&quot; &quot;5&quot; &quot;4&quot; &quot;3&quot; &quot;3&quot; &quot;2&quot; &quot;1&quot; &quot;0&quot;]}">2 read <br />["22" "21" "20" "19" "19" "18" "18" "17" "16" "15" "15" "14" "13" "13" "12" "12" "11" "10" "9" "8" "7" "7" "6" "5" "4" "3" "3" "2" "1" "0"]</div></a><a href="#i79"><div class="op ok" id="i79" style="width:100;left:318;top:1248;height:16" title="Dur: 3 ms
+Err: nil
+Wall-clock Time: 2025-05-30T23:13:36.985Z
+
+Op:
+{:process 3
+ :type :ok
+ :f :read
+ :index 79
+ :value [&quot;22&quot; &quot;22&quot; &quot;21&quot; &quot;21&quot; &quot;21&quot; &quot;20&quot; &quot;20&quot; &quot;20&quot; &quot;19&quot; &quot;19&quot; &quot;19&quot; &quot;18&quot; &quot;18&quot; &quot;17&quot; &quot;17&quot; &quot;17&quot; &quot;16&quot; &quot;16&quot; &quot;16&quot; &quot;15&quot; &quot;15&quot; &quot;15&quot; &quot;14&quot; &quot;14&quot; &quot;14&quot; &quot;13&quot; &quot;13&quot; &quot;13&quot; &quot;12&quot; &quot;12&quot; &quot;11&quot; &quot;11&quot; &quot;10&quot; &quot;10&quot; &quot;10&quot; &quot;9&quot; &quot;9&quot; &quot;9&quot; &quot;8&quot; &quot;8&quot; &quot;8&quot; &quot;7&quot; &quot;7&quot; &quot;6&quot; &quot;6&quot; &quot;5&quot; &quot;5&quot; &quot;5&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;3&quot; &quot;3&quot; &quot;2&quot; &quot;2&quot; &quot;2&quot; &quot;1&quot; &quot;1&quot; &quot;1&quot; &quot;0&quot; &quot;0&quot;]}">3 read <br />["22" "22" "21" "21" "21" "20" "20" "20" "19" "19" "19" "18" "18" "17" "17" "17" "16" "16" "16" "15" "15" "15" "14" "14" "14" "13" "13" "13" "12" "12" "11" "11" "10" "10" "10" "9" "9" "9" "8" "8" "8" "7" "7" "6" "6" "5" "5" "5" "4" "4" "4" "3" "3" "2" "2" "2" "1" "1" "1" "0" "0"]</div></a><a href="#i81"><div class="op ok" id="i81" style="width:100;left:424;top:1280;height:16" title="Dur: 4 ms
+Err: nil
+Wall-clock Time: 2025-05-30T23:13:37.183Z
+
+Op:
+{:process 4
+ :type :ok
+ :f :read
+ :index 81
+ :value [&quot;22&quot; &quot;22&quot; &quot;22&quot; &quot;21&quot; &quot;21&quot; &quot;20&quot; &quot;20&quot; &quot;19&quot; &quot;19&quot; &quot;19&quot; &quot;18&quot; &quot;18&quot; &quot;18&quot; &quot;17&quot; &quot;17&quot; &quot;16&quot; &quot;16&quot; &quot;16&quot; &quot;15&quot; &quot;15&quot; &quot;15&quot; &quot;14&quot; &quot;14&quot; &quot;13&quot; &quot;13&quot; &quot;13&quot; &quot;12&quot; &quot;12&quot; &quot;12&quot; &quot;11&quot; &quot;11&quot; &quot;11&quot; &quot;10&quot; &quot;10&quot; &quot;9&quot; &quot;9&quot; &quot;8&quot; &quot;8&quot; &quot;8&quot; &quot;7&quot; &quot;7&quot; &quot;7&quot; &quot;6&quot; &quot;6&quot; &quot;6&quot; &quot;5&quot; &quot;5&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;3&quot; &quot;3&quot; &quot;2&quot; &quot;2&quot; &quot;1&quot; &quot;1&quot; &quot;1&quot; &quot;0&quot; &quot;0&quot; &quot;0&quot;]}">4 read <br />["22" "22" "22" "21" "21" "20" "20" "19" "19" "19" "18" "18" "18" "17" "17" "16" "16" "16" "15" "15" "15" "14" "14" "13" "13" "13" "12" "12" "12" "11" "11" "11" "10" "10" "9" "9" "8" "8" "8" "7" "7" "7" "6" "6" "6" "5" "5" "4" "4" "4" "3" "3" "2" "2" "1" "1" "1" "0" "0" "0"]</div></a><a href="#i83"><div class="op ok" id="i83" style="width:100;left:0;top:1312;height:16" title="Dur: 2 ms
+Err: nil
+Wall-clock Time: 2025-05-30T23:13:37.378Z
+
+Op:
+{:process 0
+ :type :ok
+ :f :broadcast
+ :index 83
+ :value 23}">0 broadcast 23</div></a><a href="#i85"><div class="op ok" id="i85" style="width:100;left:0;top:1344;height:16" title="Dur: 3 ms
+Err: nil
+Wall-clock Time: 2025-05-30T23:13:37.496Z
+
+Op:
+{:process 0
+ :type :ok
+ :f :read
+ :index 85
+ :value [&quot;23&quot; &quot;23&quot; &quot;23&quot; &quot;22&quot; &quot;22&quot; &quot;22&quot; &quot;21&quot; &quot;21&quot; &quot;21&quot; &quot;20&quot; &quot;20&quot; &quot;20&quot; &quot;19&quot; &quot;19&quot; &quot;19&quot; &quot;18&quot; &quot;18&quot; &quot;18&quot; &quot;17&quot; &quot;17&quot; &quot;17&quot; &quot;16&quot; &quot;16&quot; &quot;15&quot; &quot;15&quot; &quot;15&quot; &quot;14&quot; &quot;14&quot; &quot;14&quot; &quot;13&quot; &quot;13&quot; &quot;13&quot; &quot;12&quot; &quot;12&quot; &quot;12&quot; &quot;11&quot; &quot;11&quot; &quot;11&quot; &quot;10&quot; &quot;10&quot; &quot;10&quot; &quot;9&quot; &quot;9&quot; &quot;9&quot; &quot;8&quot; &quot;8&quot; &quot;7&quot; &quot;7&quot; &quot;7&quot; &quot;6&quot; &quot;6&quot; &quot;6&quot; &quot;5&quot; &quot;5&quot; &quot;5&quot; &quot;4&quot; &quot;4&quot; &quot;3&quot; &quot;3&quot; &quot;2&quot; &quot;2&quot; &quot;2&quot; &quot;1&quot; &quot;1&quot; &quot;0&quot; &quot;0&quot; &quot;0&quot;]}">0 read <br />["23" "23" "23" "22" "22" "22" "21" "21" "21" "20" "20" "20" "19" "19" "19" "18" "18" "18" "17" "17" "17" "16" "16" "15" "15" "15" "14" "14" "14" "13" "13" "13" "12" "12" "12" "11" "11" "11" "10" "10" "10" "9" "9" "9" "8" "8" "7" "7" "7" "6" "6" "6" "5" "5" "5" "4" "4" "3" "3" "2" "2" "2" "1" "1" "0" "0" "0"]</div></a><a href="#i87"><div class="op ok" id="i87" style="width:100;left:106;top:1376;height:16" title="Dur: 3 ms
+Err: nil
+Wall-clock Time: 2025-05-30T23:13:37.688Z
+
+Op:
+{:process 1
+ :type :ok
+ :f :broadcast
+ :index 87
+ :value 24}">1 broadcast 24</div></a><a href="#i89"><div class="op ok" id="i89" style="width:100;left:212;top:1408;height:16" title="Dur: 3 ms
+Err: nil
+Wall-clock Time: 2025-05-30T23:13:37.779Z
+
+Op:
+{:process 2
+ :type :ok
+ :f :broadcast
+ :index 89
+ :value 25}">2 broadcast 25</div></a><a href="#i91"><div class="op ok" id="i91" style="width:100;left:318;top:1440;height:16" title="Dur: 1 ms
+Err: nil
+Wall-clock Time: 2025-05-30T23:13:37.829Z
+
+Op:
+{:process 3
+ :type :ok
+ :f :broadcast
+ :index 91
+ :value 26}">3 broadcast 26</div></a><a href="#i93"><div class="op ok" id="i93" style="width:100;left:424;top:1472;height:16" title="Dur: 2 ms
+Err: nil
+Wall-clock Time: 2025-05-30T23:13:37.978Z
+
+Op:
+{:process 4
+ :type :ok
+ :f :read
+ :index 93
+ :value [&quot;26&quot; &quot;26&quot; &quot;26&quot; &quot;25&quot; &quot;25&quot; &quot;25&quot; &quot;24&quot; &quot;24&quot; &quot;24&quot; &quot;23&quot; &quot;23&quot; &quot;22&quot; &quot;22&quot; &quot;22&quot; &quot;21&quot; &quot;21&quot; &quot;20&quot; &quot;20&quot; &quot;19&quot; &quot;19&quot; &quot;19&quot; &quot;18&quot; &quot;18&quot; &quot;18&quot; &quot;17&quot; &quot;17&quot; &quot;16&quot; &quot;16&quot; &quot;16&quot; &quot;15&quot; &quot;15&quot; &quot;15&quot; &quot;14&quot; &quot;14&quot; &quot;13&quot; &quot;13&quot; &quot;13&quot; &quot;12&quot; &quot;12&quot; &quot;12&quot; &quot;11&quot; &quot;11&quot; &quot;11&quot; &quot;10&quot; &quot;10&quot; &quot;9&quot; &quot;9&quot; &quot;8&quot; &quot;8&quot; &quot;8&quot; &quot;7&quot; &quot;7&quot; &quot;7&quot; &quot;6&quot; &quot;6&quot; &quot;6&quot; &quot;5&quot; &quot;5&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;3&quot; &quot;3&quot; &quot;2&quot; &quot;2&quot; &quot;1&quot; &quot;1&quot; &quot;1&quot; &quot;0&quot; &quot;0&quot; &quot;0&quot;]}">4 read <br />["26" "26" "26" "25" "25" "25" "24" "24" "24" "23" "23" "22" "22" "22" "21" "21" "20" "20" "19" "19" "19" "18" "18" "18" "17" "17" "16" "16" "16" "15" "15" "15" "14" "14" "13" "13" "13" "12" "12" "12" "11" "11" "11" "10" "10" "9" "9" "8" "8" "8" "7" "7" "7" "6" "6" "6" "5" "5" "4" "4" "4" "3" "3" "2" "2" "1" "1" "1" "0" "0" "0"]</div></a><a href="#i99"><div class="op ok" id="i99" style="width:100;left:212;top:1504;height:80" title="Dur: 3 ms
+Err: nil
+Wall-clock Time: 2025-05-30T23:13:47.986Z
+
+Op:
+{:process 2
+ :type :ok
+ :f :read
+ :index 99
+ :final? true
+ :value [&quot;26&quot; &quot;26&quot; &quot;25&quot; &quot;25&quot; &quot;24&quot; &quot;23&quot; &quot;22&quot; &quot;21&quot; &quot;20&quot; &quot;19&quot; &quot;19&quot; &quot;18&quot; &quot;18&quot; &quot;17&quot; &quot;16&quot; &quot;15&quot; &quot;15&quot; &quot;14&quot; &quot;13&quot; &quot;13&quot; &quot;12&quot; &quot;12&quot; &quot;11&quot; &quot;10&quot; &quot;9&quot; &quot;8&quot; &quot;7&quot; &quot;7&quot; &quot;6&quot; &quot;5&quot; &quot;4&quot; &quot;3&quot; &quot;3&quot; &quot;2&quot; &quot;1&quot; &quot;0&quot;]}">2 read <br />["26" "26" "25" "25" "24" "23" "22" "21" "20" "19" "19" "18" "18" "17" "16" "15" "15" "14" "13" "13" "12" "12" "11" "10" "9" "8" "7" "7" "6" "5" "4" "3" "3" "2" "1" "0"]</div></a><a href="#i100"><div class="op ok" id="i100" style="width:100;left:424;top:1552;height:48" title="Dur: 1 ms
+Err: nil
+Wall-clock Time: 2025-05-30T23:13:47.986Z
+
+Op:
+{:process 4
+ :type :ok
+ :f :read
+ :index 100
+ :final? true
+ :value [&quot;26&quot; &quot;26&quot; &quot;26&quot; &quot;25&quot; &quot;25&quot; &quot;25&quot; &quot;24&quot; &quot;24&quot; &quot;24&quot; &quot;23&quot; &quot;23&quot; &quot;22&quot; &quot;22&quot; &quot;22&quot; &quot;21&quot; &quot;21&quot; &quot;20&quot; &quot;20&quot; &quot;19&quot; &quot;19&quot; &quot;19&quot; &quot;18&quot; &quot;18&quot; &quot;18&quot; &quot;17&quot; &quot;17&quot; &quot;16&quot; &quot;16&quot; &quot;16&quot; &quot;15&quot; &quot;15&quot; &quot;15&quot; &quot;14&quot; &quot;14&quot; &quot;13&quot; &quot;13&quot; &quot;13&quot; &quot;12&quot; &quot;12&quot; &quot;12&quot; &quot;11&quot; &quot;11&quot; &quot;11&quot; &quot;10&quot; &quot;10&quot; &quot;9&quot; &quot;9&quot; &quot;8&quot; &quot;8&quot; &quot;8&quot; &quot;7&quot; &quot;7&quot; &quot;7&quot; &quot;6&quot; &quot;6&quot; &quot;6&quot; &quot;5&quot; &quot;5&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;3&quot; &quot;3&quot; &quot;2&quot; &quot;2&quot; &quot;1&quot; &quot;1&quot; &quot;1&quot; &quot;0&quot; &quot;0&quot; &quot;0&quot;]}">4 read <br />["26" "26" "26" "25" "25" "25" "24" "24" "24" "23" "23" "22" "22" "22" "21" "21" "20" "20" "19" "19" "19" "18" "18" "18" "17" "17" "16" "16" "16" "15" "15" "15" "14" "14" "13" "13" "13" "12" "12" "12" "11" "11" "11" "10" "10" "9" "9" "8" "8" "8" "7" "7" "7" "6" "6" "6" "5" "5" "4" "4" "4" "3" "3" "2" "2" "1" "1" "1" "0" "0" "0"]</div></a><a href="#i101"><div class="op ok" id="i101" style="width:100;left:0;top:1536;height:80" title="Dur: 1 ms
+Err: nil
+Wall-clock Time: 2025-05-30T23:13:47.986Z
+
+Op:
+{:process 0
+ :type :ok
+ :f :read
+ :index 101
+ :final? true
+ :value [&quot;26&quot; &quot;26&quot; &quot;26&quot; &quot;25&quot; &quot;25&quot; &quot;25&quot; &quot;24&quot; &quot;24&quot; &quot;24&quot; &quot;23&quot; &quot;23&quot; &quot;23&quot; &quot;22&quot; &quot;22&quot; &quot;22&quot; &quot;21&quot; &quot;21&quot; &quot;21&quot; &quot;20&quot; &quot;20&quot; &quot;20&quot; &quot;19&quot; &quot;19&quot; &quot;19&quot; &quot;18&quot; &quot;18&quot; &quot;18&quot; &quot;17&quot; &quot;17&quot; &quot;17&quot; &quot;16&quot; &quot;16&quot; &quot;15&quot; &quot;15&quot; &quot;15&quot; &quot;14&quot; &quot;14&quot; &quot;14&quot; &quot;13&quot; &quot;13&quot; &quot;13&quot; &quot;12&quot; &quot;12&quot; &quot;12&quot; &quot;11&quot; &quot;11&quot; &quot;11&quot; &quot;10&quot; &quot;10&quot; &quot;10&quot; &quot;9&quot; &quot;9&quot; &quot;9&quot; &quot;8&quot; &quot;8&quot; &quot;7&quot; &quot;7&quot; &quot;7&quot; &quot;6&quot; &quot;6&quot; &quot;6&quot; &quot;5&quot; &quot;5&quot; &quot;5&quot; &quot;4&quot; &quot;4&quot; &quot;3&quot; &quot;3&quot; &quot;2&quot; &quot;2&quot; &quot;2&quot; &quot;1&quot; &quot;1&quot; &quot;0&quot; &quot;0&quot; &quot;0&quot;]}">0 read <br />["26" "26" "26" "25" "25" "25" "24" "24" "24" "23" "23" "23" "22" "22" "22" "21" "21" "21" "20" "20" "20" "19" "19" "19" "18" "18" "18" "17" "17" "17" "16" "16" "15" "15" "15" "14" "14" "14" "13" "13" "13" "12" "12" "12" "11" "11" "11" "10" "10" "10" "9" "9" "9" "8" "8" "7" "7" "7" "6" "6" "6" "5" "5" "5" "4" "4" "3" "3" "2" "2" "2" "1" "1" "0" "0" "0"]</div></a><a href="#i102"><div class="op ok" id="i102" style="width:100;left:106;top:1520;height:112" title="Dur: 1 ms
+Err: nil
+Wall-clock Time: 2025-05-30T23:13:47.986Z
+
+Op:
+{:process 1
+ :type :ok
+ :f :read
+ :index 102
+ :final? true
+ :value [&quot;26&quot; &quot;26&quot; &quot;26&quot; &quot;26&quot; &quot;25&quot; &quot;25&quot; &quot;25&quot; &quot;24&quot; &quot;24&quot; &quot;24&quot; &quot;24&quot; &quot;23&quot; &quot;23&quot; &quot;23&quot; &quot;23&quot; &quot;22&quot; &quot;22&quot; &quot;22&quot; &quot;22&quot; &quot;21&quot; &quot;21&quot; &quot;21&quot; &quot;21&quot; &quot;20&quot; &quot;20&quot; &quot;20&quot; &quot;20&quot; &quot;19&quot; &quot;19&quot; &quot;19&quot; &quot;19&quot; &quot;18&quot; &quot;18&quot; &quot;18&quot; &quot;17&quot; &quot;17&quot; &quot;17&quot; &quot;17&quot; &quot;16&quot; &quot;16&quot; &quot;16&quot; &quot;16&quot; &quot;15&quot; &quot;15&quot; &quot;15&quot; &quot;15&quot; &quot;14&quot; &quot;14&quot; &quot;14&quot; &quot;14&quot; &quot;13&quot; &quot;13&quot; &quot;13&quot; &quot;13&quot; &quot;12&quot; &quot;12&quot; &quot;12&quot; &quot;11&quot; &quot;11&quot; &quot;11&quot; &quot;11&quot; &quot;10&quot; &quot;10&quot; &quot;10&quot; &quot;10&quot; &quot;9&quot; &quot;9&quot; &quot;9&quot; &quot;9&quot; &quot;8&quot; &quot;8&quot; &quot;8&quot; &quot;8&quot; &quot;7&quot; &quot;7&quot; &quot;7&quot; &quot;6&quot; &quot;6&quot; &quot;6&quot; &quot;6&quot; &quot;5&quot; &quot;5&quot; &quot;5&quot; &quot;5&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;3&quot; &quot;3&quot; &quot;3&quot; &quot;2&quot; &quot;2&quot; &quot;2&quot; &quot;2&quot; &quot;1&quot; &quot;1&quot; &quot;1&quot; &quot;1&quot; &quot;0&quot; &quot;0&quot; &quot;0&quot; &quot;0&quot;]}">1 read <br />["26" "26" "26" "26" "25" "25" "25" "24" "24" "24" "24" "23" "23" "23" "23" "22" "22" "22" "22" "21" "21" "21" "21" "20" "20" "20" "20" "19" "19" "19" "19" "18" "18" "18" "17" "17" "17" "17" "16" "16" "16" "16" "15" "15" "15" "15" "14" "14" "14" "14" "13" "13" "13" "13" "12" "12" "12" "11" "11" "11" "11" "10" "10" "10" "10" "9" "9" "9" "9" "8" "8" "8" "8" "7" "7" "7" "6" "6" "6" "6" "5" "5" "5" "5" "4" "4" "4" "4" "3" "3" "3" "2" "2" "2" "2" "1" "1" "1" "1" "0" "0" "0" "0"]</div></a><a href="#i103"><div class="op ok" id="i103" style="width:100;left:318;top:1568;height:80" title="Dur: 1 ms
+Err: nil
+Wall-clock Time: 2025-05-30T23:13:47.986Z
+
+Op:
+{:process 3
+ :type :ok
+ :f :read
+ :index 103
+ :final? true
+ :value [&quot;26&quot; &quot;26&quot; &quot;26&quot; &quot;25&quot; &quot;25&quot; &quot;24&quot; &quot;24&quot; &quot;23&quot; &quot;23&quot; &quot;23&quot; &quot;22&quot; &quot;22&quot; &quot;21&quot; &quot;21&quot; &quot;21&quot; &quot;20&quot; &quot;20&quot; &quot;20&quot; &quot;19&quot; &quot;19&quot; &quot;19&quot; &quot;18&quot; &quot;18&quot; &quot;17&quot; &quot;17&quot; &quot;17&quot; &quot;16&quot; &quot;16&quot; &quot;16&quot; &quot;15&quot; &quot;15&quot; &quot;15&quot; &quot;14&quot; &quot;14&quot; &quot;14&quot; &quot;13&quot; &quot;13&quot; &quot;13&quot; &quot;12&quot; &quot;12&quot; &quot;11&quot; &quot;11&quot; &quot;10&quot; &quot;10&quot; &quot;10&quot; &quot;9&quot; &quot;9&quot; &quot;9&quot; &quot;8&quot; &quot;8&quot; &quot;8&quot; &quot;7&quot; &quot;7&quot; &quot;6&quot; &quot;6&quot; &quot;5&quot; &quot;5&quot; &quot;5&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;3&quot; &quot;3&quot; &quot;2&quot; &quot;2&quot; &quot;2&quot; &quot;1&quot; &quot;1&quot; &quot;1&quot; &quot;0&quot; &quot;0&quot;]}">3 read <br />["26" "26" "26" "25" "25" "24" "24" "23" "23" "23" "22" "22" "21" "21" "21" "20" "20" "20" "19" "19" "19" "18" "18" "17" "17" "17" "16" "16" "16" "15" "15" "15" "14" "14" "14" "13" "13" "13" "12" "12" "11" "11" "10" "10" "10" "9" "9" "9" "8" "8" "8" "7" "7" "6" "6" "5" "5" "5" "4" "4" "4" "3" "3" "2" "2" "2" "1" "1" "1" "0" "0"]</div></a></div></body></html>

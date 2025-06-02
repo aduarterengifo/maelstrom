@@ -1,0 +1,2 @@
+[RECEIVED] {"id":4,"src":"c4","dest":"n4","body":{"type":"init","node_id":"n4","node_ids":["n1","n2","n3","n4","n5"],"msg_id":1}}
+[SEND RESPONSE] {"src":"n4","dest":"c4","body":{"type":"init_ok","in_reply_to":1,"msg_id":0}}

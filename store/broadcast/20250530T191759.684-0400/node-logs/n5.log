@@ -1,0 +1,154 @@
+[RECEIVED] {"id":4,"src":"c4","dest":"n5","body":{"type":"init","node_id":"n5","node_ids":["n1","n2","n3","n4","n5"],"msg_id":1}}
+[MATCH] InitBody
+Initialized node n5
+Init send {"src":"n5","dest":"c4","body":{"type":"init_ok","in_reply_to":1,"msg_id":0}}
+[RECEIVED] {"id":10,"src":"c7","dest":"n5","body":{"type":"topology","topology":{"n1":["n4","n2"],"n2":["n5","n3","n1"],"n3":["n2"],"n4":["n1","n5"],"n5":["n2","n4"]},"msg_id":1}}
+[MATCH] TopologyBody
+[TOPOLOGY RESPONSE] {"src":"n5","dest":"c7","body":{"type":"topology_ok","in_reply_to":1,"msg_id":1}}
+[RECEIVED] {"id":25,"src":"n4","dest":"n5","body":{"type":"broadcast","message":"0","msg_id":null}}
+[MATCH] BroadcastBody
+[INSIDE BROADCAST LOOP]
+[BROADCAST REQUEST] {"id":0,"src":"n5","dest":"n2","body":{"type":"broadcast","message":"0","msg_id":null}}
+[BROADCAST REQUEST] {"id":0,"src":"n5","dest":"n4","body":{"type":"broadcast","message":"0","msg_id":null}}
+[BROADCAST RESPONSE] {"src":"n5","dest":"n4","body":{"type":"broadcast_ok","in_reply_to":0,"msg_id":2}}
+[RECEIVED] {"id":26,"src":"n2","dest":"n5","body":{"type":"broadcast","message":"0","msg_id":null}}
+[MATCH] BroadcastBody
+[BROADCAST RESPONSE] {"src":"n5","dest":"n2","body":{"type":"broadcast_ok","in_reply_to":0,"msg_id":3}}
+[RECEIVED] {"id":38,"src":"c14","dest":"n5","body":{"type":"read","msg_id":1}}
+[MATCH] ReadBody
+[READ RESPONSE] {"src":"n5","dest":"c14","body":{"type":"read_ok","messages":["0","0"],"in_reply_to":1,"msg_id":4}}
+[RECEIVED] {"id":44,"src":"n2","dest":"n5","body":{"type":"broadcast","message":"1","msg_id":null}}
+[MATCH] BroadcastBody
+[INSIDE BROADCAST LOOP]
+[BROADCAST REQUEST] {"id":0,"src":"n5","dest":"n2","body":{"type":"broadcast","message":"1","msg_id":null}}
+[RECEIVED] {"id":47,"src":"n4","dest":"n5","body":{"type":"broadcast","message":"1","msg_id":null}}
+[MATCH] BroadcastBody
+[BROADCAST REQUEST] {"id":0,"src":"n5","dest":"n4","body":{"type":"broadcast","message":"1","msg_id":null}}
+[INSIDE BROADCAST LOOP]
+[BROADCAST REQUEST] {"id":0,"src":"n5","dest":"n2","body":{"type":"broadcast","message":"1","msg_id":null}}
+[BROADCAST RESPONSE] {"src":"n5","dest":"n2","body":{"type":"broadcast_ok","in_reply_to":0,"msg_id":5}}
+[BROADCAST REQUEST] {"id":0,"src":"n5","dest":"n4","body":{"type":"broadcast","message":"1","msg_id":null}}
+[BROADCAST RESPONSE] {"src":"n5","dest":"n4","body":{"type":"broadcast_ok","in_reply_to":0,"msg_id":6}}
+[RECEIVED] {"id":61,"src":"n2","dest":"n5","body":{"type":"broadcast","message":"2","msg_id":null}}
+[MATCH] BroadcastBody
+[INSIDE BROADCAST LOOP]
+[BROADCAST REQUEST] {"id":0,"src":"n5","dest":"n2","body":{"type":"broadcast","message":"2","msg_id":null}}
+[BROADCAST REQUEST] {"id":0,"src":"n5","dest":"n4","body":{"type":"broadcast","message":"2","msg_id":null}}
+[BROADCAST RESPONSE] {"src":"n5","dest":"n2","body":{"type":"broadcast_ok","in_reply_to":0,"msg_id":7}}
+[RECEIVED] {"id":67,"src":"n4","dest":"n5","body":{"type":"broadcast","message":"2","msg_id":null}}
+[MATCH] BroadcastBody
+[BROADCAST RESPONSE] {"src":"n5","dest":"n4","body":{"type":"broadcast_ok","in_reply_to":0,"msg_id":8}}
+[RECEIVED] {"id":74,"src":"c14","dest":"n5","body":{"type":"read","msg_id":2}}
+[MATCH] ReadBody
+[READ RESPONSE] {"src":"n5","dest":"c14","body":{"type":"read_ok","messages":["2","2","1","1","0","0"],"in_reply_to":2,"msg_id":9}}
+[RECEIVED] {"id":81,"src":"n2","dest":"n5","body":{"type":"broadcast","message":"3","msg_id":null}}
+[RECEIVED] {"id":82,"src":"n4","dest":"n5","body":{"type":"broadcast","message":"3","msg_id":null}}
+[MATCH] BroadcastBody
+[MATCH] BroadcastBody
+[INSIDE BROADCAST LOOP]
+[INSIDE BROADCAST LOOP]
+[BROADCAST REQUEST] {"id":0,"src":"n5","dest":"n2","body":{"type":"broadcast","message":"3","msg_id":null}}
+[BROADCAST REQUEST] {"id":0,"src":"n5","dest":"n2","body":{"type":"broadcast","message":"3","msg_id":null}}
+[BROADCAST REQUEST] {"id":0,"src":"n5","dest":"n4","body":{"type":"broadcast","message":"3","msg_id":null}}
+[BROADCAST REQUEST] {"id":0,"src":"n5","dest":"n4","body":{"type":"broadcast","message":"3","msg_id":null}}
+[BROADCAST RESPONSE] {"src":"n5","dest":"n2","body":{"type":"broadcast_ok","in_reply_to":0,"msg_id":10}}
+[BROADCAST RESPONSE] {"src":"n5","dest":"n4","body":{"type":"broadcast_ok","in_reply_to":0,"msg_id":11}}
+[RECEIVED] {"id":98,"src":"c14","dest":"n5","body":{"type":"read","msg_id":3}}
+[MATCH] ReadBody
+[READ RESPONSE] {"src":"n5","dest":"c14","body":{"type":"read_ok","messages":["3","3","2","2","1","1","0","0"],"in_reply_to":3,"msg_id":12}}
+[RECEIVED] {"id":105,"src":"n2","dest":"n5","body":{"type":"broadcast","message":"4","msg_id":null}}
+[MATCH] BroadcastBody
+[INSIDE BROADCAST LOOP]
+[BROADCAST REQUEST] {"id":0,"src":"n5","dest":"n2","body":{"type":"broadcast","message":"4","msg_id":null}}
+[BROADCAST REQUEST] {"id":0,"src":"n5","dest":"n4","body":{"type":"broadcast","message":"4","msg_id":null}}
+[BROADCAST RESPONSE] {"src":"n5","dest":"n2","body":{"type":"broadcast_ok","in_reply_to":0,"msg_id":13}}
+[RECEIVED] {"id":115,"src":"n4","dest":"n5","body":{"type":"broadcast","message":"4","msg_id":null}}
+[MATCH] BroadcastBody
+[BROADCAST RESPONSE] {"src":"n5","dest":"n4","body":{"type":"broadcast_ok","in_reply_to":0,"msg_id":14}}
+[RECEIVED] {"id":117,"src":"n4","dest":"n5","body":{"type":"broadcast","message":"4","msg_id":null}}
+[MATCH] BroadcastBody
+[BROADCAST RESPONSE] {"src":"n5","dest":"n4","body":{"type":"broadcast_ok","in_reply_to":0,"msg_id":15}}
+[RECEIVED] {"id":122,"src":"c14","dest":"n5","body":{"type":"read","msg_id":4}}
+[MATCH] ReadBody
+[READ RESPONSE] {"src":"n5","dest":"c14","body":{"type":"read_ok","messages":["4","4","4","3","3","2","2","1","1","0","0"],"in_reply_to":4,"msg_id":16}}
+[RECEIVED] {"id":129,"src":"n4","dest":"n5","body":{"type":"broadcast","message":"5","msg_id":null}}
+[RECEIVED] {"id":130,"src":"n2","dest":"n5","body":{"type":"broadcast","message":"5","msg_id":null}}
+[MATCH] BroadcastBody
+[MATCH] BroadcastBody
+[INSIDE BROADCAST LOOP]
+[INSIDE BROADCAST LOOP]
+[BROADCAST REQUEST] {"id":0,"src":"n5","dest":"n2","body":{"type":"broadcast","message":"5","msg_id":null}}
+[BROADCAST REQUEST] {"id":0,"src":"n5","dest":"n2","body":{"type":"broadcast","message":"5","msg_id":null}}
+[BROADCAST REQUEST] {"id":0,"src":"n5","dest":"n4","body":{"type":"broadcast","message":"5","msg_id":null}}
+[BROADCAST REQUEST] {"id":0,"src":"n5","dest":"n4","body":{"type":"broadcast","message":"5","msg_id":null}}
+[BROADCAST RESPONSE] {"src":"n5","dest":"n4","body":{"type":"broadcast_ok","in_reply_to":0,"msg_id":17}}
+[BROADCAST RESPONSE] {"src":"n5","dest":"n2","body":{"type":"broadcast_ok","in_reply_to":0,"msg_id":18}}
+[RECEIVED] {"id":141,"src":"n2","dest":"n5","body":{"type":"broadcast","message":"6","msg_id":null}}
+[MATCH] BroadcastBody
+[INSIDE BROADCAST LOOP]
+[BROADCAST REQUEST] {"id":0,"src":"n5","dest":"n2","body":{"type":"broadcast","message":"6","msg_id":null}}
+[BROADCAST REQUEST] {"id":0,"src":"n5","dest":"n4","body":{"type":"broadcast","message":"6","msg_id":null}}
+[BROADCAST RESPONSE] {"src":"n5","dest":"n2","body":{"type":"broadcast_ok","in_reply_to":0,"msg_id":19}}
+[RECEIVED] {"id":152,"src":"n4","dest":"n5","body":{"type":"broadcast","message":"6","msg_id":null}}
+[MATCH] BroadcastBody
+[RECEIVED] {"id":153,"src":"n4","dest":"n5","body":{"type":"broadcast","message":"6","msg_id":null}}
+[BROADCAST RESPONSE] {"src":"n5","dest":"n4","body":{"type":"broadcast_ok","in_reply_to":0,"msg_id":20}}
+[MATCH] BroadcastBody
+[BROADCAST RESPONSE] {"src":"n5","dest":"n4","body":{"type":"broadcast_ok","in_reply_to":0,"msg_id":21}}
+[RECEIVED] {"id":158,"src":"c14","dest":"n5","body":{"type":"read","msg_id":5}}
+[MATCH] ReadBody
+[READ RESPONSE] {"src":"n5","dest":"c14","body":{"type":"read_ok","messages":["6","6","6","5","5","4","4","4","3","3","2","2","1","1","0","0"],"in_reply_to":5,"msg_id":22}}
+[RECEIVED] {"id":165,"src":"n4","dest":"n5","body":{"type":"broadcast","message":"7","msg_id":null}}
+[RECEIVED] {"id":166,"src":"n2","dest":"n5","body":{"type":"broadcast","message":"7","msg_id":null}}
+[MATCH] BroadcastBody
+[MATCH] BroadcastBody
+[INSIDE BROADCAST LOOP]
+[INSIDE BROADCAST LOOP]
+[BROADCAST REQUEST] {"id":0,"src":"n5","dest":"n2","body":{"type":"broadcast","message":"7","msg_id":null}}
+[BROADCAST REQUEST] {"id":0,"src":"n5","dest":"n2","body":{"type":"broadcast","message":"7","msg_id":null}}
+[BROADCAST REQUEST] {"id":0,"src":"n5","dest":"n4","body":{"type":"broadcast","message":"7","msg_id":null}}
+[BROADCAST REQUEST] {"id":0,"src":"n5","dest":"n4","body":{"type":"broadcast","message":"7","msg_id":null}}
+[BROADCAST RESPONSE] {"src":"n5","dest":"n4","body":{"type":"broadcast_ok","in_reply_to":0,"msg_id":23}}
+[BROADCAST RESPONSE] {"src":"n5","dest":"n2","body":{"type":"broadcast_ok","in_reply_to":0,"msg_id":24}}
+[RECEIVED] {"id":182,"src":"c14","dest":"n5","body":{"type":"broadcast","message":8,"msg_id":6}}
+[MATCH] BroadcastBody
+[INSIDE BROADCAST LOOP]
+[BROADCAST REQUEST] {"id":0,"src":"n5","dest":"n2","body":{"type":"broadcast","message":"8","msg_id":null}}
+[BROADCAST REQUEST] {"id":0,"src":"n5","dest":"n4","body":{"type":"broadcast","message":"8","msg_id":null}}
+[BROADCAST RESPONSE] {"src":"n5","dest":"c14","body":{"type":"broadcast_ok","in_reply_to":6,"msg_id":25}}
+[RECEIVED] {"id":186,"src":"n2","dest":"n5","body":{"type":"broadcast","message":"8","msg_id":null}}
+[MATCH] BroadcastBody
+[RECEIVED] {"id":190,"src":"n4","dest":"n5","body":{"type":"broadcast","message":"8","msg_id":null}}
+[BROADCAST RESPONSE] {"src":"n5","dest":"n2","body":{"type":"broadcast_ok","in_reply_to":0,"msg_id":26}}
+[MATCH] BroadcastBody
+[BROADCAST RESPONSE] {"src":"n5","dest":"n4","body":{"type":"broadcast_ok","in_reply_to":0,"msg_id":27}}
+[RECEIVED] {"id":203,"src":"n2","dest":"n5","body":{"type":"broadcast","message":"9","msg_id":null}}
+[RECEIVED] {"id":205,"src":"n4","dest":"n5","body":{"type":"broadcast","message":"9","msg_id":null}}
+[MATCH] BroadcastBody
+[MATCH] BroadcastBody
+[INSIDE BROADCAST LOOP]
+[INSIDE BROADCAST LOOP]
+[BROADCAST REQUEST] {"id":0,"src":"n5","dest":"n2","body":{"type":"broadcast","message":"9","msg_id":null}}
+[BROADCAST REQUEST] {"id":0,"src":"n5","dest":"n2","body":{"type":"broadcast","message":"9","msg_id":null}}
+[BROADCAST REQUEST] {"id":0,"src":"n5","dest":"n4","body":{"type":"broadcast","message":"9","msg_id":null}}
+[BROADCAST REQUEST] {"id":0,"src":"n5","dest":"n4","body":{"type":"broadcast","message":"9","msg_id":null}}
+[BROADCAST RESPONSE] {"src":"n5","dest":"n2","body":{"type":"broadcast_ok","in_reply_to":0,"msg_id":28}}
+[BROADCAST RESPONSE] {"src":"n5","dest":"n4","body":{"type":"broadcast_ok","in_reply_to":0,"msg_id":29}}
+[RECEIVED] {"id":218,"src":"n4","dest":"n5","body":{"type":"broadcast","message":"10","msg_id":null}}
+[MATCH] BroadcastBody
+[INSIDE BROADCAST LOOP]
+[BROADCAST REQUEST] {"id":0,"src":"n5","dest":"n2","body":{"type":"broadcast","message":"10","msg_id":null}}
+[BROADCAST REQUEST] {"id":0,"src":"n5","dest":"n4","body":{"type":"broadcast","message":"10","msg_id":null}}
+[BROADCAST RESPONSE] {"src":"n5","dest":"n4","body":{"type":"broadcast_ok","in_reply_to":0,"msg_id":30}}
+[RECEIVED] {"id":224,"src":"n2","dest":"n5","body":{"type":"broadcast","message":"10","msg_id":null}}
+[MATCH] BroadcastBody
+[RECEIVED] {"id":225,"src":"n2","dest":"n5","body":{"type":"broadcast","message":"10","msg_id":null}}
+[BROADCAST RESPONSE] {"src":"n5","dest":"n2","body":{"type":"broadcast_ok","in_reply_to":0,"msg_id":31}}
+[MATCH] BroadcastBody
+[BROADCAST RESPONSE] {"src":"n5","dest":"n2","body":{"type":"broadcast_ok","in_reply_to":0,"msg_id":32}}
+[RECEIVED] {"id":232,"src":"c14","dest":"n5","body":{"type":"read","msg_id":7}}
+[MATCH] ReadBody
+[READ RESPONSE] {"src":"n5","dest":"c14","body":{"type":"read_ok","messages":["10","10","10","9","9","8","8","8","7","7","6","6","6","5","5","4","4","4","3","3","2","2","1","1","0","0"],"in_reply_to":7,"msg_id":33}}
+[RECEIVED] {"id":240,"src":"c14","dest":"n5","body":{"type":"read","msg_id":8}}
+[MATCH] ReadBody
+[READ RESPONSE] {"src":"n5","dest":"c14","body":{"type":"read_ok","messages":["10","10","10","9","9","8","8","8","7","7","6","6","6","5","5","4","4","4","3","3","2","2","1","1","0","0"],"in_reply_to":8,"msg_id":34}}

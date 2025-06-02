@@ -1,0 +1,70 @@
+{:perf {:latency-graph {:valid? true},
+        :rate-graph {:valid? true},
+        :valid? true},
+ :timeline {:valid? true},
+ :exceptions {:valid? true},
+ :stats {:valid? true,
+         :count 58,
+         :ok-count 58,
+         :fail-count 0,
+         :info-count 0,
+         :by-f {:broadcast {:valid? true,
+                            :count 26,
+                            :ok-count 26,
+                            :fail-count 0,
+                            :info-count 0},
+                :read {:valid? true,
+                       :count 32,
+                       :ok-count 32,
+                       :fail-count 0,
+                       :info-count 0}}},
+ :availability {:valid? true, :ok-fraction 1.0},
+ :net {:all {:send-count 396,
+             :recv-count 396,
+             :msg-count 396,
+             :msgs-per-op 6.827586},
+       :clients {:send-count 136, :recv-count 136, :msg-count 136},
+       :servers {:send-count 260,
+                 :recv-count 260,
+                 :msg-count 260,
+                 :msgs-per-op 4.4827585},
+       :valid? true},
+ :workload {:worst-stale (),
+            :duplicated-count 0,
+            :valid? false,
+            :lost-count 26,
+            :lost (0
+                   1
+                   2
+                   3
+                   4
+                   5
+                   6
+                   7
+                   8
+                   9
+                   10
+                   11
+                   12
+                   13
+                   14
+                   15
+                   16
+                   17
+                   18
+                   19
+                   20
+                   21
+                   22
+                   23
+                   24
+                   25),
+            :stable-count 0,
+            :stale-count 0,
+            :stale (),
+            :never-read-count 0,
+            :attempt-count 26,
+            :lost-latencies {0 0, 0.5 0, 0.95 0, 0.99 0, 1 0},
+            :never-read (),
+            :duplicated {}},
+ :valid? false}

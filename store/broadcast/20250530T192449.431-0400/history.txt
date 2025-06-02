@@ -1,0 +1,116 @@
+0	:invoke	:broadcast	0
+0	:ok	:broadcast	0
+1	:invoke	:read	nil
+1	:ok	:read	["0"]
+2	:invoke	:broadcast	1
+2	:ok	:broadcast	1
+3	:invoke	:read	nil
+3	:ok	:read	["1" "0"]
+4	:invoke	:broadcast	2
+0	:invoke	:broadcast	3
+0	:ok	:broadcast	3
+4	:ok	:broadcast	2
+0	:invoke	:broadcast	4
+0	:ok	:broadcast	4
+1	:invoke	:broadcast	5
+1	:ok	:broadcast	5
+2	:invoke	:read	nil
+2	:ok	:read	["5" "4" "3" "2" "1" "0"]
+3	:invoke	:broadcast	6
+3	:ok	:broadcast	6
+4	:invoke	:read	nil
+4	:ok	:read	["6" "5" "4" "3" "2" "1" "0"]
+0	:invoke	:read	nil
+0	:ok	:read	["6" "5" "4" "2" "3" "1" "0"]
+0	:invoke	:broadcast	7
+0	:ok	:broadcast	7
+1	:invoke	:read	nil
+1	:ok	:read	["7" "6" "5" "4" "3" "2" "1" "0"]
+2	:invoke	:read	nil
+2	:ok	:read	["7" "6" "5" "4" "3" "2" "1" "0"]
+3	:invoke	:read	nil
+3	:ok	:read	["7" "6" "5" "4" "2" "3" "1" "0"]
+4	:invoke	:read	nil
+4	:ok	:read	["7" "6" "5" "4" "3" "2" "1" "0"]
+0	:invoke	:read	nil
+0	:ok	:read	["7" "6" "5" "4" "2" "3" "1" "0"]
+0	:invoke	:broadcast	8
+0	:ok	:broadcast	8
+1	:invoke	:read	nil
+1	:ok	:read	["8" "7" "6" "5" "4" "3" "2" "1" "0"]
+2	:invoke	:broadcast	9
+2	:ok	:broadcast	9
+3	:invoke	:broadcast	10
+3	:ok	:broadcast	10
+4	:invoke	:read	nil
+4	:ok	:read	["10" "9" "8" "7" "6" "5" "4" "3" "2" "1" "0"]
+0	:invoke	:broadcast	11
+0	:ok	:broadcast	11
+0	:invoke	:read	nil
+0	:ok	:read	["11" "10" "9" "8" "7" "6" "5" "4" "2" "3" "1" "0"]
+1	:invoke	:broadcast	12
+1	:ok	:broadcast	12
+2	:invoke	:read	nil
+2	:ok	:read	["12" "11" "10" "9" "8" "7" "6" "5" "4" "3" "2" "1" "0"]
+3	:invoke	:broadcast	13
+3	:ok	:broadcast	13
+4	:invoke	:broadcast	14
+4	:ok	:broadcast	14
+0	:invoke	:broadcast	15
+0	:ok	:broadcast	15
+0	:invoke	:broadcast	16
+0	:ok	:broadcast	16
+1	:invoke	:read	nil
+1	:ok	:read	["16" "15" "14" "13" "12" "11" "10" "9" "8" "7" "6" "5" "4" "3" "2" "1" "0"]
+2	:invoke	:read	nil
+2	:ok	:read	["16" "15" "14" "13" "12" "11" "10" "9" "8" "7" "6" "5" "4" "3" "2" "1" "0"]
+3	:invoke	:broadcast	17
+3	:ok	:broadcast	17
+4	:invoke	:read	nil
+4	:ok	:read	["17" "16" "15" "14" "13" "12" "11" "10" "9" "8" "7" "6" "5" "4" "3" "2" "1" "0"]
+0	:invoke	:broadcast	18
+0	:ok	:broadcast	18
+0	:invoke	:broadcast	19
+0	:ok	:broadcast	19
+1	:invoke	:broadcast	20
+1	:ok	:broadcast	20
+2	:invoke	:broadcast	21
+2	:ok	:broadcast	21
+3	:invoke	:read	nil
+3	:ok	:read	["20" "19" "18" "17" "16" "15" "14" "13" "12" "11" "10" "9" "8" "7" "6" "5" "4" "2" "3" "1" "0"]
+4	:invoke	:read	nil
+4	:ok	:read	["21" "20" "19" "18" "17" "16" "15" "14" "13" "12" "11" "10" "9" "8" "7" "6" "5" "4" "3" "2" "1" "0"]
+0	:invoke	:read	nil
+0	:ok	:read	["21" "20" "19" "18" "17" "16" "15" "14" "13" "12" "11" "10" "9" "8" "7" "6" "5" "4" "2" "3" "1" "0"]
+0	:invoke	:read	nil
+0	:ok	:read	["21" "20" "19" "18" "17" "16" "15" "14" "13" "12" "11" "10" "9" "8" "7" "6" "5" "4" "2" "3" "1" "0"]
+1	:invoke	:broadcast	22
+1	:ok	:broadcast	22
+2	:invoke	:read	nil
+2	:ok	:read	["22" "21" "20" "19" "18" "17" "16" "15" "14" "13" "12" "11" "10" "9" "8" "7" "6" "5" "4" "3" "2" "1" "0"]
+3	:invoke	:broadcast	23
+3	:ok	:broadcast	23
+4	:invoke	:read	nil
+4	:ok	:read	["23" "22" "21" "20" "19" "18" "17" "16" "15" "14" "13" "12" "11" "10" "9" "8" "7" "6" "5" "4" "3" "2" "1" "0"]
+0	:invoke	:read	nil
+0	:ok	:read	["23" "22" "21" "20" "19" "18" "17" "16" "15" "14" "13" "12" "11" "10" "9" "8" "7" "6" "5" "4" "2" "3" "1" "0"]
+0	:invoke	:read	nil
+0	:ok	:read	["23" "22" "21" "20" "19" "18" "17" "16" "15" "14" "13" "12" "11" "10" "9" "8" "7" "6" "5" "4" "2" "3" "1" "0"]
+1	:invoke	:read	nil
+1	:ok	:read	["23" "22" "21" "20" "19" "18" "17" "16" "15" "14" "13" "12" "11" "10" "9" "8" "7" "6" "5" "4" "3" "2" "1" "0"]
+2	:invoke	:broadcast	24
+2	:ok	:broadcast	24
+3	:invoke	:broadcast	25
+3	:ok	:broadcast	25
+4	:invoke	:read	nil
+4	:ok	:read	["25" "24" "23" "22" "21" "20" "19" "18" "17" "16" "15" "14" "13" "12" "11" "10" "9" "8" "7" "6" "5" "4" "3" "2" "1" "0"]
+1	:invoke	:read	nil
+0	:invoke	:read	nil
+3	:invoke	:read	nil
+4	:invoke	:read	nil
+2	:invoke	:read	nil
+1	:ok	:read	["25" "24" "23" "22" "21" "20" "19" "18" "17" "16" "15" "14" "13" "12" "11" "10" "9" "8" "7" "6" "5" "4" "3" "2" "1" "0"]
+2	:ok	:read	["25" "24" "23" "22" "21" "20" "19" "18" "17" "16" "15" "14" "13" "12" "11" "10" "9" "8" "7" "6" "5" "4" "3" "2" "1" "0"]
+3	:ok	:read	["25" "24" "23" "22" "21" "20" "19" "18" "17" "16" "15" "14" "13" "12" "11" "10" "9" "8" "7" "6" "5" "4" "2" "3" "1" "0"]
+0	:ok	:read	["25" "24" "23" "22" "21" "20" "19" "18" "17" "16" "15" "14" "13" "12" "11" "10" "9" "8" "7" "6" "5" "4" "2" "3" "1" "0"]
+4	:ok	:read	["25" "24" "23" "22" "21" "20" "19" "18" "17" "16" "15" "14" "13" "12" "11" "10" "9" "8" "7" "6" "5" "4" "3" "2" "1" "0"]

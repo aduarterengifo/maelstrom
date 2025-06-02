@@ -1,0 +1,72 @@
+{:perf {:latency-graph {:valid? true},
+        :rate-graph {:valid? true},
+        :valid? true},
+ :timeline {:valid? true},
+ :exceptions {:valid? true},
+ :stats {:valid? true,
+         :count 56,
+         :ok-count 56,
+         :fail-count 0,
+         :info-count 0,
+         :by-f {:broadcast {:valid? true,
+                            :count 28,
+                            :ok-count 28,
+                            :fail-count 0,
+                            :info-count 0},
+                :read {:valid? true,
+                       :count 28,
+                       :ok-count 28,
+                       :fail-count 0,
+                       :info-count 0}}},
+ :availability {:valid? true, :ok-fraction 1.0},
+ :net {:all {:send-count 810,
+             :recv-count 810,
+             :msg-count 810,
+             :msgs-per-op 14.464286},
+       :clients {:send-count 132, :recv-count 132, :msg-count 132},
+       :servers {:send-count 678,
+                 :recv-count 678,
+                 :msg-count 678,
+                 :msgs-per-op 12.107142},
+       :valid? true},
+ :workload {:worst-stale (),
+            :duplicated-count 0,
+            :valid? false,
+            :lost-count 28,
+            :lost (0
+                   1
+                   2
+                   3
+                   4
+                   5
+                   6
+                   7
+                   8
+                   9
+                   10
+                   11
+                   12
+                   13
+                   14
+                   15
+                   16
+                   17
+                   18
+                   19
+                   20
+                   21
+                   22
+                   23
+                   24
+                   25
+                   26
+                   27),
+            :stable-count 0,
+            :stale-count 0,
+            :stale (),
+            :never-read-count 0,
+            :attempt-count 28,
+            :lost-latencies {0 0, 0.5 0, 0.95 0, 0.99 0, 1 0},
+            :never-read (),
+            :duplicated {}},
+ :valid? false}
