@@ -420,9 +420,11 @@ let rec gossip_to_neighbors ~state ~state_mutex ~stdout ~stderr ~stdout_mutex ~s
       write_line_sync ~mutex:stderr_mutex ~flow:stderr ("[BROADCAST REQUEST: " ^ state.node_id ^ " -> " ^ dest ^ "] " ^ req_str);
       write_line_sync ~mutex:stdout_mutex ~flow:stdout req_str;
 
-      (* Hashtbl.replace state.callbacks msg_id (fun body -> (
-        if
-      )); *)
+      Hashtbl.replace state.callbacks msg_id (fun body -> (
+        if body.type = "broadcast_ok" then (
+          unacked := StringSet.remove dest !unacked;
+        )
+      ));
       (* TODO: SLEEP what about passing the clock down is not terrible pls let it not be. *)
     ) !unacked;
   done;
