@@ -1,62 +1,66 @@
 open Ppx_yojson_conv_lib.Yojson_conv.Primitives
-open Eio
-module Flow = Eio.Flow
+type inbound
+type outbound
 (*
  idea is you have a table of promises, when you get the right msg you run them with the right body
 *)
 
 module StringSet = Set.Make(String)
 
-type request_kind =
-  | Init
-  | Echo
-  | Other of string
-
-type init_request_body = {
+(* MSG *)
+(* BODIES *)
+type init_body = {
   msg_id: int;
   node_id: string;
   node_ids: string list;
 }
 
-type echo_request_body = {
+type echo_body = {
   echo: string;
   msg_id: int;
 }
 
-type generate_request_body = {
+type generate_body = {
   msg_id: int;
 }
 
-type topology_request_body = {
+type topology_body = {
   topology: (string, string list) Hashtbl.t;
   msg_id: int option;
 }
 
-type broadcast_request_body = {
+type broadcast_body = {
   message: string;
   msg_id: int option;
 } [@@deriving yojson]
 
-type read_request_body = {
+type read_body = {
   msg_id: int option;
 }
 
-type broadcast_response_body = {
+type broadcast_ok_body = {
   in_reply_to: int;
   msg_id: int option;
 } [@@deriving yojson]
-
-type request_body =
-  | Init of init_request_body
-  | Echo of echo_request_body
-  | Generate of generate_request_body
-  | Topology of topology_request_body
-  | Broadcast of broadcast_request_body
-  | BroadcastOk of broadcast_response_body
-  | Read of read_request_body
+(* BODIES *)
+type inbound_body =
+  | Init of init_body
+  | Echo of echo_body
+  | Generate of generate_body
+  | Topology of topology_body
+  | Broadcast of broadcast_body
+  | BroadcastOk of broadcast_ok_body
+  | Read of read_body
   | Unknown of Yojson.Safe.t
 
-let request_body_of_yojson (json : Yojson.Safe.t) : request_body =
+(* MSG *)
+
+let yojson_of_string_list l = `List (List.map (fun s -> `String s) l)
+let yojson_of_map tbl =
+  `Assoc (
+    Hashtbl.fold (fun k v acc -> (k, yojson_of_string_list v) :: acc) tbl []
+  )
+let inbound_body_of_yojson (json : Yojson.Safe.t) : inbound_body =
   (* let () = Printf.eprintf "DEBUG: request_body_of_yojson got: %s\n%!" (Yojson.Safe.to_string json) in *)
   let open Yojson.Safe.Util in
   let kind =
@@ -66,6 +70,7 @@ let request_body_of_yojson (json : Yojson.Safe.t) : request_body =
     | Some "generate" -> `Generate
     | Some "topology" -> `Topology
     | Some "broadcast" -> `Broadcast
+    | Some "broadcast_ok" -> `BroadcastOk
     | Some "read" -> `Read
     | Some s      -> `Other s
     | None        -> `Other ""
@@ -107,26 +112,24 @@ let request_body_of_yojson (json : Yojson.Safe.t) : request_body =
       Topology { msg_id; topology }
   | `Broadcast -> 
       let msg_id = json |> member "msg_id" |> to_int_option in
-    let message =
-      match json |> member "message" with
-      | `String s -> s
-      | `Int i -> string_of_int i
-      | v -> failwith ("Unexpected type for message: " ^ Yojson.Safe.to_string v)
+      let message =
+        match json |> member "message" with
+        | `String s -> s
+        | `Int i -> string_of_int i
+        | v -> failwith ("Unexpected type for message: " ^ Yojson.Safe.to_string v)
       in
       Broadcast { msg_id; message }
+  | `BroadcastOk -> 
+      let msg_id = json |> member "msg_id" |> to_int_option in
+      let in_reply_to = json |> member "in_reply_to" |> to_int in
+      BroadcastOk { msg_id; in_reply_to; }
   | `Read -> 
       let msg_id = json |> member "msg_id" |> to_int_option in
       Read { msg_id }
   | `Other _ ->
       Unknown json
 
-let yojson_of_string_list l = `List (List.map (fun s -> `String s) l)
-let yojson_of_map tbl =
-  `Assoc (
-    Hashtbl.fold (fun k v acc -> (k, yojson_of_string_list v) :: acc) tbl []
-  )
-
-let yojson_of_request_body = function
+let yojson_of_inbound_body = function
   | Init { msg_id; node_id; node_ids } ->
       `Assoc [
         ("type", `String "init");
@@ -271,37 +274,23 @@ let string_to_suberror = function
   | "txn-conflict" -> Some Txn_conflict
   | _ -> None
 
-type request = {
+type inbound_msg = {
   id: int;
   src: string;
   dest: string;
-  body: request_body [@yojson.of_yojson request_body_of_yojson] [@yojson.to_yojson yojson_of_request_body];
+  body: inbound_body [@yojson.of_yojson inbound_body_of_yojson] [@yojson.to_yojson yojson_of_inbound_body];
 } [@@deriving yojson]
 
 
-type response_body =
+type outbound_body =
   | InitOk of init_response_body
   | EchoOk of echo_response_body
   | GenerateOk of generate_response_body
   | TopologyOk of topology_response_body
-  | BroadcastOk of broadcast_response_body
+  | BroadcastOk of broadcast_ok_body
   | ReadOk of read_response_body
   | Error of response_error_body
-  | Broadcast of broadcast_request_body 
-
-let response_body_of_yojson (json : Yojson.Safe.t) : response_body =
-  let open Yojson.Safe.Util in
-  let type_str = json |> member "type" |> to_string in
-  match type_str with
-  | "init_ok" -> InitOk (init_response_body_of_yojson json)
-  | "echo_ok" -> EchoOk (echo_response_body_of_yojson json)
-  | "generate_ok" -> GenerateOk (generate_response_body_of_yojson json)
-  | "topology_ok" -> TopologyOk (topology_response_body_of_yojson json)
-  | "broadcast_ok" -> BroadcastOk (broadcast_response_body_of_yojson json)
-  | "read_ok" -> ReadOk (read_response_body_of_yojson json)
-  | "error" -> Error (response_error_body_of_yojson json)
-  | s -> failwith ("Unknown response type: " ^ s)
-
+  | Broadcast of broadcast_body 
 let response_body_id = function
   | InitOk _      -> "init_ok"
   | EchoOk _      -> "echo_ok"
@@ -311,28 +300,50 @@ let response_body_id = function
   | Broadcast _ -> "broadcast"
   | ReadOk _      -> "read_ok"
   | Error _     -> "error"
+let outbound_body_of_yojson (json : Yojson.Safe.t) : outbound_body =
+  let open Yojson.Safe.Util in
+  let type_str = json |> member "type" |> to_string in
+  match type_str with
+  | "init_ok" -> InitOk (init_response_body_of_yojson json)
+  | "echo_ok" -> EchoOk (echo_response_body_of_yojson json)
+  | "generate_ok" -> GenerateOk (generate_response_body_of_yojson json)
+  | "topology_ok" -> TopologyOk (topology_response_body_of_yojson json)
+  | "broadcast_ok" -> BroadcastOk (broadcast_ok_body_of_yojson json)
+  | "read_ok" -> ReadOk (read_response_body_of_yojson json)
+  | "error" -> Error (response_error_body_of_yojson json)
+  | s -> failwith ("Unknown response type: " ^ s)
 
-let yojson_of_response_body rb =
+let yojson_of_outbound_body rb =
   let type_str = response_body_id rb in
   let base = match rb with
     | InitOk b      -> yojson_of_init_response_body b
     | EchoOk b      -> yojson_of_echo_response_body b
     | GenerateOk b  -> yojson_of_generate_response_body b
     | TopologyOk b  -> yojson_of_topology_response_body b
-    | BroadcastOk b -> yojson_of_broadcast_response_body b
+    | BroadcastOk b -> yojson_of_broadcast_ok_body b
     | ReadOk b      -> yojson_of_read_response_body b
     | Error b       -> yojson_of_response_error_body b
-    | Broadcast b   -> yojson_of_broadcast_request_body b
+    | Broadcast b   -> yojson_of_broadcast_body b
   in
   match base with
   | `Assoc fields -> `Assoc (("type", `String type_str) :: fields)
   | _ -> base
 
-type response = {
+type outbound_msg = {
   src: string;
   dest: string;
-  body: response_body [@yojson.of_yojson response_body_of_yojson] [@yojson.to_yojson yojson_of_response_body];
+  body: outbound_body [@yojson.of_yojson outbound_body_of_yojson] [@yojson.to_yojson yojson_of_outbound_body];
 } [@@deriving yojson]
+
+type _ msg =
+  | Request : inbound_msg -> inbound msg
+  | Response : outbound_msg -> outbound msg
+
+let message_of_request r = Request r
+let request_of_message (Request r) = r
+
+let message_of_response r = Response r
+let response_of_message (Response r) = r
 
 let request_body_id = function
   | Init _        -> "init"
@@ -356,7 +367,7 @@ type 'a state = {
   msg_id : int Atomic.t;
   mutable messages : StringSet.t;
   mutable neighbors : StringSet.t;
-  callbacks : (int, request_body -> unit) Hashtbl.t;
+  callbacks : (int, inbound_body -> unit) Hashtbl.t;
   env : 'a env;
 }
 
@@ -373,7 +384,7 @@ let add_common_fields ~msg_id ~in_reply_to body =
   { body with msg_id = Some msg_id; in_reply_to = in_reply_to }
 
 let send ~stdout_mutex ~stdout ~stderr_mutex ~stderr response =
-  let response_str = yojson_of_response response |> Yojson.Safe.to_string in
+  let response_str = yojson_of_outbound_msg response |> Yojson.Safe.to_string in
   let tag = response_body_id response.body in
   write_line_sync ~mutex:stderr_mutex ~flow:stderr ("[" ^ String.uppercase_ascii tag ^ "] " ^ response_str);
   write_line_sync ~mutex:stdout_mutex ~flow:stdout response_str
@@ -405,11 +416,11 @@ let rpc ~stdout_mutex ~stdout ~stderr_mutex ~stderr ~state response handler =
     Hashtbl.remove state.callbacks msg_id;
     handler body)
 
-let make_response (req: request) state body = {
+let make_response (req: inbound_msg) state body = {
  src = state.node_id; dest = req.src; body
 }
 
-let gossip ~state ~state_mutex ~stdout_mutex ~stderr_mutex ~message ~(req: request) =
+let gossip ~state ~state_mutex ~stdout_mutex ~stderr_mutex ~message ~(req: inbound_msg) =
   write_line_sync ~mutex:stderr_mutex ~flow:state.env#stderr  "BEGIN GOSSIP";
   let neighbors = StringSet.singleton req.src
     |> StringSet.diff state.neighbors
@@ -430,7 +441,7 @@ let gossip ~state ~state_mutex ~stdout_mutex ~stderr_mutex ~message ~(req: reque
             (* new body *)
             let body = Broadcast { message; msg_id = Some msg_id } in
             let response = { src = state.node_id; dest; body } in 
-            let handler ~acked (request_body: request_body) =
+            let handler ~acked (request_body: inbound_body) =
               match request_body with
               | BroadcastOk _ -> acked := true
               | _ -> write_line_sync ~mutex:stderr_mutex ~flow:state.env#stderr "error"
@@ -443,12 +454,14 @@ let gossip ~state ~state_mutex ~stdout_mutex ~stderr_mutex ~message ~(req: reque
         ) neighbors;
   write_line_sync ~mutex:stderr_mutex ~flow:state.env#stderr  "END GOSSIP"
 
+let parse_msg line  = 
+  line 
+  |> Yojson.Safe.from_string
+  |> inbound_msg_of_yojson
 
-let handle_message ~line ~state ~state_mutex ~stdout_mutex ~stderr_mutex = 
-  Eio.Flow.copy_string (Printf.sprintf "[RECEIVED] %s\n" line) state.env#stderr;
-  let json_str = Yojson.Safe.from_string line in
-  let req = request_of_yojson json_str in 
 
+
+let handle_message ~state ~state_mutex ~stdout_mutex ~stderr_mutex ~(req:inbound_msg) = 
   let msg_id_opt = msg_id_of_request_body req.body in
 
   let handled_by_callback =
@@ -563,7 +576,7 @@ let main ~state ~state_mutex ~stdout_mutex ~stderr_mutex =
       match Eio.Buf_read.line buf with
       | line ->
           Eio.Fiber.fork ~sw (fun () ->
-            handle_message ~line ~state ~state_mutex ~stdout_mutex ~stderr_mutex
+            handle_message ~state ~state_mutex ~stdout_mutex ~stderr_mutex ~req:(parse_msg line)
           );
           loop ()
       | exception End_of_file -> ()
