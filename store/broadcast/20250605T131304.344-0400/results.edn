@@ -1,0 +1,63 @@
+{:perf {:latency-graph {:valid? true},
+        :rate-graph {:valid? true},
+        :valid? true},
+ :timeline {:valid? true},
+ :exceptions {:valid? true},
+ :stats {:valid? false,
+         :count 45,
+         :ok-count 25,
+         :fail-count 0,
+         :info-count 20,
+         :by-f {:broadcast {:valid? false,
+                            :count 20,
+                            :ok-count 0,
+                            :fail-count 0,
+                            :info-count 20},
+                :read {:valid? true,
+                       :count 25,
+                       :ok-count 25,
+                       :fail-count 0,
+                       :info-count 0}}},
+ :availability {:valid? true, :ok-fraction 0.5555556},
+ :net {:all {:send-count 5786,
+             :recv-count 5786,
+             :msg-count 5786,
+             :msgs-per-op 128.57777},
+       :clients {:send-count 90, :recv-count 90, :msg-count 90},
+       :servers {:send-count 5696,
+                 :recv-count 5696,
+                 :msg-count 5696,
+                 :msgs-per-op 126.577774},
+       :valid? true},
+ :workload {:worst-stale (),
+            :duplicated-count 0,
+            :valid? :unknown,
+            :lost-count 0,
+            :lost (),
+            :stable-count 0,
+            :stale-count 0,
+            :stale (),
+            :never-read-count 20,
+            :attempt-count 20,
+            :never-read (0
+                         1
+                         2
+                         3
+                         4
+                         5
+                         6
+                         7
+                         8
+                         9
+                         10
+                         11
+                         12
+                         13
+                         14
+                         15
+                         16
+                         17
+                         18
+                         19),
+            :duplicated {}},
+ :valid? false}

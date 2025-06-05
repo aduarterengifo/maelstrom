@@ -1,0 +1,1386 @@
+[RECEIVED] {"id":2,"src":"c2","dest":"n1","body":{"type":"init","node_id":"n1","node_ids":["n1","n2","n3","n4","n5"],"msg_id":1}}
+[MATCH INIT]
+[INIT_OK] {"src":"n1","dest":"c2","body":{"type":"init_ok","in_reply_to":1,"msg_id":0}}
+[RECEIVED] {"id":11,"src":"c5","dest":"n1","body":{"type":"topology","topology":{"n1":["n4","n2"],"n2":["n5","n3","n1"],"n3":["n2"],"n4":["n1","n5"],"n5":["n2","n4"]},"msg_id":1}}
+[MATCH TOPOLOGY]
+[TOPOLOGY_OK] {"src":"n1","dest":"c5","body":{"type":"topology_ok","in_reply_to":1,"msg_id":0}}
+[RECEIVED] {"id":20,"src":"c10","dest":"n1","body":{"type":"read","msg_id":1}}
+[MATCH READ]
+[READ_OK] {"src":"n1","dest":"c10","body":{"type":"read_ok","messages":[],"in_reply_to":1,"msg_id":0}}
+[RECEIVED] {"id":23,"src":"n2","dest":"n1","body":{"type":"broadcast","message":"0","msg_id":0}}
+[MATCH BROADCAST]
+BEGIN GOSSIP
+NEIGHBORS: n4
+GOSSIP LOOP
+LOOP ITER
+[BROADCAST] {"src":"n1","dest":"n4","body":{"type":"broadcast","message":"0","msg_id":0}}
+[BROADCAST_OK] {"src":"n1","dest":"n2","body":{"type":"broadcast_ok","in_reply_to":0,"msg_id":0}}
+[RECEIVED] {"id":32,"src":"n4","dest":"n1","body":{"type":"broadcast_ok","in_reply_to":0,"msg_id":0}}
+[MATCH UNKNOWN]
+[RECEIVED] {"id":40,"src":"c10","dest":"n1","body":{"type":"read","msg_id":2}}
+[MATCH READ]
+[READ_OK] {"src":"n1","dest":"c10","body":{"type":"read_ok","messages":["0"],"in_reply_to":2,"msg_id":1}}
+[RECEIVED] {"id":49,"src":"n4","dest":"n1","body":{"type":"broadcast","message":"1","msg_id":0}}
+[CALLBACK MATCH] msg_id=0
+[EXECUTE CALLBACK] msg_id=0 dest=n4
+[MATCH BROADCAST]
+BEGIN GOSSIP
+NEIGHBORS: n2
+GOSSIP LOOP
+LOOP ITER
+[BROADCAST] {"src":"n1","dest":"n2","body":{"type":"broadcast","message":"1","msg_id":1}}
+[BROADCAST_OK] {"src":"n1","dest":"n4","body":{"type":"broadcast_ok","in_reply_to":0,"msg_id":1}}
+[RECEIVED] {"id":56,"src":"n2","dest":"n1","body":{"type":"broadcast_ok","in_reply_to":1,"msg_id":3}}
+[MATCH UNKNOWN]
+[RECEIVED] {"id":62,"src":"n2","dest":"n1","body":{"type":"broadcast","message":"2","msg_id":3}}
+[RECEIVED] {"id":63,"src":"n4","dest":"n1","body":{"type":"broadcast","message":"2","msg_id":2}}
+[MATCH BROADCAST]
+[MATCH BROADCAST]
+[BROADCAST_OK] {"src":"n1","dest":"n2","body":{"type":"broadcast_ok","in_reply_to":3,"msg_id":2}}
+[BROADCAST_OK] {"src":"n1","dest":"n4","body":{"type":"broadcast_ok","in_reply_to":2,"msg_id":2}}
+[RECEIVED] {"id":70,"src":"c10","dest":"n1","body":{"type":"read","msg_id":3}}
+[MATCH READ]
+[READ_OK] {"src":"n1","dest":"c10","body":{"type":"read_ok","messages":["0","1","2"],"in_reply_to":3,"msg_id":2}}
+[RECEIVED] {"id":72,"src":"c10","dest":"n1","body":{"type":"read","msg_id":4}}
+[MATCH READ]
+[READ_OK] {"src":"n1","dest":"c10","body":{"type":"read_ok","messages":["0","1","2"],"in_reply_to":4,"msg_id":2}}
+[RECEIVED] {"id":75,"src":"n2","dest":"n1","body":{"type":"broadcast","message":"3","msg_id":5}}
+[MATCH BROADCAST]
+BEGIN GOSSIP
+NEIGHBORS: n4
+GOSSIP LOOP
+LOOP ITER
+[BROADCAST] {"src":"n1","dest":"n4","body":{"type":"broadcast","message":"3","msg_id":2}}
+[BROADCAST_OK] {"src":"n1","dest":"n2","body":{"type":"broadcast_ok","in_reply_to":5,"msg_id":2}}
+[RECEIVED] {"id":84,"src":"n4","dest":"n1","body":{"type":"broadcast_ok","in_reply_to":2,"msg_id":3}}
+[MATCH UNKNOWN]
+[RECEIVED] {"id":89,"src":"n2","dest":"n1","body":{"type":"broadcast","message":"4","msg_id":8}}
+[MATCH BROADCAST]
+BEGIN GOSSIP
+NEIGHBORS: n4
+GOSSIP LOOP
+LOOP ITER
+[BROADCAST] {"src":"n1","dest":"n4","body":{"type":"broadcast","message":"4","msg_id":3}}
+[BROADCAST_OK] {"src":"n1","dest":"n2","body":{"type":"broadcast_ok","in_reply_to":8,"msg_id":3}}
+[RECEIVED] {"id":96,"src":"n4","dest":"n1","body":{"type":"broadcast_ok","in_reply_to":3,"msg_id":3}}
+[MATCH UNKNOWN]
+[RECEIVED] {"id":104,"src":"n4","dest":"n1","body":{"type":"broadcast","message":"5","msg_id":3}}
+[RECEIVED] {"id":105,"src":"n2","dest":"n1","body":{"type":"broadcast","message":"5","msg_id":10}}
+[CALLBACK MATCH] msg_id=3
+[EXECUTE CALLBACK] msg_id=3 dest=n4
+[MATCH BROADCAST]
+[MATCH BROADCAST]
+[BROADCAST_OK] {"src":"n1","dest":"n4","body":{"type":"broadcast_ok","in_reply_to":3,"msg_id":4}}
+[BROADCAST_OK] {"src":"n1","dest":"n2","body":{"type":"broadcast_ok","in_reply_to":10,"msg_id":4}}
+[RECEIVED] {"id":112,"src":"c10","dest":"n1","body":{"type":"broadcast","message":6,"msg_id":5}}
+[MATCH BROADCAST]
+BEGIN GOSSIP
+NEIGHBORS: n2, n4
+GOSSIP LOOP
+LOOP ITER
+[BROADCAST] {"src":"n1","dest":"n2","body":{"type":"broadcast","message":"6","msg_id":4}}
+LOOP ITER
+[BROADCAST] {"src":"n1","dest":"n4","body":{"type":"broadcast","message":"6","msg_id":5}}
+[BROADCAST_OK] {"src":"n1","dest":"c10","body":{"type":"broadcast_ok","in_reply_to":5,"msg_id":4}}
+[RECEIVED] {"id":118,"src":"n4","dest":"n1","body":{"type":"broadcast_ok","in_reply_to":5,"msg_id":4}}
+[MATCH UNKNOWN]
+[RECEIVED] {"id":120,"src":"n2","dest":"n1","body":{"type":"broadcast_ok","in_reply_to":4,"msg_id":12}}
+[MATCH UNKNOWN]
+[RECEIVED] {"id":124,"src":"c10","dest":"n1","body":{"type":"broadcast","message":7,"msg_id":6}}
+[MATCH BROADCAST]
+BEGIN GOSSIP
+NEIGHBORS: n2, n4
+GOSSIP LOOP
+LOOP ITER
+[BROADCAST] {"src":"n1","dest":"n2","body":{"type":"broadcast","message":"7","msg_id":6}}
+LOOP ITER
+[BROADCAST] {"src":"n1","dest":"n4","body":{"type":"broadcast","message":"7","msg_id":7}}
+[BROADCAST_OK] {"src":"n1","dest":"c10","body":{"type":"broadcast_ok","in_reply_to":6,"msg_id":6}}
+[RECEIVED] {"id":131,"src":"n4","dest":"n1","body":{"type":"broadcast_ok","in_reply_to":7,"msg_id":5}}
+[MATCH UNKNOWN]
+[RECEIVED] {"id":132,"src":"n2","dest":"n1","body":{"type":"broadcast_ok","in_reply_to":6,"msg_id":14}}
+[MATCH UNKNOWN]
+[RECEIVED] {"id":137,"src":"n2","dest":"n1","body":{"type":"broadcast","message":"8","msg_id":16}}
+[MATCH BROADCAST]
+BEGIN GOSSIP
+NEIGHBORS: n4
+GOSSIP LOOP
+LOOP ITER
+[BROADCAST] {"src":"n1","dest":"n4","body":{"type":"broadcast","message":"8","msg_id":8}}
+[BROADCAST_OK] {"src":"n1","dest":"n2","body":{"type":"broadcast_ok","in_reply_to":16,"msg_id":8}}
+[RECEIVED] {"id":147,"src":"n4","dest":"n1","body":{"type":"broadcast_ok","in_reply_to":8,"msg_id":6}}
+[MATCH UNKNOWN]
+[RECEIVED] {"id":153,"src":"n4","dest":"n1","body":{"type":"broadcast","message":"9","msg_id":7}}
+[CALLBACK MATCH] msg_id=7
+[EXECUTE CALLBACK] msg_id=7 dest=n4
+[MATCH BROADCAST]
+BEGIN GOSSIP
+NEIGHBORS: n2
+GOSSIP LOOP
+LOOP ITER
+[BROADCAST] {"src":"n1","dest":"n2","body":{"type":"broadcast","message":"9","msg_id":9}}
+[BROADCAST_OK] {"src":"n1","dest":"n4","body":{"type":"broadcast_ok","in_reply_to":7,"msg_id":9}}
+[RECEIVED] {"id":160,"src":"n2","dest":"n1","body":{"type":"broadcast_ok","in_reply_to":9,"msg_id":19}}
+[MATCH UNKNOWN]
+[RECEIVED] {"id":166,"src":"n4","dest":"n1","body":{"type":"broadcast","message":"10","msg_id":9}}
+[RECEIVED] {"id":167,"src":"n2","dest":"n1","body":{"type":"broadcast","message":"10","msg_id":19}}
+[CALLBACK MATCH] msg_id=9
+[EXECUTE CALLBACK] msg_id=9 dest=n2
+[MATCH BROADCAST]
+[MATCH BROADCAST]
+[BROADCAST_OK] {"src":"n1","dest":"n4","body":{"type":"broadcast_ok","in_reply_to":9,"msg_id":10}}
+[BROADCAST_OK] {"src":"n1","dest":"n2","body":{"type":"broadcast_ok","in_reply_to":19,"msg_id":10}}
+[RECEIVED] {"id":174,"src":"c10","dest":"n1","body":{"type":"broadcast","message":11,"msg_id":7}}
+[MATCH BROADCAST]
+BEGIN GOSSIP
+NEIGHBORS: n2, n4
+GOSSIP LOOP
+LOOP ITER
+[BROADCAST] {"src":"n1","dest":"n2","body":{"type":"broadcast","message":"11","msg_id":10}}
+LOOP ITER
+[BROADCAST] {"src":"n1","dest":"n4","body":{"type":"broadcast","message":"11","msg_id":11}}
+[BROADCAST_OK] {"src":"n1","dest":"c10","body":{"type":"broadcast_ok","in_reply_to":7,"msg_id":10}}
+[RECEIVED] {"id":181,"src":"n4","dest":"n1","body":{"type":"broadcast_ok","in_reply_to":11,"msg_id":10}}
+[MATCH UNKNOWN]
+[RECEIVED] {"id":182,"src":"n2","dest":"n1","body":{"type":"broadcast_ok","in_reply_to":10,"msg_id":21}}
+[MATCH UNKNOWN]
+[RECEIVED] {"id":186,"src":"c10","dest":"n1","body":{"type":"broadcast","message":12,"msg_id":8}}
+[CALLBACK MATCH] msg_id=8
+[EXECUTE CALLBACK] msg_id=8 dest=n4
+[MATCH BROADCAST]
+BEGIN GOSSIP
+NEIGHBORS: n2, n4
+GOSSIP LOOP
+LOOP ITER
+[BROADCAST] {"src":"n1","dest":"n2","body":{"type":"broadcast","message":"12","msg_id":12}}
+LOOP ITER
+[BROADCAST] {"src":"n1","dest":"n4","body":{"type":"broadcast","message":"12","msg_id":13}}
+[BROADCAST_OK] {"src":"n1","dest":"c10","body":{"type":"broadcast_ok","in_reply_to":8,"msg_id":12}}
+[RECEIVED] {"id":192,"src":"n4","dest":"n1","body":{"type":"broadcast_ok","in_reply_to":13,"msg_id":11}}
+[MATCH UNKNOWN]
+[RECEIVED] {"id":194,"src":"n2","dest":"n1","body":{"type":"broadcast_ok","in_reply_to":12,"msg_id":23}}
+[MATCH UNKNOWN]
+[RECEIVED] {"id":204,"src":"n2","dest":"n1","body":{"type":"broadcast","message":"13","msg_id":25}}
+[RECEIVED] {"id":205,"src":"n4","dest":"n1","body":{"type":"broadcast","message":"14","msg_id":12}}
+[MATCH BROADCAST]
+[CALLBACK MATCH] msg_id=12
+[EXECUTE CALLBACK] msg_id=12 dest=n2
+[MATCH BROADCAST]
+BEGIN GOSSIP
+[BROADCAST_OK] {"src":"n1","dest":"n2","body":{"type":"broadcast_ok","in_reply_to":25,"msg_id":14}}
+[BROADCAST_OK] {"src":"n1","dest":"n4","body":{"type":"broadcast_ok","in_reply_to":12,"msg_id":14}}
+[RECEIVED] {"id":218,"src":"n2","dest":"n1","body":{"type":"broadcast","message":"15","msg_id":27}}
+[MATCH BROADCAST]
+BEGIN GOSSIP
+[RECEIVED] {"id":219,"src":"n4","dest":"n1","body":{"type":"broadcast","message":"15","msg_id":14}}
+NEIGHBORS: n4
+[MATCH BROADCAST]
+[BROADCAST_OK] {"src":"n1","dest":"n2","body":{"type":"broadcast_ok","in_reply_to":27,"msg_id":14}}
+[BROADCAST_OK] {"src":"n1","dest":"n4","body":{"type":"broadcast_ok","in_reply_to":14,"msg_id":14}}
+[RECEIVED] {"id":226,"src":"c10","dest":"n1","body":{"type":"broadcast","message":16,"msg_id":9}}
+[MATCH BROADCAST]
+BEGIN GOSSIP
+NEIGHBORS: n2, n4
+GOSSIP LOOP
+LOOP ITER
+[BROADCAST] {"src":"n1","dest":"n2","body":{"type":"broadcast","message":"16","msg_id":14}}
+LOOP ITER
+[BROADCAST] {"src":"n1","dest":"n4","body":{"type":"broadcast","message":"16","msg_id":15}}
+[BROADCAST_OK] {"src":"n1","dest":"c10","body":{"type":"broadcast_ok","in_reply_to":9,"msg_id":14}}
+[RECEIVED] {"id":232,"src":"n4","dest":"n1","body":{"type":"broadcast_ok","in_reply_to":15,"msg_id":15}}
+[MATCH UNKNOWN]
+[RECEIVED] {"id":234,"src":"n2","dest":"n1","body":{"type":"broadcast_ok","in_reply_to":14,"msg_id":29}}
+[MATCH UNKNOWN]
+[RECEIVED] {"id":238,"src":"c10","dest":"n1","body":{"type":"read","msg_id":10}}
+[CALLBACK MATCH] msg_id=10
+[EXECUTE CALLBACK] msg_id=10 dest=n2
+[MATCH READ]
+[READ_OK] {"src":"n1","dest":"c10","body":{"type":"read_ok","messages":["0","1","10","11","12","13","14","15","16","2","3","4","5","6","7","8","9"],"in_reply_to":10,"msg_id":16}}
+[RECEIVED] {"id":241,"src":"n2","dest":"n1","body":{"type":"broadcast","message":"17","msg_id":31}}
+[MATCH BROADCAST]
+BEGIN GOSSIP
+NEIGHBORS: n4
+GOSSIP LOOP
+LOOP ITER
+[BROADCAST] {"src":"n1","dest":"n4","body":{"type":"broadcast","message":"17","msg_id":16}}
+[BROADCAST_OK] {"src":"n1","dest":"n2","body":{"type":"broadcast_ok","in_reply_to":31,"msg_id":16}}
+[RECEIVED] {"id":251,"src":"n4","dest":"n1","body":{"type":"broadcast_ok","in_reply_to":16,"msg_id":16}}
+[MATCH UNKNOWN]
+[RECEIVED] {"id":255,"src":"n2","dest":"n1","body":{"type":"broadcast","message":"18","msg_id":34}}
+[MATCH BROADCAST]
+BEGIN GOSSIP
+NEIGHBORS: n4
+GOSSIP LOOP
+LOOP ITER
+[BROADCAST] {"src":"n1","dest":"n4","body":{"type":"broadcast","message":"18","msg_id":17}}
+[BROADCAST_OK] {"src":"n1","dest":"n2","body":{"type":"broadcast_ok","in_reply_to":34,"msg_id":17}}
+[RECEIVED] {"id":262,"src":"n4","dest":"n1","body":{"type":"broadcast_ok","in_reply_to":17,"msg_id":16}}
+[MATCH UNKNOWN]
+[RECEIVED] {"id":268,"src":"c10","dest":"n1","body":{"type":"broadcast","message":19,"msg_id":11}}
+[CALLBACK MATCH] msg_id=11
+[EXECUTE CALLBACK] msg_id=11 dest=n4
+[MATCH BROADCAST]
+BEGIN GOSSIP
+NEIGHBORS: n2, n4
+GOSSIP LOOP
+LOOP ITER
+[BROADCAST] {"src":"n1","dest":"n2","body":{"type":"broadcast","message":"19","msg_id":18}}
+LOOP ITER
+[BROADCAST] {"src":"n1","dest":"n4","body":{"type":"broadcast","message":"19","msg_id":19}}
+[BROADCAST_OK] {"src":"n1","dest":"c10","body":{"type":"broadcast_ok","in_reply_to":11,"msg_id":18}}
+[RECEIVED] {"id":274,"src":"n4","dest":"n1","body":{"type":"broadcast_ok","in_reply_to":19,"msg_id":16}}
+[MATCH UNKNOWN]
+[RECEIVED] {"id":276,"src":"n2","dest":"n1","body":{"type":"broadcast_ok","in_reply_to":18,"msg_id":36}}
+[MATCH UNKNOWN]
+[RECEIVED] {"id":280,"src":"c10","dest":"n1","body":{"type":"broadcast","message":20,"msg_id":12}}
+[MATCH BROADCAST]
+BEGIN GOSSIP
+NEIGHBORS: n2, n4
+GOSSIP LOOP
+LOOP ITER
+[BROADCAST] {"src":"n1","dest":"n2","body":{"type":"broadcast","message":"20","msg_id":20}}
+LOOP ITER
+[BROADCAST] {"src":"n1","dest":"n4","body":{"type":"broadcast","message":"20","msg_id":21}}
+[BROADCAST_OK] {"src":"n1","dest":"c10","body":{"type":"broadcast_ok","in_reply_to":12,"msg_id":20}}
+[RECEIVED] {"id":286,"src":"n4","dest":"n1","body":{"type":"broadcast_ok","in_reply_to":21,"msg_id":17}}
+[MATCH UNKNOWN]
+[RECEIVED] {"id":288,"src":"n2","dest":"n1","body":{"type":"broadcast_ok","in_reply_to":20,"msg_id":38}}
+[MATCH UNKNOWN]
+[RECEIVED] {"id":293,"src":"n2","dest":"n1","body":{"type":"broadcast","message":"21","msg_id":40}}
+[MATCH BROADCAST]
+BEGIN GOSSIP
+NEIGHBORS: n4
+GOSSIP LOOP
+LOOP ITER
+[BROADCAST] {"src":"n1","dest":"n4","body":{"type":"broadcast","message":"21","msg_id":22}}
+[BROADCAST_OK] {"src":"n1","dest":"n2","body":{"type":"broadcast_ok","in_reply_to":40,"msg_id":22}}
+[RECEIVED] {"id":302,"src":"n4","dest":"n1","body":{"type":"broadcast_ok","in_reply_to":22,"msg_id":18}}
+[MATCH UNKNOWN]
+[RECEIVED] {"id":307,"src":"n2","dest":"n1","body":{"type":"broadcast","message":"22","msg_id":43}}
+[MATCH BROADCAST]
+BEGIN GOSSIP
+NEIGHBORS: n4
+GOSSIP LOOP
+LOOP ITER
+[BROADCAST] {"src":"n1","dest":"n4","body":{"type":"broadcast","message":"22","msg_id":23}}
+[BROADCAST_OK] {"src":"n1","dest":"n2","body":{"type":"broadcast_ok","in_reply_to":43,"msg_id":23}}
+[RECEIVED] {"id":315,"src":"n4","dest":"n1","body":{"type":"broadcast_ok","in_reply_to":23,"msg_id":18}}
+[MATCH UNKNOWN]
+[RECEIVED] {"id":320,"src":"c10","dest":"n1","body":{"type":"read","msg_id":13}}
+[CALLBACK MATCH] msg_id=13
+[EXECUTE CALLBACK] msg_id=13 dest=n4
+[MATCH READ]
+[READ_OK] {"src":"n1","dest":"c10","body":{"type":"read_ok","messages":["0","1","10","11","12","13","14","15","16","17","18","19","2","20","21","22","3","4","5","6","7","8","9"],"in_reply_to":13,"msg_id":24}}
+[RECEIVED] {"id":322,"src":"c10","dest":"n1","body":{"type":"broadcast","message":23,"msg_id":14}}
+[CALLBACK MATCH] msg_id=14
+[EXECUTE CALLBACK] msg_id=14 dest=n2
+[MATCH BROADCAST]
+BEGIN GOSSIP
+NEIGHBORS: n2, n4
+GOSSIP LOOP
+LOOP ITER
+[BROADCAST] {"src":"n1","dest":"n2","body":{"type":"broadcast","message":"23","msg_id":24}}
+LOOP ITER
+[BROADCAST] {"src":"n1","dest":"n4","body":{"type":"broadcast","message":"23","msg_id":25}}
+[BROADCAST_OK] {"src":"n1","dest":"c10","body":{"type":"broadcast_ok","in_reply_to":14,"msg_id":24}}
+[RECEIVED] {"id":328,"src":"n4","dest":"n1","body":{"type":"broadcast_ok","in_reply_to":25,"msg_id":18}}
+[MATCH UNKNOWN]
+[RECEIVED] {"id":330,"src":"n2","dest":"n1","body":{"type":"broadcast_ok","in_reply_to":24,"msg_id":45}}
+[MATCH UNKNOWN]
+[RECEIVED] {"id":339,"src":"n2","dest":"n1","body":{"type":"broadcast","message":"24","msg_id":47}}
+[MATCH BROADCAST]
+BEGIN GOSSIP
+NEIGHBORS: n4
+GOSSIP LOOP
+LOOP ITER
+[BROADCAST] {"src":"n1","dest":"n4","body":{"type":"broadcast","message":"24","msg_id":26}}
+[BROADCAST_OK] {"src":"n1","dest":"n2","body":{"type":"broadcast_ok","in_reply_to":47,"msg_id":26}}
+[RECEIVED] {"id":347,"src":"n4","dest":"n1","body":{"type":"broadcast_ok","in_reply_to":26,"msg_id":19}}
+[MATCH UNKNOWN]
+[RECEIVED] {"id":349,"src":"n4","dest":"n1","body":{"type":"broadcast","message":"25","msg_id":19}}
+[CALLBACK MATCH] msg_id=19
+[EXECUTE CALLBACK] msg_id=19 dest=n4
+[MATCH BROADCAST]
+BEGIN GOSSIP
+NEIGHBORS: n2
+GOSSIP LOOP
+LOOP ITER
+[BROADCAST] {"src":"n1","dest":"n2","body":{"type":"broadcast","message":"25","msg_id":27}}
+[BROADCAST_OK] {"src":"n1","dest":"n4","body":{"type":"broadcast_ok","in_reply_to":19,"msg_id":27}}
+[RECEIVED] {"id":356,"src":"n2","dest":"n1","body":{"type":"broadcast_ok","in_reply_to":27,"msg_id":49}}
+[MATCH UNKNOWN]
+[RECEIVED] {"id":360,"src":"n2","dest":"n1","body":{"type":"broadcast","message":"26","msg_id":49}}
+[MATCH BROADCAST]
+BEGIN GOSSIP
+NEIGHBORS: n4
+GOSSIP LOOP
+LOOP ITER
+[BROADCAST] {"src":"n1","dest":"n4","body":{"type":"broadcast","message":"26","msg_id":28}}
+[BROADCAST_OK] {"src":"n1","dest":"n2","body":{"type":"broadcast_ok","in_reply_to":49,"msg_id":28}}
+[RECEIVED] {"id":367,"src":"n4","dest":"n1","body":{"type":"broadcast_ok","in_reply_to":28,"msg_id":21}}
+[MATCH UNKNOWN]
+[RECEIVED] {"id":372,"src":"c10","dest":"n1","body":{"type":"broadcast","message":27,"msg_id":15}}
+[CALLBACK MATCH] msg_id=15
+[EXECUTE CALLBACK] msg_id=15 dest=n4
+[MATCH BROADCAST]
+BEGIN GOSSIP
+NEIGHBORS: n2, n4
+GOSSIP LOOP
+LOOP ITER
+[BROADCAST] {"src":"n1","dest":"n2","body":{"type":"broadcast","message":"27","msg_id":29}}
+LOOP ITER
+[BROADCAST] {"src":"n1","dest":"n4","body":{"type":"broadcast","message":"27","msg_id":30}}
+[BROADCAST_OK] {"src":"n1","dest":"c10","body":{"type":"broadcast_ok","in_reply_to":15,"msg_id":29}}
+[RECEIVED] {"id":379,"src":"n4","dest":"n1","body":{"type":"broadcast_ok","in_reply_to":30,"msg_id":22}}
+[RECEIVED] {"id":380,"src":"n2","dest":"n1","body":{"type":"broadcast_ok","in_reply_to":29,"msg_id":51}}
+[MATCH UNKNOWN]
+[MATCH UNKNOWN]
+[RECEIVED] {"id":384,"src":"c10","dest":"n1","body":{"type":"broadcast","message":28,"msg_id":16}}
+[CALLBACK MATCH] msg_id=16
+[EXECUTE CALLBACK] msg_id=16 dest=n4
+[MATCH BROADCAST]
+BEGIN GOSSIP
+NEIGHBORS: n2, n4
+GOSSIP LOOP
+LOOP ITER
+[BROADCAST] {"src":"n1","dest":"n2","body":{"type":"broadcast","message":"28","msg_id":31}}
+LOOP ITER
+[BROADCAST] {"src":"n1","dest":"n4","body":{"type":"broadcast","message":"28","msg_id":32}}
+[BROADCAST_OK] {"src":"n1","dest":"c10","body":{"type":"broadcast_ok","in_reply_to":16,"msg_id":31}}
+[RECEIVED] {"id":390,"src":"n4","dest":"n1","body":{"type":"broadcast_ok","in_reply_to":32,"msg_id":23}}
+[MATCH UNKNOWN]
+[RECEIVED] {"id":392,"src":"n2","dest":"n1","body":{"type":"broadcast_ok","in_reply_to":31,"msg_id":53}}
+[MATCH UNKNOWN]
+[RECEIVED] {"id":397,"src":"n2","dest":"n1","body":{"type":"broadcast","message":"29","msg_id":55}}
+[MATCH BROADCAST]
+BEGIN GOSSIP
+NEIGHBORS: n4
+GOSSIP LOOP
+LOOP ITER
+[BROADCAST] {"src":"n1","dest":"n4","body":{"type":"broadcast","message":"29","msg_id":33}}
+[BROADCAST_OK] {"src":"n1","dest":"n2","body":{"type":"broadcast_ok","in_reply_to":55,"msg_id":33}}
+[RECEIVED] {"id":406,"src":"n4","dest":"n1","body":{"type":"broadcast_ok","in_reply_to":33,"msg_id":24}}
+[MATCH UNKNOWN]
+[RECEIVED] {"id":411,"src":"n4","dest":"n1","body":{"type":"broadcast","message":"30","msg_id":24}}
+[CALLBACK MATCH] msg_id=24
+[EXECUTE CALLBACK] msg_id=24 dest=n2
+[MATCH BROADCAST]
+BEGIN GOSSIP
+NEIGHBORS: n2
+GOSSIP LOOP
+LOOP ITER
+[BROADCAST] {"src":"n1","dest":"n2","body":{"type":"broadcast","message":"30","msg_id":34}}
+[BROADCAST_OK] {"src":"n1","dest":"n4","body":{"type":"broadcast_ok","in_reply_to":24,"msg_id":34}}
+[RECEIVED] {"id":419,"src":"n2","dest":"n1","body":{"type":"broadcast_ok","in_reply_to":34,"msg_id":58}}
+[MATCH UNKNOWN]
+[RECEIVED] {"id":423,"src":"n2","dest":"n1","body":{"type":"broadcast","message":"31","msg_id":58}}
+[MATCH BROADCAST]
+BEGIN GOSSIP
+[RECEIVED] {"id":425,"src":"n4","dest":"n1","body":{"type":"broadcast","message":"31","msg_id":26}}
+NEIGHBORS: n4
+[CALLBACK MATCH] msg_id=26
+[BROADCAST_OK] {"src":"n1","dest":"n2","body":{"type":"broadcast_ok","in_reply_to":58,"msg_id":35}}
+[EXECUTE CALLBACK] msg_id=26 dest=n4
+[MATCH BROADCAST]
+[BROADCAST_OK] {"src":"n1","dest":"n4","body":{"type":"broadcast_ok","in_reply_to":26,"msg_id":35}}
+[RECEIVED] {"id":432,"src":"c10","dest":"n1","body":{"type":"read","msg_id":17}}
+[CALLBACK MATCH] msg_id=17
+[EXECUTE CALLBACK] msg_id=17 dest=n4
+[MATCH READ]
+[READ_OK] {"src":"n1","dest":"c10","body":{"type":"read_ok","messages":["0","1","10","11","12","13","14","15","16","17","18","19","2","20","21","22","23","24","25","26","27","28","29","3","30","31","4","5","6","7","8","9"],"in_reply_to":17,"msg_id":35}}
+[RECEIVED] {"id":434,"src":"c10","dest":"n1","body":{"type":"broadcast","message":32,"msg_id":18}}
+[CALLBACK MATCH] msg_id=18
+[EXECUTE CALLBACK] msg_id=18 dest=n2
+[MATCH BROADCAST]
+BEGIN GOSSIP
+NEIGHBORS: n2, n4
+GOSSIP LOOP
+LOOP ITER
+[BROADCAST] {"src":"n1","dest":"n2","body":{"type":"broadcast","message":"32","msg_id":35}}
+LOOP ITER
+[BROADCAST] {"src":"n1","dest":"n4","body":{"type":"broadcast","message":"32","msg_id":36}}
+[BROADCAST_OK] {"src":"n1","dest":"c10","body":{"type":"broadcast_ok","in_reply_to":18,"msg_id":35}}
+[RECEIVED] {"id":440,"src":"n4","dest":"n1","body":{"type":"broadcast_ok","in_reply_to":36,"msg_id":27}}
+[MATCH UNKNOWN]
+[RECEIVED] {"id":442,"src":"n2","dest":"n1","body":{"type":"broadcast_ok","in_reply_to":35,"msg_id":60}}
+[MATCH UNKNOWN]
+[RECEIVED] {"id":451,"src":"n4","dest":"n1","body":{"type":"broadcast","message":"33","msg_id":28}}
+[CALLBACK MATCH] msg_id=28
+[EXECUTE CALLBACK] msg_id=28 dest=n4
+[MATCH BROADCAST]
+BEGIN GOSSIP
+NEIGHBORS: n2
+GOSSIP LOOP
+LOOP ITER
+[BROADCAST] {"src":"n1","dest":"n2","body":{"type":"broadcast","message":"33","msg_id":37}}
+[BROADCAST_OK] {"src":"n1","dest":"n4","body":{"type":"broadcast_ok","in_reply_to":28,"msg_id":37}}
+[RECEIVED] {"id":458,"src":"n2","dest":"n1","body":{"type":"broadcast_ok","in_reply_to":37,"msg_id":62}}
+[MATCH UNKNOWN]
+[RECEIVED] {"id":464,"src":"n2","dest":"n1","body":{"type":"broadcast","message":"34","msg_id":62}}
+[MATCH BROADCAST]
+[RECEIVED] {"id":465,"src":"n4","dest":"n1","body":{"type":"broadcast","message":"34","msg_id":30}}
+BEGIN GOSSIP
+[CALLBACK MATCH] msg_id=30
+[BROADCAST_OK] {"src":"n1","dest":"n2","body":{"type":"broadcast_ok","in_reply_to":62,"msg_id":38}}
+[EXECUTE CALLBACK] msg_id=30 dest=n4
+[MATCH BROADCAST]
+[BROADCAST_OK] {"src":"n1","dest":"n4","body":{"type":"broadcast_ok","in_reply_to":30,"msg_id":38}}
+[RECEIVED] {"id":472,"src":"c10","dest":"n1","body":{"type":"read","msg_id":19}}
+[MATCH READ]
+[READ_OK] {"src":"n1","dest":"c10","body":{"type":"read_ok","messages":["0","1","10","11","12","13","14","15","16","17","18","19","2","20","21","22","23","24","25","26","27","28","29","3","30","31","32","33","34","4","5","6","7","8","9"],"in_reply_to":19,"msg_id":38}}
+[RECEIVED] {"id":474,"src":"c10","dest":"n1","body":{"type":"broadcast","message":35,"msg_id":20}}
+[CALLBACK MATCH] msg_id=20
+[EXECUTE CALLBACK] msg_id=20 dest=n2
+[MATCH BROADCAST]
+BEGIN GOSSIP
+NEIGHBORS: n2, n4
+GOSSIP LOOP
+LOOP ITER
+[BROADCAST] {"src":"n1","dest":"n2","body":{"type":"broadcast","message":"35","msg_id":38}}
+LOOP ITER
+[BROADCAST] {"src":"n1","dest":"n4","body":{"type":"broadcast","message":"35","msg_id":39}}
+[BROADCAST_OK] {"src":"n1","dest":"c10","body":{"type":"broadcast_ok","in_reply_to":20,"msg_id":38}}
+[RECEIVED] {"id":480,"src":"n4","dest":"n1","body":{"type":"broadcast_ok","in_reply_to":39,"msg_id":31}}
+[MATCH UNKNOWN]
+[RECEIVED] {"id":482,"src":"n2","dest":"n1","body":{"type":"broadcast_ok","in_reply_to":38,"msg_id":64}}
+[MATCH UNKNOWN]
+[RECEIVED] {"id":487,"src":"n2","dest":"n1","body":{"type":"broadcast","message":"36","msg_id":66}}
+[MATCH BROADCAST]
+BEGIN GOSSIP
+NEIGHBORS: n4
+GOSSIP LOOP
+LOOP ITER
+[BROADCAST] {"src":"n1","dest":"n4","body":{"type":"broadcast","message":"36","msg_id":40}}
+[BROADCAST_OK] {"src":"n1","dest":"n2","body":{"type":"broadcast_ok","in_reply_to":66,"msg_id":40}}
+[RECEIVED] {"id":496,"src":"n4","dest":"n1","body":{"type":"broadcast_ok","in_reply_to":40,"msg_id":32}}
+[MATCH UNKNOWN]
+[RECEIVED] {"id":501,"src":"n4","dest":"n1","body":{"type":"broadcast","message":"37","msg_id":32}}
+[CALLBACK MATCH] msg_id=32
+[EXECUTE CALLBACK] msg_id=32 dest=n4
+[MATCH BROADCAST]
+BEGIN GOSSIP
+NEIGHBORS: n2
+GOSSIP LOOP
+LOOP ITER
+[BROADCAST] {"src":"n1","dest":"n2","body":{"type":"broadcast","message":"37","msg_id":41}}
+[BROADCAST_OK] {"src":"n1","dest":"n4","body":{"type":"broadcast_ok","in_reply_to":32,"msg_id":41}}
+[RECEIVED] {"id":508,"src":"n2","dest":"n1","body":{"type":"broadcast_ok","in_reply_to":41,"msg_id":69}}
+[MATCH UNKNOWN]
+[RECEIVED] {"id":514,"src":"n2","dest":"n1","body":{"type":"broadcast","message":"38","msg_id":69}}
+[MATCH BROADCAST]
+BEGIN GOSSIP
+[RECEIVED] {"id":516,"src":"n4","dest":"n1","body":{"type":"broadcast","message":"38","msg_id":34}}
+NEIGHBORS: n4
+[CALLBACK MATCH] msg_id=34
+[BROADCAST_OK] {"src":"n1","dest":"n2","body":{"type":"broadcast_ok","in_reply_to":69,"msg_id":42}}
+[EXECUTE CALLBACK] msg_id=34 dest=n2
+[MATCH BROADCAST]
+[BROADCAST_OK] {"src":"n1","dest":"n4","body":{"type":"broadcast_ok","in_reply_to":34,"msg_id":42}}
+[RECEIVED] {"id":522,"src":"c10","dest":"n1","body":{"type":"broadcast","message":39,"msg_id":21}}
+[CALLBACK MATCH] msg_id=21
+[EXECUTE CALLBACK] msg_id=21 dest=n4
+[MATCH BROADCAST]
+BEGIN GOSSIP
+NEIGHBORS: n2, n4
+GOSSIP LOOP
+LOOP ITER
+[BROADCAST] {"src":"n1","dest":"n2","body":{"type":"broadcast","message":"39","msg_id":42}}
+LOOP ITER
+[BROADCAST] {"src":"n1","dest":"n4","body":{"type":"broadcast","message":"39","msg_id":43}}
+[BROADCAST_OK] {"src":"n1","dest":"c10","body":{"type":"broadcast_ok","in_reply_to":21,"msg_id":42}}
+[RECEIVED] {"id":528,"src":"n4","dest":"n1","body":{"type":"broadcast_ok","in_reply_to":43,"msg_id":35}}
+[MATCH UNKNOWN]
+[RECEIVED] {"id":530,"src":"n2","dest":"n1","body":{"type":"broadcast_ok","in_reply_to":42,"msg_id":71}}
+[MATCH UNKNOWN]
+[RECEIVED] {"id":534,"src":"c10","dest":"n1","body":{"type":"read","msg_id":22}}
+[CALLBACK MATCH] msg_id=22
+[EXECUTE CALLBACK] msg_id=22 dest=n4
+[MATCH READ]
+[READ_OK] {"src":"n1","dest":"c10","body":{"type":"read_ok","messages":["0","1","10","11","12","13","14","15","16","17","18","19","2","20","21","22","23","24","25","26","27","28","29","3","30","31","32","33","34","35","36","37","38","39","4","5","6","7","8","9"],"in_reply_to":22,"msg_id":44}}
+[RECEIVED] {"id":541,"src":"n2","dest":"n1","body":{"type":"broadcast","message":"40","msg_id":73}}
+[MATCH BROADCAST]
+BEGIN GOSSIP
+NEIGHBORS: n4
+GOSSIP LOOP
+LOOP ITER
+[BROADCAST] {"src":"n1","dest":"n4","body":{"type":"broadcast","message":"40","msg_id":44}}
+[BROADCAST_OK] {"src":"n1","dest":"n2","body":{"type":"broadcast_ok","in_reply_to":73,"msg_id":44}}
+[RECEIVED] {"id":549,"src":"n4","dest":"n1","body":{"type":"broadcast_ok","in_reply_to":44,"msg_id":36}}
+[MATCH UNKNOWN]
+[RECEIVED] {"id":551,"src":"n4","dest":"n1","body":{"type":"broadcast","message":"41","msg_id":36}}
+[CALLBACK MATCH] msg_id=36
+[EXECUTE CALLBACK] msg_id=36 dest=n4
+[MATCH BROADCAST]
+BEGIN GOSSIP
+NEIGHBORS: n2
+GOSSIP LOOP
+LOOP ITER
+[BROADCAST] {"src":"n1","dest":"n2","body":{"type":"broadcast","message":"41","msg_id":45}}
+[BROADCAST_OK] {"src":"n1","dest":"n4","body":{"type":"broadcast_ok","in_reply_to":36,"msg_id":45}}
+[RECEIVED] {"id":558,"src":"n2","dest":"n1","body":{"type":"broadcast_ok","in_reply_to":45,"msg_id":75}}
+[MATCH UNKNOWN]
+[RECEIVED] {"id":564,"src":"n2","dest":"n1","body":{"type":"broadcast","message":"42","msg_id":75}}
+[MATCH BROADCAST]
+BEGIN GOSSIP
+NEIGHBORS: n4
+[RECEIVED] {"id":566,"src":"n4","dest":"n1","body":{"type":"broadcast","message":"42","msg_id":38}}
+GOSSIP LOOP
+[CALLBACK MATCH] msg_id=38
+[BROADCAST_OK] {"src":"n1","dest":"n2","body":{"type":"broadcast_ok","in_reply_to":75,"msg_id":46}}
+[EXECUTE CALLBACK] msg_id=38 dest=n2
+[MATCH BROADCAST]
+[BROADCAST_OK] {"src":"n1","dest":"n4","body":{"type":"broadcast_ok","in_reply_to":38,"msg_id":46}}
+[RECEIVED] {"id":572,"src":"c10","dest":"n1","body":{"type":"read","msg_id":23}}
+[CALLBACK MATCH] msg_id=23
+[EXECUTE CALLBACK] msg_id=23 dest=n4
+[MATCH READ]
+[READ_OK] {"src":"n1","dest":"c10","body":{"type":"read_ok","messages":["0","1","10","11","12","13","14","15","16","17","18","19","2","20","21","22","23","24","25","26","27","28","29","3","30","31","32","33","34","35","36","37","38","39","4","40","41","42","5","6","7","8","9"],"in_reply_to":23,"msg_id":46}}
+[RECEIVED] {"id":574,"src":"c10","dest":"n1","body":{"type":"broadcast","message":43,"msg_id":24}}
+[MATCH BROADCAST]
+BEGIN GOSSIP
+NEIGHBORS: n2, n4
+GOSSIP LOOP
+LOOP ITER
+[BROADCAST] {"src":"n1","dest":"n2","body":{"type":"broadcast","message":"43","msg_id":46}}
+LOOP ITER
+[BROADCAST] {"src":"n1","dest":"n4","body":{"type":"broadcast","message":"43","msg_id":47}}
+[BROADCAST_OK] {"src":"n1","dest":"c10","body":{"type":"broadcast_ok","in_reply_to":24,"msg_id":46}}
+[RECEIVED] {"id":580,"src":"n4","dest":"n1","body":{"type":"broadcast_ok","in_reply_to":47,"msg_id":39}}
+[MATCH UNKNOWN]
+[RECEIVED] {"id":582,"src":"n2","dest":"n1","body":{"type":"broadcast_ok","in_reply_to":46,"msg_id":77}}
+[MATCH UNKNOWN]
+[RECEIVED] {"id":591,"src":"n2","dest":"n1","body":{"type":"broadcast","message":"44","msg_id":79}}
+[MATCH BROADCAST]
+BEGIN GOSSIP
+NEIGHBORS: n4
+GOSSIP LOOP
+LOOP ITER
+[BROADCAST] {"src":"n1","dest":"n4","body":{"type":"broadcast","message":"44","msg_id":48}}
+[BROADCAST_OK] {"src":"n1","dest":"n2","body":{"type":"broadcast_ok","in_reply_to":79,"msg_id":48}}
+[RECEIVED] {"id":599,"src":"n4","dest":"n1","body":{"type":"broadcast_ok","in_reply_to":48,"msg_id":40}}
+[MATCH UNKNOWN]
+[RECEIVED] {"id":606,"src":"n2","dest":"n1","body":{"type":"broadcast","message":"45","msg_id":81}}
+[RECEIVED] {"id":607,"src":"n4","dest":"n1","body":{"type":"broadcast","message":"45","msg_id":40}}
+[MATCH BROADCAST]
+[CALLBACK MATCH] msg_id=40
+[EXECUTE CALLBACK] msg_id=40 dest=n4
+[MATCH BROADCAST]
+[BROADCAST_OK] {"src":"n1","dest":"n4","body":{"type":"broadcast_ok","in_reply_to":40,"msg_id":49}}
+[BROADCAST_OK] {"src":"n1","dest":"n2","body":{"type":"broadcast_ok","in_reply_to":81,"msg_id":49}}
+[RECEIVED] {"id":614,"src":"c10","dest":"n1","body":{"type":"read","msg_id":25}}
+[CALLBACK MATCH] msg_id=25
+[EXECUTE CALLBACK] msg_id=25 dest=n4
+[MATCH READ]
+[READ_OK] {"src":"n1","dest":"c10","body":{"type":"read_ok","messages":["0","1","10","11","12","13","14","15","16","17","18","19","2","20","21","22","23","24","25","26","27","28","29","3","30","31","32","33","34","35","36","37","38","39","4","40","41","42","43","44","45","5","6","7","8","9"],"in_reply_to":25,"msg_id":49}}
+[RECEIVED] {"id":616,"src":"c10","dest":"n1","body":{"type":"broadcast","message":46,"msg_id":26}}
+[MATCH BROADCAST]
+BEGIN GOSSIP
+NEIGHBORS: n2, n4
+GOSSIP LOOP
+LOOP ITER
+[BROADCAST] {"src":"n1","dest":"n2","body":{"type":"broadcast","message":"46","msg_id":49}}
+LOOP ITER
+[BROADCAST] {"src":"n1","dest":"n4","body":{"type":"broadcast","message":"46","msg_id":50}}
+[BROADCAST_OK] {"src":"n1","dest":"c10","body":{"type":"broadcast_ok","in_reply_to":26,"msg_id":49}}
+[RECEIVED] {"id":620,"src":"n2","dest":"n1","body":{"type":"broadcast_ok","in_reply_to":49,"msg_id":83}}
+[MATCH UNKNOWN]
+[RECEIVED] {"id":627,"src":"n4","dest":"n1","body":{"type":"broadcast_ok","in_reply_to":50,"msg_id":41}}
+[MATCH UNKNOWN]
+[RECEIVED] {"id":629,"src":"n2","dest":"n1","body":{"type":"broadcast","message":"47","msg_id":85}}
+[MATCH BROADCAST]
+BEGIN GOSSIP
+NEIGHBORS: n4
+GOSSIP LOOP
+LOOP ITER
+[BROADCAST] {"src":"n1","dest":"n4","body":{"type":"broadcast","message":"47","msg_id":51}}
+[BROADCAST_OK] {"src":"n1","dest":"n2","body":{"type":"broadcast_ok","in_reply_to":85,"msg_id":51}}
+[RECEIVED] {"id":638,"src":"n4","dest":"n1","body":{"type":"broadcast_ok","in_reply_to":51,"msg_id":41}}
+[MATCH UNKNOWN]
+[RECEIVED] {"id":643,"src":"n2","dest":"n1","body":{"type":"broadcast","message":"48","msg_id":88}}
+[MATCH BROADCAST]
+BEGIN GOSSIP
+NEIGHBORS: n4
+GOSSIP LOOP
+LOOP ITER
+[BROADCAST] {"src":"n1","dest":"n4","body":{"type":"broadcast","message":"48","msg_id":52}}
+[BROADCAST_OK] {"src":"n1","dest":"n2","body":{"type":"broadcast_ok","in_reply_to":88,"msg_id":52}}
+[RECEIVED] {"id":650,"src":"n4","dest":"n1","body":{"type":"broadcast_ok","in_reply_to":52,"msg_id":41}}
+[MATCH UNKNOWN]
+[RECEIVED] {"id":656,"src":"c10","dest":"n1","body":{"type":"read","msg_id":27}}
+[CALLBACK MATCH] msg_id=27
+[EXECUTE CALLBACK] msg_id=27 dest=n2
+[MATCH READ]
+[READ_OK] {"src":"n1","dest":"c10","body":{"type":"read_ok","messages":["0","1","10","11","12","13","14","15","16","17","18","19","2","20","21","22","23","24","25","26","27","28","29","3","30","31","32","33","34","35","36","37","38","39","4","40","41","42","43","44","45","46","47","48","5","6","7","8","9"],"in_reply_to":27,"msg_id":53}}
+[RECEIVED] {"id":658,"src":"c10","dest":"n1","body":{"type":"read","msg_id":28}}
+[MATCH READ]
+[READ_OK] {"src":"n1","dest":"c10","body":{"type":"read_ok","messages":["0","1","10","11","12","13","14","15","16","17","18","19","2","20","21","22","23","24","25","26","27","28","29","3","30","31","32","33","34","35","36","37","38","39","4","40","41","42","43","44","45","46","47","48","5","6","7","8","9"],"in_reply_to":28,"msg_id":53}}
+[RECEIVED] {"id":665,"src":"n2","dest":"n1","body":{"type":"broadcast","message":"49","msg_id":90}}
+[MATCH BROADCAST]
+BEGIN GOSSIP
+NEIGHBORS: n4
+GOSSIP LOOP
+LOOP ITER
+[BROADCAST] {"src":"n1","dest":"n4","body":{"type":"broadcast","message":"49","msg_id":53}}
+[BROADCAST_OK] {"src":"n1","dest":"n2","body":{"type":"broadcast_ok","in_reply_to":90,"msg_id":53}}
+[RECEIVED] {"id":672,"src":"n4","dest":"n1","body":{"type":"broadcast_ok","in_reply_to":53,"msg_id":41}}
+[MATCH UNKNOWN]
+[RECEIVED] {"id":678,"src":"c10","dest":"n1","body":{"type":"read","msg_id":29}}
+[CALLBACK MATCH] msg_id=29
+[EXECUTE CALLBACK] msg_id=29 dest=n2
+[MATCH READ]
+[READ_OK] {"src":"n1","dest":"c10","body":{"type":"read_ok","messages":["0","1","10","11","12","13","14","15","16","17","18","19","2","20","21","22","23","24","25","26","27","28","29","3","30","31","32","33","34","35","36","37","38","39","4","40","41","42","43","44","45","46","47","48","49","5","6","7","8","9"],"in_reply_to":29,"msg_id":54}}
+[RECEIVED] {"id":680,"src":"c10","dest":"n1","body":{"type":"broadcast","message":50,"msg_id":30}}
+[MATCH BROADCAST]
+BEGIN GOSSIP
+NEIGHBORS: n2, n4
+GOSSIP LOOP
+LOOP ITER
+[BROADCAST] {"src":"n1","dest":"n2","body":{"type":"broadcast","message":"50","msg_id":54}}
+LOOP ITER
+[BROADCAST] {"src":"n1","dest":"n4","body":{"type":"broadcast","message":"50","msg_id":55}}
+[BROADCAST_OK] {"src":"n1","dest":"c10","body":{"type":"broadcast_ok","in_reply_to":30,"msg_id":54}}
+[RECEIVED] {"id":686,"src":"n2","dest":"n1","body":{"type":"broadcast_ok","in_reply_to":54,"msg_id":92}}
+[MATCH UNKNOWN]
+[RECEIVED] {"id":688,"src":"n4","dest":"n1","body":{"type":"broadcast_ok","in_reply_to":55,"msg_id":41}}
+[MATCH UNKNOWN]
+[RECEIVED] {"id":697,"src":"n2","dest":"n1","body":{"type":"broadcast","message":"51","msg_id":94}}
+[MATCH BROADCAST]
+BEGIN GOSSIP
+NEIGHBORS: n4
+GOSSIP LOOP
+LOOP ITER
+[BROADCAST] {"src":"n1","dest":"n4","body":{"type":"broadcast","message":"51","msg_id":56}}
+[BROADCAST_OK] {"src":"n1","dest":"n2","body":{"type":"broadcast_ok","in_reply_to":94,"msg_id":56}}
+[RECEIVED] {"id":704,"src":"n4","dest":"n1","body":{"type":"broadcast_ok","in_reply_to":56,"msg_id":42}}
+[MATCH UNKNOWN]
+[RECEIVED] {"id":707,"src":"n4","dest":"n1","body":{"type":"broadcast","message":"52","msg_id":42}}
+[CALLBACK MATCH] msg_id=42
+[EXECUTE CALLBACK] msg_id=42 dest=n2
+[MATCH BROADCAST]
+BEGIN GOSSIP
+NEIGHBORS: n2
+GOSSIP LOOP
+LOOP ITER
+[BROADCAST] {"src":"n1","dest":"n2","body":{"type":"broadcast","message":"52","msg_id":57}}
+[BROADCAST_OK] {"src":"n1","dest":"n4","body":{"type":"broadcast_ok","in_reply_to":42,"msg_id":57}}
+[RECEIVED] {"id":714,"src":"n2","dest":"n1","body":{"type":"broadcast_ok","in_reply_to":57,"msg_id":96}}
+[MATCH UNKNOWN]
+[RECEIVED] {"id":720,"src":"n4","dest":"n1","body":{"type":"broadcast","message":"53","msg_id":44}}
+[RECEIVED] {"id":721,"src":"n2","dest":"n1","body":{"type":"broadcast","message":"53","msg_id":96}}
+[CALLBACK MATCH] msg_id=44
+[EXECUTE CALLBACK] msg_id=44 dest=n4
+[MATCH BROADCAST]
+[MATCH BROADCAST]
+[BROADCAST_OK] {"src":"n1","dest":"n4","body":{"type":"broadcast_ok","in_reply_to":44,"msg_id":58}}
+[BROADCAST_OK] {"src":"n1","dest":"n2","body":{"type":"broadcast_ok","in_reply_to":96,"msg_id":58}}
+[RECEIVED] {"id":728,"src":"c10","dest":"n1","body":{"type":"broadcast","message":54,"msg_id":31}}
+[CALLBACK MATCH] msg_id=31
+[EXECUTE CALLBACK] msg_id=31 dest=n2
+[MATCH BROADCAST]
+BEGIN GOSSIP
+NEIGHBORS: n2, n4
+GOSSIP LOOP
+LOOP ITER
+[BROADCAST] {"src":"n1","dest":"n2","body":{"type":"broadcast","message":"54","msg_id":58}}
+LOOP ITER
+[BROADCAST] {"src":"n1","dest":"n4","body":{"type":"broadcast","message":"54","msg_id":59}}
+[BROADCAST_OK] {"src":"n1","dest":"c10","body":{"type":"broadcast_ok","in_reply_to":31,"msg_id":58}}
+[RECEIVED] {"id":734,"src":"n4","dest":"n1","body":{"type":"broadcast_ok","in_reply_to":59,"msg_id":45}}
+[MATCH UNKNOWN]
+[RECEIVED] {"id":736,"src":"n2","dest":"n1","body":{"type":"broadcast_ok","in_reply_to":58,"msg_id":98}}
+[MATCH UNKNOWN]
+[RECEIVED] {"id":740,"src":"c10","dest":"n1","body":{"type":"read","msg_id":32}}
+[MATCH READ]
+[READ_OK] {"src":"n1","dest":"c10","body":{"type":"read_ok","messages":["0","1","10","11","12","13","14","15","16","17","18","19","2","20","21","22","23","24","25","26","27","28","29","3","30","31","32","33","34","35","36","37","38","39","4","40","41","42","43","44","45","46","47","48","49","5","50","51","52","53","54","6","7","8","9"],"in_reply_to":32,"msg_id":60}}
+[RECEIVED] {"id":743,"src":"n2","dest":"n1","body":{"type":"broadcast","message":"55","msg_id":100}}
+[MATCH BROADCAST]
+BEGIN GOSSIP
+NEIGHBORS: n4
+GOSSIP LOOP
+LOOP ITER
+[BROADCAST] {"src":"n1","dest":"n4","body":{"type":"broadcast","message":"55","msg_id":60}}
+[BROADCAST_OK] {"src":"n1","dest":"n2","body":{"type":"broadcast_ok","in_reply_to":100,"msg_id":60}}
+[RECEIVED] {"id":752,"src":"n4","dest":"n1","body":{"type":"broadcast_ok","in_reply_to":60,"msg_id":46}}
+[MATCH UNKNOWN]
+[RECEIVED] {"id":762,"src":"n4","dest":"n1","body":{"type":"broadcast","message":"56","msg_id":46}}
+[RECEIVED] {"id":763,"src":"n2","dest":"n1","body":{"type":"broadcast","message":"56","msg_id":103}}
+[CALLBACK MATCH] msg_id=46
+[EXECUTE CALLBACK] msg_id=46 dest=n2
+[MATCH BROADCAST]
+[MATCH BROADCAST]
+[BROADCAST_OK] {"src":"n1","dest":"n4","body":{"type":"broadcast_ok","in_reply_to":46,"msg_id":61}}
+[BROADCAST_OK] {"src":"n1","dest":"n2","body":{"type":"broadcast_ok","in_reply_to":103,"msg_id":61}}
+[RECEIVED] {"id":770,"src":"c10","dest":"n1","body":{"type":"broadcast","message":57,"msg_id":33}}
+[CALLBACK MATCH] msg_id=33
+[EXECUTE CALLBACK] msg_id=33 dest=n4
+[MATCH BROADCAST]
+BEGIN GOSSIP
+NEIGHBORS: n2, n4
+GOSSIP LOOP
+LOOP ITER
+[BROADCAST] {"src":"n1","dest":"n2","body":{"type":"broadcast","message":"57","msg_id":61}}
+LOOP ITER
+[BROADCAST] {"src":"n1","dest":"n4","body":{"type":"broadcast","message":"57","msg_id":62}}
+[BROADCAST_OK] {"src":"n1","dest":"c10","body":{"type":"broadcast_ok","in_reply_to":33,"msg_id":61}}
+[RECEIVED] {"id":776,"src":"n4","dest":"n1","body":{"type":"broadcast_ok","in_reply_to":62,"msg_id":47}}
+[MATCH UNKNOWN]
+[RECEIVED] {"id":778,"src":"n2","dest":"n1","body":{"type":"broadcast_ok","in_reply_to":61,"msg_id":105}}
+[MATCH UNKNOWN]
+[RECEIVED] {"id":782,"src":"c10","dest":"n1","body":{"type":"broadcast","message":58,"msg_id":34}}
+[MATCH BROADCAST]
+BEGIN GOSSIP
+NEIGHBORS: n2, n4
+GOSSIP LOOP
+LOOP ITER
+[BROADCAST] {"src":"n1","dest":"n2","body":{"type":"broadcast","message":"58","msg_id":63}}
+LOOP ITER
+[BROADCAST] {"src":"n1","dest":"n4","body":{"type":"broadcast","message":"58","msg_id":64}}
+[BROADCAST_OK] {"src":"n1","dest":"c10","body":{"type":"broadcast_ok","in_reply_to":34,"msg_id":63}}
+[RECEIVED] {"id":788,"src":"n4","dest":"n1","body":{"type":"broadcast_ok","in_reply_to":64,"msg_id":48}}
+[MATCH UNKNOWN]
+[RECEIVED] {"id":790,"src":"n2","dest":"n1","body":{"type":"broadcast_ok","in_reply_to":63,"msg_id":107}}
+[MATCH UNKNOWN]
+[RECEIVED] {"id":799,"src":"n4","dest":"n1","body":{"type":"broadcast","message":"59","msg_id":49}}
+[CALLBACK MATCH] msg_id=49
+[EXECUTE CALLBACK] msg_id=49 dest=n2
+[MATCH BROADCAST]
+BEGIN GOSSIP
+NEIGHBORS: n2
+GOSSIP LOOP
+LOOP ITER
+[BROADCAST] {"src":"n1","dest":"n2","body":{"type":"broadcast","message":"59","msg_id":65}}
+[BROADCAST_OK] {"src":"n1","dest":"n4","body":{"type":"broadcast_ok","in_reply_to":49,"msg_id":65}}
+[RECEIVED] {"id":807,"src":"n2","dest":"n1","body":{"type":"broadcast_ok","in_reply_to":65,"msg_id":109}}
+[MATCH UNKNOWN]
+[RECEIVED] {"id":810,"src":"c10","dest":"n1","body":{"type":"read","msg_id":35}}
+[CALLBACK MATCH] msg_id=35
+[EXECUTE CALLBACK] msg_id=35 dest=n2
+[MATCH READ]
+[READ_OK] {"src":"n1","dest":"c10","body":{"type":"read_ok","messages":["0","1","10","11","12","13","14","15","16","17","18","19","2","20","21","22","23","24","25","26","27","28","29","3","30","31","32","33","34","35","36","37","38","39","4","40","41","42","43","44","45","46","47","48","49","5","50","51","52","53","54","55","56","57","58","59","6","7","8","9"],"in_reply_to":35,"msg_id":66}}
+[RECEIVED] {"id":812,"src":"c10","dest":"n1","body":{"type":"read","msg_id":36}}
+[MATCH READ]
+[READ_OK] {"src":"n1","dest":"c10","body":{"type":"read_ok","messages":["0","1","10","11","12","13","14","15","16","17","18","19","2","20","21","22","23","24","25","26","27","28","29","3","30","31","32","33","34","35","36","37","38","39","4","40","41","42","43","44","45","46","47","48","49","5","50","51","52","53","54","55","56","57","58","59","6","7","8","9"],"in_reply_to":36,"msg_id":66}}
+[RECEIVED] {"id":815,"src":"n2","dest":"n1","body":{"type":"broadcast","message":"60","msg_id":109}}
+[MATCH BROADCAST]
+BEGIN GOSSIP
+NEIGHBORS: n4
+GOSSIP LOOP
+LOOP ITER
+[BROADCAST] {"src":"n1","dest":"n4","body":{"type":"broadcast","message":"60","msg_id":66}}
+[BROADCAST_OK] {"src":"n1","dest":"n2","body":{"type":"broadcast_ok","in_reply_to":109,"msg_id":66}}
+[RECEIVED] {"id":824,"src":"n4","dest":"n1","body":{"type":"broadcast_ok","in_reply_to":66,"msg_id":51}}
+[MATCH UNKNOWN]
+[RECEIVED] {"id":834,"src":"n2","dest":"n1","body":{"type":"broadcast","message":"61","msg_id":112}}
+[RECEIVED] {"id":835,"src":"n4","dest":"n1","body":{"type":"broadcast","message":"61","msg_id":51}}
+[MATCH BROADCAST]
+[CALLBACK MATCH] msg_id=51
+[EXECUTE CALLBACK] msg_id=51 dest=n4
+[MATCH BROADCAST]
+[BROADCAST_OK] {"src":"n1","dest":"n4","body":{"type":"broadcast_ok","in_reply_to":51,"msg_id":67}}
+[BROADCAST_OK] {"src":"n1","dest":"n2","body":{"type":"broadcast_ok","in_reply_to":112,"msg_id":67}}
+[RECEIVED] {"id":842,"src":"c10","dest":"n1","body":{"type":"broadcast","message":62,"msg_id":37}}
+[CALLBACK MATCH] msg_id=37
+[EXECUTE CALLBACK] msg_id=37 dest=n2
+[MATCH BROADCAST]
+BEGIN GOSSIP
+NEIGHBORS: n2, n4
+GOSSIP LOOP
+LOOP ITER
+[BROADCAST] {"src":"n1","dest":"n2","body":{"type":"broadcast","message":"62","msg_id":67}}
+LOOP ITER
+[BROADCAST] {"src":"n1","dest":"n4","body":{"type":"broadcast","message":"62","msg_id":68}}
+[BROADCAST_OK] {"src":"n1","dest":"c10","body":{"type":"broadcast_ok","in_reply_to":37,"msg_id":67}}
+[RECEIVED] {"id":848,"src":"n4","dest":"n1","body":{"type":"broadcast_ok","in_reply_to":68,"msg_id":52}}
+[MATCH UNKNOWN]
+[RECEIVED] {"id":850,"src":"n2","dest":"n1","body":{"type":"broadcast_ok","in_reply_to":67,"msg_id":114}}
+[MATCH UNKNOWN]
+[RECEIVED] {"id":854,"src":"c10","dest":"n1","body":{"type":"read","msg_id":38}}
+[MATCH READ]
+[READ_OK] {"src":"n1","dest":"c10","body":{"type":"read_ok","messages":["0","1","10","11","12","13","14","15","16","17","18","19","2","20","21","22","23","24","25","26","27","28","29","3","30","31","32","33","34","35","36","37","38","39","4","40","41","42","43","44","45","46","47","48","49","5","50","51","52","53","54","55","56","57","58","59","6","60","61","62","7","8","9"],"in_reply_to":38,"msg_id":69}}
+[RECEIVED] {"id":861,"src":"n4","dest":"n1","body":{"type":"broadcast","message":"63","msg_id":53}}
+[CALLBACK MATCH] msg_id=53
+[EXECUTE CALLBACK] msg_id=53 dest=n4
+[MATCH BROADCAST]
+BEGIN GOSSIP
+NEIGHBORS: n2
+GOSSIP LOOP
+LOOP ITER
+[BROADCAST] {"src":"n1","dest":"n2","body":{"type":"broadcast","message":"63","msg_id":69}}
+[BROADCAST_OK] {"src":"n1","dest":"n4","body":{"type":"broadcast_ok","in_reply_to":53,"msg_id":69}}
+[RECEIVED] {"id":869,"src":"n2","dest":"n1","body":{"type":"broadcast_ok","in_reply_to":69,"msg_id":116}}
+[MATCH UNKNOWN]
+[RECEIVED] {"id":872,"src":"c10","dest":"n1","body":{"type":"broadcast","message":64,"msg_id":39}}
+[CALLBACK MATCH] msg_id=39
+[EXECUTE CALLBACK] msg_id=39 dest=n4
+[MATCH BROADCAST]
+BEGIN GOSSIP
+NEIGHBORS: n2, n4
+GOSSIP LOOP
+LOOP ITER
+[BROADCAST] {"src":"n1","dest":"n2","body":{"type":"broadcast","message":"64","msg_id":70}}
+LOOP ITER
+[BROADCAST] {"src":"n1","dest":"n4","body":{"type":"broadcast","message":"64","msg_id":71}}
+[BROADCAST_OK] {"src":"n1","dest":"c10","body":{"type":"broadcast_ok","in_reply_to":39,"msg_id":70}}
+[RECEIVED] {"id":878,"src":"n4","dest":"n1","body":{"type":"broadcast_ok","in_reply_to":71,"msg_id":55}}
+[MATCH UNKNOWN]
+[RECEIVED] {"id":880,"src":"n2","dest":"n1","body":{"type":"broadcast_ok","in_reply_to":70,"msg_id":116}}
+[MATCH UNKNOWN]
+[RECEIVED] {"id":884,"src":"c10","dest":"n1","body":{"type":"read","msg_id":40}}
+[MATCH READ]
+[READ_OK] {"src":"n1","dest":"c10","body":{"type":"read_ok","messages":["0","1","10","11","12","13","14","15","16","17","18","19","2","20","21","22","23","24","25","26","27","28","29","3","30","31","32","33","34","35","36","37","38","39","4","40","41","42","43","44","45","46","47","48","49","5","50","51","52","53","54","55","56","57","58","59","6","60","61","62","63","64","7","8","9"],"in_reply_to":40,"msg_id":72}}
+[RECEIVED] {"id":891,"src":"n2","dest":"n1","body":{"type":"broadcast","message":"65","msg_id":118}}
+[MATCH BROADCAST]
+BEGIN GOSSIP
+NEIGHBORS: n4
+GOSSIP LOOP
+LOOP ITER
+[BROADCAST] {"src":"n1","dest":"n4","body":{"type":"broadcast","message":"65","msg_id":72}}
+[BROADCAST_OK] {"src":"n1","dest":"n2","body":{"type":"broadcast_ok","in_reply_to":118,"msg_id":72}}
+[RECEIVED] {"id":898,"src":"n4","dest":"n1","body":{"type":"broadcast_ok","in_reply_to":72,"msg_id":56}}
+[MATCH UNKNOWN]
+[RECEIVED] {"id":901,"src":"n4","dest":"n1","body":{"type":"broadcast","message":"66","msg_id":56}}
+[CALLBACK MATCH] msg_id=56
+[EXECUTE CALLBACK] msg_id=56 dest=n4
+[MATCH BROADCAST]
+BEGIN GOSSIP
+NEIGHBORS: n2
+GOSSIP LOOP
+LOOP ITER
+[BROADCAST] {"src":"n1","dest":"n2","body":{"type":"broadcast","message":"66","msg_id":73}}
+[BROADCAST_OK] {"src":"n1","dest":"n4","body":{"type":"broadcast_ok","in_reply_to":56,"msg_id":73}}
+[RECEIVED] {"id":908,"src":"n2","dest":"n1","body":{"type":"broadcast_ok","in_reply_to":73,"msg_id":120}}
+[MATCH UNKNOWN]
+[RECEIVED] {"id":914,"src":"n4","dest":"n1","body":{"type":"broadcast","message":"67","msg_id":58}}
+[RECEIVED] {"id":915,"src":"n2","dest":"n1","body":{"type":"broadcast","message":"67","msg_id":120}}
+[CALLBACK MATCH] msg_id=58
+[EXECUTE CALLBACK] msg_id=58 dest=n2
+[MATCH BROADCAST]
+[MATCH BROADCAST]
+[BROADCAST_OK] {"src":"n1","dest":"n4","body":{"type":"broadcast_ok","in_reply_to":58,"msg_id":74}}
+[BROADCAST_OK] {"src":"n1","dest":"n2","body":{"type":"broadcast_ok","in_reply_to":120,"msg_id":74}}
+[RECEIVED] {"id":922,"src":"c10","dest":"n1","body":{"type":"read","msg_id":41}}
+[CALLBACK MATCH] msg_id=41
+[EXECUTE CALLBACK] msg_id=41 dest=n2
+[MATCH READ]
+[READ_OK] {"src":"n1","dest":"c10","body":{"type":"read_ok","messages":["0","1","10","11","12","13","14","15","16","17","18","19","2","20","21","22","23","24","25","26","27","28","29","3","30","31","32","33","34","35","36","37","38","39","4","40","41","42","43","44","45","46","47","48","49","5","50","51","52","53","54","55","56","57","58","59","6","60","61","62","63","64","65","66","67","7","8","9"],"in_reply_to":41,"msg_id":74}}
+[RECEIVED] {"id":924,"src":"c10","dest":"n1","body":{"type":"read","msg_id":42}}
+[MATCH READ]
+[READ_OK] {"src":"n1","dest":"c10","body":{"type":"read_ok","messages":["0","1","10","11","12","13","14","15","16","17","18","19","2","20","21","22","23","24","25","26","27","28","29","3","30","31","32","33","34","35","36","37","38","39","4","40","41","42","43","44","45","46","47","48","49","5","50","51","52","53","54","55","56","57","58","59","6","60","61","62","63","64","65","66","67","7","8","9"],"in_reply_to":42,"msg_id":74}}
+[RECEIVED] {"id":931,"src":"n2","dest":"n1","body":{"type":"broadcast","message":"68","msg_id":122}}
+[MATCH BROADCAST]
+BEGIN GOSSIP
+NEIGHBORS: n4
+GOSSIP LOOP
+LOOP ITER
+[BROADCAST] {"src":"n1","dest":"n4","body":{"type":"broadcast","message":"68","msg_id":74}}
+[BROADCAST_OK] {"src":"n1","dest":"n2","body":{"type":"broadcast_ok","in_reply_to":122,"msg_id":74}}
+[RECEIVED] {"id":938,"src":"n4","dest":"n1","body":{"type":"broadcast_ok","in_reply_to":74,"msg_id":59}}
+[MATCH UNKNOWN]
+[RECEIVED] {"id":941,"src":"n4","dest":"n1","body":{"type":"broadcast","message":"69","msg_id":59}}
+[CALLBACK MATCH] msg_id=59
+[EXECUTE CALLBACK] msg_id=59 dest=n4
+[MATCH BROADCAST]
+BEGIN GOSSIP
+NEIGHBORS: n2
+GOSSIP LOOP
+LOOP ITER
+[BROADCAST] {"src":"n1","dest":"n2","body":{"type":"broadcast","message":"69","msg_id":75}}
+[BROADCAST_OK] {"src":"n1","dest":"n4","body":{"type":"broadcast_ok","in_reply_to":59,"msg_id":75}}
+[RECEIVED] {"id":948,"src":"n2","dest":"n1","body":{"type":"broadcast_ok","in_reply_to":75,"msg_id":124}}
+[MATCH UNKNOWN]
+[RECEIVED] {"id":953,"src":"n2","dest":"n1","body":{"type":"broadcast","message":"70","msg_id":124}}
+[MATCH BROADCAST]
+BEGIN GOSSIP
+NEIGHBORS: n4
+GOSSIP LOOP
+LOOP ITER
+[BROADCAST] {"src":"n1","dest":"n4","body":{"type":"broadcast","message":"70","msg_id":76}}
+[BROADCAST_OK] {"src":"n1","dest":"n2","body":{"type":"broadcast_ok","in_reply_to":124,"msg_id":76}}
+[RECEIVED] {"id":958,"src":"n4","dest":"n1","body":{"type":"broadcast","message":"70","msg_id":61}}
+[CALLBACK MATCH] msg_id=61
+[EXECUTE CALLBACK] msg_id=61 dest=n2
+[MATCH BROADCAST]
+[BROADCAST_OK] {"src":"n1","dest":"n4","body":{"type":"broadcast_ok","in_reply_to":61,"msg_id":77}}
+[RECEIVED] {"id":962,"src":"n4","dest":"n1","body":{"type":"broadcast_ok","in_reply_to":76,"msg_id":62}}
+[MATCH UNKNOWN]
+[RECEIVED] {"id":964,"src":"c10","dest":"n1","body":{"type":"broadcast","message":71,"msg_id":43}}
+[CALLBACK MATCH] msg_id=43
+[EXECUTE CALLBACK] msg_id=43 dest=n4
+[MATCH BROADCAST]
+BEGIN GOSSIP
+NEIGHBORS: n2, n4
+GOSSIP LOOP
+LOOP ITER
+[BROADCAST] {"src":"n1","dest":"n2","body":{"type":"broadcast","message":"71","msg_id":77}}
+LOOP ITER
+[BROADCAST] {"src":"n1","dest":"n4","body":{"type":"broadcast","message":"71","msg_id":78}}
+[BROADCAST_OK] {"src":"n1","dest":"c10","body":{"type":"broadcast_ok","in_reply_to":43,"msg_id":77}}
+[RECEIVED] {"id":969,"src":"n4","dest":"n1","body":{"type":"broadcast_ok","in_reply_to":78,"msg_id":62}}
+[MATCH UNKNOWN]
+[RECEIVED] {"id":972,"src":"n2","dest":"n1","body":{"type":"broadcast_ok","in_reply_to":77,"msg_id":126}}
+[MATCH UNKNOWN]
+[RECEIVED] {"id":976,"src":"c10","dest":"n1","body":{"type":"broadcast","message":72,"msg_id":44}}
+[MATCH BROADCAST]
+BEGIN GOSSIP
+NEIGHBORS: n2, n4
+GOSSIP LOOP
+LOOP ITER
+[BROADCAST] {"src":"n1","dest":"n2","body":{"type":"broadcast","message":"72","msg_id":79}}
+LOOP ITER
+[BROADCAST] {"src":"n1","dest":"n4","body":{"type":"broadcast","message":"72","msg_id":80}}
+[BROADCAST_OK] {"src":"n1","dest":"c10","body":{"type":"broadcast_ok","in_reply_to":44,"msg_id":79}}
+[RECEIVED] {"id":982,"src":"n4","dest":"n1","body":{"type":"broadcast_ok","in_reply_to":80,"msg_id":63}}
+[MATCH UNKNOWN]
+[RECEIVED] {"id":984,"src":"n2","dest":"n1","body":{"type":"broadcast_ok","in_reply_to":79,"msg_id":128}}
+[MATCH UNKNOWN]
+[RECEIVED] {"id":993,"src":"n4","dest":"n1","body":{"type":"broadcast","message":"73","msg_id":64}}
+[CALLBACK MATCH] msg_id=64
+[EXECUTE CALLBACK] msg_id=64 dest=n4
+[MATCH BROADCAST]
+BEGIN GOSSIP
+NEIGHBORS: n2
+GOSSIP LOOP
+LOOP ITER
+[BROADCAST] {"src":"n1","dest":"n2","body":{"type":"broadcast","message":"73","msg_id":81}}
+[BROADCAST_OK] {"src":"n1","dest":"n4","body":{"type":"broadcast_ok","in_reply_to":64,"msg_id":81}}
+[RECEIVED] {"id":1000,"src":"n2","dest":"n1","body":{"type":"broadcast_ok","in_reply_to":81,"msg_id":130}}
+[MATCH UNKNOWN]
+[RECEIVED] {"id":1004,"src":"c10","dest":"n1","body":{"type":"broadcast","message":74,"msg_id":45}}
+[CALLBACK MATCH] msg_id=45
+[EXECUTE CALLBACK] msg_id=45 dest=n2
+[MATCH BROADCAST]
+BEGIN GOSSIP
+NEIGHBORS: n2, n4
+GOSSIP LOOP
+LOOP ITER
+[BROADCAST] {"src":"n1","dest":"n2","body":{"type":"broadcast","message":"74","msg_id":82}}
+LOOP ITER
+[BROADCAST] {"src":"n1","dest":"n4","body":{"type":"broadcast","message":"74","msg_id":83}}
+[BROADCAST_OK] {"src":"n1","dest":"c10","body":{"type":"broadcast_ok","in_reply_to":45,"msg_id":82}}
+[RECEIVED] {"id":1010,"src":"n4","dest":"n1","body":{"type":"broadcast_ok","in_reply_to":83,"msg_id":66}}
+[MATCH UNKNOWN]
+[RECEIVED] {"id":1012,"src":"n2","dest":"n1","body":{"type":"broadcast_ok","in_reply_to":82,"msg_id":130}}
+[MATCH UNKNOWN]
+[RECEIVED] {"id":1016,"src":"c10","dest":"n1","body":{"type":"broadcast","message":75,"msg_id":46}}
+[MATCH BROADCAST]
+BEGIN GOSSIP
+NEIGHBORS: n2, n4
+GOSSIP LOOP
+LOOP ITER
+[BROADCAST] {"src":"n1","dest":"n2","body":{"type":"broadcast","message":"75","msg_id":84}}
+LOOP ITER
+[BROADCAST] {"src":"n1","dest":"n4","body":{"type":"broadcast","message":"75","msg_id":85}}
+[BROADCAST_OK] {"src":"n1","dest":"c10","body":{"type":"broadcast_ok","in_reply_to":46,"msg_id":84}}
+[RECEIVED] {"id":1021,"src":"n4","dest":"n1","body":{"type":"broadcast_ok","in_reply_to":85,"msg_id":67}}
+[MATCH UNKNOWN]
+[RECEIVED] {"id":1024,"src":"n2","dest":"n1","body":{"type":"broadcast_ok","in_reply_to":84,"msg_id":132}}
+[MATCH UNKNOWN]
+[RECEIVED] {"id":1033,"src":"n2","dest":"n1","body":{"type":"broadcast","message":"76","msg_id":134}}
+[MATCH BROADCAST]
+BEGIN GOSSIP
+NEIGHBORS: n4
+GOSSIP LOOP
+LOOP ITER
+[BROADCAST] {"src":"n1","dest":"n4","body":{"type":"broadcast","message":"76","msg_id":86}}
+[BROADCAST_OK] {"src":"n1","dest":"n2","body":{"type":"broadcast_ok","in_reply_to":134,"msg_id":86}}
+[RECEIVED] {"id":1040,"src":"n4","dest":"n1","body":{"type":"broadcast_ok","in_reply_to":86,"msg_id":68}}
+[MATCH UNKNOWN]
+[RECEIVED] {"id":1043,"src":"n4","dest":"n1","body":{"type":"broadcast","message":"77","msg_id":69}}
+[CALLBACK MATCH] msg_id=69
+[EXECUTE CALLBACK] msg_id=69 dest=n2
+[MATCH BROADCAST]
+BEGIN GOSSIP
+NEIGHBORS: n2
+GOSSIP LOOP
+LOOP ITER
+[BROADCAST] {"src":"n1","dest":"n2","body":{"type":"broadcast","message":"77","msg_id":87}}
+[BROADCAST_OK] {"src":"n1","dest":"n4","body":{"type":"broadcast_ok","in_reply_to":69,"msg_id":87}}
+[RECEIVED] {"id":1050,"src":"n2","dest":"n1","body":{"type":"broadcast_ok","in_reply_to":87,"msg_id":136}}
+[MATCH UNKNOWN]
+[RECEIVED] {"id":1056,"src":"n2","dest":"n1","body":{"type":"broadcast","message":"78","msg_id":136}}
+[RECEIVED] {"id":1057,"src":"n4","dest":"n1","body":{"type":"broadcast","message":"78","msg_id":71}}
+[MATCH BROADCAST]
+[CALLBACK MATCH] msg_id=71
+[EXECUTE CALLBACK] msg_id=71 dest=n4
+[MATCH BROADCAST]
+[BROADCAST_OK] {"src":"n1","dest":"n4","body":{"type":"broadcast_ok","in_reply_to":71,"msg_id":88}}
+[BROADCAST_OK] {"src":"n1","dest":"n2","body":{"type":"broadcast_ok","in_reply_to":136,"msg_id":88}}
+[RECEIVED] {"id":1064,"src":"c10","dest":"n1","body":{"type":"read","msg_id":47}}
+[CALLBACK MATCH] msg_id=47
+[EXECUTE CALLBACK] msg_id=47 dest=n4
+[MATCH READ]
+[READ_OK] {"src":"n1","dest":"c10","body":{"type":"read_ok","messages":["0","1","10","11","12","13","14","15","16","17","18","19","2","20","21","22","23","24","25","26","27","28","29","3","30","31","32","33","34","35","36","37","38","39","4","40","41","42","43","44","45","46","47","48","49","5","50","51","52","53","54","55","56","57","58","59","6","60","61","62","63","64","65","66","67","68","69","7","70","71","72","73","74","75","76","77","78","8","9"],"in_reply_to":47,"msg_id":88}}
+[RECEIVED] {"id":1066,"src":"c10","dest":"n1","body":{"type":"broadcast","message":79,"msg_id":48}}
+[CALLBACK MATCH] msg_id=48
+[EXECUTE CALLBACK] msg_id=48 dest=n4
+[MATCH BROADCAST]
+BEGIN GOSSIP
+NEIGHBORS: n2, n4
+GOSSIP LOOP
+LOOP ITER
+[BROADCAST] {"src":"n1","dest":"n2","body":{"type":"broadcast","message":"79","msg_id":88}}
+LOOP ITER
+[BROADCAST] {"src":"n1","dest":"n4","body":{"type":"broadcast","message":"79","msg_id":89}}
+[BROADCAST_OK] {"src":"n1","dest":"c10","body":{"type":"broadcast_ok","in_reply_to":48,"msg_id":88}}
+[RECEIVED] {"id":1073,"src":"n2","dest":"n1","body":{"type":"broadcast_ok","in_reply_to":88,"msg_id":138}}
+[MATCH UNKNOWN]
+[RECEIVED] {"id":1074,"src":"n4","dest":"n1","body":{"type":"broadcast_ok","in_reply_to":89,"msg_id":72}}
+[MATCH UNKNOWN]
+[RECEIVED] {"id":1083,"src":"n4","dest":"n1","body":{"type":"broadcast","message":"80","msg_id":73}}
+[CALLBACK MATCH] msg_id=73
+[EXECUTE CALLBACK] msg_id=73 dest=n2
+[MATCH BROADCAST]
+BEGIN GOSSIP
+NEIGHBORS: n2
+GOSSIP LOOP
+LOOP ITER
+[BROADCAST] {"src":"n1","dest":"n2","body":{"type":"broadcast","message":"80","msg_id":90}}
+[BROADCAST_OK] {"src":"n1","dest":"n4","body":{"type":"broadcast_ok","in_reply_to":73,"msg_id":90}}
+[RECEIVED] {"id":1090,"src":"n2","dest":"n1","body":{"type":"broadcast_ok","in_reply_to":90,"msg_id":140}}
+[MATCH UNKNOWN]
+[RECEIVED] {"id":1096,"src":"n2","dest":"n1","body":{"type":"broadcast","message":"81","msg_id":140}}
+[RECEIVED] {"id":1097,"src":"n4","dest":"n1","body":{"type":"broadcast","message":"81","msg_id":75}}
+[MATCH BROADCAST]
+[CALLBACK MATCH] msg_id=75
+[EXECUTE CALLBACK] msg_id=75 dest=n2
+[MATCH BROADCAST]
+[BROADCAST_OK] {"src":"n1","dest":"n4","body":{"type":"broadcast_ok","in_reply_to":75,"msg_id":91}}
+[BROADCAST_OK] {"src":"n1","dest":"n2","body":{"type":"broadcast_ok","in_reply_to":140,"msg_id":91}}
+[RECEIVED] {"id":1104,"src":"c10","dest":"n1","body":{"type":"broadcast","message":82,"msg_id":49}}
+[MATCH BROADCAST]
+BEGIN GOSSIP
+NEIGHBORS: n2, n4
+GOSSIP LOOP
+LOOP ITER
+[BROADCAST] {"src":"n1","dest":"n2","body":{"type":"broadcast","message":"82","msg_id":91}}
+LOOP ITER
+[BROADCAST] {"src":"n1","dest":"n4","body":{"type":"broadcast","message":"82","msg_id":92}}
+[BROADCAST_OK] {"src":"n1","dest":"c10","body":{"type":"broadcast_ok","in_reply_to":49,"msg_id":91}}
+[RECEIVED] {"id":1110,"src":"n4","dest":"n1","body":{"type":"broadcast_ok","in_reply_to":92,"msg_id":76}}
+[MATCH UNKNOWN]
+[RECEIVED] {"id":1112,"src":"n2","dest":"n1","body":{"type":"broadcast_ok","in_reply_to":91,"msg_id":142}}
+[MATCH UNKNOWN]
+[RECEIVED] {"id":1116,"src":"c10","dest":"n1","body":{"type":"broadcast","message":83,"msg_id":50}}
+[CALLBACK MATCH] msg_id=50
+[EXECUTE CALLBACK] msg_id=50 dest=n4
+[MATCH BROADCAST]
+BEGIN GOSSIP
+NEIGHBORS: n2, n4
+GOSSIP LOOP
+LOOP ITER
+[BROADCAST] {"src":"n1","dest":"n2","body":{"type":"broadcast","message":"83","msg_id":93}}
+LOOP ITER
+[BROADCAST] {"src":"n1","dest":"n4","body":{"type":"broadcast","message":"83","msg_id":94}}
+[BROADCAST_OK] {"src":"n1","dest":"c10","body":{"type":"broadcast_ok","in_reply_to":50,"msg_id":93}}
+[RECEIVED] {"id":1122,"src":"n4","dest":"n1","body":{"type":"broadcast_ok","in_reply_to":94,"msg_id":77}}
+[MATCH UNKNOWN]
+[RECEIVED] {"id":1124,"src":"n2","dest":"n1","body":{"type":"broadcast_ok","in_reply_to":93,"msg_id":144}}
+[MATCH UNKNOWN]
+[RECEIVED] {"id":1129,"src":"n2","dest":"n1","body":{"type":"broadcast","message":"84","msg_id":146}}
+[MATCH BROADCAST]
+BEGIN GOSSIP
+NEIGHBORS: n4
+GOSSIP LOOP
+LOOP ITER
+[BROADCAST] {"src":"n1","dest":"n4","body":{"type":"broadcast","message":"84","msg_id":95}}
+[BROADCAST_OK] {"src":"n1","dest":"n2","body":{"type":"broadcast_ok","in_reply_to":146,"msg_id":95}}
+[RECEIVED] {"id":1138,"src":"n4","dest":"n1","body":{"type":"broadcast_ok","in_reply_to":95,"msg_id":78}}
+[MATCH UNKNOWN]
+[RECEIVED] {"id":1148,"src":"n4","dest":"n1","body":{"type":"broadcast","message":"85","msg_id":78}}
+[RECEIVED] {"id":1149,"src":"n2","dest":"n1","body":{"type":"broadcast","message":"85","msg_id":149}}
+[CALLBACK MATCH] msg_id=78
+[EXECUTE CALLBACK] msg_id=78 dest=n4
+[MATCH BROADCAST]
+[MATCH BROADCAST]
+[BROADCAST_OK] {"src":"n1","dest":"n4","body":{"type":"broadcast_ok","in_reply_to":78,"msg_id":96}}
+[BROADCAST_OK] {"src":"n1","dest":"n2","body":{"type":"broadcast_ok","in_reply_to":149,"msg_id":96}}
+[RECEIVED] {"id":1156,"src":"c10","dest":"n1","body":{"type":"broadcast","message":86,"msg_id":51}}
+[MATCH BROADCAST]
+BEGIN GOSSIP
+NEIGHBORS: n2, n4
+GOSSIP LOOP
+LOOP ITER
+[BROADCAST] {"src":"n1","dest":"n2","body":{"type":"broadcast","message":"86","msg_id":96}}
+LOOP ITER
+[BROADCAST] {"src":"n1","dest":"n4","body":{"type":"broadcast","message":"86","msg_id":97}}
+[BROADCAST_OK] {"src":"n1","dest":"c10","body":{"type":"broadcast_ok","in_reply_to":51,"msg_id":96}}
+[RECEIVED] {"id":1162,"src":"n4","dest":"n1","body":{"type":"broadcast_ok","in_reply_to":97,"msg_id":79}}
+[MATCH UNKNOWN]
+[RECEIVED] {"id":1164,"src":"n2","dest":"n1","body":{"type":"broadcast_ok","in_reply_to":96,"msg_id":151}}
+[MATCH UNKNOWN]
+[RECEIVED] {"id":1168,"src":"c10","dest":"n1","body":{"type":"read","msg_id":52}}
+[CALLBACK MATCH] msg_id=52
+[EXECUTE CALLBACK] msg_id=52 dest=n4
+[MATCH READ]
+[READ_OK] {"src":"n1","dest":"c10","body":{"type":"read_ok","messages":["0","1","10","11","12","13","14","15","16","17","18","19","2","20","21","22","23","24","25","26","27","28","29","3","30","31","32","33","34","35","36","37","38","39","4","40","41","42","43","44","45","46","47","48","49","5","50","51","52","53","54","55","56","57","58","59","6","60","61","62","63","64","65","66","67","68","69","7","70","71","72","73","74","75","76","77","78","79","8","80","81","82","83","84","85","86","9"],"in_reply_to":52,"msg_id":98}}
+[RECEIVED] {"id":1171,"src":"n2","dest":"n1","body":{"type":"broadcast","message":"87","msg_id":153}}
+[MATCH BROADCAST]
+BEGIN GOSSIP
+NEIGHBORS: n4
+GOSSIP LOOP
+LOOP ITER
+[BROADCAST] {"src":"n1","dest":"n4","body":{"type":"broadcast","message":"87","msg_id":98}}
+[BROADCAST_OK] {"src":"n1","dest":"n2","body":{"type":"broadcast_ok","in_reply_to":153,"msg_id":98}}
+[RECEIVED] {"id":1180,"src":"n4","dest":"n1","body":{"type":"broadcast_ok","in_reply_to":98,"msg_id":80}}
+[MATCH UNKNOWN]
+[RECEIVED] {"id":1185,"src":"n2","dest":"n1","body":{"type":"broadcast","message":"88","msg_id":156}}
+[MATCH BROADCAST]
+BEGIN GOSSIP
+NEIGHBORS: n4
+GOSSIP LOOP
+LOOP ITER
+[BROADCAST] {"src":"n1","dest":"n4","body":{"type":"broadcast","message":"88","msg_id":99}}
+[BROADCAST_OK] {"src":"n1","dest":"n2","body":{"type":"broadcast_ok","in_reply_to":156,"msg_id":99}}
+[RECEIVED] {"id":1193,"src":"n4","dest":"n1","body":{"type":"broadcast_ok","in_reply_to":99,"msg_id":80}}
+[MATCH UNKNOWN]
+[RECEIVED] {"id":1195,"src":"n4","dest":"n1","body":{"type":"broadcast","message":"89","msg_id":80}}
+[CALLBACK MATCH] msg_id=80
+[EXECUTE CALLBACK] msg_id=80 dest=n4
+[MATCH BROADCAST]
+BEGIN GOSSIP
+NEIGHBORS: n2
+GOSSIP LOOP
+LOOP ITER
+[BROADCAST] {"src":"n1","dest":"n2","body":{"type":"broadcast","message":"89","msg_id":100}}
+[BROADCAST_OK] {"src":"n1","dest":"n4","body":{"type":"broadcast_ok","in_reply_to":80,"msg_id":100}}
+[RECEIVED] {"id":1203,"src":"n2","dest":"n1","body":{"type":"broadcast_ok","in_reply_to":100,"msg_id":158}}
+[MATCH UNKNOWN]
+[RECEIVED] {"id":1206,"src":"c10","dest":"n1","body":{"type":"read","msg_id":53}}
+[MATCH READ]
+[READ_OK] {"src":"n1","dest":"c10","body":{"type":"read_ok","messages":["0","1","10","11","12","13","14","15","16","17","18","19","2","20","21","22","23","24","25","26","27","28","29","3","30","31","32","33","34","35","36","37","38","39","4","40","41","42","43","44","45","46","47","48","49","5","50","51","52","53","54","55","56","57","58","59","6","60","61","62","63","64","65","66","67","68","69","7","70","71","72","73","74","75","76","77","78","79","8","80","81","82","83","84","85","86","87","88","89","9"],"in_reply_to":53,"msg_id":101}}
+[RECEIVED] {"id":1208,"src":"c10","dest":"n1","body":{"type":"broadcast","message":90,"msg_id":54}}
+[CALLBACK MATCH] msg_id=54
+[EXECUTE CALLBACK] msg_id=54 dest=n2
+[MATCH BROADCAST]
+BEGIN GOSSIP
+NEIGHBORS: n2, n4
+GOSSIP LOOP
+LOOP ITER
+[BROADCAST] {"src":"n1","dest":"n2","body":{"type":"broadcast","message":"90","msg_id":101}}
+LOOP ITER
+[BROADCAST] {"src":"n1","dest":"n4","body":{"type":"broadcast","message":"90","msg_id":102}}
+[BROADCAST_OK] {"src":"n1","dest":"c10","body":{"type":"broadcast_ok","in_reply_to":54,"msg_id":101}}
+[RECEIVED] {"id":1214,"src":"n4","dest":"n1","body":{"type":"broadcast_ok","in_reply_to":102,"msg_id":82}}
+[MATCH UNKNOWN]
+[RECEIVED] {"id":1216,"src":"n2","dest":"n1","body":{"type":"broadcast_ok","in_reply_to":101,"msg_id":158}}
+[MATCH UNKNOWN]
+[RECEIVED] {"id":1221,"src":"n2","dest":"n1","body":{"type":"broadcast","message":"91","msg_id":160}}
+[MATCH BROADCAST]
+BEGIN GOSSIP
+NEIGHBORS: n4
+GOSSIP LOOP
+LOOP ITER
+[BROADCAST] {"src":"n1","dest":"n4","body":{"type":"broadcast","message":"91","msg_id":103}}
+[BROADCAST_OK] {"src":"n1","dest":"n2","body":{"type":"broadcast_ok","in_reply_to":160,"msg_id":103}}
+[RECEIVED] {"id":1230,"src":"n4","dest":"n1","body":{"type":"broadcast_ok","in_reply_to":103,"msg_id":83}}
+[MATCH UNKNOWN]
+[RECEIVED] {"id":1235,"src":"n2","dest":"n1","body":{"type":"broadcast","message":"92","msg_id":163}}
+[MATCH BROADCAST]
+BEGIN GOSSIP
+NEIGHBORS: n4
+GOSSIP LOOP
+LOOP ITER
+[BROADCAST] {"src":"n1","dest":"n4","body":{"type":"broadcast","message":"92","msg_id":104}}
+[BROADCAST_OK] {"src":"n1","dest":"n2","body":{"type":"broadcast_ok","in_reply_to":163,"msg_id":104}}
+[RECEIVED] {"id":1243,"src":"n4","dest":"n1","body":{"type":"broadcast_ok","in_reply_to":104,"msg_id":83}}
+[MATCH UNKNOWN]
+[RECEIVED] {"id":1248,"src":"c10","dest":"n1","body":{"type":"read","msg_id":55}}
+[CALLBACK MATCH] msg_id=55
+[EXECUTE CALLBACK] msg_id=55 dest=n4
+[MATCH READ]
+[READ_OK] {"src":"n1","dest":"c10","body":{"type":"read_ok","messages":["0","1","10","11","12","13","14","15","16","17","18","19","2","20","21","22","23","24","25","26","27","28","29","3","30","31","32","33","34","35","36","37","38","39","4","40","41","42","43","44","45","46","47","48","49","5","50","51","52","53","54","55","56","57","58","59","6","60","61","62","63","64","65","66","67","68","69","7","70","71","72","73","74","75","76","77","78","79","8","80","81","82","83","84","85","86","87","88","89","9","90","91","92"],"in_reply_to":55,"msg_id":105}}
+[RECEIVED] {"id":1250,"src":"c10","dest":"n1","body":{"type":"read","msg_id":56}}
+[MATCH READ]
+[READ_OK] {"src":"n1","dest":"c10","body":{"type":"read_ok","messages":["0","1","10","11","12","13","14","15","16","17","18","19","2","20","21","22","23","24","25","26","27","28","29","3","30","31","32","33","34","35","36","37","38","39","4","40","41","42","43","44","45","46","47","48","49","5","50","51","52","53","54","55","56","57","58","59","6","60","61","62","63","64","65","66","67","68","69","7","70","71","72","73","74","75","76","77","78","79","8","80","81","82","83","84","85","86","87","88","89","9","90","91","92"],"in_reply_to":56,"msg_id":105}}
+[RECEIVED] {"id":1257,"src":"n2","dest":"n1","body":{"type":"broadcast","message":"93","msg_id":165}}
+[MATCH BROADCAST]
+BEGIN GOSSIP
+NEIGHBORS: n4
+GOSSIP LOOP
+LOOP ITER
+[BROADCAST] {"src":"n1","dest":"n4","body":{"type":"broadcast","message":"93","msg_id":105}}
+[BROADCAST_OK] {"src":"n1","dest":"n2","body":{"type":"broadcast_ok","in_reply_to":165,"msg_id":105}}
+[RECEIVED] {"id":1265,"src":"n4","dest":"n1","body":{"type":"broadcast_ok","in_reply_to":105,"msg_id":83}}
+[MATCH UNKNOWN]
+[RECEIVED] {"id":1270,"src":"c10","dest":"n1","body":{"type":"broadcast","message":94,"msg_id":57}}
+[CALLBACK MATCH] msg_id=57
+[EXECUTE CALLBACK] msg_id=57 dest=n2
+[MATCH BROADCAST]
+BEGIN GOSSIP
+NEIGHBORS: n2, n4
+GOSSIP LOOP
+LOOP ITER
+[BROADCAST] {"src":"n1","dest":"n2","body":{"type":"broadcast","message":"94","msg_id":106}}
+LOOP ITER
+[BROADCAST] {"src":"n1","dest":"n4","body":{"type":"broadcast","message":"94","msg_id":107}}
+[BROADCAST_OK] {"src":"n1","dest":"c10","body":{"type":"broadcast_ok","in_reply_to":57,"msg_id":106}}
+[RECEIVED] {"id":1276,"src":"n4","dest":"n1","body":{"type":"broadcast_ok","in_reply_to":107,"msg_id":83}}
+[MATCH UNKNOWN]
+[RECEIVED] {"id":1278,"src":"n2","dest":"n1","body":{"type":"broadcast_ok","in_reply_to":106,"msg_id":167}}
+[MATCH UNKNOWN]
+[RECEIVED] {"id":1282,"src":"c10","dest":"n1","body":{"type":"read","msg_id":58}}
+[MATCH READ]
+[READ_OK] {"src":"n1","dest":"c10","body":{"type":"read_ok","messages":["0","1","10","11","12","13","14","15","16","17","18","19","2","20","21","22","23","24","25","26","27","28","29","3","30","31","32","33","34","35","36","37","38","39","4","40","41","42","43","44","45","46","47","48","49","5","50","51","52","53","54","55","56","57","58","59","6","60","61","62","63","64","65","66","67","68","69","7","70","71","72","73","74","75","76","77","78","79","8","80","81","82","83","84","85","86","87","88","89","9","90","91","92","93","94"],"in_reply_to":58,"msg_id":108}}
+[RECEIVED] {"id":1294,"src":"n2","dest":"n1","body":{"type":"broadcast","message":"95","msg_id":169}}
+[MATCH BROADCAST]
+BEGIN GOSSIP
+NEIGHBORS: n4
+[RECEIVED] {"id":1296,"src":"n4","dest":"n1","body":{"type":"broadcast","message":"95","msg_id":84}}
+GOSSIP LOOP
+[CALLBACK MATCH] msg_id=84
+[BROADCAST_OK] {"src":"n1","dest":"n2","body":{"type":"broadcast_ok","in_reply_to":169,"msg_id":108}}
+[EXECUTE CALLBACK] msg_id=84 dest=n2
+[MATCH BROADCAST]
+[BROADCAST_OK] {"src":"n1","dest":"n4","body":{"type":"broadcast_ok","in_reply_to":84,"msg_id":108}}
+[RECEIVED] {"id":1302,"src":"c10","dest":"n1","body":{"type":"broadcast","message":96,"msg_id":59}}
+[MATCH BROADCAST]
+BEGIN GOSSIP
+NEIGHBORS: n2, n4
+GOSSIP LOOP
+LOOP ITER
+[BROADCAST] {"src":"n1","dest":"n2","body":{"type":"broadcast","message":"96","msg_id":108}}
+LOOP ITER
+[BROADCAST] {"src":"n1","dest":"n4","body":{"type":"broadcast","message":"96","msg_id":109}}
+[BROADCAST_OK] {"src":"n1","dest":"c10","body":{"type":"broadcast_ok","in_reply_to":59,"msg_id":108}}
+[RECEIVED] {"id":1308,"src":"n4","dest":"n1","body":{"type":"broadcast_ok","in_reply_to":109,"msg_id":85}}
+[MATCH UNKNOWN]
+[RECEIVED] {"id":1310,"src":"n2","dest":"n1","body":{"type":"broadcast_ok","in_reply_to":108,"msg_id":171}}
+[MATCH UNKNOWN]
+[RECEIVED] {"id":1314,"src":"c10","dest":"n1","body":{"type":"read","msg_id":60}}
+[CALLBACK MATCH] msg_id=60
+[EXECUTE CALLBACK] msg_id=60 dest=n4
+[MATCH READ]
+[READ_OK] {"src":"n1","dest":"c10","body":{"type":"read_ok","messages":["0","1","10","11","12","13","14","15","16","17","18","19","2","20","21","22","23","24","25","26","27","28","29","3","30","31","32","33","34","35","36","37","38","39","4","40","41","42","43","44","45","46","47","48","49","5","50","51","52","53","54","55","56","57","58","59","6","60","61","62","63","64","65","66","67","68","69","7","70","71","72","73","74","75","76","77","78","79","8","80","81","82","83","84","85","86","87","88","89","9","90","91","92","93","94","95","96"],"in_reply_to":60,"msg_id":110}}
+[RECEIVED] {"id":1321,"src":"n2","dest":"n1","body":{"type":"broadcast","message":"97","msg_id":173}}
+[MATCH BROADCAST]
+BEGIN GOSSIP
+NEIGHBORS: n4
+GOSSIP LOOP
+LOOP ITER
+[BROADCAST] {"src":"n1","dest":"n4","body":{"type":"broadcast","message":"97","msg_id":110}}
+[BROADCAST_OK] {"src":"n1","dest":"n2","body":{"type":"broadcast_ok","in_reply_to":173,"msg_id":110}}
+[RECEIVED] {"id":1329,"src":"n4","dest":"n1","body":{"type":"broadcast_ok","in_reply_to":110,"msg_id":86}}
+[MATCH UNKNOWN]
+[RECEIVED] {"id":1334,"src":"c10","dest":"n1","body":{"type":"broadcast","message":98,"msg_id":61}}
+[MATCH BROADCAST]
+BEGIN GOSSIP
+NEIGHBORS: n2, n4
+GOSSIP LOOP
+LOOP ITER
+[BROADCAST] {"src":"n1","dest":"n2","body":{"type":"broadcast","message":"98","msg_id":111}}
+LOOP ITER
+[BROADCAST] {"src":"n1","dest":"n4","body":{"type":"broadcast","message":"98","msg_id":112}}
+[BROADCAST_OK] {"src":"n1","dest":"c10","body":{"type":"broadcast_ok","in_reply_to":61,"msg_id":111}}
+[RECEIVED] {"id":1340,"src":"n4","dest":"n1","body":{"type":"broadcast_ok","in_reply_to":112,"msg_id":86}}
+[MATCH UNKNOWN]
+[RECEIVED] {"id":1342,"src":"n2","dest":"n1","body":{"type":"broadcast_ok","in_reply_to":111,"msg_id":175}}
+[MATCH UNKNOWN]
+[RECEIVED] {"id":1346,"src":"c10","dest":"n1","body":{"type":"read","msg_id":62}}
+[CALLBACK MATCH] msg_id=62
+[EXECUTE CALLBACK] msg_id=62 dest=n4
+[MATCH READ]
+[READ_OK] {"src":"n1","dest":"c10","body":{"type":"read_ok","messages":["0","1","10","11","12","13","14","15","16","17","18","19","2","20","21","22","23","24","25","26","27","28","29","3","30","31","32","33","34","35","36","37","38","39","4","40","41","42","43","44","45","46","47","48","49","5","50","51","52","53","54","55","56","57","58","59","6","60","61","62","63","64","65","66","67","68","69","7","70","71","72","73","74","75","76","77","78","79","8","80","81","82","83","84","85","86","87","88","89","9","90","91","92","93","94","95","96","97","98"],"in_reply_to":62,"msg_id":113}}
+[RECEIVED] {"id":1353,"src":"n2","dest":"n1","body":{"type":"broadcast","message":"99","msg_id":177}}
+[MATCH BROADCAST]
+BEGIN GOSSIP
+NEIGHBORS: n4
+GOSSIP LOOP
+LOOP ITER
+[BROADCAST] {"src":"n1","dest":"n4","body":{"type":"broadcast","message":"99","msg_id":113}}
+[BROADCAST_OK] {"src":"n1","dest":"n2","body":{"type":"broadcast_ok","in_reply_to":177,"msg_id":113}}
+[RECEIVED] {"id":1360,"src":"n4","dest":"n1","body":{"type":"broadcast_ok","in_reply_to":113,"msg_id":87}}
+[MATCH UNKNOWN]
+[RECEIVED] {"id":1368,"src":"n2","dest":"n1","body":{"type":"broadcast","message":"100","msg_id":179}}
+[MATCH BROADCAST]
+BEGIN GOSSIP
+NEIGHBORS: n4
+GOSSIP LOOP
+LOOP ITER
+[BROADCAST] {"src":"n1","dest":"n4","body":{"type":"broadcast","message":"100","msg_id":114}}
+[BROADCAST_OK] {"src":"n1","dest":"n2","body":{"type":"broadcast_ok","in_reply_to":179,"msg_id":114}}
+[RECEIVED] {"id":1374,"src":"n4","dest":"n1","body":{"type":"broadcast","message":"100","msg_id":87}}
+[CALLBACK MATCH] msg_id=87
+[EXECUTE CALLBACK] msg_id=87 dest=n2
+[MATCH BROADCAST]
+[RECEIVED] {"id":1376,"src":"n4","dest":"n1","body":{"type":"broadcast_ok","in_reply_to":114,"msg_id":88}}
+[BROADCAST_OK] {"src":"n1","dest":"n4","body":{"type":"broadcast_ok","in_reply_to":87,"msg_id":115}}
+[MATCH UNKNOWN]
+[RECEIVED] {"id":1378,"src":"c10","dest":"n1","body":{"type":"broadcast","message":101,"msg_id":63}}
+[CALLBACK MATCH] msg_id=63
+[EXECUTE CALLBACK] msg_id=63 dest=n2
+[MATCH BROADCAST]
+BEGIN GOSSIP
+NEIGHBORS: n2, n4
+GOSSIP LOOP
+LOOP ITER
+[BROADCAST] {"src":"n1","dest":"n2","body":{"type":"broadcast","message":"101","msg_id":115}}
+LOOP ITER
+[BROADCAST] {"src":"n1","dest":"n4","body":{"type":"broadcast","message":"101","msg_id":116}}
+[BROADCAST_OK] {"src":"n1","dest":"c10","body":{"type":"broadcast_ok","in_reply_to":63,"msg_id":115}}
+[RECEIVED] {"id":1383,"src":"n4","dest":"n1","body":{"type":"broadcast_ok","in_reply_to":116,"msg_id":88}}
+[MATCH UNKNOWN]
+[RECEIVED] {"id":1386,"src":"n2","dest":"n1","body":{"type":"broadcast_ok","in_reply_to":115,"msg_id":181}}
+[MATCH UNKNOWN]
+[RECEIVED] {"id":1390,"src":"c10","dest":"n1","body":{"type":"broadcast","message":102,"msg_id":64}}
+[MATCH BROADCAST]
+BEGIN GOSSIP
+NEIGHBORS: n2, n4
+GOSSIP LOOP
+LOOP ITER
+[BROADCAST] {"src":"n1","dest":"n2","body":{"type":"broadcast","message":"102","msg_id":117}}
+LOOP ITER
+[BROADCAST] {"src":"n1","dest":"n4","body":{"type":"broadcast","message":"102","msg_id":118}}
+[BROADCAST_OK] {"src":"n1","dest":"c10","body":{"type":"broadcast_ok","in_reply_to":64,"msg_id":117}}
+[RECEIVED] {"id":1396,"src":"n4","dest":"n1","body":{"type":"broadcast_ok","in_reply_to":118,"msg_id":89}}
+[MATCH UNKNOWN]
+[RECEIVED] {"id":1398,"src":"n2","dest":"n1","body":{"type":"broadcast_ok","in_reply_to":117,"msg_id":183}}
+[MATCH UNKNOWN]
+[RECEIVED] {"id":1410,"src":"c10","dest":"n1","body":{"type":"read","msg_id":65}}
+[CALLBACK MATCH] msg_id=65
+[EXECUTE CALLBACK] msg_id=65 dest=n2
+[MATCH READ]
+[READ_OK] {"src":"n1","dest":"c10","body":{"type":"read_ok","messages":["0","1","10","100","101","102","11","12","13","14","15","16","17","18","19","2","20","21","22","23","24","25","26","27","28","29","3","30","31","32","33","34","35","36","37","38","39","4","40","41","42","43","44","45","46","47","48","49","5","50","51","52","53","54","55","56","57","58","59","6","60","61","62","63","64","65","66","67","68","69","7","70","71","72","73","74","75","76","77","78","79","8","80","81","82","83","84","85","86","87","88","89","9","90","91","92","93","94","95","96","97","98","99"],"in_reply_to":65,"msg_id":119}}
+[RECEIVED] {"id":1412,"src":"c10","dest":"n1","body":{"type":"read","msg_id":66}}
+[CALLBACK MATCH] msg_id=66
+[EXECUTE CALLBACK] msg_id=66 dest=n4
+[MATCH READ]
+[READ_OK] {"src":"n1","dest":"c10","body":{"type":"read_ok","messages":["0","1","10","100","101","102","11","12","13","14","15","16","17","18","19","2","20","21","22","23","24","25","26","27","28","29","3","30","31","32","33","34","35","36","37","38","39","4","40","41","42","43","44","45","46","47","48","49","5","50","51","52","53","54","55","56","57","58","59","6","60","61","62","63","64","65","66","67","68","69","7","70","71","72","73","74","75","76","77","78","79","8","80","81","82","83","84","85","86","87","88","89","9","90","91","92","93","94","95","96","97","98","99"],"in_reply_to":66,"msg_id":119}}
+[RECEIVED] {"id":1415,"src":"n2","dest":"n1","body":{"type":"broadcast","message":"103","msg_id":185}}
+[MATCH BROADCAST]
+BEGIN GOSSIP
+NEIGHBORS: n4
+GOSSIP LOOP
+LOOP ITER
+[BROADCAST] {"src":"n1","dest":"n4","body":{"type":"broadcast","message":"103","msg_id":119}}
+[BROADCAST_OK] {"src":"n1","dest":"n2","body":{"type":"broadcast_ok","in_reply_to":185,"msg_id":119}}
+[RECEIVED] {"id":1424,"src":"n4","dest":"n1","body":{"type":"broadcast_ok","in_reply_to":119,"msg_id":90}}
+[MATCH UNKNOWN]
+[RECEIVED] {"id":1434,"src":"n2","dest":"n1","body":{"type":"broadcast","message":"104","msg_id":188}}
+[RECEIVED] {"id":1435,"src":"n4","dest":"n1","body":{"type":"broadcast","message":"104","msg_id":90}}
+[MATCH BROADCAST]
+[CALLBACK MATCH] msg_id=90
+[EXECUTE CALLBACK] msg_id=90 dest=n2
+[MATCH BROADCAST]
+[BROADCAST_OK] {"src":"n1","dest":"n4","body":{"type":"broadcast_ok","in_reply_to":90,"msg_id":120}}
+[BROADCAST_OK] {"src":"n1","dest":"n2","body":{"type":"broadcast_ok","in_reply_to":188,"msg_id":120}}
+[RECEIVED] {"id":1442,"src":"c10","dest":"n1","body":{"type":"read","msg_id":67}}
+[CALLBACK MATCH] msg_id=67
+[EXECUTE CALLBACK] msg_id=67 dest=n2
+[MATCH READ]
+[READ_OK] {"src":"n1","dest":"c10","body":{"type":"read_ok","messages":["0","1","10","100","101","102","103","104","11","12","13","14","15","16","17","18","19","2","20","21","22","23","24","25","26","27","28","29","3","30","31","32","33","34","35","36","37","38","39","4","40","41","42","43","44","45","46","47","48","49","5","50","51","52","53","54","55","56","57","58","59","6","60","61","62","63","64","65","66","67","68","69","7","70","71","72","73","74","75","76","77","78","79","8","80","81","82","83","84","85","86","87","88","89","9","90","91","92","93","94","95","96","97","98","99"],"in_reply_to":67,"msg_id":120}}
+[RECEIVED] {"id":1444,"src":"c10","dest":"n1","body":{"type":"read","msg_id":68}}
+[CALLBACK MATCH] msg_id=68
+[EXECUTE CALLBACK] msg_id=68 dest=n4
+[MATCH READ]
+[READ_OK] {"src":"n1","dest":"c10","body":{"type":"read_ok","messages":["0","1","10","100","101","102","103","104","11","12","13","14","15","16","17","18","19","2","20","21","22","23","24","25","26","27","28","29","3","30","31","32","33","34","35","36","37","38","39","4","40","41","42","43","44","45","46","47","48","49","5","50","51","52","53","54","55","56","57","58","59","6","60","61","62","63","64","65","66","67","68","69","7","70","71","72","73","74","75","76","77","78","79","8","80","81","82","83","84","85","86","87","88","89","9","90","91","92","93","94","95","96","97","98","99"],"in_reply_to":68,"msg_id":120}}
+[RECEIVED] {"id":1456,"src":"n4","dest":"n1","body":{"type":"broadcast","message":"105","msg_id":91}}
+[RECEIVED] {"id":1457,"src":"n2","dest":"n1","body":{"type":"broadcast","message":"105","msg_id":190}}
+[CALLBACK MATCH] msg_id=91
+[EXECUTE CALLBACK] msg_id=91 dest=n2
+[MATCH BROADCAST]
+[MATCH BROADCAST]
+[BROADCAST_OK] {"src":"n1","dest":"n4","body":{"type":"broadcast_ok","in_reply_to":91,"msg_id":120}}
+[BROADCAST_OK] {"src":"n1","dest":"n2","body":{"type":"broadcast_ok","in_reply_to":190,"msg_id":120}}
+[RECEIVED] {"id":1467,"src":"c10","dest":"n1","body":{"type":"read","msg_id":69}}
+[MATCH READ]
+[READ_OK] {"src":"n1","dest":"c10","body":{"type":"read_ok","messages":["0","1","10","100","101","102","103","104","105","11","12","13","14","15","16","17","18","19","2","20","21","22","23","24","25","26","27","28","29","3","30","31","32","33","34","35","36","37","38","39","4","40","41","42","43","44","45","46","47","48","49","5","50","51","52","53","54","55","56","57","58","59","6","60","61","62","63","64","65","66","67","68","69","7","70","71","72","73","74","75","76","77","78","79","8","80","81","82","83","84","85","86","87","88","89","9","90","91","92","93","94","95","96","97","98","99"],"in_reply_to":69,"msg_id":120}}

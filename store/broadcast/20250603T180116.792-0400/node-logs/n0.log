@@ -1,0 +1,13 @@
+[RECEIVED] {"id":0,"src":"c0","dest":"n0","body":{"type":"init","node_id":"n0","node_ids":["n0"],"msg_id":1}}
+[MATCH INIT]
+[INIT_OK] {"src":"n0","dest":"c0","body":{"type":"init_ok","in_reply_to":1,"msg_id":0}}
+[RECEIVED] {"id":2,"src":"c1","dest":"n0","body":{"type":"topology","topology":{"n0":[]},"msg_id":1}}
+[MATCH TOPOLOGY]
+[TOPOLOGY_OK] {"src":"n0","dest":"c1","body":{"type":"topology_ok","in_reply_to":1,"msg_id":0}}
+[RECEIVED] {"id":4,"src":"c2","dest":"n0","body":{"type":"broadcast","message":0,"msg_id":1}}
+[MATCH BROADCAST]
+BEGIN GOSSIP
+[RECEIVED] {"id":5,"src":"c3","dest":"n0","body":{"type":"broadcast","message":1,"msg_id":1}}
+[RECEIVED] {"id":6,"src":"c4","dest":"n0","body":{"type":"broadcast","message":2,"msg_id":1}}
+[RECEIVED] {"id":7,"src":"c5","dest":"n0","body":{"type":"broadcast","message":3,"msg_id":1}}
+[RECEIVED] {"id":8,"src":"c6","dest":"n0","body":{"type":"read","msg_id":1}}

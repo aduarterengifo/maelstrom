@@ -1,5 +1,6 @@
 open Ppx_yojson_conv_lib.Yojson_conv.Primitives
-
+open Eio
+module Flow = Eio.Flow
 (*
  idea is you have a table of promises, when you get the right msg you run them with the right body
 *)
@@ -334,23 +335,31 @@ type response = {
 } [@@deriving yojson]
 
 let request_body_id = function
-  | Init _      -> "init"
-  | Echo _      -> "echo"
-  | Generate _  -> "generate"
-  | Topology _  -> "topology"
-  | Broadcast _ -> "broadcast"
-  | BroadcastOk _   -> "broadcast_ok"
-  | Read _      -> "read"
-  | Unknown _   -> "unknown"
+  | Init _        -> "init"
+  | Echo _        -> "echo"
+  | Generate _    -> "generate"
+  | Topology _    -> "topology"
+  | Broadcast _   -> "broadcast"
+  | BroadcastOk _ -> "broadcast_ok"
+  | Read _        -> "read"
+  | Unknown _     -> "unknown"
 
+type 'a env = 'a constraint 'a = <
+  clock : _ Eio.Time.clock;   (** For time-related operations *)
+  stdin : _ Eio.Flow.source;  (** For reading from standard input *)
+  stdout : _ Eio.Flow.sink;
+  stderr : _ Eio.Flow.sink;
+> as 'a
 
-type state = {
+type 'a state = {
   mutable node_id : string;
-  mutable msg_id : int Atomic.t;
+  msg_id : int Atomic.t;
   mutable messages : StringSet.t;
   mutable neighbors : StringSet.t;
   callbacks : (int, request_body -> unit) Hashtbl.t;
+  env : 'a env;
 }
+
 
 let next_msg_id state =
   Atomic.fetch_and_add state.msg_id 1
@@ -369,6 +378,7 @@ let send ~stdout_mutex ~stdout ~stderr_mutex ~stderr response =
   write_line_sync ~mutex:stderr_mutex ~flow:stderr ("[" ^ String.uppercase_ascii tag ^ "] " ^ response_str);
   write_line_sync ~mutex:stdout_mutex ~flow:stdout response_str
 
+
 let msg_id_of_request_body = function
   | Init b -> Some b.msg_id
   | Echo b -> Some b.msg_id
@@ -379,60 +389,63 @@ let msg_id_of_request_body = function
   | Read b -> b.msg_id
   | Unknown _ -> None
 
+let msg_id_of_response_body = function
+  | InitOk b -> Some b.msg_id
+  | EchoOk b -> b.msg_id
+  | GenerateOk b -> b.msg_id
+  | TopologyOk b -> b.msg_id
+  | BroadcastOk b -> b.msg_id
+  | ReadOk b -> b.msg_id
+  | Broadcast b -> b.msg_id
+  | Error b -> None
+
+let rpc ~stdout_mutex ~stdout ~stderr_mutex ~stderr ~state response handler = 
+  let msg_id = msg_id_of_response_body response |> Option.get in
+  Hashtbl.add state.callbacks msg_id (fun body ->
+    Hashtbl.remove state.callbacks msg_id;
+    handler body)
+
 let make_response (req: request) state body = {
  src = state.node_id; dest = req.src; body
 }
 
-(* OK new understanding unlocked. the msg_id shit was not used by the other calls, it will only be used internally by us. *)
-(* set handler for map *)
-(* this is fucked bc the res_body needs the new msg_id*)
-(* let rpc ~state ~stdout_mutex ~stdout ~stderr_mutex ~stderr ~state_mutex ~dest ~req ~req_body ~res_body = 
-  Eio.Mutex.use_rw ~protect:true state_mutex (fun () ->
-    (* increment msg_id *)
-    let msg_id = next_msg_id state in
-    (* record the req kind in the callbacks assoc *)
-    Hashtbl.replace state.callbacks msg_id (request_body_id req_body);
-    (* send response *)
-    send ~stdout_mutex ~stdout ~stderr_mutex ~stderr (make_response req state res_body)
-  )  *)
-
-let rec gossip_to_neighbors ~state ~state_mutex ~stdout ~stderr ~stdout_mutex ~stderr_mutex ~message ~exclude =
-  let open Eio.Std in
-  let neighbors =
-    Eio.Mutex.use_ro state_mutex (fun () ->
-      StringSet.elements (StringSet.diff state.neighbors (StringSet.singleton exclude))
-    )
+let gossip ~state ~state_mutex ~stdout_mutex ~stderr_mutex ~message ~(req: request) =
+  write_line_sync ~mutex:stderr_mutex ~flow:state.env#stderr  "BEGIN GOSSIP";
+  let neighbors = StringSet.singleton req.src
+    |> StringSet.diff state.neighbors
+    |> StringSet.elements
   in
-  let unacked = ref (StringSet.of_list neighbors) in
-  while not (StringSet.is_empty !unacked) do
-    Eio.traceln "Need to replicate %s to %s" message (String.concat ", " (StringSet.elements !unacked));
-    (* loop over unacked *)
-    StringSet.iter (fun dest ->
-      let msg_id = next_msg_id state in
-      let req_str = {
-        id = msg_id;
-        src = state.node_id;
-        dest;
-        body = Broadcast { message; msg_id = Some msg_id }
-      } 
-      |> yojson_of_request 
-      |> Yojson.Safe.to_string in
-      write_line_sync ~mutex:stderr_mutex ~flow:stderr ("[BROADCAST REQUEST: " ^ state.node_id ^ " -> " ^ dest ^ "] " ^ req_str);
-      write_line_sync ~mutex:stdout_mutex ~flow:stdout req_str;
+  (* new switch *)
+  Eio.Switch.run @@ fun sw ->
+    (* new fiver under switch *)
+    Eio.Fiber.fork ~sw @@ fun () ->
+      (* in parallel *)
+      Eio.Fiber.List.iter
+        (fun dest ->
+          let acked = ref false in 
+          (* retry until acknowledged *)
+          let rec retry () = 
+            (* new msg_id *)
+            let msg_id = next_msg_id state in 
+            (* new body *)
+            let body = Broadcast { message; msg_id = Some msg_id } in
+            let response = { src = state.node_id; dest; body } in 
+            let handler ~acked (request_body: request_body) =
+              match request_body with
+              | BroadcastOk _ -> acked := true
+              | _ -> write_line_sync ~mutex:stderr_mutex ~flow:state.env#stderr "error"
+            in
+            rpc ~stdout_mutex ~stdout ~stderr_mutex ~stderr ~state body (handler ~acked);
+            Eio.Time.sleep state.env#clock 1.0;
+            if not !acked then retry ()
+          in 
+          retry ()
+        ) neighbors;
+  write_line_sync ~mutex:stderr_mutex ~flow:state.env#stderr  "END GOSSIP"
 
-      Hashtbl.replace state.callbacks msg_id (fun body -> (
-        if body.type = "broadcast_ok" then (
-          unacked := StringSet.remove dest !unacked;
-        )
-      ));
-      (* TODO: SLEEP what about passing the clock down is not terrible pls let it not be. *)
-    ) !unacked;
-  done;
-  Eio.traceln "Done with message %s" message
 
-
-let handle_message ~line ~state ~state_mutex ~stdout ~stderr ~stdout_mutex ~stderr_mutex = 
-  Eio.Flow.copy_string (Printf.sprintf "[RECEIVED] %s\n" line) stderr;
+let handle_message ~line ~state ~state_mutex ~stdout_mutex ~stderr_mutex = 
+  Eio.Flow.copy_string (Printf.sprintf "[RECEIVED] %s\n" line) state.env#stderr;
   let json_str = Yojson.Safe.from_string line in
   let req = request_of_yojson json_str in 
 
@@ -444,6 +457,7 @@ let handle_message ~line ~state ~state_mutex ~stdout ~stderr ~stdout_mutex ~stde
         Eio.Mutex.use_rw ~protect:true state_mutex (fun () ->
           match Hashtbl.find_opt state.callbacks msg_id with
           | Some callback ->
+              write_line_sync ~mutex:stderr_mutex ~flow:state.env#stderr (Printf.sprintf "[CALLBACK MATCH] msg_id=%d" msg_id);
               callback req.body;
               Hashtbl.remove state.callbacks msg_id;
               true
@@ -452,7 +466,7 @@ let handle_message ~line ~state ~state_mutex ~stdout ~stderr ~stdout_mutex ~stde
     | None -> false
   in
 
-  write_line_sync ~mutex:stderr_mutex ~flow:stderr ("[MATCH " ^ String.uppercase_ascii (request_body_id req.body) ^ "]");
+  write_line_sync ~mutex:stderr_mutex ~flow:state.env#stderr ("[MATCH " ^ String.uppercase_ascii (request_body_id req.body) ^ "]");
   let body = match req.body with
   | Init b -> 
       Eio.Mutex.use_rw ~protect:true state_mutex (fun () ->
@@ -462,9 +476,6 @@ let handle_message ~line ~state ~state_mutex ~stdout ~stderr ~stdout_mutex ~stde
           msg_id = Atomic.get state.msg_id;
           in_reply_to = b.msg_id;
         } in 
-      Eio.Mutex.use_rw ~protect:true state_mutex (fun () ->
-        state.node_id <- b.node_id;
-      );
       Some body
   | Echo b ->
       let body = EchoOk {
@@ -501,35 +512,32 @@ let handle_message ~line ~state ~state_mutex ~stdout ~stderr ~stdout_mutex ~stde
       (* if message is not in messages *)
       (* add it to the set *)
       (* for each neighbor (not including the one that sent it to us): send broadcast *)
-      Eio.Mutex.use_rw ~protect:true state_mutex (fun () ->
+      let should_gossip =
+        Eio.Mutex.use_rw ~protect:true state_mutex (fun () ->
           if not (StringSet.mem b.message state.messages) then (
             state.messages <- StringSet.add b.message state.messages;
-          (*
-            modify to continuously send this 
-          *)
-            StringSet.iter (fun neighbor -> 
-                let request: request = {
-                  id = 0;
-                  src = state.node_id;
-                  dest = neighbor;
-                  body = Broadcast { message = b.message; msg_id = None }
-                } in
-                let request_str = yojson_of_request request |> Yojson.Safe.to_string in
-                write_line_sync ~mutex:stderr_mutex ~flow:stderr ("[BROADCAST REQUEST: " ^ state.node_id ^ " -> " ^ neighbor ^ "] " ^ request_str);
-                write_line_sync ~mutex:stdout_mutex ~flow:stdout request_str;
-              ) (StringSet.diff state.neighbors (StringSet.singleton req.src));
-          ) 
-      );
+            true
+          ) else false
+        )
+      in
 
-      (match b.msg_id with
-        | Some _ ->  
+      let response =
+        match b.msg_id with
+        | Some b_msg_id ->  
             let body = BroadcastOk {
                 msg_id = Some (Atomic.get state.msg_id);
-                in_reply_to = (match b.msg_id with Some id -> id | None -> 0);
+                in_reply_to = b_msg_id;
               } in
-            Some body;
-        |  None -> None;
-      );
+            Some body
+        | None -> None
+      in
+
+      let () =
+        if should_gossip then
+          gossip ~state ~state_mutex ~stdout_mutex ~stderr_mutex ~message:b.message ~req 
+      in
+
+      response
   | Read b ->             
       let body = ReadOk {
           msg_id = Some (Atomic.get state.msg_id);
@@ -544,22 +552,18 @@ let handle_message ~line ~state ~state_mutex ~stdout ~stderr ~stdout_mutex ~stde
       None
   in
   match body with
-  | Some body -> send ~stdout_mutex ~stdout ~stderr_mutex ~stderr (make_response req state body)
+  | Some body -> send ~stdout_mutex ~stdout:state.env#stdout ~stderr_mutex ~stderr:state.env#stderr (make_response req state body)
   | None -> ();
   ()
 
-let main ~stdin ~stdout ~stderr =
-  let buf = Eio.Buf_read.of_flow stdin ~max_size:4096 in
-  let state = { node_id = "NOTSET"; msg_id = Atomic.make 0; messages = StringSet.empty; neighbors = StringSet.empty; callbacks = Hashtbl.create 0; } in
-  let state_mutex = Eio.Mutex.create () in
-  let stdout_mutex = Eio.Mutex.create () in 
-  let stderr_mutex = Eio.Mutex.create () in
+let main ~state ~state_mutex ~stdout_mutex ~stderr_mutex =
+  let buf = Eio.Buf_read.of_flow state.env#stdin ~max_size:4096 in
   Eio.Switch.run (fun sw ->
     let rec loop () =
       match Eio.Buf_read.line buf with
       | line ->
           Eio.Fiber.fork ~sw (fun () ->
-            handle_message ~line ~state ~state_mutex ~stdout ~stderr ~stdout_mutex ~stderr_mutex
+            handle_message ~line ~state ~state_mutex ~stdout_mutex ~stderr_mutex
           );
           loop ()
       | exception End_of_file -> ()
@@ -569,7 +573,25 @@ let main ~stdin ~stdout ~stderr =
 
 let () =
   Eio_main.run @@ fun env ->
+    let env_obj = object
+      method stdin = Eio.Stdenv.stdin env
+      method stdout = Eio.Stdenv.stdout env
+      method stderr = Eio.Stdenv.stderr env
+      method clock = Eio.Stdenv.clock env
+    end in
+    let state = { 
+      node_id = "NOTSET"; 
+      msg_id = Atomic.make 0; 
+      messages = StringSet.empty; 
+      neighbors = StringSet.empty; 
+      callbacks = Hashtbl.create 0; 
+      env = env_obj; 
+    } in
+    let state_mutex = Eio.Mutex.create () in
+    let stdout_mutex = Eio.Mutex.create () in 
+    let stderr_mutex = Eio.Mutex.create () in
     main
-      ~stdin:(Eio.Stdenv.stdin env)
-      ~stdout:(Eio.Stdenv.stdout env)
-      ~stderr:(Eio.Stdenv.stderr env)
+      ~state 
+      ~state_mutex
+      ~stdout_mutex
+      ~stderr_mutex

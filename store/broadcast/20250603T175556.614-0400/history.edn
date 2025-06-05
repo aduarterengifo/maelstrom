@@ -1,0 +1,12 @@
+{:index 0, :time 15570292, :type :invoke, :process 0, :f :read, :value nil}
+{:index 1, :time 19529875, :type :ok, :process 0, :f :read, :value []}
+{:index 2, :time 83917792, :type :invoke, :process 0, :f :broadcast, :value 0}
+{:index 3, :time 5091757667, :type :info, :process 0, :f :broadcast, :value 0, :error :net-timeout}
+{:index 4, :time 5092131208, :type :invoke, :process 1, :f :broadcast, :value 1}
+{:index 5, :time 10099450208, :type :info, :process 1, :f :broadcast, :value 1, :error :net-timeout}
+{:index 6, :time 10099543792, :type :invoke, :process 2, :f :broadcast, :value 2}
+{:index 7, :time 15106035458, :type :info, :process 2, :f :broadcast, :value 2, :error :net-timeout}
+{:index 8, :time 15106279292, :type :invoke, :process 3, :f :read, :value nil}
+{:index 9, :time 20110500042, :type :fail, :process 3, :f :read, :value nil, :error :net-timeout}
+{:index 10, :time 30114858042, :type :invoke, :process 3, :f :read, :value nil, :final? true}
+{:index 11, :time 35122821667, :type :fail, :process 3, :f :read, :value nil, :final? true, :error :net-timeout}
