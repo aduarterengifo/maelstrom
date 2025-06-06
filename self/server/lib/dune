@@ -1,6 +1,5 @@
 (library
- (name server)
+ (name msg)
  (libraries yojson ppx_yojson_conv fmt eio eio_main)
- (modules msg)
  (preprocess
-  (pps ppx_deriving_yojson)))
+  (pps ppx_yojson_conv)))
