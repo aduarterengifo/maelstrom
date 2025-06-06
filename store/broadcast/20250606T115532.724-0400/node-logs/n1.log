@@ -1,0 +1,29 @@
+[INBOUND]{"id":3,"src":"c4","dest":"n1","body":{"type":"init","node_id":"n1","node_ids":["n1","n2","n3","n4","n5"],"msg_id":1}}
+Current callback ids: []
+[INIT_OK] {"src":"n1","dest":"c4","body":{"type":"init_ok","in_reply_to":1,"msg_id":0}}
+[INBOUND]{"id":14,"src":"c5","dest":"n1","body":{"type":"topology","topology":{"n1":["n4","n2"],"n2":["n5","n3","n1"],"n3":["n2"],"n4":["n1","n5"],"n5":["n2","n4"]},"msg_id":1}}
+Current callback ids: []
+[TOPOLOGY_OK] {"src":"n1","dest":"c5","body":{"type":"topology_ok","in_reply_to":1,"msg_id":0}}
+[INBOUND]{"id":20,"src":"c10","dest":"n1","body":{"type":"broadcast","message":0,"msg_id":1}}
+Current callback ids: []
+BEGIN GOSSIP
+[BROADCAST_OK] {"src":"n1","dest":"c10","body":{"type":"broadcast_ok","in_reply_to":1,"msg_id":1}}
+Neighbors: [n2; n4]
+Sending gossip broadcast from n1 to n2: {"src":"n1","dest":"n2","body":{"type":"broadcast","message":"0","msg_id":0}}
+Sending gossip broadcast from n1 to n4: {"src":"n1","dest":"n4","body":{"type":"broadcast","message":"0","msg_id":1}}
+[BROADCAST] {"src":"n1","dest":"n2","body":{"type":"broadcast","message":"0","msg_id":0}}
+[BROADCAST] {"src":"n1","dest":"n4","body":{"type":"broadcast","message":"0","msg_id":1}}
+[INBOUND]{"id":24,"src":"n4","dest":"n1","body":{"type":"broadcast_ok","in_reply_to":1,"msg_id":1}}
+Current callback ids: [1; 0]
+[INBOUND]{"id":25,"src":"n2","dest":"n1","body":{"type":"broadcast_ok","in_reply_to":0,"msg_id":0}}
+Invoking RPC callback: 
+inbound_msg: {"id":24,"src":"n4","dest":"n1","body":{"type":"broadcast_ok","in_reply_to":1,"msg_id":1}}
+[INBOUND]{"id":40,"src":"c10","dest":"n1","body":{"type":"read","msg_id":2}}
+Sending gossip broadcast from n1 to n2: {"src":"n1","dest":"n2","body":{"type":"broadcast","message":"0","msg_id":2}}
+Sending gossip broadcast from n1 to n4: {"src":"n1","dest":"n4","body":{"type":"broadcast","message":"0","msg_id":3}}
+[BROADCAST] {"src":"n1","dest":"n2","body":{"type":"broadcast","message":"0","msg_id":2}}
+[BROADCAST] {"src":"n1","dest":"n4","body":{"type":"broadcast","message":"0","msg_id":3}}
+[INBOUND]{"id":68,"src":"c10","dest":"n1","body":{"type":"broadcast","message":6,"msg_id":3}}
+[INBOUND]{"id":73,"src":"c16","dest":"n1","body":{"type":"read","msg_id":1}}
+[INBOUND]{"id":78,"src":"c16","dest":"n1","body":{"type":"broadcast","message":11,"msg_id":2}}
+[INBOUND]{"id":81,"src":"c21","dest":"n1","body":{"type":"read","msg_id":1}}

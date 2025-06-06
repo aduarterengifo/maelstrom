@@ -1,0 +1,27 @@
+[INBOUND]{"id":4,"src":"c3","dest":"n4","body":{"type":"init","node_id":"n4","node_ids":["n1","n2","n3","n4","n5"],"msg_id":1}}
+Current callback ids: []
+[INIT_OK] {"src":"n4","dest":"c3","body":{"type":"init_ok","in_reply_to":1,"msg_id":0}}
+[INBOUND]{"id":13,"src":"c8","dest":"n4","body":{"type":"topology","topology":{"n1":["n4","n2"],"n2":["n5","n3","n1"],"n3":["n2"],"n4":["n1","n5"],"n5":["n2","n4"]},"msg_id":1}}
+Current callback ids: []
+[TOPOLOGY_OK] {"src":"n4","dest":"c8","body":{"type":"topology_ok","in_reply_to":1,"msg_id":0}}
+[INBOUND]{"id":23,"src":"n1","dest":"n4","body":{"type":"broadcast","message":"0","msg_id":1}}
+Current callback ids: []
+BEGIN GOSSIP
+[BROADCAST_OK] {"src":"n4","dest":"n1","body":{"type":"broadcast_ok","in_reply_to":1,"msg_id":1}}
+Neighbors: [n5]
+Sending gossip broadcast from n4 to n5: {"src":"n4","dest":"n5","body":{"type":"broadcast","message":"0","msg_id":0}}
+[BROADCAST] {"src":"n4","dest":"n5","body":{"type":"broadcast","message":"0","msg_id":0}}
+[INBOUND]{"id":29,"src":"n5","dest":"n4","body":{"type":"broadcast_ok","in_reply_to":0,"msg_id":0}}
+Current callback ids: [0]
+Invoking RPC callback: 
+inbound_msg: {"id":29,"src":"n5","dest":"n4","body":{"type":"broadcast_ok","in_reply_to":0,"msg_id":0}}
+[INBOUND]{"id":35,"src":"c14","dest":"n4","body":{"type":"read","msg_id":1}}
+[INBOUND]{"id":52,"src":"n5","dest":"n4","body":{"type":"broadcast","message":"4","msg_id":2}}
+Sending gossip broadcast from n4 to n5: {"src":"n4","dest":"n5","body":{"type":"broadcast","message":"0","msg_id":1}}
+[BROADCAST] {"src":"n4","dest":"n5","body":{"type":"broadcast","message":"0","msg_id":1}}
+[INBOUND]{"id":55,"src":"n1","dest":"n4","body":{"type":"broadcast","message":"0","msg_id":3}}
+[INBOUND]{"id":65,"src":"n5","dest":"n4","body":{"type":"broadcast","message":"4","msg_id":5}}
+[INBOUND]{"id":67,"src":"c14","dest":"n4","body":{"type":"read","msg_id":2}}
+[INBOUND]{"id":72,"src":"c14","dest":"n4","body":{"type":"broadcast","message":7,"msg_id":3}}
+[INBOUND]{"id":77,"src":"c17","dest":"n4","body":{"type":"read","msg_id":1}}
+[INBOUND]{"id":85,"src":"c17","dest":"n4","body":{"type":"read","msg_id":2}}
