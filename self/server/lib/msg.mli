@@ -97,25 +97,29 @@ val outbound_body_id: outbound_body -> string
 val outbound_body_of_yojson : Yojson.Safe.t -> outbound_body
 val yojson_of_outbound_body : outbound_body -> Yojson.Safe.t
 
-type msg_body = 
-  | Inbound of inbound_body
-  | Outbound of outbound_body
-
-type msg = {
-  id: int option;
+type inbound_msg = {
+  id: int;
   src: string;
   dest: string;
-  body: msg_body;
-} [@@deriving yojson]
+  body: inbound_body;
+}
 
-val msg_body_of_yojson: Yojson.Safe.t -> msg_body
+type outbound_msg = {
+  src: string;
+  dest: string;
+  body: outbound_body;
+}
 
-val yojson_of_msg_body: msg_body -> Yojson.Safe.t 
+(* val make_outbound_msg: inbound_msg -> state -> outbound_body -> outbound_msg  *)
 
-val type_of_msg : msg -> string
+val type_of_inbound_msg: inbound_msg -> string
 
-val msg_id_of_body : msg_body -> int option
+val type_of_outbound_msg : outbound_msg -> string
 
 val msg_id_of_outbound_body : outbound_body -> int option
 
-val msg_id_of_inbound_body : inbound_body -> int 
+val msg_id_of_inbound_body : inbound_body -> int option
+
+val yojson_of_outbound_msg : outbound_msg -> Yojson.Safe.t
+
+val inbound_msg_of_yojson :  Yojson.Safe.t -> inbound_msg

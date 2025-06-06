@@ -1,0 +1,28 @@
+[INBOUND]{"id":1,"src":"c0","dest":"n1","body":{"type":"init","node_id":"n1","node_ids":["n1","n2","n3","n4","n5"],"msg_id":1}}
+[INIT_OK] {"src":"n1","dest":"c0","body":{"type":"init_ok","in_reply_to":1,"msg_id":0}}
+[INBOUND]{"id":10,"src":"c7","dest":"n1","body":{"type":"topology","topology":{"n1":["n4","n2"],"n2":["n5","n3","n1"],"n3":["n2"],"n4":["n1","n5"],"n5":["n2","n4"]},"msg_id":1}}
+[TOPOLOGY_OK] {"src":"n1","dest":"c7","body":{"type":"topology_ok","in_reply_to":1,"msg_id":0}}
+[INBOUND]{"id":20,"src":"c11","dest":"n1","body":{"type":"read","msg_id":1}}
+[READ_OK] {"src":"n1","dest":"c11","body":{"type":"read_ok","messages":[],"in_reply_to":1,"msg_id":0}}
+[INBOUND]{"id":29,"src":"c11","dest":"n1","body":{"type":"broadcast","message":1,"msg_id":2}}
+BEGIN GOSSIP
+[INBOUND]{"id":36,"src":"c16","dest":"n1","body":{"type":"broadcast","message":6,"msg_id":1}}
+error: {"type":"broadcast","message":"6","msg_id":1}
+BEGIN GOSSIP
+[INBOUND]{"id":43,"src":"c21","dest":"n1","body":{"type":"read","msg_id":1}}
+[READ_OK] {"src":"n1","dest":"c21","body":{"type":"read_ok","messages":["1","6"],"in_reply_to":1,"msg_id":30}}
+[INBOUND]{"id":45,"src":"c21","dest":"n1","body":{"type":"read","msg_id":2}}
+error: {"type":"read","msg_id":2}
+[READ_OK] {"src":"n1","dest":"c21","body":{"type":"read_ok","messages":["1","6"],"in_reply_to":2,"msg_id":30}}
+[INBOUND]{"id":47,"src":"c21","dest":"n1","body":{"type":"read","msg_id":3}}
+error: {"type":"read","msg_id":3}
+[READ_OK] {"src":"n1","dest":"c21","body":{"type":"read_ok","messages":["1","6"],"in_reply_to":3,"msg_id":34}}
+[INBOUND]{"id":49,"src":"c21","dest":"n1","body":{"type":"broadcast","message":11,"msg_id":4}}
+error: {"type":"broadcast","message":"11","msg_id":4}
+BEGIN GOSSIP
+[INBOUND]{"id":56,"src":"c26","dest":"n1","body":{"type":"read","msg_id":1}}
+[READ_OK] {"src":"n1","dest":"c26","body":{"type":"read_ok","messages":["1","11","6"],"in_reply_to":1,"msg_id":66}}
+[INBOUND]{"id":58,"src":"c26","dest":"n1","body":{"type":"broadcast","message":16,"msg_id":2}}
+BEGIN GOSSIP
+[INBOUND]{"id":65,"src":"c31","dest":"n1","body":{"type":"read","msg_id":1}}
+[READ_OK] {"src":"n1","dest":"c31","body":{"type":"read_ok","messages":["1","11","16","6"],"in_reply_to":1,"msg_id":188}}

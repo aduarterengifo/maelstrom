@@ -1,5 +1,8 @@
 (library
- (name msg)
+ (name bag)
  (libraries yojson ppx_yojson_conv fmt eio eio_main)
+ (modules bag msg state higher)
  (preprocess
-  (pps ppx_yojson_conv)))
+  (pps ppx_yojson_conv))
+ (flags
+  (:standard -w -26-27-32-37-34-33)))

@@ -1,5 +1,72 @@
 open Ppx_yojson_conv_lib.Yojson_conv.Primitives
 
+type suberror =
+  | Timeout
+  | Node_not_found
+  | Not_supported
+  | Temporarily_unavailable
+  | Malformed_request
+  | Crash
+  | Abort
+  | Key_does_not_exist
+  | Key_already_exists
+  | Precondition_failed
+  | Txn_conflict
+
+let suberror_to_code = function
+  | Timeout -> 0
+  | Node_not_found -> 1
+  | Not_supported -> 10
+  | Temporarily_unavailable -> 11
+  | Malformed_request -> 12
+  | Crash -> 13
+  | Abort -> 14
+  | Key_does_not_exist -> 20
+  | Key_already_exists -> 21
+  | Precondition_failed -> 22
+  | Txn_conflict -> 30
+
+let code_to_suberror = function
+  | 0 -> Some Timeout
+  | 1 -> Some Node_not_found
+  | 10 -> Some Not_supported
+  | 11 -> Some Temporarily_unavailable
+  | 12 -> Some Malformed_request
+  | 13 -> Some Crash
+  | 14 -> Some Abort
+  | 20 -> Some Key_does_not_exist
+  | 21 -> Some Key_already_exists
+  | 22 -> Some Precondition_failed
+  | 30 -> Some Txn_conflict
+  | _ -> None
+
+let suberror_to_string = function
+  | Timeout -> "timeout"
+  | Node_not_found -> "node-not-found"
+  | Not_supported -> "not-supported"
+  | Temporarily_unavailable -> "temporarily-unavailable"
+  | Malformed_request -> "malformed-request"
+  | Crash -> "crash"
+  | Abort -> "abort"
+  | Key_does_not_exist -> "key-does-not-exist"
+  | Key_already_exists -> "key-already-exists"
+  | Precondition_failed -> "precondition-failed"
+  | Txn_conflict -> "txn-conflict"
+
+let string_to_suberror = function
+  | "timeout" -> Some Timeout
+  | "node-not-found" -> Some Node_not_found
+  | "not-supported" -> Some Not_supported
+  | "temporarily-unavailable" -> Some Temporarily_unavailable
+  | "malformed-request" -> Some Malformed_request
+  | "crash" -> Some Crash
+  | "abort" -> Some Abort
+  | "key-does-not-exist" -> Some Key_does_not_exist
+  | "key-already-exists" -> Some Key_already_exists
+  | "precondition-failed" -> Some Precondition_failed
+  | "txn-conflict" -> Some Txn_conflict
+  | _ -> None
+
 type inbound
 type outbound
 (* MSG *)
@@ -99,6 +166,7 @@ type outbound_body =
   | ReadOk of read_ok_body
   | Error of error_body
   | Broadcast of broadcast_body 
+[@@deriving yojson]
 (* unions *)
 (* union funcs *)
 let inbound_body_id = function
@@ -262,35 +330,21 @@ let yojson_of_outbound_body rb =
   | `Assoc fields -> `Assoc (("type", `String type_str) :: fields)
   | _ -> base
 
-type msg_body = 
-  | Inbound of inbound_body
-  | Outbound of outbound_body
-
-let msg_body_of_yojson (json : Yojson.Safe.t) : msg_body =
-  let open Yojson.Safe.Util in
-  match json |> member "type" |> to_string_option with
-  | Some ("init" | "echo" | "generate" | "topology" | "broadcast" | "broadcast_ok" | "read") ->
-      Inbound (inbound_body_of_yojson json)
-  | Some ("init_ok" | "echo_ok" | "generate_ok" | "topology_ok" | "read_ok" | "error") ->
-      Outbound (outbound_body_of_yojson json)
-  | Some _ | None ->
-      Inbound (Unknown json)
-
-let yojson_of_msg_body = function
-  | Inbound ib -> yojson_of_inbound_body ib
-  | Outbound ob -> yojson_of_outbound_body ob
-
-type msg = {
-  id: int option;
+type inbound_msg = {
+  id: int;
   src: string;
   dest: string;
-  body: msg_body;
-} [@@deriving yojson]
+  body: inbound_body;
+}[@@deriving yojson]
 
-let type_of_msg (msg : msg) : string =
-  match msg.body with
-  | Inbound ib -> inbound_body_id ib
-  | Outbound ob -> outbound_body_id ob
+type outbound_msg = {
+  src: string;
+  dest: string;
+  body: outbound_body;
+}[@@deriving yojson]
+
+let type_of_inbound_msg (inbound_msg:inbound_msg) = inbound_body_id inbound_msg.body
+let type_of_outbound_msg outbound_msg = outbound_body_id outbound_msg.body
 
 let msg_id_of_inbound_body = function
   | Init b -> Some b.msg_id
@@ -311,7 +365,3 @@ let msg_id_of_outbound_body = function
   | ReadOk b -> b.msg_id
   | Broadcast b -> b.msg_id
   | Error _ -> None
-
-let msg_id_of_body = function
-  | Inbound ib -> msg_id_of_inbound_body ib
-  | Outbound ob -> msg_id_of_outbound_body ob

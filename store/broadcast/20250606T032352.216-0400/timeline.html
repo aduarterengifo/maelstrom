@@ -1,0 +1,456 @@
+<html><head><style>.ops        { position: absolute; }
+.op         { position: absolute; padding: 2px; border-radius: 2px; box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24); transition: all 0.3s cubic-bezier(.25,.8,.25,1); overflow: hidden; }
+.op.invoke  { background: #eeeeee; }
+.op.ok      { background: #6DB6FE; }
+.op.info    { background: #FFAA26; }
+.op.fail    { background: #FEB5DA; }
+.op:target  { box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22); }
+</style></head><body><div><a href="/">jepsen</a> / <a href="/files/broadcast">broadcast</a> / <a href="/files/broadcast/20250606T032352.2160400">20250606T032352.2160400</a> / <a href="/files/broadcast/20250606T032352.2160400/">independent</a> / <a href="/files/broadcast/20250606T032352.2160400/independent/"></a></div><h1>broadcast key </h1><div class="ops"><a href="#i1"><div class="op ok" id="i1" style="width:100;left:0;top:0;height:16" title="Dur: 8 ms
+Err: nil
+Wall-clock Time: 2025-06-06T07:23:52.244Z
+
+Op:
+{:process 0
+ :type :ok
+ :f :read
+ :index 1
+ :value []}">0 read <br />[]</div></a><a href="#i5"><div class="op ok" id="i5" style="width:100;left:318;top:64;height:16" title="Dur: 5 ms
+Err: nil
+Wall-clock Time: 2025-06-06T07:23:52.634Z
+
+Op:
+{:process 3
+ :type :ok
+ :f :read
+ :index 5
+ :value []}">3 read <br />[]</div></a><a href="#i7"><div class="op ok" id="i7" style="width:100;left:424;top:96;height:16" title="Dur: 3 ms
+Err: nil
+Wall-clock Time: 2025-06-06T07:23:52.639Z
+
+Op:
+{:process 4
+ :type :ok
+ :f :read
+ :index 7
+ :value []}">4 read <br />[]</div></a><a href="#i11"><div class="op info" id="i11" style="width:100;left:106;top:32;height:1488" title="Dur: 5010 ms
+Err: :net-timeout
+Wall-clock Time: 2025-06-06T07:23:57.442Z
+
+Op:
+{:process 1
+ :type :info
+ :f :broadcast
+ :index 11
+ :error :net-timeout
+ :value 0}">1 broadcast 0</div></a><a href="#i13"><div class="op info" id="i13" style="width:100;left:212;top:48;height:1472" title="Dur: 5004 ms
+Err: :net-timeout
+Wall-clock Time: 2025-06-06T07:23:57.443Z
+
+Op:
+{:process 2
+ :type :info
+ :f :broadcast
+ :index 13
+ :error :net-timeout
+ :value 1}">2 broadcast 1</div></a><a href="#i15"><div class="op info" id="i15" style="width:100;left:0;top:128;height:1392" title="Dur: 5005 ms
+Err: :net-timeout
+Wall-clock Time: 2025-06-06T07:23:57.704Z
+
+Op:
+{:process 0
+ :type :info
+ :f :broadcast
+ :index 15
+ :error :net-timeout
+ :value 2}">0 broadcast 2</div></a><a href="#i17"><div class="op ok" id="i17" style="width:100;left:530;top:256;height:16" title="Dur: 3 ms
+Err: nil
+Wall-clock Time: 2025-06-06T07:23:57.707Z
+
+Op:
+{:process 5
+ :type :ok
+ :f :read
+ :index 17
+ :value [&quot;2&quot;]}">5 read <br />["2"]</div></a><a href="#i19"><div class="op ok" id="i19" style="width:100;left:530;top:288;height:16" title="Dur: 3 ms
+Err: nil
+Wall-clock Time: 2025-06-06T07:23:57.774Z
+
+Op:
+{:process 5
+ :type :ok
+ :f :read
+ :index 19
+ :value [&quot;2&quot;]}">5 read <br />["2"]</div></a><a href="#i21"><div class="op ok" id="i21" style="width:100;left:530;top:320;height:16" title="Dur: 4 ms
+Err: nil
+Wall-clock Time: 2025-06-06T07:23:57.816Z
+
+Op:
+{:process 5
+ :type :ok
+ :f :read
+ :index 21
+ :value [&quot;2&quot;]}">5 read <br />["2"]</div></a><a href="#i22"><div class="op info" id="i22" style="width:100;left:318;top:144;height:1376" title="Dur: 5003 ms
+Err: :net-timeout
+Wall-clock Time: 2025-06-06T07:23:57.878Z
+
+Op:
+{:process 3
+ :type :info
+ :f :broadcast
+ :index 22
+ :error :net-timeout
+ :value 3}">3 broadcast 3</div></a><a href="#i23"><div class="op info" id="i23" style="width:100;left:424;top:160;height:1360" title="Dur: 5007 ms
+Err: :net-timeout
+Wall-clock Time: 2025-06-06T07:23:57.916Z
+
+Op:
+{:process 4
+ :type :info
+ :f :broadcast
+ :index 23
+ :error :net-timeout
+ :value 4}">4 broadcast 4</div></a><a href="#i27"><div class="op ok" id="i27" style="width:100;left:530;top:416;height:16" title="Dur: 4 ms
+Err: nil
+Wall-clock Time: 2025-06-06T07:23:58.247Z
+
+Op:
+{:process 5
+ :type :ok
+ :f :read
+ :index 27
+ :value [&quot;2&quot;]}">5 read <br />["2"]</div></a><a href="#i29"><div class="op ok" id="i29" style="width:100;left:530;top:448;height:16" title="Dur: 2 ms
+Err: nil
+Wall-clock Time: 2025-06-06T07:23:58.255Z
+
+Op:
+{:process 5
+ :type :ok
+ :f :read
+ :index 29
+ :value [&quot;2&quot;]}">5 read <br />["2"]</div></a><a href="#i31"><div class="op info" id="i31" style="width:100;left:636;top:192;height:1328" title="Dur: 5006 ms
+Err: :net-timeout
+Wall-clock Time: 2025-06-06T07:24:02.448Z
+
+Op:
+{:process 6
+ :type :info
+ :f :broadcast
+ :index 31
+ :error :net-timeout
+ :value 5}">6 broadcast 5</div></a><a href="#i33"><div class="op info" id="i33" style="width:100;left:742;top:224;height:1296" title="Dur: 5007 ms
+Err: :net-timeout
+Wall-clock Time: 2025-06-06T07:24:02.629Z
+
+Op:
+{:process 7
+ :type :info
+ :f :broadcast
+ :index 33
+ :error :net-timeout
+ :value 6}">7 broadcast 6</div></a><a href="#i35"><div class="op ok" id="i35" style="width:100;left:1272;top:544;height:16" title="Dur: 3 ms
+Err: nil
+Wall-clock Time: 2025-06-06T07:24:02.634Z
+
+Op:
+{:process 12
+ :type :ok
+ :f :read
+ :index 35
+ :value [&quot;1&quot; &quot;6&quot;]}">12 read <br />["1" "6"]</div></a><a href="#i37"><div class="op ok" id="i37" style="width:100;left:1272;top:576;height:16" title="Dur: 2 ms
+Err: nil
+Wall-clock Time: 2025-06-06T07:24:02.659Z
+
+Op:
+{:process 12
+ :type :ok
+ :f :read
+ :index 37
+ :value [&quot;1&quot; &quot;6&quot;]}">12 read <br />["1" "6"]</div></a><a href="#i39"><div class="op info" id="i39" style="width:100;left:848;top:384;height:1136" title="Dur: 5001 ms
+Err: :net-timeout
+Wall-clock Time: 2025-06-06T07:24:02.921Z
+
+Op:
+{:process 8
+ :type :info
+ :f :broadcast
+ :index 39
+ :error :net-timeout
+ :value 7}">8 broadcast 7</div></a><a href="#i41"><div class="op info" id="i41" style="width:100;left:954;top:400;height:1120" title="Dur: 5002 ms
+Err: :net-timeout
+Wall-clock Time: 2025-06-06T07:24:03.072Z
+
+Op:
+{:process 9
+ :type :info
+ :f :broadcast
+ :index 41
+ :error :net-timeout
+ :value 8}">9 broadcast 8</div></a><a href="#i43"><div class="op ok" id="i43" style="width:100;left:1484;top:672;height:16" title="Dur: 2 ms
+Err: nil
+Wall-clock Time: 2025-06-06T07:24:03.078Z
+
+Op:
+{:process 14
+ :type :ok
+ :f :read
+ :index 43
+ :value [&quot;4&quot; &quot;8&quot;]}">14 read <br />["4" "8"]</div></a><a href="#i45"><div class="op ok" id="i45" style="width:100;left:1484;top:704;height:16" title="Dur: 2 ms
+Err: nil
+Wall-clock Time: 2025-06-06T07:24:03.276Z
+
+Op:
+{:process 14
+ :type :ok
+ :f :read
+ :index 45
+ :value [&quot;4&quot; &quot;8&quot;]}">14 read <br />["4" "8"]</div></a><a href="#i47"><div class="op info" id="i47" style="width:100;left:530;top:480;height:1040" title="Dur: 5005 ms
+Err: :net-timeout
+Wall-clock Time: 2025-06-06T07:24:03.392Z
+
+Op:
+{:process 5
+ :type :info
+ :f :broadcast
+ :index 47
+ :error :net-timeout
+ :value 9}">5 broadcast 9</div></a><a href="#i49"><div class="op info" id="i49" style="width:100;left:1166;top:512;height:1008" title="Dur: 5005 ms
+Err: :net-timeout
+Wall-clock Time: 2025-06-06T07:24:07.454Z
+
+Op:
+{:process 11
+ :type :info
+ :f :broadcast
+ :index 49
+ :error :net-timeout
+ :value 10}">11 broadcast 10</div></a><a href="#i51"><div class="op info" id="i51" style="width:100;left:1272;top:608;height:912" title="Dur: 5006 ms
+Err: :net-timeout
+Wall-clock Time: 2025-06-06T07:24:07.721Z
+
+Op:
+{:process 12
+ :type :info
+ :f :broadcast
+ :index 51
+ :error :net-timeout
+ :value 11}">12 broadcast 11</div></a><a href="#i53"><div class="op ok" id="i53" style="width:100;left:1802;top:832;height:16" title="Dur: 3 ms
+Err: nil
+Wall-clock Time: 2025-06-06T07:24:07.724Z
+
+Op:
+{:process 17
+ :type :ok
+ :f :read
+ :index 53
+ :value [&quot;1&quot; &quot;11&quot; &quot;6&quot;]}">17 read <br />["1" "11" "6"]</div></a><a href="#i55"><div class="op ok" id="i55" style="width:100;left:1802;top:864;height:16" title="Dur: 3 ms
+Err: nil
+Wall-clock Time: 2025-06-06T07:24:07.884Z
+
+Op:
+{:process 17
+ :type :ok
+ :f :read
+ :index 55
+ :value [&quot;1&quot; &quot;11&quot; &quot;6&quot;]}">17 read <br />["1" "11" "6"]</div></a><a href="#i56"><div class="op info" id="i56" style="width:100;left:1378;top:640;height:880" title="Dur: 5006 ms
+Err: :net-timeout
+Wall-clock Time: 2025-06-06T07:24:07.928Z
+
+Op:
+{:process 13
+ :type :info
+ :f :broadcast
+ :index 56
+ :error :net-timeout
+ :value 12}">13 broadcast 12</div></a><a href="#i58"><div class="op ok" id="i58" style="width:100;left:1802;top:912;height:16" title="Dur: 3 ms
+Err: nil
+Wall-clock Time: 2025-06-06T07:24:08.067Z
+
+Op:
+{:process 17
+ :type :ok
+ :f :read
+ :index 58
+ :value [&quot;1&quot; &quot;11&quot; &quot;6&quot;]}">17 read <br />["1" "11" "6"]</div></a><a href="#i61"><div class="op info" id="i61" style="width:100;left:1484;top:736;height:784" title="Dur: 5004 ms
+Err: :net-timeout
+Wall-clock Time: 2025-06-06T07:24:08.383Z
+
+Op:
+{:process 14
+ :type :info
+ :f :broadcast
+ :index 61
+ :error :net-timeout
+ :value 13}">14 broadcast 13</div></a><a href="#i63"><div class="op ok" id="i63" style="width:100;left:2014;top:992;height:16" title="Dur: 1 ms
+Err: nil
+Wall-clock Time: 2025-06-06T07:24:08.409Z
+
+Op:
+{:process 19
+ :type :ok
+ :f :read
+ :index 63
+ :value [&quot;13&quot; &quot;4&quot; &quot;8&quot;]}">19 read <br />["13" "4" "8"]</div></a><a href="#i64"><div class="op info" id="i64" style="width:100;left:1060;top:768;height:752" title="Dur: 5005 ms
+Err: :net-timeout
+Wall-clock Time: 2025-06-06T07:24:08.487Z
+
+Op:
+{:process 10
+ :type :info
+ :f :broadcast
+ :index 64
+ :error :net-timeout
+ :value 14}">10 broadcast 14</div></a><a href="#i66"><div class="op ok" id="i66" style="width:100;left:2014;top:1040;height:16" title="Dur: 3 ms
+Err: nil
+Wall-clock Time: 2025-06-06T07:24:08.575Z
+
+Op:
+{:process 19
+ :type :ok
+ :f :read
+ :index 66
+ :value [&quot;13&quot; &quot;4&quot; &quot;8&quot;]}">19 read <br />["13" "4" "8"]</div></a><a href="#i68"><div class="op ok" id="i68" style="width:100;left:1590;top:1072;height:16" title="Dur: 3 ms
+Err: nil
+Wall-clock Time: 2025-06-06T07:24:08.703Z
+
+Op:
+{:process 15
+ :type :ok
+ :f :read
+ :index 68
+ :value [&quot;14&quot; &quot;2&quot; &quot;9&quot;]}">15 read <br />["14" "2" "9"]</div></a><a href="#i71"><div class="op ok" id="i71" style="width:100;left:1590;top:1104;height:32" title="Dur: 3 ms
+Err: nil
+Wall-clock Time: 2025-06-06T07:24:08.820Z
+
+Op:
+{:process 15
+ :type :ok
+ :f :read
+ :index 71
+ :value [&quot;14&quot; &quot;2&quot; &quot;9&quot;]}">15 read <br />["14" "2" "9"]</div></a><a href="#i72"><div class="op ok" id="i72" style="width:100;left:2014;top:1120;height:32" title="Dur: 2 ms
+Err: nil
+Wall-clock Time: 2025-06-06T07:24:08.822Z
+
+Op:
+{:process 19
+ :type :ok
+ :f :read
+ :index 72
+ :value [&quot;13&quot; &quot;4&quot; &quot;8&quot;]}">19 read <br />["13" "4" "8"]</div></a><a href="#i74"><div class="op ok" id="i74" style="width:100;left:2014;top:1168;height:16" title="Dur: 2 ms
+Err: nil
+Wall-clock Time: 2025-06-06T07:24:08.847Z
+
+Op:
+{:process 19
+ :type :ok
+ :f :read
+ :index 74
+ :value [&quot;13&quot; &quot;4&quot; &quot;8&quot;]}">19 read <br />["13" "4" "8"]</div></a><a href="#i76"><div class="op ok" id="i76" style="width:100;left:2014;top:1200;height:16" title="Dur: 3 ms
+Err: nil
+Wall-clock Time: 2025-06-06T07:24:08.987Z
+
+Op:
+{:process 19
+ :type :ok
+ :f :read
+ :index 76
+ :value [&quot;13&quot; &quot;4&quot; &quot;8&quot;]}">19 read <br />["13" "4" "8"]</div></a><a href="#i79"><div class="op info" id="i79" style="width:100;left:1696;top:800;height:720" title="Dur: 5005 ms
+Err: :net-timeout
+Wall-clock Time: 2025-06-06T07:24:12.460Z
+
+Op:
+{:process 16
+ :type :info
+ :f :broadcast
+ :index 79
+ :error :net-timeout
+ :value 15}">16 broadcast 15</div></a><a href="#i80"><div class="op info" id="i80" style="width:100;left:1802;top:944;height:576" title="Dur: 5005 ms
+Err: :net-timeout
+Wall-clock Time: 2025-06-06T07:24:13.257Z
+
+Op:
+{:process 17
+ :type :info
+ :f :broadcast
+ :index 80
+ :error :net-timeout
+ :value 16}">17 broadcast 16</div></a><a href="#i81"><div class="op info" id="i81" style="width:100;left:1908;top:960;height:560" title="Dur: 5005 ms
+Err: :net-timeout
+Wall-clock Time: 2025-06-06T07:24:13.273Z
+
+Op:
+{:process 18
+ :type :info
+ :f :broadcast
+ :index 81
+ :error :net-timeout
+ :value 17}">18 broadcast 17</div></a><a href="#i82"><div class="op info" id="i82" style="width:100;left:2014;top:1232;height:288" title="Dur: 5007 ms
+Err: :net-timeout
+Wall-clock Time: 2025-06-06T07:24:14.169Z
+
+Op:
+{:process 19
+ :type :info
+ :f :broadcast
+ :index 82
+ :error :net-timeout
+ :value 18}">19 broadcast 18</div></a><a href="#i83"><div class="op info" id="i83" style="width:100;left:1590;top:1248;height:272" title="Dur: 5005 ms
+Err: :net-timeout
+Wall-clock Time: 2025-06-06T07:24:14.263Z
+
+Op:
+{:process 15
+ :type :info
+ :f :broadcast
+ :index 83
+ :error :net-timeout
+ :value 19}">15 broadcast 19</div></a><a href="#i89"><div class="op ok" id="i89" style="width:100;left:2544;top:1376;height:48" title="Dur: 5 ms
+Err: nil
+Wall-clock Time: 2025-06-06T07:24:24.276Z
+
+Op:
+{:process 24
+ :type :ok
+ :f :read
+ :index 89
+ :final? true
+ :value [&quot;13&quot; &quot;18&quot; &quot;4&quot; &quot;8&quot;]}">24 read <br />["13" "18" "4" "8"]</div></a><a href="#i90"><div class="op ok" id="i90" style="width:100;left:2438;top:1344;height:96" title="Dur: 8 ms
+Err: nil
+Wall-clock Time: 2025-06-06T07:24:24.276Z
+
+Op:
+{:process 23
+ :type :ok
+ :f :read
+ :index 90
+ :final? true
+ :value [&quot;12&quot; &quot;17&quot; &quot;3&quot; &quot;7&quot;]}">23 read <br />["12" "17" "3" "7"]</div></a><a href="#i91"><div class="op ok" id="i91" style="width:100;left:2332;top:1360;height:96" title="Dur: 5 ms
+Err: nil
+Wall-clock Time: 2025-06-06T07:24:24.277Z
+
+Op:
+{:process 22
+ :type :ok
+ :f :read
+ :index 91
+ :final? true
+ :value [&quot;1&quot; &quot;11&quot; &quot;16&quot; &quot;6&quot;]}">22 read <br />["1" "11" "16" "6"]</div></a><a href="#i92"><div class="op ok" id="i92" style="width:100;left:2120;top:1408;height:64" title="Dur: 4 ms
+Err: nil
+Wall-clock Time: 2025-06-06T07:24:24.277Z
+
+Op:
+{:process 20
+ :type :ok
+ :f :read
+ :index 92
+ :final? true
+ :value [&quot;14&quot; &quot;19&quot; &quot;2&quot; &quot;9&quot;]}">20 read <br />["14" "19" "2" "9"]</div></a><a href="#i93"><div class="op ok" id="i93" style="width:100;left:2226;top:1392;height:96" title="Dur: 6 ms
+Err: nil
+Wall-clock Time: 2025-06-06T07:24:24.278Z
+
+Op:
+{:process 21
+ :type :ok
+ :f :read
+ :index 93
+ :final? true
+ :value [&quot;0&quot; &quot;10&quot; &quot;15&quot; &quot;5&quot;]}">21 read <br />["0" "10" "15" "5"]</div></a></div></body></html>

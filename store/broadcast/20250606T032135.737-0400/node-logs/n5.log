@@ -1,0 +1,20 @@
+[INBOUND]{"id":3,"src":"c3","dest":"n5","body":{"type":"init","node_id":"n5","node_ids":["n1","n2","n3","n4","n5"],"msg_id":1}}
+[INIT_OK] {"src":"n5","dest":"c3","body":{"type":"init_ok","in_reply_to":1,"msg_id":0}}
+[INBOUND]{"id":14,"src":"c9","dest":"n5","body":{"type":"topology","topology":{"n1":["n4","n2"],"n2":["n5","n3","n1"],"n3":["n2"],"n4":["n1","n5"],"n5":["n2","n4"]},"msg_id":1}}
+[TOPOLOGY_OK] {"src":"n5","dest":"c9","body":{"type":"topology_ok","in_reply_to":1,"msg_id":0}}
+[INBOUND]{"id":25,"src":"c14","dest":"n5","body":{"type":"broadcast","message":3,"msg_id":1}}
+BEGIN GOSSIP
+[INBOUND]{"id":34,"src":"c18","dest":"n5","body":{"type":"read","msg_id":1}}
+error
+[READ_OK] {"src":"n5","dest":"c18","body":{"type":"read_ok","messages":["3"],"in_reply_to":1,"msg_id":12}}
+[INBOUND]{"id":45,"src":"c18","dest":"n5","body":{"type":"broadcast","message":7,"msg_id":2}}
+error
+BEGIN GOSSIP
+[INBOUND]{"id":61,"src":"c22","dest":"n5","body":{"type":"broadcast","message":11,"msg_id":1}}
+BEGIN GOSSIP
+[INBOUND]{"id":84,"src":"c26","dest":"n5","body":{"type":"read","msg_id":1}}
+[READ_OK] {"src":"n5","dest":"c26","body":{"type":"read_ok","messages":["11","3","7"],"in_reply_to":1,"msg_id":64}}
+[INBOUND]{"id":87,"src":"c26","dest":"n5","body":{"type":"broadcast","message":17,"msg_id":2}}
+BEGIN GOSSIP
+[INBOUND]{"id":96,"src":"c34","dest":"n5","body":{"type":"read","msg_id":1}}
+[READ_OK] {"src":"n5","dest":"c34","body":{"type":"read_ok","messages":["11","17","3","7"],"in_reply_to":1,"msg_id":194}}

@@ -1,0 +1,173 @@
+2025-06-06 02:57:53,626{GMT}	INFO	[jepsen test runner] jepsen.core: Test version 49be5191af382759bc9da6021eec14a3b553e782 (plus uncommitted changes)
+2025-06-06 02:57:53,626{GMT}	INFO	[jepsen test runner] jepsen.core: Command line:
+lein run test -w echo --bin self/server/_build/default/bin/main.exe --time-limit 20 --rate 10
+2025-06-06 02:57:53,655{GMT}	INFO	[jepsen test runner] jepsen.core: Running test:
+{:args []
+ :remote
+ #jepsen.control.retry.Remote{:remote #jepsen.control.scp.Remote{:cmd-remote #jepsen.control.sshj.SSHJRemote{:concurrency-limit 6,
+                                                                                                             :conn-spec nil,
+                                                                                                             :client nil,
+                                                                                                             :semaphore nil},
+                                                                 :conn-spec nil},
+                              :conn nil}
+ :log-net-send false
+ :node-count nil
+ :availability nil
+ :max-txn-length 4
+ :concurrency 5
+ :db
+ #object[maelstrom.db$db$reify__16612
+         "0x5233b7ad"
+         "maelstrom.db$db$reify__16612@5233b7ad"]
+ :max-writes-per-key 16
+ :leave-db-running? false
+ :name "echo"
+ :logging-json? false
+ :start-time
+ #object[org.joda.time.DateTime "0x5a69f1ef" "2025-06-06T02:57:53.590-04:00"]
+ :nemesis-interval 10
+ :net
+ #object[maelstrom.net$jepsen_net$reify__15721
+         "0x54fd5f6"
+         "maelstrom.net$jepsen_net$reify__15721@54fd5f6"]
+ :client
+ #object[maelstrom.workload.echo$client$reify__17402
+         "0x219aab91"
+         "maelstrom.workload.echo$client$reify__17402@219aab91"]
+ :barrier
+ #object[java.util.concurrent.CyclicBarrier
+         "0x71737478"
+         "java.util.concurrent.CyclicBarrier@71737478"]
+ :log-stderr false
+ :pure-generators true
+ :ssh {:dummy? true}
+ :rate 10.0
+ :checker
+ #object[jepsen.checker$compose$reify__11089
+         "0x64001530"
+         "jepsen.checker$compose$reify__11089@64001530"]
+ :argv
+ ("test"
+  "-w"
+  "echo"
+  "--bin"
+  "self/server/_build/default/bin/main.exe"
+  "--time-limit"
+  "20"
+  "--rate"
+  "10")
+ :nemesis
+ (jepsen.nemesis.ReflCompose
+  {:fm {:start-partition 0,
+        :stop-partition 0,
+        :kill 1,
+        :start 1,
+        :pause 1,
+        :resume 1},
+   :nemeses [#unprintable "jepsen.nemesis.combined$partition_nemesis$reify__16905@1f9b8c23"
+             #unprintable "jepsen.nemesis.combined$db_nemesis$reify__16886@6b297a62"]})
+ :nodes ["n1" "n2" "n3" "n4" "n5"]
+ :test-count 1
+ :latency {:mean 0, :dist :constant}
+ :bin "self/server/_build/default/bin/main.exe"
+ :generator
+ #object[jepsen.util.Forgettable
+         "0x7f913c47"
+         (jepsen.generator.TimeLimit
+          {:limit 20000000000,
+           :cutoff nil,
+           :gen (jepsen.generator.Any
+                 {:gens [(jepsen.generator.OnThreads
+                          {:f #{:nemesis},
+                           :context-filter #object[jepsen.generator.context$make_thread_filter$lazy_filter__12077
+                                                   "0x5f04449a"
+                                                   "jepsen.generator.context$make_thread_filter$lazy_filter__12077@5f04449a"],
+                           :gen nil})
+                         (jepsen.generator.OnThreads
+                          {:f #jepsen.generator.context.AllBut{:element :nemesis},
+                           :context-filter #object[jepsen.generator.context$make_thread_filter$lazy_filter__12077
+                                                   "0x5634c26c"
+                                                   "jepsen.generator.context$make_thread_filter$lazy_filter__12077@5634c26c"],
+                           :gen (jepsen.generator.Stagger
+                                 {:dt 200000000,
+                                  :next-time nil,
+                                  :gen (jepsen.generator.EachThread
+                                        {:fresh-gen #object[maelstrom.workload.echo$workload$fn__17421
+                                                            "0x37a5ac85"
+                                                            "maelstrom.workload.echo$workload$fn__17421@37a5ac85"],
+                                         :context-filters #object[clojure.core$promise$reify__8621
+                                                                  "0x5d4f0fd5"
+                                                                  {:status :pending,
+                                                                   :val nil}],
+                                         :gens {}})})})]})})]
+ :log-net-recv false
+ :os
+ #object[maelstrom.net$jepsen_os$reify__15724
+         "0x2092b072"
+         "maelstrom.net$jepsen_os$reify__15724@2092b072"]
+ :time-limit 20
+ :workload :echo
+ :consistency-models [:strict-serializable]
+ :topology :grid}
+
+2025-06-06 02:57:54,764{GMT}	INFO	[jepsen node n1] maelstrom.net: Starting Maelstrom network
+2025-06-06 02:57:54,764{GMT}	INFO	[jepsen test runner] jepsen.db: Tearing down DB
+2025-06-06 02:57:54,765{GMT}	INFO	[jepsen test runner] jepsen.db: Setting up DB
+2025-06-06 02:57:54,766{GMT}	INFO	[jepsen node n4] maelstrom.db: Setting up n4
+2025-06-06 02:57:54,766{GMT}	INFO	[jepsen node n2] maelstrom.db: Setting up n2
+2025-06-06 02:57:54,766{GMT}	INFO	[jepsen node n3] maelstrom.db: Setting up n3
+2025-06-06 02:57:54,766{GMT}	INFO	[jepsen node n5] maelstrom.db: Setting up n5
+2025-06-06 02:57:54,766{GMT}	INFO	[jepsen node n4] maelstrom.process: launching self/server/_build/default/bin/main.exe []
+2025-06-06 02:57:54,766{GMT}	INFO	[jepsen node n3] maelstrom.process: launching self/server/_build/default/bin/main.exe []
+2025-06-06 02:57:54,766{GMT}	INFO	[jepsen node n2] maelstrom.process: launching self/server/_build/default/bin/main.exe []
+2025-06-06 02:57:54,766{GMT}	INFO	[jepsen node n5] maelstrom.process: launching self/server/_build/default/bin/main.exe []
+2025-06-06 02:57:54,767{GMT}	INFO	[jepsen node n1] maelstrom.service: Starting services: (lin-kv lin-tso lww-kv seq-kv)
+2025-06-06 02:57:54,768{GMT}	INFO	[jepsen node n1] maelstrom.db: Setting up n1
+2025-06-06 02:57:54,768{GMT}	INFO	[jepsen node n1] maelstrom.process: launching self/server/_build/default/bin/main.exe []
+2025-06-06 02:58:04,786{GMT}	INFO	[jepsen node n5] maelstrom.db: Tearing down n5
+2025-06-06 02:58:04,786{GMT}	INFO	[jepsen node n3] maelstrom.db: Tearing down n3
+2025-06-06 02:58:04,786{GMT}	INFO	[jepsen node n2] maelstrom.db: Tearing down n2
+2025-06-06 02:58:04,786{GMT}	INFO	[jepsen node n4] maelstrom.db: Tearing down n4
+2025-06-06 02:58:04,786{GMT}	INFO	[jepsen node n1] maelstrom.db: Tearing down n1
+2025-06-06 02:58:06,792{GMT}	INFO	[jepsen node n1] maelstrom.net: Shutting down Maelstrom network
+2025-06-06 02:58:06,794{GMT}	WARN	[jepsen test runner] jepsen.core: Test crashed!
+clojure.lang.ExceptionInfo: Expected node n5 to respond to an init message, but node did not respond.
+	at slingshot.support$stack_trace.invoke(support.clj:201)
+	at maelstrom.db$db$reify__16612.setup_BANG_(db.clj:63)
+	at jepsen.db$fn__11614$G__11608__11618.invoke(db.clj:12)
+	at jepsen.db$fn__11614$G__11607__11623.invoke(db.clj:12)
+	at clojure.core$partial$fn__5927.invoke(core.clj:2642)
+	at jepsen.control$on_nodes$fn__9552.invoke(control.clj:319)
+	at clojure.lang.AFn.applyToHelper(AFn.java:154)
+	at clojure.lang.AFn.applyTo(AFn.java:144)
+	at clojure.core$apply.invokeStatic(core.clj:667)
+	at clojure.core$with_bindings_STAR_.invokeStatic(core.clj:1990)
+	at clojure.core$with_bindings_STAR_.doInvoke(core.clj:1990)
+	at clojure.lang.RestFn.applyTo(RestFn.java:145)
+	at clojure.core$apply.invokeStatic(core.clj:671)
+	at clojure.core$bound_fn_STAR_$fn__5837.doInvoke(core.clj:2020)
+	at clojure.lang.RestFn.invoke(RestFn.java:411)
+	at dom_top.core$real_pmap_helper$build_thread__730$fn__731.invoke(core.clj:163)
+	at clojure.lang.AFn.applyToHelper(AFn.java:152)
+	at clojure.lang.AFn.applyTo(AFn.java:144)
+	at clojure.core$apply.invokeStatic(core.clj:667)
+	at clojure.core$with_bindings_STAR_.invokeStatic(core.clj:1990)
+	at clojure.core$with_bindings_STAR_.doInvoke(core.clj:1990)
+	at clojure.lang.RestFn.invoke(RestFn.java:428)
+	at clojure.lang.AFn.applyToHelper(AFn.java:156)
+	at clojure.lang.RestFn.applyTo(RestFn.java:135)
+	at clojure.core$apply.invokeStatic(core.clj:671)
+	at clojure.core$bound_fn_STAR_$fn__5837.doInvoke(core.clj:2020)
+	at clojure.lang.RestFn.invoke(RestFn.java:400)
+	at clojure.lang.AFn.run(AFn.java:22)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+Caused by: clojure.lang.ExceptionInfo: Client read timeout
+	at slingshot.support$stack_trace.invoke(support.clj:201)
+	at maelstrom.client$recv_BANG_.invokeStatic(client.clj:98)
+	at maelstrom.client$recv_BANG_.invoke(client.clj:81)
+	at maelstrom.client$send_PLUS_recv_BANG_.invokeStatic(client.clj:123)
+	at maelstrom.client$send_PLUS_recv_BANG_.invoke(client.clj:119)
+	at maelstrom.client$rpc_BANG_.invokeStatic(client.clj:149)
+	at maelstrom.client$rpc_BANG_.invoke(client.clj:140)
+	at maelstrom.db$db$reify__16612.setup_BANG_(db.clj:48)
+	... 27 common frames omitted
