@@ -1,6 +1,8 @@
 open Ppx_yojson_conv_lib.Yojson_conv.Primitives
 open Bag;;
 
+let (let*) x f = Option.bind x f
+
 let write_line_sync ~mutex ~flow line =
   Eio.Mutex.use_rw ~protect:true mutex (fun () ->
     Eio.Flow.copy_string (line ^ "\n") flow
@@ -58,13 +60,12 @@ let gossip ~(state: _ State.state) ~message ~(inbound_msg:Msg.inbound_msg) =
         ) neighbors;
   log ~state  "END GOSSIP"
 
-let (let*) x f = Option.bind x f
-
 let handle_rpc ~(state:_ State.state) (inbound_msg:Msg.inbound_msg) =
   let* msg_id  = Msg.msg_id_of_inbound_body inbound_msg.body in
   let* callback =  Eio.Mutex.use_rw ~protect:true state.locks.state (fun () ->
         Hashtbl.find_opt state.callbacks msg_id
       ) in
+  log ~state ("Invoking RPC callback: ");
   callback inbound_msg.body;
   Some ()
 
@@ -141,7 +142,6 @@ let handle_message ~(state:_ State.state) (inbound_msg:Msg.inbound_msg) =
   
   send ~state (Higher.make_outbound_msg inbound_msg state body);
   Some ()
-
 
 let maelstrom ~(state: _ State.state) =
   let buf = Eio.Buf_read.of_flow state.env#stdin ~max_size:4096 in
