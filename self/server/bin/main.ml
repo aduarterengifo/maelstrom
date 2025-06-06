@@ -22,9 +22,13 @@ let send ~(state: _ State.state) outbound_msg =
 
 let rpc~(state: _ State.state) (msg_body:Msg.outbound_body) handler = 
   let msg_id = Msg.msg_id_of_outbound_body msg_body |> Option.get in
-  Hashtbl.add state.callbacks msg_id (fun body ->
-    Hashtbl.remove state.callbacks msg_id;
-    handler body
+  Eio.Mutex.use_rw ~protect:true state.locks.state (fun () ->
+    Hashtbl.add state.callbacks msg_id (fun body ->
+      Eio.Mutex.use_rw ~protect:true state.locks.state (fun () ->
+        Hashtbl.remove state.callbacks msg_id
+      );
+      handler body
+    )
   )
 
 let gossip ~(state: _ State.state) ~message ~(inbound_msg:Msg.inbound_msg) =
@@ -34,6 +38,7 @@ let gossip ~(state: _ State.state) ~message ~(inbound_msg:Msg.inbound_msg) =
     |> State.StringSet.diff state.neighbors
     |> State.StringSet.elements
   in
+  log ~state ("Neighbors: [" ^ (String.concat "; " neighbors) ^ "]");
   Eio.Switch.run @@ fun sw ->
     Eio.Fiber.fork ~sw @@ fun () ->
       Eio.Fiber.List.iter
@@ -47,6 +52,8 @@ let gossip ~(state: _ State.state) ~message ~(inbound_msg:Msg.inbound_msg) =
               dest; 
               body
             } in 
+            log ~state ("Sending gossip broadcast from " ^ state.node_id ^ " to " ^ dest ^ ": " ^ (Yojson.Safe.to_string (Msg.yojson_of_outbound_msg msg)));
+            send ~state msg;
             let handler ~acked (request_body: Msg.inbound_body) =
               match request_body with
               | Msg.BroadcastOk _ -> acked := true
@@ -60,16 +67,25 @@ let gossip ~(state: _ State.state) ~message ~(inbound_msg:Msg.inbound_msg) =
         ) neighbors;
   log ~state  "END GOSSIP"
 
-let handle_rpc ~(state:_ State.state) (inbound_msg:Msg.inbound_msg) =
+let handle_rpc ~sw ~(state:_ State.state) (inbound_msg:Msg.inbound_msg) =
+  let callback_ids =
+    Eio.Mutex.use_rw ~protect:true state.locks.state (fun () ->
+      Hashtbl.fold (fun k _ acc -> k :: acc) state.callbacks []
+    )
+  in
+  log ~state ("Current callback ids: [" ^ (String.concat "; " (List.map string_of_int callback_ids)) ^ "]");
   let* msg_id  = Msg.msg_id_of_inbound_body inbound_msg.body in
-  let* callback =  Eio.Mutex.use_rw ~protect:true state.locks.state (fun () ->
-        Hashtbl.find_opt state.callbacks msg_id
-      ) in
-  log ~state ("Invoking RPC callback: ");
-  callback inbound_msg.body;
+  Eio.Mutex.use_rw ~protect:true state.locks.state (fun () ->
+      Hashtbl.find_opt state.callbacks msg_id
+      |> Option.iter (fun callback ->
+          log ~state ("Invoking RPC callback: ");
+          log ~state ("inbound_msg: " ^ (Yojson.Safe.to_string (Msg.yojson_of_inbound_msg inbound_msg)));
+          callback inbound_msg.body
+        )
+  );
   Some ()
 
-let handle_message ~(state:_ State.state) (inbound_msg:Msg.inbound_msg) = 
+let handle_message ~sw ~(state:_ State.state) (inbound_msg:Msg.inbound_msg) = 
   let* body = match inbound_msg.body with
     | Msg.Init b -> 
         Eio.Mutex.use_rw ~protect:true state.locks.state (fun () ->
@@ -117,15 +133,15 @@ let handle_message ~(state:_ State.state) (inbound_msg:Msg.inbound_msg) =
           match b.msg_id with
           | Some b_msg_id ->  
               let body = Msg.BroadcastOk {
-                  msg_id = Some (Atomic.get state.msg_id);
+                  msg_id = Some b_msg_id;
                   in_reply_to = b_msg_id;
                 } in
               Some body
           | None -> None
         in
-
-        if should_gossip then
-            gossip ~state ~message:b.message ~inbound_msg;
+        (* handle this in pixie land where everything is pure and there is not dust and keep going *)
+        if (should_gossip) then
+          Eio.Fiber.fork_daemon ~sw (fun () -> gossip ~state ~message:b.message ~inbound_msg; `Stop_daemon);
         response
     | Msg.Read b ->             
         Msg.ReadOk {
@@ -154,7 +170,7 @@ let maelstrom ~(state: _ State.state) =
             line 
             |> Yojson.Safe.from_string
             |> Msg.inbound_msg_of_yojson
-            |> fun inbound_msg -> List.iter (fun f -> ignore (f ~state inbound_msg)) [handle_rpc; handle_message]
+            |> fun inbound_msg -> List.iter (fun f -> ignore (f ~sw ~state inbound_msg)) [handle_rpc; handle_message]
             |> ignore
           );
           loop ()
@@ -171,6 +187,7 @@ let () =
       msg_id = Atomic.make 0; 
       messages = State.StringSet.empty; 
       neighbors = State.StringSet.empty; 
+      nodes = State.StringSet.empty;
       callbacks = Hashtbl.create 0; 
       env = object
         method stdin = Eio.Stdenv.stdin env

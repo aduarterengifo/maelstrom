@@ -121,5 +121,6 @@ val msg_id_of_outbound_body : outbound_body -> int option
 val msg_id_of_inbound_body : inbound_body -> int option
 
 val yojson_of_outbound_msg : outbound_msg -> Yojson.Safe.t
+val yojson_of_inbound_msg : inbound_msg -> Yojson.Safe.t
 
 val inbound_msg_of_yojson :  Yojson.Safe.t -> inbound_msg

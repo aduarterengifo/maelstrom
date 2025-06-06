@@ -1,0 +1,63 @@
+{:perf {:latency-graph {:valid? true},
+        :rate-graph {:valid? true},
+        :valid? true},
+ :timeline {:valid? true},
+ :exceptions {:valid? true},
+ :stats {:valid? true,
+         :count 40,
+         :ok-count 19,
+         :fail-count 2,
+         :info-count 19,
+         :by-f {:broadcast {:valid? true,
+                            :count 21,
+                            :ok-count 2,
+                            :fail-count 0,
+                            :info-count 19},
+                :read {:valid? true,
+                       :count 19,
+                       :ok-count 17,
+                       :fail-count 2,
+                       :info-count 0}}},
+ :availability {:valid? true, :ok-fraction 0.475},
+ :net {:all {:send-count 1241,
+             :recv-count 1240,
+             :msg-count 1241,
+             :msgs-per-op 31.025},
+       :clients {:send-count 80, :recv-count 79, :msg-count 80},
+       :servers {:send-count 1161,
+                 :recv-count 1161,
+                 :msg-count 1161,
+                 :msgs-per-op 29.025},
+       :valid? true},
+ :workload {:worst-stale (),
+            :duplicated-count 0,
+            :valid? false,
+            :lost-count 2,
+            :lost (4 5),
+            :stable-count 0,
+            :stale-count 0,
+            :stale (),
+            :never-read-count 19,
+            :attempt-count 21,
+            :lost-latencies {0 0, 0.5 0, 0.95 0, 0.99 0, 1 0},
+            :never-read (0
+                         1
+                         2
+                         3
+                         6
+                         7
+                         8
+                         9
+                         10
+                         11
+                         12
+                         13
+                         14
+                         15
+                         16
+                         17
+                         18
+                         19
+                         20),
+            :duplicated {}},
+ :valid? false}

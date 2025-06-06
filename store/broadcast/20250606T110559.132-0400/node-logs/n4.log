@@ -1,0 +1,31 @@
+[INBOUND]{"id":0,"src":"c1","dest":"n4","body":{"type":"init","node_id":"n4","node_ids":["n1","n2","n3","n4","n5"],"msg_id":1}}
+Current callback ids: []
+[INIT_OK] {"src":"n4","dest":"c1","body":{"type":"init_ok","in_reply_to":1,"msg_id":0}}
+[INBOUND]{"id":11,"src":"c8","dest":"n4","body":{"type":"topology","topology":{"n1":["n4","n2"],"n2":["n5","n3","n1"],"n3":["n2"],"n4":["n1","n5"],"n5":["n2","n4"]},"msg_id":1}}
+Current callback ids: []
+[TOPOLOGY_OK] {"src":"n4","dest":"c8","body":{"type":"topology_ok","in_reply_to":1,"msg_id":0}}
+[INBOUND]{"id":24,"src":"c13","dest":"n4","body":{"type":"read","msg_id":1}}
+Current callback ids: []
+[READ_OK] {"src":"n4","dest":"c13","body":{"type":"read_ok","messages":[],"in_reply_to":1,"msg_id":0}}
+[INBOUND]{"id":28,"src":"c13","dest":"n4","body":{"type":"broadcast","message":4,"msg_id":2}}
+Current callback ids: []
+BEGIN GOSSIP
+[INBOUND]{"id":40,"src":"c19","dest":"n4","body":{"type":"broadcast","message":8,"msg_id":1}}
+Current callback ids: [1; 10; 0; 11; 9; 4; 5; 3; 7; 8; 2; 6]
+Invoking RPC callback: 
+error: {"type":"broadcast","message":"8","msg_id":1}
+BEGIN GOSSIP
+[INBOUND]{"id":53,"src":"c23","dest":"n4","body":{"type":"read","msg_id":1}}
+Current callback ids: [15; 22; 18; 19; 27; 17; 10; 26; 28; 0; 11; 23; 25; 9; 31; 4; 5; 12; 13; 3; 7; 30; 8; 16; 24; 14; 21; 29; 2; 6; 20]
+[READ_OK] {"src":"n4","dest":"c23","body":{"type":"read_ok","messages":["4","8"],"in_reply_to":1,"msg_id":32}}
+[INBOUND]{"id":55,"src":"c23","dest":"n4","body":{"type":"broadcast","message":13,"msg_id":2}}
+Current callback ids: [22; 18; 19; 32; 17; 28; 23; 25; 4; 5; 3; 30; 16; 24; 14; 21; 33; 6; 15; 27; 10; 26; 0; 11; 9; 31; 12; 13; 7; 8; 29; 2; 20]
+Invoking RPC callback: 
+error: {"type":"broadcast","message":"13","msg_id":2}
+BEGIN GOSSIP
+[INBOUND]{"id":64,"src":"c28","dest":"n4","body":{"type":"broadcast","message":18,"msg_id":1}}
+Current callback ids: [22; 45; 54; 18; 19; 32; 17; 50; 28; 53; 23; 25; 40; 47; 44; 49; 52; 4; 5; 55; 3; 30; 62; 16; 24; 60; 14; 21; 33; 37; 59; 36; 6; 15; 41; 57; 27; 10; 26; 38; 42; 56; 61; 0; 11; 9; 31; 12; 46; 58; 13; 39; 63; 7; 34; 8; 35; 51; 48; 29; 43; 20]
+BEGIN GOSSIP
+[INBOUND]{"id":69,"src":"c33","dest":"n4","body":{"type":"read","msg_id":1}}
+Current callback ids: [182; 18; 129; 50; 80; 108; 166; 104; 130; 25; 49; 52; 4; 30; 62; 103; 185; 102; 106; 14; 111; 145; 15; 82; 133; 89; 180; 56; 79; 164; 31; 121; 12; 141; 101; 168; 69; 152; 8; 160; 96; 45; 54; 78; 124; 118; 140; 81; 128; 23; 77; 70; 159; 3; 134; 16; 24; 21; 94; 109; 167; 36; 76; 131; 57; 68; 156; 122; 181; 85; 100; 26; 98; 105; 11; 9; 135; 13; 63; 176; 186; 51; 107; 146; 125; 143; 19; 32; 17; 90; 172; 40; 67; 55; 117; 132; 110; 60; 150; 59; 165; 187; 161; 6; 155; 142; 144; 116; 137; 27; 154; 151; 157; 38; 61; 158; 87; 113; 138; 58; 84; 170; 183; 171; 34; 74; 112; 178; 75; 123; 48; 169; 127; 139; 147; 71; 22; 173; 28; 53; 148; 65; 47; 73; 44; 5; 91; 120; 184; 97; 162; 163; 72; 99; 114; 33; 37; 64; 93; 119; 175; 41; 95; 149; 92; 115; 10; 42; 0; 136; 46; 153; 177; 39; 66; 83; 7; 88; 35; 174; 29; 126; 179; 43; 86; 20]
+[READ_OK] {"src":"n4","dest":"c33","body":{"type":"read_ok","messages":["13","18","4","8"],"in_reply_to":1,"msg_id":188}}

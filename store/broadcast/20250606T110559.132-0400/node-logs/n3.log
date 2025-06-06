@@ -1,0 +1,28 @@
+[INBOUND]{"id":3,"src":"c3","dest":"n3","body":{"type":"init","node_id":"n3","node_ids":["n1","n2","n3","n4","n5"],"msg_id":1}}
+Current callback ids: []
+[INIT_OK] {"src":"n3","dest":"c3","body":{"type":"init_ok","in_reply_to":1,"msg_id":0}}
+[INBOUND]{"id":14,"src":"c6","dest":"n3","body":{"type":"topology","topology":{"n1":["n4","n2"],"n2":["n5","n3","n1"],"n3":["n2"],"n4":["n1","n5"],"n5":["n2","n4"]},"msg_id":1}}
+Current callback ids: []
+[TOPOLOGY_OK] {"src":"n3","dest":"c6","body":{"type":"topology_ok","in_reply_to":1,"msg_id":0}}
+[INBOUND]{"id":23,"src":"c12","dest":"n3","body":{"type":"broadcast","message":1,"msg_id":1}}
+Current callback ids: []
+BEGIN GOSSIP
+[INBOUND]{"id":37,"src":"c18","dest":"n3","body":{"type":"read","msg_id":1}}
+Current callback ids: [1; 0; 4; 5; 3; 2]
+Invoking RPC callback: 
+error: {"type":"read","msg_id":1}
+[READ_OK] {"src":"n3","dest":"c18","body":{"type":"read_ok","messages":["1"],"in_reply_to":1,"msg_id":6}}
+[INBOUND]{"id":39,"src":"c18","dest":"n3","body":{"type":"broadcast","message":7,"msg_id":2}}
+Current callback ids: [0; 4; 5; 3; 2]
+Invoking RPC callback: 
+error: {"type":"broadcast","message":"7","msg_id":2}
+BEGIN GOSSIP
+[INBOUND]{"id":52,"src":"c22","dest":"n3","body":{"type":"broadcast","message":12,"msg_id":1}}
+Current callback ids: [15; 10; 0; 11; 9; 4; 5; 12; 13; 3; 7; 8; 16; 14; 6]
+BEGIN GOSSIP
+[INBOUND]{"id":63,"src":"c27","dest":"n3","body":{"type":"broadcast","message":17,"msg_id":1}}
+Current callback ids: [15; 22; 18; 19; 27; 32; 17; 10; 26; 28; 0; 11; 23; 25; 9; 31; 4; 5; 12; 13; 3; 7; 30; 8; 16; 24; 14; 21; 29; 6; 20]
+BEGIN GOSSIP
+[INBOUND]{"id":66,"src":"c34","dest":"n3","body":{"type":"read","msg_id":1}}
+Current callback ids: [18; 19; 32; 17; 50; 80; 90; 25; 40; 49; 52; 67; 4; 55; 30; 62; 60; 14; 59; 6; 15; 82; 27; 89; 38; 56; 61; 79; 87; 31; 12; 58; 84; 34; 69; 74; 8; 75; 48; 71; 22; 45; 54; 78; 28; 53; 81; 23; 65; 77; 47; 73; 44; 5; 70; 91; 3; 16; 24; 72; 21; 33; 37; 64; 94; 36; 76; 93; 41; 57; 68; 85; 92; 10; 26; 42; 0; 11; 9; 46; 13; 39; 63; 66; 83; 7; 88; 35; 51; 29; 43; 86; 20]
+[READ_OK] {"src":"n3","dest":"c34","body":{"type":"read_ok","messages":["1","12","17","7"],"in_reply_to":1,"msg_id":95}}

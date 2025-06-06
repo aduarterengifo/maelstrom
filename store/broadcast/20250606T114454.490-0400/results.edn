@@ -1,0 +1,237 @@
+{:perf {:latency-graph {:valid? true},
+        :rate-graph {:valid? true},
+        :valid? true},
+ :timeline {:valid? true},
+ :exceptions {:valid? true,
+              :exceptions ({:count 106,
+                            :class clojure.lang.ExceptionInfo,
+                            :example #jepsen.history.Op{:index 2,
+                                                        :time 45810625,
+                                                        :type :info,
+                                                        :process 1,
+                                                        :f :broadcast,
+                                                        :value 1,
+                                                        :exception {:via [{:type clojure.lang.ExceptionInfo,
+                                                                           :message "Malformed RPC response. Maelstrom sent node n2 the following request:\n\n{:type \"broadcast\", :message 1, :msg_id 1}\n\nAnd expected a response of the form:\n\n{:type (eq \"broadcast_ok\"), {:k :msg_id} Int, :in_reply_to Int}\n\n... but instead received\n\n{:type \"broadcast_ok\", :in_reply_to 1, :msg_id nil}\n\nThis is malformed because:\n\n{:msg_id (not (integer? nil))}\n\nSee doc/protocol.md for more guidance.",
+                                                                           :data {:type :malformed-rpc-response,
+                                                                                  :body {:type "broadcast_ok",
+                                                                                         :in_reply_to 1,
+                                                                                         :msg_id nil}},
+                                                                           :at [slingshot.support$stack_trace
+                                                                                invoke
+                                                                                "support.clj"
+                                                                                201]}],
+                                                                    :trace [[slingshot.support$stack_trace
+                                                                             invoke
+                                                                             "support.clj"
+                                                                             201]
+                                                                            [maelstrom.client$check_body
+                                                                             invokeStatic
+                                                                             "client.clj"
+                                                                             188]
+                                                                            [maelstrom.client$check_body
+                                                                             invoke
+                                                                             "client.clj"
+                                                                             181]
+                                                                            [maelstrom.workload.broadcast$fn__17063$broadcast_BANG___17064
+                                                                             invoke
+                                                                             "broadcast.clj"
+                                                                             27]
+                                                                            [maelstrom.workload.broadcast$fn__17063$broadcast_BANG___17064
+                                                                             invoke
+                                                                             "broadcast.clj"
+                                                                             27]
+                                                                            [maelstrom.workload.broadcast$client$reify__17142
+                                                                             invoke_BANG_
+                                                                             "broadcast.clj"
+                                                                             203]
+                                                                            [jepsen.client.Validate
+                                                                             invoke_BANG_
+                                                                             "client.clj"
+                                                                             87]
+                                                                            [jepsen.generator.interpreter.ClientWorker
+                                                                             invoke_BANG_
+                                                                             "interpreter.clj"
+                                                                             65]
+                                                                            [jepsen.generator.interpreter$spawn_worker$fn__13749$fn__13750
+                                                                             invoke
+                                                                             "interpreter.clj"
+                                                                             140]
+                                                                            [jepsen.generator.interpreter$spawn_worker$fn__13749
+                                                                             invoke
+                                                                             "interpreter.clj"
+                                                                             123]
+                                                                            [clojure.core$binding_conveyor_fn$fn__5842
+                                                                             invoke
+                                                                             "core.clj"
+                                                                             2047]
+                                                                            [clojure.lang.AFn
+                                                                             call
+                                                                             "AFn.java"
+                                                                             18]
+                                                                            [java.util.concurrent.FutureTask
+                                                                             run
+                                                                             "FutureTask.java"
+                                                                             317]
+                                                                            [java.util.concurrent.ThreadPoolExecutor
+                                                                             runWorker
+                                                                             "ThreadPoolExecutor.java"
+                                                                             1144]
+                                                                            [java.util.concurrent.ThreadPoolExecutor$Worker
+                                                                             run
+                                                                             "ThreadPoolExecutor.java"
+                                                                             642]
+                                                                            [java.lang.Thread
+                                                                             run
+                                                                             "Thread.java"
+                                                                             1583]],
+                                                                    :cause "Malformed RPC response. Maelstrom sent node n2 the following request:\n\n{:type \"broadcast\", :message 1, :msg_id 1}\n\nAnd expected a response of the form:\n\n{:type (eq \"broadcast_ok\"), {:k :msg_id} Int, :in_reply_to Int}\n\n... but instead received\n\n{:type \"broadcast_ok\", :in_reply_to 1, :msg_id nil}\n\nThis is malformed because:\n\n{:msg_id (not (integer? nil))}\n\nSee doc/protocol.md for more guidance.",
+                                                                    :data {:type :malformed-rpc-response,
+                                                                           :body {:type "broadcast_ok",
+                                                                                  :in_reply_to 1,
+                                                                                  :msg_id nil}}},
+                                                        :error "indeterminate: Malformed RPC response. Maelstrom sent node n2 the following request:\n\n{:type \"broadcast\", :message 1, :msg_id 1}\n\nAnd expected a response of the form:\n\n{:type (eq \"broadcast_ok\"), {:k :msg_id} Int, :in_reply_to Int}\n\n... but instead received\n\n{:type \"broadcast_ok\", :in_reply_to 1, :msg_id nil}\n\nThis is malformed because:\n\n{:msg_id (not (integer? nil))}\n\nSee doc/protocol.md for more guidance."}})},
+ :stats {:valid? false,
+         :count 203,
+         :ok-count 97,
+         :fail-count 0,
+         :info-count 106,
+         :by-f {:broadcast {:valid? false,
+                            :count 106,
+                            :ok-count 0,
+                            :fail-count 0,
+                            :info-count 106},
+                :read {:valid? true,
+                       :count 97,
+                       :ok-count 97,
+                       :fail-count 0,
+                       :info-count 0}}},
+ :availability {:valid? true, :ok-fraction 0.47783253},
+ :net {:all {:send-count 26154,
+             :recv-count 26154,
+             :msg-count 26154,
+             :msgs-per-op 128.83743},
+       :clients {:send-count 426, :recv-count 426, :msg-count 426},
+       :servers {:send-count 25728,
+                 :recv-count 25728,
+                 :msg-count 25728,
+                 :msgs-per-op 126.738914},
+       :valid? true},
+ :workload {:worst-stale (),
+            :duplicated-count 0,
+            :valid? :unknown,
+            :lost-count 0,
+            :lost (),
+            :stable-count 0,
+            :stale-count 0,
+            :stale (),
+            :never-read-count 106,
+            :attempt-count 106,
+            :never-read (0
+                         1
+                         2
+                         3
+                         4
+                         5
+                         6
+                         7
+                         8
+                         9
+                         10
+                         11
+                         12
+                         13
+                         14
+                         15
+                         16
+                         17
+                         18
+                         19
+                         20
+                         21
+                         22
+                         23
+                         24
+                         25
+                         26
+                         27
+                         28
+                         29
+                         30
+                         31
+                         32
+                         33
+                         34
+                         35
+                         36
+                         37
+                         38
+                         39
+                         40
+                         41
+                         42
+                         43
+                         44
+                         45
+                         46
+                         47
+                         48
+                         49
+                         50
+                         51
+                         52
+                         53
+                         54
+                         55
+                         56
+                         57
+                         58
+                         59
+                         60
+                         61
+                         62
+                         63
+                         64
+                         65
+                         66
+                         67
+                         68
+                         69
+                         70
+                         71
+                         72
+                         73
+                         74
+                         75
+                         76
+                         77
+                         78
+                         79
+                         80
+                         81
+                         82
+                         83
+                         84
+                         85
+                         86
+                         87
+                         88
+                         89
+                         90
+                         91
+                         92
+                         93
+                         94
+                         95
+                         96
+                         97
+                         98
+                         99
+                         100
+                         101
+                         102
+                         103
+                         104
+                         105),
+            :duplicated {}},
+ :valid? false}

@@ -18,6 +18,7 @@ type 'a state = {
   msg_id : int Atomic.t;
   mutable messages : StringSet.t;
   mutable neighbors : StringSet.t;
+  mutable nodes: StringSet.t;
   callbacks : (int, Msg.inbound_body -> unit) Hashtbl.t;
   env : 'a env;
   locks: locks

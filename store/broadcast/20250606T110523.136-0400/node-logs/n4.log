@@ -1,0 +1,3 @@
+[INBOUND]{"id":3,"src":"c3","dest":"n4","body":{"type":"init","node_id":"n4","node_ids":["n1","n2","n3","n4","n5"],"msg_id":1}}
+Current callback ids: []
+[INIT_OK] {"src":"n4","dest":"c3","body":{"type":"init_ok","in_reply_to":1,"msg_id":0}}
