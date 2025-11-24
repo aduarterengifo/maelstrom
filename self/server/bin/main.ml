@@ -90,6 +90,7 @@ let handle_message ~sw ~(state:_ State.state) (inbound_msg:Msg.inbound_msg) =
     | Msg.Init b -> 
         Eio.Mutex.use_rw ~protect:true state.locks.state (fun () ->
           state.node_id <- b.node_id;
+          state.nodes <- State.StringSet.of_list b.node_ids;
         );
         Msg.InitOk {
             msg_id = Atomic.get state.msg_id;
@@ -143,6 +144,8 @@ let handle_message ~sw ~(state:_ State.state) (inbound_msg:Msg.inbound_msg) =
         if (should_gossip) then
           Eio.Fiber.fork_daemon ~sw (fun () -> gossip ~state ~message:b.message ~inbound_msg; `Stop_daemon);
         response
+    | Msg.BroadcastOk b -> 
+        None
     | Msg.Read b ->             
         Msg.ReadOk {
             msg_id = Some (Atomic.get state.msg_id);
@@ -150,8 +153,6 @@ let handle_message ~sw ~(state:_ State.state) (inbound_msg:Msg.inbound_msg) =
             messages = Eio.Mutex.use_ro state.locks.state (fun () -> State.StringSet.elements state.messages)
         } 
         |> Option.some
-    | Msg.BroadcastOk b -> 
-        None
     | Msg.Unknown b -> 
         None
   in

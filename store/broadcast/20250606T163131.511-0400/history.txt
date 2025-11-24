@@ -1,0 +1,136 @@
+0	:invoke	:broadcast	0
+0	:ok	:broadcast	0
+1	:invoke	:broadcast	1
+2	:invoke	:broadcast	2
+2	:ok	:broadcast	2
+3	:invoke	:read	nil
+4	:invoke	:broadcast	3
+4	:ok	:broadcast	3
+0	:invoke	:broadcast	4
+2	:invoke	:read	nil
+2	:ok	:read	["0" "2"]
+2	:invoke	:read	nil
+2	:ok	:read	["0" "2"]
+2	:invoke	:broadcast	5
+2	:ok	:broadcast	5
+4	:invoke	:read	nil
+2	:invoke	:read	nil
+2	:ok	:read	["0" "2" "5"]
+2	:invoke	:read	nil
+2	:ok	:read	["0" "2" "5"]
+2	:invoke	:broadcast	6
+2	:ok	:broadcast	6
+2	:invoke	:broadcast	7
+2	:ok	:broadcast	7
+2	:invoke	:read	nil
+2	:ok	:read	["0" "2" "5" "6" "7"]
+2	:invoke	:read	nil
+2	:ok	:read	["0" "2" "5" "6" "7"]
+2	:invoke	:broadcast	8
+2	:ok	:broadcast	8
+2	:invoke	:broadcast	9
+2	:ok	:broadcast	9
+2	:invoke	:read	nil
+2	:ok	:read	["0" "2" "5" "6" "7" "8" "9"]
+2	:invoke	:broadcast	10
+2	:ok	:broadcast	10
+2	:invoke	:read	nil
+2	:ok	:read	["0" "10" "2" "5" "6" "7" "8" "9"]
+2	:invoke	:read	nil
+2	:ok	:read	["0" "10" "2" "5" "6" "7" "8" "9"]
+2	:invoke	:read	nil
+2	:ok	:read	["0" "10" "2" "5" "6" "7" "8" "9"]
+2	:invoke	:read	nil
+2	:ok	:read	["0" "10" "2" "5" "6" "7" "8" "9"]
+2	:invoke	:read	nil
+2	:ok	:read	["0" "10" "2" "5" "6" "7" "8" "9"]
+2	:invoke	:broadcast	11
+2	:ok	:broadcast	11
+2	:invoke	:read	nil
+2	:ok	:read	["0" "10" "11" "2" "5" "6" "7" "8" "9"]
+2	:invoke	:broadcast	12
+2	:ok	:broadcast	12
+2	:invoke	:broadcast	13
+2	:ok	:broadcast	13
+2	:invoke	:broadcast	14
+2	:ok	:broadcast	14
+2	:invoke	:read	nil
+2	:ok	:read	["0" "10" "11" "12" "13" "14" "2" "5" "6" "7" "8" "9"]
+2	:invoke	:read	nil
+2	:ok	:read	["0" "10" "11" "12" "13" "14" "2" "5" "6" "7" "8" "9"]
+2	:invoke	:read	nil
+2	:ok	:read	["0" "10" "11" "12" "13" "14" "2" "5" "6" "7" "8" "9"]
+2	:invoke	:read	nil
+2	:ok	:read	["0" "10" "11" "12" "13" "14" "2" "5" "6" "7" "8" "9"]
+2	:invoke	:read	nil
+2	:ok	:read	["0" "10" "11" "12" "13" "14" "2" "5" "6" "7" "8" "9"]
+2	:invoke	:read	nil
+2	:ok	:read	["0" "10" "11" "12" "13" "14" "2" "5" "6" "7" "8" "9"]
+2	:invoke	:broadcast	15
+2	:ok	:broadcast	15
+2	:invoke	:broadcast	16
+2	:ok	:broadcast	16
+2	:invoke	:broadcast	17
+2	:ok	:broadcast	17
+2	:invoke	:read	nil
+2	:ok	:read	["0" "10" "11" "12" "13" "14" "15" "16" "17" "2" "5" "6" "7" "8" "9"]
+2	:invoke	:read	nil
+2	:ok	:read	["0" "10" "11" "12" "13" "14" "15" "16" "17" "2" "5" "6" "7" "8" "9"]
+2	:invoke	:read	nil
+2	:ok	:read	["0" "10" "11" "12" "13" "14" "15" "16" "17" "2" "5" "6" "7" "8" "9"]
+2	:invoke	:broadcast	18
+2	:ok	:broadcast	18
+2	:invoke	:broadcast	19
+2	:ok	:broadcast	19
+2	:invoke	:read	nil
+2	:ok	:read	["0" "10" "11" "12" "13" "14" "15" "16" "17" "18" "19" "2" "5" "6" "7" "8" "9"]
+2	:invoke	:broadcast	20
+2	:ok	:broadcast	20
+2	:invoke	:read	nil
+2	:ok	:read	["0" "10" "11" "12" "13" "14" "15" "16" "17" "18" "19" "2" "20" "5" "6" "7" "8" "9"]
+2	:invoke	:read	nil
+1	:info	:broadcast	1	:net-timeout
+6	:invoke	:read	nil
+3	:fail	:read	nil	:net-timeout
+3	:invoke	:read	nil
+0	:info	:broadcast	4	:net-timeout
+5	:invoke	:read	nil
+4	:fail	:read	nil	:net-timeout
+4	:invoke	:read	nil
+2	:fail	:read	nil	:net-timeout
+2	:invoke	:read	nil
+6	:fail	:read	nil	:net-timeout
+6	:invoke	:broadcast	21
+3	:fail	:read	nil	:net-timeout
+3	:invoke	:read	nil
+5	:fail	:read	nil	:net-timeout
+5	:invoke	:read	nil
+4	:fail	:read	nil	:net-timeout
+4	:invoke	:read	nil
+2	:fail	:read	nil	:net-timeout
+2	:invoke	:broadcast	22
+6	:info	:broadcast	21	:net-timeout
+11	:invoke	:broadcast	23
+3	:fail	:read	nil	:net-timeout
+3	:invoke	:broadcast	24
+5	:fail	:read	nil	:net-timeout
+5	:invoke	:broadcast	25
+4	:fail	:read	nil	:net-timeout
+4	:invoke	:broadcast	26
+2	:info	:broadcast	22	:net-timeout
+7	:invoke	:broadcast	27
+11	:info	:broadcast	23	:net-timeout
+3	:info	:broadcast	24	:net-timeout
+5	:info	:broadcast	25	:net-timeout
+4	:info	:broadcast	26	:net-timeout
+7	:info	:broadcast	27	:net-timeout
+16	:invoke	:read	nil
+8	:invoke	:read	nil
+12	:invoke	:read	nil
+9	:invoke	:read	nil
+10	:invoke	:read	nil
+16	:fail	:read	nil	:net-timeout
+12	:fail	:read	nil	:net-timeout
+9	:fail	:read	nil	:net-timeout
+8	:fail	:read	nil	:net-timeout
+10	:fail	:read	nil	:net-timeout

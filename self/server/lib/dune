@@ -1,7 +1,15 @@
 (library
  (name bag)
- (libraries yojson ppx_yojson_conv fmt eio eio_main)
- (modules bag msg state higher)
+ (libraries base yojson ppx_yojson_conv fmt eio eio_main)
+ (modules
+  bag
+  msg
+  state
+  higher
+  better
+  better_msg
+  better_maelstrom
+  better_handler)
  (preprocess
   (pps ppx_yojson_conv))
  (flags

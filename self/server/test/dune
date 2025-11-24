@@ -1,2 +1,6 @@
 (test
- (name test_server))
+ (name test_server)
+ (modules test_server test_better_msg)
+ (libraries bag ppx_expect base)
+ (preprocess
+  (pps ppx_expect)))
